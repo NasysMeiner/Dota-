@@ -9,5 +9,5 @@ public class DataStructure : ScriptableObject
     public int Income;
 
     [Range(1, 100)]
-    public int MaxHealpPoint;
+    public float MaxHealpPoint;
 }

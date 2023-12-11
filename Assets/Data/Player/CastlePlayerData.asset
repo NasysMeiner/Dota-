@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
   m_Name: CastlePlayerData
   m_EditorClassIdentifier: 
-  Name: Player
   Income: 20
   MaxHealpPoint: 100

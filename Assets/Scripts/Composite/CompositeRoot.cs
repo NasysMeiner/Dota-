@@ -24,6 +24,12 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private DataStructure _dataStructureAi;
     [SerializeField] private List<Barracks> _barracksAi;
 
+
+
+    [Header("View")]
+    [SerializeField] private List<Heart> _hearts;
+    [SerializeField] private HealPointView _healPointView;
+
     private void Awake()
     {
         Initialize();
@@ -33,6 +39,8 @@ public class CompositeRoot : MonoBehaviour
     {
         InitializePlayer();
         InitializeAi();
+        InitializeView();
+        InitializeEventData();
     }
 
     private void InitializePlayer()
@@ -43,5 +51,15 @@ public class CompositeRoot : MonoBehaviour
     private void InitializeAi()
     {
         _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, _dataStructureAi);
+    }
+
+    private void InitializeView()
+    {
+        _healPointView.Initialize(_castlePlayer, _hearts);
+    }
+
+    private void InitializeEventData()
+    {
+        _castlePlayer.InitializeEvent();
     }
 }
