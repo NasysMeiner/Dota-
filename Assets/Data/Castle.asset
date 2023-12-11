@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Castle
   m_EditorClassIdentifier: 
   Income: 10
+  MaxHealpPoint: 0

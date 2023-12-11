@@ -5,13 +5,11 @@ using UnityEngine;
 public class Castle : MonoBehaviour, IStructur
 {
     private int _income;
+    private float _maxHealPoint;
+    private float _healPoint;
 
     public int Income => _income;
-
-    private void Awake()
-    {
-        
-    }
+    public float HealPoint => _healPoint;
 
     public void Destruct()
     {
@@ -26,6 +24,9 @@ public class Castle : MonoBehaviour, IStructur
     public void InitializeStruct(DataStructure dataStructure)
     {
         _income = dataStructure.Income;
+        _maxHealPoint = dataStructure.MaxHealpPoint;
+
+        _healPoint = _maxHealPoint;
     }
 
 }
