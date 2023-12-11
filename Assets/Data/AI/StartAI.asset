@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
-  m_Name: Castle
-  m_EditorClassIdentifier: 
-  Income: 10
-  MaxHealpPoint: 0
+  m_Script: {fileID: 11500000, guid: 8c20dbc019b94ba47ae1e93b678fbf51, type: 3}
+  m_Name: StartAI
+  m_EditorClassIdentifier: Assembly-CSharp::DataGameInfo/DataStructure
+  Name: AI
+  StartMoney: 1000
