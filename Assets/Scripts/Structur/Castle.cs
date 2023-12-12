@@ -54,8 +54,8 @@ public class Castle : MonoBehaviour, IStructur
         _name = name;
         _maxHealPoint = dataStructure.MaxHealpPoint;
 
-        //_healPoint = _maxHealPoint;
-        _healPoint = 75f;
+        _healPoint = _maxHealPoint;
+        //_healPoint = 75f;
     }
 
     public void InitializeEvent()
