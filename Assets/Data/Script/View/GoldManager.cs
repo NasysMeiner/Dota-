@@ -13,6 +13,7 @@ public class GoldManager : MonoBehaviour
     {
         StartCoroutine(EarnGoldCoroutine());
     }
+
     private IEnumerator EarnGoldCoroutine()
     {
         while (true)
@@ -27,6 +28,7 @@ public class GoldManager : MonoBehaviour
             Debug.Log("Total Gold: " + gold);
         }
     }
+
     private int CalculateTotalIncome()
     {
         int totalIncome = 0;
@@ -38,6 +40,7 @@ public class GoldManager : MonoBehaviour
         }
         return totalIncome;
     }
+
     private void UpdateGoldText()
     {
         if (goldText != null)
