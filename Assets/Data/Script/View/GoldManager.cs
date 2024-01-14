@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class GoldManager : MonoBehaviour
 {
-    public Building[] playerBuildings;
-    private int gold = 0;
+  //  public Building[] playerBuildings;
+    public List<Barracks> barracksList;
+    public Bank playerBank;
     public Text goldText;
 
     void Start()
@@ -18,25 +19,24 @@ public class GoldManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
 
             int totalIncome = CalculateTotalIncome();
-            gold += totalIncome;
+            playerBank.AddGold(totalIncome);
 
             UpdateGoldText();
             Debug.Log("Total Income: " + totalIncome);
-            Debug.Log("Total Gold: " + gold);
+            Debug.Log("Total Gold: " + playerBank.GetGold());
         }
     }
 
     private int CalculateTotalIncome()
     {
         int totalIncome = 0;
-        foreach (Building building in playerBuildings)
+        foreach (Barracks barracks in barracksList)
         {
-            totalIncome += building.income;
-            Debug.Log("Building Income: " + building.income);
-
+            totalIncome += barracks.GetIncome();
+            Debug.Log("Barracks Income: " + barracks.GetIncome());
         }
         return totalIncome;
     }
@@ -45,7 +45,7 @@ public class GoldManager : MonoBehaviour
     {
         if (goldText != null)
         {
-            goldText.text = gold.ToString();
+            goldText.text = playerBank.GetGold().ToString();
         }
     }
 
@@ -53,5 +53,31 @@ public class GoldManager : MonoBehaviour
     public class Building
     {
         public int income;
+    }
+
+    [System.Serializable]
+    public class Bank
+    {
+        private int gold = 0;
+
+        public void AddGold(int amount)
+        {
+            gold += amount;
+        }
+
+        public bool SpendGold(int amount)
+        {
+            if (gold >= amount)
+            {
+                gold -= amount;
+                return true; // potratil
+            }
+            return false; //ne dostatochno
+        }
+
+        public int GetGold()
+        {
+            return gold;
+        }
     }
 }
