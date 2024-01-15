@@ -43,4 +43,9 @@ public class Barracks : MonoBehaviour, IStructur
         if (_healPoint <= 0)
             Destruct();
     }
+
+    public int GetIncome()
+    {
+        return _income;
+    }
 }
