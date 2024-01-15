@@ -17,6 +17,11 @@ public class Warrior : MonoBehaviour
         StartWarrior();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Yes");
+    }
+
     public void InitWarrior(Path path)
     {
         _meshAgent = GetComponent<NavMeshAgent>();
