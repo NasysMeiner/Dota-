@@ -10,26 +10,34 @@ public class Warrior : MonoBehaviour
     [SerializeField] private Transform _point;
 
     private NavMeshAgent _meshAgent;
+    private StateMachine _stateMachine;
 
     private void Start()
     {
         _meshAgent = GetComponent<NavMeshAgent>();
-        StartWarrior();
+        //StartWarrior();
+        InitWarrior(_path);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        Debug.Log("Yes");
+        if( _stateMachine.CurrentState != null)
+            _stateMachine.Update();
     }
 
     public void InitWarrior(Path path)
     {
         _meshAgent = GetComponent<NavMeshAgent>();
         _path = path;
+        _stateMachine = new StateMachine();
+
+        _stateMachine.AddState(new WalkWarriorState(_stateMachine, transform, _path, _meshAgent));
+
+        _stateMachine.SetState<WalkWarriorState>();
     }
 
-    public void StartWarrior()
-    {
-        _meshAgent.SetDestination(_point.position);
-    }
+    //public void StartWarrior()
+    //{
+    //    _meshAgent.SetDestination(_point.position);
+    //}
 }
