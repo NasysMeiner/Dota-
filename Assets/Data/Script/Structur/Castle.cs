@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Castle : MonoBehaviour, IStructur
+public class Castle : MonoBehaviour, IStructur, IEntity
 {
     private string _name;
 
@@ -11,21 +11,30 @@ public class Castle : MonoBehaviour, IStructur
     private float _maxHealPoint;
     private float _healPoint;
     private int _money;
+    private Counter _counter;
 
     private List<Barracks> _barracks;
 
     public string Name => _name;
     public int Income => _income;
     public float MaxHealPoint => _maxHealPoint;
+    public Counter Counter => _counter;
+    public Vector3 Position => transform.position;
 
     public event UnityAction<float> HealPointChange;
 
-    public void Destruct()
+    private void OnDisable()
     {
-        
+        foreach(var barracks in _barracks)
+            barracks.DestroyBarracks -= IsDestructBarracks;
     }
 
-    public void TakeDamage(int damage)
+    public void Destruct()
+    {
+        _counter.DeleteEntity(this);
+    }
+
+    public void GetDamage(float damage)
     {
         _healPoint -= damage;
 
@@ -35,17 +44,19 @@ public class Castle : MonoBehaviour, IStructur
             Destruct();
     }
 
-    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barracks> structurs, DataStructure dataStructureBarracks, List<Path> paths)
+    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barracks> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab)
     {
         InitializeStruct(dataStructureCastle, dataGameInfo.name);
 
+        _counter = new Counter();
         _money = dataGameInfo.StartMoney;
         _barracks = structurs;
 
         for (int i = 0; i < structurs.Count; i++)
         {
             structurs[i].InitializeStruct(dataStructureBarracks, dataGameInfo.name);
-            structurs[i].SetPatch(paths[i]);
+            structurs[i].InitializeBarracks(paths[i], _counter, unitPrefab);
+            structurs[i].DestroyBarracks += IsDestructBarracks;
         }
     }
 
@@ -61,5 +72,18 @@ public class Castle : MonoBehaviour, IStructur
     public void InitializeEvent()
     {
         HealPointChange?.Invoke(_healPoint);
+    }
+
+    public void SetEnemyCounter(Counter enemyCounter)
+    {
+        foreach (var barrack in _barracks)
+        {
+            barrack.SetEnemyCounter(enemyCounter);
+        }
+    }
+
+    private void IsDestructBarracks()
+    {
+        _counter.AddEntity(this);
     }
 }

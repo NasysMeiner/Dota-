@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class State
 {
     protected readonly StateMachine _stateMachine;
+    protected bool _isWork = false;
+
+    public bool IsWork => _isWork;
 
     public State(StateMachine stateMachine)
     {

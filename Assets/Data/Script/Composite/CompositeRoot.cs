@@ -29,6 +29,9 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private List<Heart> _hearts;
     [SerializeField] private HealPointView _healPointView;
 
+    [Header("Units")]
+    [SerializeField] private Warrior _prefabWarrior;
+
     private void Awake()
     {
         Initialize();
@@ -36,20 +39,26 @@ public class CompositeRoot : MonoBehaviour
 
     public void Initialize()
     {
+        foreach(var path in _path)
+        {
+            path.SearchPoint();
+        }
+
         InitializePlayer();
         InitializeAi();
         InitializeView();
-        InitializeEventData();
+        InitializeData();
+        StartGame();
     }
 
     private void InitializePlayer()
     {
-        _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _dataStructurePlayer, _path);
+        _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _dataStructurePlayer, _path, _prefabWarrior);
     }
 
     private void InitializeAi()
     {
-        _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, _dataStructureAi, _path);
+        _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, _dataStructureAi, _path, _prefabWarrior);
     }
 
     private void InitializeView()
@@ -57,8 +66,24 @@ public class CompositeRoot : MonoBehaviour
         _healPointView.Initialize(_castlePlayer, _hearts);
     }
 
-    private void InitializeEventData()
+    private void InitializeData()
     {
         _castlePlayer.InitializeEvent();
+        _castleAi.SetEnemyCounter(_castlePlayer.Counter);
+        _castlePlayer.SetEnemyCounter(_castleAi.Counter);
+    }
+
+    private void StartGame()
+    {
+        //foreach(var barrack in _barracksPlayer)
+        //{
+        //    barrack.SpawnUnits();
+        //}
+
+        //foreach (var barrack in _barracksAi)
+        //{
+        //    barrack.SpawnUnits();
+        //}
+        _barracksPlayer[0].SpawnUnits();
     }
 }

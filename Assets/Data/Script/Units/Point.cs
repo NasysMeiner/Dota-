@@ -11,7 +11,7 @@ public class Point : MonoBehaviour
     {
         get
         {
-            Vector3 random = new Vector3(Random.Range(_leftPoint.position.x, _rightPoint.position.x), 0, Random.Range(_leftPoint.position.z, _rightPoint.position.z));
+            Vector3 random = new Vector3(Random.Range(_leftPoint.position.x, _rightPoint.position.x), Random.Range(_leftPoint.position.y, _rightPoint.position.y), 0);
 
             return random;
         }

@@ -1,9 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Transactions;
+using UnityEngine;
 
 public class StateMachine
 {
+    private Transform _transform;
+
+    public StateMachine(Transform transform)
+    {
+        _transform = transform;
+    }
+
     public State CurrentState { get; private set; }
+    public IEntity Target {  get; private set; }
+    public Transform Transform => _transform;
 
     private Dictionary<Type, State> _states = new Dictionary<Type, State>();
 
@@ -28,8 +39,14 @@ public class StateMachine
         }
     }
 
+    public void ChangeTarget(IEntity newTarget)
+    {
+        Target = newTarget;
+    }
+
     public void Update()
     {
-        CurrentState?.Update();
+        if(CurrentState.IsWork)
+            CurrentState?.Update();
     }
 }

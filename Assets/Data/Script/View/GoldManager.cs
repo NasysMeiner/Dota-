@@ -25,8 +25,8 @@ public class GoldManager : MonoBehaviour
             playerBank.AddGold(totalIncome);
 
             UpdateGoldText();
-            Debug.Log("Total Income: " + totalIncome);
-            Debug.Log("Total Gold: " + playerBank.GetGold());
+            //Debug.Log("Total Income: " + totalIncome);
+            //Debug.Log("Total Gold: " + playerBank.GetGold());
         }
     }
 
@@ -36,7 +36,7 @@ public class GoldManager : MonoBehaviour
         foreach (Barracks barracks in barracksList)
         {
             totalIncome += barracks.GetIncome();
-            Debug.Log("Barracks Income: " + barracks.GetIncome());
+            //Debug.Log("Barracks Income: " + barracks.GetIncome());
         }
         return totalIncome;
     }
