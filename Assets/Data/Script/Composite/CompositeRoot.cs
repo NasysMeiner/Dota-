@@ -11,7 +11,7 @@ public class CompositeRoot : MonoBehaviour
 
     [Header("StructPlayer")]
     [SerializeField] private DataStructure _dataStructurePlayer;
-    [SerializeField] private List<Barracks> _barracksPlayer;
+    [SerializeField] private List<Barrack> _barracksPlayer;
 
     [Header("CastleAi")]
     [SerializeField] private DataStructure _dataCastleAi;
@@ -20,7 +20,7 @@ public class CompositeRoot : MonoBehaviour
 
     [Header("StructAi")]
     [SerializeField] private DataStructure _dataStructureAi;
-    [SerializeField] private List<Barracks> _barracksAi;
+    [SerializeField] private List<Barrack> _barracksAi;
 
     [Header("Path")]
     [SerializeField] private List<Path> _path;

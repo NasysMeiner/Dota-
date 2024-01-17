@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GoldManager : MonoBehaviour
 {
   //  public Building[] playerBuildings;
-    public List<Barracks> barracksList;
+    public List<Barrack> barracksList;
     public Bank playerBank;
     public Text goldText;
 
@@ -33,7 +33,7 @@ public class GoldManager : MonoBehaviour
     private int CalculateTotalIncome()
     {
         int totalIncome = 0;
-        foreach (Barracks barracks in barracksList)
+        foreach (Barrack barracks in barracksList)
         {
             totalIncome += barracks.GetIncome();
             //Debug.Log("Barracks Income: " + barracks.GetIncome());

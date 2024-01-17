@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Barracks : MonoBehaviour, IStructur, IEntity
+public class Barrack : MonoBehaviour, IStructur, IEntity
 {
     private Transform _spawnPoint;
     private string _name;

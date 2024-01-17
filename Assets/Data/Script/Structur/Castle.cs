@@ -13,7 +13,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     private int _money;
     private Counter _counter;
 
-    private List<Barracks> _barracks;
+    private List<Barrack> _barracks;
 
     public string Name => _name;
     public int Income => _income;
@@ -44,7 +44,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barracks> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab)
+    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab)
     {
         InitializeStruct(dataStructureCastle, dataGameInfo.name);
 
