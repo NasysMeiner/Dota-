@@ -12,6 +12,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     private float _healPoint;
     private int _money;
     private Counter _counter;
+    private Trash _trash;
 
     private List<Barrack> _barracks;
 
@@ -19,7 +20,10 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public int Income => _income;
     public float MaxHealPoint => _maxHealPoint;
     public Counter Counter => _counter;
+
     public Vector3 Position => transform.position;
+
+    public GameObject GameObject => gameObject;
 
     public event UnityAction<float> HealPointChange;
 
@@ -44,18 +48,19 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab)
+    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab, Trash trash)
     {
         InitializeStruct(dataStructureCastle, dataGameInfo.name);
 
         _counter = new Counter();
         _money = dataGameInfo.StartMoney;
         _barracks = structurs;
+        _trash = trash;
 
         for (int i = 0; i < structurs.Count; i++)
         {
             structurs[i].InitializeStruct(dataStructureBarracks, dataGameInfo.name);
-            structurs[i].InitializeBarracks(paths[i], _counter, unitPrefab);
+            structurs[i].InitializeBarracks(paths[i], _counter, unitPrefab, trash);
             structurs[i].DestroyBarracks += IsDestructBarracks;
         }
     }
@@ -80,6 +85,11 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         {
             barrack.SetEnemyCounter(enemyCounter);
         }
+    }
+
+    public void ChangePosition(Vector3 position)
+    {
+        transform.position = position;
     }
 
     private void IsDestructBarracks()

@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering.Universal;
 
 public class Counter
 {
@@ -19,7 +15,10 @@ public class Counter
 
     public void DeleteEntity(IEntity entity)
     {
-        if(Entity.Contains(entity))
+        if (Entity.Contains(entity))
+        {
             Entity.Remove(entity);
+            Delete?.Invoke(entity);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,15 +14,17 @@ public class Warrior : Unit
     private StateMachine _stateMachine;
     private Scout _scout;
 
-    private float _healPoints = 100;
-    private float _visibilityRange = 5f;
-    private float _attackRange = 2f;
+    public float _healPoints = 10;
+    private float _visibilityRange = 2f;
+    private float _attackRange = 1f;
     private float _attackSpeed = 1f;
-    private float _damage = 1f;
+    private float _damage = 6f;
 
     public IEntity CurrentTarget { get; private set; }
-
-    public override Vector3 Position => transform.position;
+    public float Damage => _damage;
+    public float AttackSpeed => _attackSpeed;
+    public float AttckRange => _attackRange;
+    public float HealPoint => _healPoints;
 
     public override event UnityAction<Warrior> Died;
 
@@ -33,7 +36,7 @@ public class Warrior : Unit
 
     private void Update()
     {
-        if( _stateMachine.CurrentState != null)
+        if(_stateMachine != null && _stateMachine.CurrentState != null)
             _stateMachine.Update();
     }
 
@@ -50,9 +53,13 @@ public class Warrior : Unit
         _scout = new Scout(counter, transform, _visibilityRange);
         _scout.ChangeTarget += OnChangeTarget;
         
-        _stateMachine = new StateMachine(transform);
-        _stateMachine.AddState(new AttackState(_stateMachine, _attackRange, _damage, _attackSpeed));
-        _stateMachine.AddState(new WalkState(_stateMachine, _path, _meshAgent, _attackRange));
+        int startPointId = Math.Abs((transform.position - _path.StandartPath[0].transform.position).magnitude) < Math.Abs((transform.position - _path.StandartPath[_path.StandartPath.Count - 1].transform.position).magnitude) ? 0 : _path.StandartPath.Count - 1;
+
+        _stateMachine = new StateMachine(transform, this);
+        _stateMachine.AddState(new AttackState(_stateMachine));
+        _stateMachine.AddState(new WalkState(_stateMachine, _path, _meshAgent, startPointId));
+        _stateMachine.AddState(new IdleState(_stateMachine));
+
         _stateMachine.SetState<WalkState>();
     }
 
@@ -61,11 +68,14 @@ public class Warrior : Unit
         _healPoints -= damage;
 
         if (_healPoints <= 0)
+        {
             Died?.Invoke(this);
+            _stateMachine.Stop();
+        }
     }
 
     private void OnChangeTarget(IEntity entity)
     {
-        _stateMachine.ChangeTarget(entity);
+        CurrentTarget = entity;
     }
 }

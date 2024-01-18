@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,32 +9,38 @@ public class WalkState : State
     private NavMeshAgent _meshAgent;
 
     private float _minDistance = 0.2f;
-    private int _currentPointId = 0;
+    private int _currentPointId;
     private Vector3 _currentPoint;
-    private Vector3 _currentPoint2;
     private bool _isWalkToTarget = false;
+    private bool _isEnd = false;
+    private int _nextPointConst;
 
-    private float _attackRange;
-
-    public WalkState(StateMachine stateMachine, Path path, NavMeshAgent agent, float attackRange) : base(stateMachine)
+    public WalkState(StateMachine stateMachine, Path path, NavMeshAgent agent, int startNumberPoint) : base(stateMachine)
     {
         _path = path;
         _meshAgent = agent;
-        _attackRange = attackRange;
+        _currentPointId = startNumberPoint;
+        _nextPointConst = startNumberPoint > 0 ? -1 : 1;
     }
 
     public override void Enter()
     {
-        _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
-
-        if(_stateMachine.Target == null)
+        if (_stateMachine.Warrior.CurrentTarget == null && _currentPointId < _path.StandartPath.Count)
         {
+            _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
+            _currentPointId += _nextPointConst;
             _meshAgent.SetDestination(_currentPoint);
+        }
+        else if(_stateMachine.Warrior.CurrentTarget != null)
+        {
+            _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+            _isWalkToTarget = true;
         }
         else
         {
-            _meshAgent.SetDestination(_stateMachine.Target.Position);
-            _isWalkToTarget = true;
+            _stateMachine.SetState<IdleState>();
+
+            return;
         }
 
         _isWork = true;
@@ -43,33 +48,38 @@ public class WalkState : State
 
     public override void Exit()
     {
-        _meshAgent.SetDestination(_stateMachine.Transform.position);
-        _isWalkToTarget = false;
-
         _isWork = false;
+
+        _isWalkToTarget = false;
+        _meshAgent.SetDestination(_stateMachine.Warrior.Position);
     }
 
     public override void Update()
     {
         if (_isWork)
         {
-            if (Math.Abs((_currentPoint - _stateMachine.Transform.position).magnitude) < _minDistance && _currentPointId + 1 < _path.StandartPath.Count)
+            float leangth = Math.Abs((_currentPoint - _stateMachine.Transform.position).magnitude);
+
+            if ((leangth <= _minDistance && _stateMachine.Warrior.CurrentTarget == null) || (leangth <= _path.StandartPath[Mathf.Clamp(_currentPointId, 0, _path.StandartPath.Count - 1)].MaxLeangth && _stateMachine.Warrior.CurrentTarget != null))
             {
-                _currentPoint = _path.StandartPath[++_currentPointId].RandomPoint;
-
-                if (_stateMachine.Target == null)
+                if (_currentPointId < _path.StandartPath.Count && _currentPointId >= 0)
                 {
-                    _meshAgent.SetDestination(_currentPoint);
+                    _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
+                    _currentPointId += _nextPointConst;
 
-                    return;
+                    if (_stateMachine.Warrior.CurrentTarget == null)
+                        _meshAgent.SetDestination(_currentPoint);
+                    else if (_currentPointId >= _path.StandartPath.Count || _currentPointId < 0)
+                        _isEnd = true;
                 }
             }
 
-            //float leangth = Math.Abs((_stateMachine.Transform.position - _stateMachine.Target.Position).magnitude);
+            if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
+                _stateMachine.SetState<IdleState>();
 
-            if (_stateMachine.Target != null && _isWalkToTarget == false)
+            if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)
                 _stateMachine.SetState<AttackState>();
-            else if (_stateMachine.Target != null && _isWalkToTarget == true && Math.Abs((_stateMachine.Transform.position - _stateMachine.Target.Position).magnitude) <= _attackRange / 2)
+            else if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == true && Math.Abs((_stateMachine.Transform.position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) <= _stateMachine.Warrior.AttckRange / 2)
                 _stateMachine.SetState<AttackState>();
         }
     }

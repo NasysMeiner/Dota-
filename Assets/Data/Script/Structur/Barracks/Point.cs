@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Point : MonoBehaviour
@@ -14,6 +12,16 @@ public class Point : MonoBehaviour
             Vector3 random = new Vector3(Random.Range(_leftPoint.position.x, _rightPoint.position.x), Random.Range(_leftPoint.position.y, _rightPoint.position.y), 0);
 
             return random;
+        }
+    }
+
+    public float MaxLeangth
+    {
+        get
+        {
+            float leangth = Mathf.Abs((_leftPoint.position - _rightPoint.position).magnitude);
+
+            return leangth;
         }
     }
 }

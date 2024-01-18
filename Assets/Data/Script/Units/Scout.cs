@@ -41,6 +41,9 @@ public class Scout
 
             foreach (var entity in _counter.Entity)
             {
+                if (entity == null)
+                    continue;
+
                 length = Math.Abs((_transform.position - entity.Position).magnitude);
 
                 if (length <= _visibilityRange && (length <= minLenght || minLenght == -1))
@@ -55,7 +58,7 @@ public class Scout
 
     private void CheckVisibleRange()
     {
-        if (_counter != null)
+        if (_counter != null && _transform != null)
         {
             if (Target != null)
             {
@@ -73,6 +76,9 @@ public class Scout
     private void OnDelete(IEntity entity)
     {
         if (Target != null && Target == entity)
+        {
             Target = null;
+            ChangeTarget?.Invoke(Target);
+        }
     }
 }

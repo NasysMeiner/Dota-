@@ -3,22 +3,13 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    private float _attackRange;
-    private float _damage;
-    private float _attackSpeed;
-
     private float _time = 0;
 
-    public AttackState(StateMachine stateMachine, float attackRange, float damage, float attackSpeed) : base(stateMachine)
-    {
-        _attackRange = attackRange;
-        _damage = damage;
-        _attackSpeed = attackSpeed;
-    }
+    public AttackState(StateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        if (_stateMachine.Target != null && Math.Abs((_stateMachine.Transform.position - _stateMachine.Target.Position).magnitude) > _attackRange / 2)
+        if (_stateMachine.Warrior.CurrentTarget != null && Math.Abs((_stateMachine.Transform.position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange / 2)
             _stateMachine.SetState<WalkState>();
 
         _isWork = true;
@@ -31,16 +22,25 @@ public class AttackState : State
 
     public override void Update()
     {
-        if(_isWork)
+        if(_isWork && _stateMachine != null && _stateMachine.Transform != null)
         {
-            _time += Time.deltaTime;
-
-            if (_stateMachine.Target != null && Math.Abs((_stateMachine.Transform.position - _stateMachine.Target.Position).magnitude) <= _attackRange && _time >= _attackSpeed)
+            if (_stateMachine.Warrior.CurrentTarget != null)
             {
-                _time = 0;
-                _stateMachine.Target.GetDamage(_damage);
+                _time -= Time.deltaTime;
+                float leanght = Math.Abs((_stateMachine.Transform.position - _stateMachine.Warrior.CurrentTarget.Position).magnitude);
+
+                if (leanght <= _stateMachine.Warrior.AttckRange && _time <= 0)
+                {
+                    _time = _stateMachine.Warrior.AttackSpeed;
+                    //Debug.Log("Attack " + _stateMachine.Warrior.CurrentTarget + " Damage: " + _stateMachine.Warrior.Damage);
+                    _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
+                }
+                else if(leanght > _stateMachine.Warrior.AttckRange)
+                {
+                    _stateMachine.SetState<WalkState>();
+                }
             }
-            else
+            else if(_stateMachine.Warrior.CurrentTarget == null)
             {
                 _stateMachine.SetState<WalkState>();
             }

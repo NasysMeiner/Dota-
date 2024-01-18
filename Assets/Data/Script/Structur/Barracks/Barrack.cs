@@ -15,13 +15,14 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private Path _path;
     private Counter _counter;
     private Counter _enemyCounter;
+    private Trash _trash;
 
     private Warrior _unitPrefab;
 
     public string Name => _name;
     public int Income => _income;
     public float HealPoint => _healPoint;
-
+    public GameObject GameObject => gameObject;
     public Vector3 Position => transform.position;
 
     public event UnityAction DestroyBarracks;
@@ -30,6 +31,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         DestroyBarracks?.Invoke();
         _counter.DeleteEntity(this);
+        _trash.AddQueue(this);
     }
 
     public void InitializeStruct(DataStructure dataStructure, string name)
@@ -41,11 +43,12 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _spawnPoint = transform.GetChild(0);
     }
 
-    public void InitializeBarracks(Path path, Counter counter, Warrior unitPrefab)
+    public void InitializeBarracks(Path path, Counter counter, Warrior unitPrefab, Trash trash)
     {
         _path = path;
         _counter = counter;
         _unitPrefab = unitPrefab;
+        _trash = trash;
         _counter.AddEntity(this);
     }
 
@@ -75,6 +78,11 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         StartCoroutine(Spawn(timeSpawn, unit));
     }
 
+    public void ChangePosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
     private IEnumerator Spawn(float time, int units)
     {
         while (true)
@@ -97,6 +105,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         unit.Died -= OnDied;
         _counter.DeleteEntity(unit);
-        Destroy(unit);
+        //unit.enabled = false;
+        _trash.AddQueue(unit);
     }
 }
