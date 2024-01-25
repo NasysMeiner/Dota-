@@ -87,7 +87,7 @@ public class CompositeRoot : MonoBehaviour
         {
             barrack.SpawnUnits();
         }
-        //_barracksPlayer[2].SpawnUnits();
-        //_barracksAi[1].SpawnUnits();
+        //_barracksPlayer[0].SpawnUnits();
+        //_barracksAi[0].SpawnUnits();
     }
 }

@@ -27,7 +27,7 @@ public class Trash : MonoBehaviour
             yield return new WaitForSeconds(_timeDelete);
 
             IEntity entity = _queue.Dequeue();
-            Debug.Log(_queue.Count);
+            //Debug.Log(_queue.Count);
             Destroy(entity.GameObject);
 
             if (_queue.Count <= 0)

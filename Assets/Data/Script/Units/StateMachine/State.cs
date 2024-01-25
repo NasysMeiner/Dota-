@@ -6,6 +6,9 @@ public abstract class State
 {
     protected readonly StateMachine _stateMachine;
     protected bool _isWork = false;
+    
+
+    public string StateName {  get; protected set; } //временно
 
     public bool IsWork => _isWork;
 

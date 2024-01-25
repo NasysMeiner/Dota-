@@ -14,5 +14,5 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     }
 
     public abstract void GetDamage(float damage);
-    public abstract void InitUnit(Path path, Counter counter);
+    public abstract void InitUnit(Path path, Counter counter, int id, string name);
 }

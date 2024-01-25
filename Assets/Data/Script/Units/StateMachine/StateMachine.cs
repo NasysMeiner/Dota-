@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class StateMachine
 {
-    private Transform _transform;
     private Warrior _warrior;
 
-    public StateMachine(Transform transform, Warrior warrior)
+    public StateMachine(Warrior warrior)
     {
-        _transform = transform;
         _warrior = warrior;
     }
 
+    public string CurrentTextState { get; private set; }//временно
+
     public State CurrentState { get; private set; }
-    public Transform Transform => _transform;
     public Warrior Warrior => _warrior;
 
     private Dictionary<Type, State> _states = new Dictionary<Type, State>();
@@ -35,10 +34,11 @@ public class StateMachine
 
         if(_states.TryGetValue(typeof(T), out State newState))
         {
-            Debug.Log("new: " + newState + " old: " + CurrentState + "   " + _warrior._healPoints);
+            //Debug.Log("new: " + newState + " old: " + CurrentState + "   " + _warrior._healPoints);
             CurrentState?.Exit();
             CurrentState = newState;
             CurrentState?.Enter();
+            CurrentTextState = CurrentState.StateName;
         }
     }
 

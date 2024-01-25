@@ -38,6 +38,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         _income = dataStructure.Income;
         _maxHealPoint = dataStructure.MaxHealpPoint;
+        _name = name;
 
         _healPoint = _maxHealPoint;
         _spawnPoint = transform.GetChild(0);
@@ -72,7 +73,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public void SpawnUnits()
     {
-        int unit = 1;
+        int unit = 20;
         float timeSpawn = 1.5f;
 
         StartCoroutine(Spawn(timeSpawn, unit));
@@ -85,6 +86,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private IEnumerator Spawn(float time, int units)
     {
+        int id = 0;
+
         while (true)
         {
             if (units <= 0)
@@ -94,7 +97,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
             newUnit.Died += OnDied;
             newUnit.transform.position = _spawnPoint.position;
             _counter.AddEntity(newUnit);
-            newUnit.InitUnit(_path, _enemyCounter);
+            newUnit.InitUnit(_path, _enemyCounter, id++, Name);
             units--;
 
             yield return new WaitForSeconds(time);
