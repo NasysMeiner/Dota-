@@ -24,6 +24,7 @@ public class Warrior : Unit
     public bool _target = false;
     public string Targettt;
     public int _pointId = 0;
+    public Vector3 _startPos;
     private float _visibilityRange = 3f;
     private float _attackRange = 1f;
     private float _attackSpeed = 1f;
@@ -79,6 +80,8 @@ public class Warrior : Unit
         _stateMachine.AddState(new IdleState(_stateMachine));
 
         _stateMachine.SetState<WalkState>();
+
+        _meshAgent.Warp(_startPos);
     }
 
     public override void GetDamage(float damage)
@@ -87,9 +90,21 @@ public class Warrior : Unit
 
         if (_healPoints <= 0)
         {
-            Died?.Invoke(this);
-            _stateMachine.Stop();
+            Die();
         }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+        _startPos = position;
+    }
+
+    private void Die()
+    {
+        _stateMachine.Stop();
+        _meshAgent.enabled = false;
+        Died?.Invoke(this);
     }
 
     private void OnChangeTarget(IEntity entity)

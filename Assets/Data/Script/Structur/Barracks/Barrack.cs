@@ -95,7 +95,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
             Warrior newUnit = Instantiate(_unitPrefab);
             newUnit.Died += OnDied;
-            newUnit.transform.position = _spawnPoint.position;
+            newUnit.SetPosition(transform.position);
             _counter.AddEntity(newUnit);
             newUnit.InitUnit(_path, _enemyCounter, id++, Name);
             units--;
