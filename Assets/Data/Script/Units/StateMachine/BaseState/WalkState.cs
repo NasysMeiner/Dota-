@@ -72,12 +72,19 @@ public class WalkState : State
     {
         if (_isWork)
         {
+            if(_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+                _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+            //else
+            //    Debug.Log("Не найден");
+
             if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
                 _stateMachine.SetState<IdleState>();
             else if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false)
                 _meshAgent.SetDestination(_currentPoint);
             else if(_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+            //else
+            Debug.Log(_meshAgent.SetDestination(_currentPoint));
 
             if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)
                 _stateMachine.SetState<AttackState>();

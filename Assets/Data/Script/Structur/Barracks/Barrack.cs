@@ -73,7 +73,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public void SpawnUnits()
     {
-        int unit = 20;
+        int unit = 1;
         float timeSpawn = 1.5f;
 
         StartCoroutine(Spawn(timeSpawn, unit));
