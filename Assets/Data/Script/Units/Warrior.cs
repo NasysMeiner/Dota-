@@ -13,6 +13,7 @@ public class Warrior : Unit
 
     public string CurrentState;//временно
     public bool Pathboll;
+    public bool isEnemy;
 
     private NavMeshAgent _meshAgent;
     private StateMachine _stateMachine;

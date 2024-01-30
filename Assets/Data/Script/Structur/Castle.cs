@@ -48,7 +48,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab, Trash trash)
+    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab, Trash trash)
     {
         InitializeStruct(dataStructureCastle, dataGameInfo.name);
 
@@ -62,6 +62,14 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             structurs[i].InitializeStruct(dataStructureBarracks, dataGameInfo.name);
             structurs[i].InitializeBarracks(paths[i], _counter, unitPrefab, trash);
             structurs[i].DestroyBarracks += IsDestructBarracks;
+        }
+
+        if (towers!=null)
+        {
+            for (int i = 0; i < towers.Count; i++)
+            {
+                towers[i].Initialization(_counter, trash);
+            }
         }
     }
 

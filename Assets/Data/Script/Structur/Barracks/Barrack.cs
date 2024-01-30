@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Barrack : MonoBehaviour, IStructur, IEntity
 {
+    public bool isEnemy;
+
     private Transform _spawnPoint;
     private string _name;
 
@@ -98,6 +100,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
             newUnit.transform.position = _spawnPoint.position;
             _counter.AddEntity(newUnit);
             newUnit.InitUnit(_path, _enemyCounter, id++, Name);
+            newUnit.isEnemy = isEnemy;
             units--;
 
             yield return new WaitForSeconds(time);
