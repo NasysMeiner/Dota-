@@ -4,8 +4,8 @@ public class Point : MonoBehaviour
 {
     [SerializeField] private Transform _leftPoint;
     [SerializeField] private Transform _rightPoint;
-    [SerializeField] private float _faultMin = 0.05f;
-    [SerializeField] private float _faultMax = 1.05f;
+    [SerializeField] private float _faultMin = 0.15f;
+    [SerializeField] private float _faultMax = 1.15f;
 
     public float _leanght;
     public Vector2 _direction;

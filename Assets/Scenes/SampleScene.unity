@@ -1904,8 +1904,9 @@ MonoBehaviour:
   _prefabWarrior: {fileID: 5499846042804253689, guid: 53b608b882125a542a0f860a7e3d7f3c, type: 3}
   _trash: {fileID: 2073568122}
   _prefabBaricade: {fileID: -4111210910767704302, guid: e552aeeac7c23c7419eb7a2ccdaf48a0, type: 3}
-  _numberBaricade: 2
+  _numberBaricade: 3
   _barricadeBuilder: {fileID: 493753300}
+  _pathBuilder: {fileID: 0}
 --- !u!4 &493753299
 Transform:
   m_ObjectHideFlags: 0
@@ -2145,8 +2146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532008886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1019, y: -0.0204, z: 0}
-  m_LocalScale: {x: 82.97721, y: 40.255188, z: 0.26904902}
+  m_LocalPosition: {x: -0.0386, y: 6.7246, z: 0}
+  m_LocalScale: {x: 25.555513, y: 26.765675, z: 0.26904902}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

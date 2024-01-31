@@ -37,6 +37,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private Barricade _prefabBaricade;
     [SerializeField] private int _numberBaricade;
     [SerializeField] private BarricadeBuilder _barricadeBuilder;
+    [SerializeField] private PathBuilder _pathBuilder;
 
     private void Awake()
     {
@@ -82,16 +83,16 @@ public class CompositeRoot : MonoBehaviour
 
     private void StartGame()
     {
-        //foreach (var barrack in _barracksPlayer)
-        //{
-        //    barrack.SpawnUnits();
-        //}
+        foreach (var barrack in _barracksPlayer)
+        {
+            barrack.SpawnUnits();
+        }
 
-        //foreach (var barrack in _barracksAi)
-        //{
-        //    barrack.SpawnUnits();
-        //}
-        _barracksPlayer[0].SpawnUnits();
+        foreach (var barrack in _barracksAi)
+        {
+            barrack.SpawnUnits();
+        }
+        //_barracksPlayer[0].SpawnUnits();
         //_barracksAi[0].SpawnUnits();
     }
 }

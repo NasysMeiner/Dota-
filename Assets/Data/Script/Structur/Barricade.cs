@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+ 
 [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(MeshRenderer))]
 public class Barricade : MonoBehaviour
@@ -8,7 +8,13 @@ public class Barricade : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float _alphaColor;
 
+    [SerializeField] private Color _colorNegativ;
+    [SerializeField] private Color _colorPositive;
+
+
+    private PathBuilder _builder;
     private Vector3 _mousePositionNearClipPlane;
+    private Vector3 _pastPosition;
     private float _screenCameraDistance;
     private NavMeshObstacle _obstacle;
     private MeshRenderer _renderer;
@@ -17,18 +23,9 @@ public class Barricade : MonoBehaviour
 
     public bool IsAccessible { get; private set; }
 
-    private void Start()
-    {
-        _renderer = GetComponent<MeshRenderer>();
-        _obstacle = GetComponent<NavMeshObstacle>();
-        _standartColor = _renderer.material.color;
-        _flyColor = _standartColor;
-        _flyColor.a = _alphaColor;
-        _screenCameraDistance = Camera.main.nearClipPlane + 9f;
-    }
-
     private void OnMouseDown()
     {
+        _pastPosition = transform.position;
         _obstacle.enabled = false;
         _renderer.material.color = _flyColor;
     }
@@ -43,6 +40,16 @@ public class Barricade : MonoBehaviour
     {
         _obstacle.enabled = true;
         _renderer.material.color = _standartColor;
+    }
+
+    public void InitBarricade()
+    {
+        _renderer = GetComponent<MeshRenderer>();
+        _obstacle = GetComponent<NavMeshObstacle>();
+        _standartColor = _renderer.material.color;
+        _flyColor = _standartColor;
+        _flyColor.a = _alphaColor;
+        _screenCameraDistance = Camera.main.nearClipPlane + 9.4f;
     }
 
     public void MakeAvailable()

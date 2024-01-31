@@ -29,12 +29,14 @@ public class Warrior : Unit
     private float _attackRange = 1f;
     private float _attackSpeed = 1f;
     private float _damage = 6f;
+    private float _minDistancePoint = 0.4f;
 
     public IEntity CurrentTarget { get; private set; }
     public float Damage => _damage;
     public float AttackSpeed => _attackSpeed;
     public float AttckRange => _attackRange;
     public float HealPoint => _healPoints;
+    public float MinDistancePoint => _minDistancePoint;
 
     public override event UnityAction<Warrior> Died;
 

@@ -29,23 +29,15 @@ public class WalkState : State
         if (_stateMachine.Warrior.CurrentTarget == null && _currentPointId < _path.StandartPath.Count && _currentPointId >= 0)
         {
             _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
-
-
-
             _stateMachine.Warrior._pointId = _currentPointId;
-            //Debug.Log(_currentPoint);
 
             if (_meshAgent.SetDestination(_currentPoint))
                 _meshAgent.SetDestination(_currentPoint);
-            else
-                Debug.Log("Не найден");
         }
         else if (_stateMachine.Warrior.CurrentTarget != null)
         {
             if (_meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position))
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
-            else
-                Debug.Log("Не найден");
 
             _isWalkToTarget = true;
         }
@@ -72,16 +64,14 @@ public class WalkState : State
     {
         if (_isWork)
         {
-            if(_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+            if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
-            //else
-            //    Debug.Log("Не найден");
 
             if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
                 _stateMachine.SetState<IdleState>();
             else if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false)
                 _meshAgent.SetDestination(_currentPoint);
-            else if(_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+            else if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
 
             if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)
@@ -97,19 +87,13 @@ public class WalkState : State
                     _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
 
                     _stateMachine.Warrior._pointId = _currentPointId;
-                    //Debug.Log(_currentPoint);
-
-                    //Debug.Log(_stateMachine.Warrior._id + " " + _stateMachine.Warrior._name + " PointId: " + _currentPointId);
 
                     if (_stateMachine.Warrior.CurrentTarget == null)
                         if (_meshAgent.SetDestination(_currentPoint))
                             _meshAgent.SetDestination(_currentPoint);
-                        else
-                            Debug.Log("Не найден");
                 }
                 else if (_currentPointId == _path.StandartPath.Count - 1 || _currentPointId == 0)
                 {
-                    //Debug.Log("End");
                     _isEnd = true;
                 }
             }

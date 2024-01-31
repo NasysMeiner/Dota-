@@ -46,6 +46,7 @@ public class BarricadeBuilder : MonoBehaviour
         for(int i = 0; i < number; i++)
         {
             var build = Instantiate(prefab, transform);
+            build.InitBarricade();
             build.MakeAvailable();
             _barricades.Add(build);
             _barricadesCount++;
