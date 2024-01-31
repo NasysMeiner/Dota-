@@ -32,12 +32,11 @@ public class CompositeRoot : MonoBehaviour
     [Header("Units")]
     [SerializeField] private Warrior _prefabWarrior;
 
+    [Header("Towers")]
+    [SerializeField] private List<Tower> _towers;
+
     [Header("Other")]
     [SerializeField] private Trash _trash;
-    [SerializeField] private Barricade _prefabBaricade;
-    [SerializeField] private int _numberBaricade;
-    [SerializeField] private BarricadeBuilder _barricadeBuilder;
-    [SerializeField] private PathBuilder _pathBuilder;
 
     private void Awake()
     {
@@ -60,13 +59,12 @@ public class CompositeRoot : MonoBehaviour
 
     private void InitializePlayer()
     {
-        _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _dataStructurePlayer, _path, _prefabWarrior, _trash);
-        _barricadeBuilder.InitBuilder(_prefabBaricade, _numberBaricade);
+        _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _towers, _dataStructurePlayer, _path, _prefabWarrior, _trash);
     }
 
     private void InitializeAi()
     {
-        _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, _dataStructureAi, _path, _prefabWarrior, _trash);
+        _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, null, _dataStructureAi, _path, _prefabWarrior, _trash);
     }
 
     private void InitializeView()
@@ -85,13 +83,16 @@ public class CompositeRoot : MonoBehaviour
     {
         foreach (var barrack in _barracksPlayer)
         {
+            barrack.isEnemy = false;
             barrack.SpawnUnits();
         }
 
         foreach (var barrack in _barracksAi)
         {
+            barrack.isEnemy = true;
             barrack.SpawnUnits();
         }
+
         //_barracksPlayer[0].SpawnUnits();
         //_barracksAi[0].SpawnUnits();
     }
