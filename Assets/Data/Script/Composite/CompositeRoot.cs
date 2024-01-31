@@ -37,6 +37,9 @@ public class CompositeRoot : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private Trash _trash;
+    [SerializeField] private BarricadeBuilder _barricadeBuilder;
+    [SerializeField] private int _numberBarricade;
+    [SerializeField] private Barricade _barricadePrefab;
 
     private void Awake()
     {
@@ -60,6 +63,7 @@ public class CompositeRoot : MonoBehaviour
     private void InitializePlayer()
     {
         _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _towers, _dataStructurePlayer, _path, _prefabWarrior, _trash);
+        _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
     }
 
     private void InitializeAi()

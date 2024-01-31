@@ -92,9 +92,7 @@ public class Warrior : Unit
         _healPoints -= damage;
 
         if (_healPoints <= 0)
-        {
             Die();
-        }
     }
 
     public void SetPosition(Vector3 position)
