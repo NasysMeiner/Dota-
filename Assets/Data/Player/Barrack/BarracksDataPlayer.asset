@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722fe2e95727d414dad06e951245819e, type: 3}
   m_Name: BarracksDataPlayer
   m_EditorClassIdentifier: 
-  IsWait: 1
+  IsWait: 0
   SpawnerData: {fileID: 11400000, guid: fb270175b46fde84aa6d6f3c01788856, type: 2}
   DataStructure: {fileID: 11400000, guid: 81a1efc64ac2b214d8ae2b3d16154f1c, type: 2}
   Prefabs:
