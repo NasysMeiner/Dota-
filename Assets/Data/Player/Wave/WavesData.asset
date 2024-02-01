@@ -18,12 +18,10 @@ MonoBehaviour:
   - SubWaves:
     - Parts:
       - TypeUnit: 0
-        Number: 3
-      - TypeUnit: 1
-        Number: 1
+        Number: 2
       TimeNextSubWave: 2
     - Parts:
-      - TypeUnit: 1
+      - TypeUnit: 0
         Number: 1
       - TypeUnit: 0
         Number: 1
