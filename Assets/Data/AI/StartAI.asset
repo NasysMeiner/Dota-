@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DataGameInfo/DataStructure
   Name: AI
   StartMoney: 1000
+  DataStructure: {fileID: 11400000, guid: 8ba4e9c86254d8743865c5000c73dd99, type: 2}

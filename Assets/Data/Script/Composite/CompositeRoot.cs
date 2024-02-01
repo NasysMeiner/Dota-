@@ -5,21 +5,19 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [Header("CastlePlayer")]
-    [SerializeField] private DataStructure _dataCastlePlayer;
     [SerializeField] private DataGameInfo _gameInfoPlayer;
     [SerializeField] private Castle _castlePlayer;
 
     [Header("StructPlayer")]
-    [SerializeField] private DataStructure _dataStructurePlayer;
+    [SerializeField] private BarracksData _barracksDataPlayer;
     [SerializeField] private List<Barrack> _barracksPlayer;
 
     [Header("CastleAi")]
-    [SerializeField] private DataStructure _dataCastleAi;
     [SerializeField] private DataGameInfo _gameInfoAi;
     [SerializeField] private Castle _castleAi;
 
     [Header("StructAi")]
-    [SerializeField] private DataStructure _dataStructureAi;
+    [SerializeField] private BarracksData _barracksDataAi;
     [SerializeField] private List<Barrack> _barracksAi;
 
     [Header("Path")]
@@ -30,6 +28,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private HealPointView _healPointView;
 
     [Header("Units")]
+    [SerializeField] private List<Unit> _unitPrefabList;
     [SerializeField] private Warrior _prefabWarrior;
 
     [Header("Towers")]
@@ -40,6 +39,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private BarricadeBuilder _barricadeBuilder;
     [SerializeField] private int _numberBarricade;
     [SerializeField] private Barricade _barricadePrefab;
+    [SerializeField] private WaveCounter _waveCounter;
 
     private void Awake()
     {
@@ -55,20 +55,23 @@ public class CompositeRoot : MonoBehaviour
 
         InitializePlayer();
         InitializeAi();
+
         InitializeView();
+
         InitializeData();
+
         StartGame();
     }
 
     private void InitializePlayer()
     {
-        _castlePlayer.InitializeCastle(_dataCastlePlayer, _gameInfoPlayer, _barracksPlayer, _towers, _dataStructurePlayer, _path, _prefabWarrior, _trash);
+        _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _towers, _barracksDataPlayer, _path, _trash);
         _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
     }
 
     private void InitializeAi()
     {
-        _castleAi.InitializeCastle(_dataCastleAi, _gameInfoAi, _barracksAi, null, _dataStructureAi, _path, _prefabWarrior, _trash);
+        _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, null, _barracksDataAi, _path, _trash);
     }
 
     private void InitializeView()
@@ -81,6 +84,7 @@ public class CompositeRoot : MonoBehaviour
         _castlePlayer.InitializeEvent();
         _castleAi.SetEnemyCounter(_castlePlayer.Counter);
         _castlePlayer.SetEnemyCounter(_castleAi.Counter);
+        _waveCounter.InitWaveCounter(_barracksPlayer, _barracksAi, _barracksDataPlayer.IsWait);
     }
 
     private void StartGame()
@@ -98,6 +102,7 @@ public class CompositeRoot : MonoBehaviour
         }
 
         //_barracksPlayer[0].SpawnUnits();
+        //_barracksPlayer[0].isEnemy = false;
         //_barracksAi[0].SpawnUnits();
     }
 }

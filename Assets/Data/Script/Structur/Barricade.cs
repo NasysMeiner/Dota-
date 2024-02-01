@@ -12,9 +12,9 @@ public class Barricade : MonoBehaviour
     [SerializeField] private Color _colorPositive;
 
 
-    private PathBuilder _builder;
+    private PathBuilder _builder;//??
     private Vector3 _mousePositionNearClipPlane;
-    private Vector3 _pastPosition;
+    private Vector3 _pastPosition;//??
     private float _screenCameraDistance;
     private NavMeshObstacle _obstacle;
     private MeshRenderer _renderer;

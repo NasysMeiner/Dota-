@@ -7,4 +7,6 @@ public class DataGameInfo : ScriptableObject
 
     [Range(1000, 100000)]
     public int StartMoney;
+
+    public DataStructure DataStructure;
 }

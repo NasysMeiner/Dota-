@@ -5,37 +5,31 @@ using UnityEngine.Events;
 
 public class Castle : MonoBehaviour, IStructur, IEntity
 {
-    private string _name;
-
-    private int _income;
-    private float _maxHealPoint;
     private float _healPoint;
-    private int _money;
-    private Counter _counter;
     private Trash _trash;
 
     private List<Barrack> _barracks;
 
-    public string Name => _name;
-    public int Income => _income;
-    public float MaxHealPoint => _maxHealPoint;
-    public Counter Counter => _counter;
-
     public Vector3 Position => transform.position;
-
     public GameObject GameObject => gameObject;
+
+    public int Income { get; private set; }
+    public int Money { get; private set; }
+    public float MaxHealPoint { get; private set; }
+    public Counter Counter { get; private set; }
+    public string Name { get; private set; }
 
     public event UnityAction<float> HealPointChange;
 
     private void OnDisable()
     {
         foreach(var barracks in _barracks)
-            barracks.DestroyBarracks -= IsDestructBarracks;
+            barracks.DestroyBarrack -= OnDestroyBarrack;
     }
 
     public void Destruct()
     {
-        _counter.DeleteEntity(this);
+        Counter.DeleteEntity(this);
     }
 
     public void GetDamage(float damage)
@@ -48,38 +42,37 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataStructure dataStructureCastle, DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, DataStructure dataStructureBarracks, List<Path> paths, Warrior unitPrefab, Trash trash)
+    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, List<Path> paths, Trash trash)
     {
-        InitializeStruct(dataStructureCastle, dataGameInfo.name);
+        InitializeStruct(dataGameInfo.DataStructure);
 
-        _counter = new Counter();
-        _money = dataGameInfo.StartMoney;
+        Counter = new Counter();
+        Money = dataGameInfo.StartMoney;
+        Name = dataGameInfo.name;
         _barracks = structurs;
         _trash = trash;
 
         for (int i = 0; i < structurs.Count; i++)
         {
-            structurs[i].InitializeStruct(dataStructureBarracks, dataGameInfo.name);
-            structurs[i].InitializeBarracks(paths[i], _counter, unitPrefab, trash);
-            structurs[i].DestroyBarracks += IsDestructBarracks;
+            structurs[i].InitializeBarracks(dataStructureBarracks, paths[i], Counter, trash);
+            structurs[i].DestroyBarrack += OnDestroyBarrack;
         }
 
         if (towers!=null)
         {
             for (int i = 0; i < towers.Count; i++)
             {
-                towers[i].Initialization(_counter, trash);
+                towers[i].Initialization(Counter, trash);
             }
         }
     }
 
-    public void InitializeStruct(DataStructure dataStructure, string name)
+    public void InitializeStruct(DataStructure dataStructure)
     {
-        _income = dataStructure.Income;
-        _name = name;
-        _maxHealPoint = dataStructure.MaxHealpPoint;
+        Income = dataStructure.Income;
+        MaxHealPoint = dataStructure.MaxHealpPoint;
 
-        _healPoint = _maxHealPoint;
+        _healPoint = MaxHealPoint;
     }
 
     public void InitializeEvent()
@@ -100,8 +93,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         transform.position = position;
     }
 
-    private void IsDestructBarracks()
+    private void OnDestroyBarrack()
     {
-        _counter.AddEntity(this);
+        Counter.AddEntity(this);
     }
 }
