@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AttackState : State
@@ -12,7 +11,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        if (_stateMachine.Warrior.CurrentTarget != null && Math.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange / 2)
+        if (_stateMachine.Warrior.CurrentTarget != null && Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange / 2)
             _stateMachine.SetState<WalkState>();
 
         _isWork = true;
@@ -25,20 +24,19 @@ public class AttackState : State
 
     public override void Update()
     {
-        if(_isWork)
+        if (_isWork)
         {
             if (_stateMachine.Warrior.CurrentTarget != null)
             {
                 _time -= Time.deltaTime;
-                float leanght = Math.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude);
+                float leanght = Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude);
 
                 if (leanght <= _stateMachine.Warrior.AttckRange && _time <= 0)
                 {
                     _time = _stateMachine.Warrior.AttackSpeed;
-                    //Debug.Log("Attack " + _stateMachine.Warrior.CurrentTarget + " Damage: " + _stateMachine.Warrior.Damage);
                     _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
                 }
-                else if(leanght > _stateMachine.Warrior.AttckRange)
+                else if (leanght > _stateMachine.Warrior.AttckRange)
                 {
                     _stateMachine.SetState<WalkState>();
                 }
@@ -48,6 +46,6 @@ public class AttackState : State
                 _stateMachine.SetState<WalkState>();
             }
         }
-        
+
     }
 }

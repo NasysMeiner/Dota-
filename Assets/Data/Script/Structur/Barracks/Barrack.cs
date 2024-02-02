@@ -121,7 +121,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         if (_currentWave != null)
             yield return new WaitForSeconds(_waveTimeSpawn);
 
-        Debug.Log(_currentIdWave);
+        //Debug.Log(_currentIdWave);
         if (_currentIdWave < _waves.Count)
             _currentWave = _waves[_currentIdWave++];
 
@@ -188,7 +188,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         unit.Died += OnDied;
         _counter.AddEntity(unit);
-        unit.InitUnit(_path, _enemyCounter, warriorData, _id++, Name);
+        unit.LoadStats(warriorData);
+        unit.InitUnit(_path, _enemyCounter, _id++, Name);
         unit.ChangePosition(_spawnPoint.position);
         unit.isEnemy = isEnemy;
         _id++;

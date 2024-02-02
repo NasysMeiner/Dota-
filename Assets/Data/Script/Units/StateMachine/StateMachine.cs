@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class StateMachine
 {
-    private Warrior _warrior;
+    private Unit _warrior;
 
-    public StateMachine(Warrior warrior)
+    public StateMachine(Unit warrior)
     {
         _warrior = warrior;
     }
@@ -15,7 +15,7 @@ public class StateMachine
     public string CurrentTextState { get; private set; }//временно
 
     public State CurrentState { get; private set; }
-    public Warrior Warrior => _warrior;
+    public Unit Warrior => _warrior;
 
     private Dictionary<Type, State> _states = new Dictionary<Type, State>();
 
@@ -42,11 +42,11 @@ public class StateMachine
         }
     }
 
-    public void Stop()
-    {
-        SetState<WalkState>();
-        CurrentState.Exit();
-    }
+    //public void Stop()
+    //{
+    //    SetState<WalkState>();
+    //    CurrentState.Exit();
+    //}
 
     public void Update()
     {

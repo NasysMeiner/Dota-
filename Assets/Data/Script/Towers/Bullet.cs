@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         if (_target != null)
         {
-            if (_target.HealPoint > 0) /////???????
+            if (_target.HealPoint > 0) 
             {
                 _targetPosition = _target.transform.position;
             }
