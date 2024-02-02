@@ -18,12 +18,12 @@ public class Warrior : Unit
     private StateMachine _stateMachine;
     private Scout _scout;
 
-    public float _healPoints = 10;
     public int _id;
     public string _name;
     public bool _target = false;
     public string Targettt;
     public int _pointId = 0;
+    private float _healPoints = 10;
     private float _visibilityRange = 3f;
     private float _attackRange = 1f;
     private float _attackSpeed = 1f;
@@ -61,7 +61,7 @@ public class Warrior : Unit
             _scout.LateUpdate();
     }
 
-    public override void InitUnit(Path path, Counter counter, int id, string name )
+    public override void InitUnit(Path path, Counter counter, WarriorData warriorData, int id, string name )
     {
         _id = id;
         _name = name;
@@ -72,7 +72,9 @@ public class Warrior : Unit
 
         _scout = new Scout(counter, transform, _visibilityRange);
         _scout.ChangeTarget += OnChangeTarget;
-        
+
+        LoadStats(warriorData);
+
         int startPointId = Math.Abs((transform.position - _path.StandartPath[0].transform.position).magnitude) < Math.Abs((transform.position - _path.StandartPath[_path.StandartPath.Count - 1].transform.position).magnitude) ? 0 : _path.StandartPath.Count - 1;
 
         _stateMachine = new StateMachine(this);
@@ -81,6 +83,16 @@ public class Warrior : Unit
         _stateMachine.AddState(new IdleState(_stateMachine));
 
         _stateMachine.SetState<WalkState>();
+    }
+
+    public void LoadStats(WarriorData warriorData)
+    {
+        _healPoints = warriorData.HealPoint;
+        _damage = warriorData.AttackDamage;
+        _attackRange = warriorData.AttackRange;
+        _visibilityRange = warriorData.VisibilityRange;
+        _attackSpeed = warriorData.AttackSpeed;
+        _meshAgent.speed = warriorData.Speed;
     }
 
     public override void GetDamage(float damage)

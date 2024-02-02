@@ -15,6 +15,7 @@ public class BarracksData : ScriptableObject
 
     [Header("UnitPrefab")]
     public List<PrefabUnit> Prefabs = new List<PrefabUnit>();
+    public List<StatsPrefab> StatsPrefab = new List<StatsPrefab>();
 }
 
 [System.Serializable]
@@ -22,4 +23,11 @@ public class PrefabUnit
 {
     public TypeUnit TypeUnit;
     public Unit Prefab;
+}
+
+[System.Serializable]
+public class StatsPrefab
+{
+    public VariertyUnit VariertyUnit;
+    public WarriorData WarriorData;
 }

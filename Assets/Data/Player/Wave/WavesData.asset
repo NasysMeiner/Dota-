@@ -18,22 +18,34 @@ MonoBehaviour:
   - SubWaves:
     - Parts:
       - TypeUnit: 0
-        Number: 2
+        UnitVar: 0
+        Number: 1
+      - TypeUnit: 0
+        UnitVar: 1
+        Number: 1
+      - TypeUnit: 0
+        UnitVar: 2
+        Number: 1
       TimeNextSubWave: 2
     - Parts:
       - TypeUnit: 0
+        UnitVar: 0
         Number: 1
       - TypeUnit: 0
+        UnitVar: 0
         Number: 1
       TimeNextSubWave: 0
   - SubWaves:
     - Parts:
       - TypeUnit: 0
+        UnitVar: 0
         Number: 3
       TimeNextSubWave: 5
     - Parts:
       - TypeUnit: 0
+        UnitVar: 0
         Number: 4
       - TypeUnit: 0
+        UnitVar: 0
         Number: 1
       TimeNextSubWave: 0

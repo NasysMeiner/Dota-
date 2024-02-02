@@ -33,6 +33,7 @@ public class SubWave
 public class Part
 {
     public TypeUnit TypeUnit;
+    public VariertyUnit UnitVar;
 
     [Range(0, 100)]
     public int Number;

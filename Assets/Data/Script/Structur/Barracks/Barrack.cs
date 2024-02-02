@@ -34,6 +34,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private Warrior _unitPrefab;
     private Dictionary<TypeUnit, Unit> _unitsPrefab = new Dictionary<TypeUnit, Unit>();
+    private Dictionary<VariertyUnit, WarriorData> _unitsStat = new Dictionary<VariertyUnit, WarriorData>();
 
     public string Name => _name;
     public int Income => _income;
@@ -76,9 +77,10 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _isWait = barracksData.IsWait;
 
         foreach (PrefabUnit prefab in barracksData.Prefabs)
-        {
             _unitsPrefab.Add(prefab.TypeUnit, prefab.Prefab);
-        }
+
+        foreach (StatsPrefab StatsPrefab in barracksData.StatsPrefab)
+            _unitsStat.Add(StatsPrefab.VariertyUnit, StatsPrefab.WarriorData);
     }
 
     public void SetEnemyCounter(Counter enemyCounter)
@@ -101,11 +103,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public void SpawnUnits()
     {
-        //int unit = 20;
-        //float timeSpawn = 1.5f;
-
-        //StartCoroutine(Spawn(timeSpawn, unit));
-
         StartCoroutine(SetWave());
     }
 
@@ -138,6 +135,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
         SubWave subWave = null;
         Unit currentPrefab;
+        WarriorData warriorData;
         Part currentPart;
 
         for (int id = 0; id < _currentWave.SubWaves.Count; id++)
@@ -151,23 +149,25 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
             {
                 currentPart = subWave.Parts[i];
                 currentPrefab = null;
-                //Debug.Log(currentPart.Number);
+                warriorData = null;
 
                 for (int j = 0; j < currentPart.Number; j++)
                 {
-                    //if(j != 0 || currentPart.Number == 1)
-                    //    yield return new WaitForSeconds(_spawnTimeUnit);
-
                     if (currentPrefab == null)
                     {
                         currentPrefab = GetPrefabUnit(currentPart.TypeUnit);
+                        warriorData = GetStatsUnit(currentPart.UnitVar);
 
-                        if (currentPrefab == null)
+                        if (currentPrefab == null || warriorData == null)
+                        {
+                            Debug.Log("Не найдено");
+
                             break;
+                        }
                     }
 
                     Unit unit = Instantiate(currentPrefab);
-                    InitNewUnit(unit);
+                    InitNewUnit(unit, warriorData);
 
                     if(((currentPart.Number == 1 || j != currentPart.Number - 1) && (subWave.Parts.Count == 1 || i != subWave.Parts.Count - 1)) || (j == currentPart.Number - 1 && i != subWave.Parts.Count - 1))
                         yield return new WaitForSeconds(_spawnTimeUnit);
@@ -184,11 +184,11 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
             ContinueSpawn();
     }
 
-    private void InitNewUnit(Unit unit)
+    private void InitNewUnit(Unit unit, WarriorData warriorData)
     {
         unit.Died += OnDied;
         _counter.AddEntity(unit);
-        unit.InitUnit(_path, _enemyCounter, _id++, Name);
+        unit.InitUnit(_path, _enemyCounter, warriorData, _id++, Name);
         unit.ChangePosition(_spawnPoint.position);
         unit.isEnemy = isEnemy;
         _id++;
@@ -199,26 +199,10 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         return _unitsPrefab.TryGetValue(type, out Unit unit) ? unit : null;
     }
 
-    //private IEnumerator Spawn(float time, int units)
-    //{
-    //    int id = 0;
-
-    //    while (true)
-    //    {
-    //        if (units <= 0)
-    //            break;
-
-    //        Warrior newUnit = Instantiate(_unitPrefab);
-    //        newUnit.Died += OnDied;
-    //        newUnit.SetPosition(_spawnPoint.position);
-    //        _counter.AddEntity(newUnit);
-    //        newUnit.InitUnit(_path, _enemyCounter, id++, Name);
-    //        newUnit.isEnemy = isEnemy;
-    //        units--;
-
-    //        yield return new WaitForSeconds(time);
-    //    }
-    //}
+    private WarriorData GetStatsUnit(VariertyUnit type)
+    {
+        return _unitsStat.TryGetValue(type, out WarriorData unit) ? unit : null;
+    }
 
     private void OnDied(Unit unit)
     {

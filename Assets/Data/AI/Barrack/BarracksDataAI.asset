@@ -18,3 +18,10 @@ MonoBehaviour:
   Prefabs:
   - TypeUnit: 0
     Prefab: {fileID: 5499846042804253689, guid: 53b608b882125a542a0f860a7e3d7f3c, type: 3}
+  StatsPrefab:
+  - VariertyUnit: 0
+    WarriorData: {fileID: 11400000, guid: d88318c171fdb4241a6b0c0b86b84fd2, type: 2}
+  - VariertyUnit: 2
+    WarriorData: {fileID: 11400000, guid: 320c30fb8ab11dd459c7343783ed1e50, type: 2}
+  - VariertyUnit: 1
+    WarriorData: {fileID: 11400000, guid: 5b41e21cf2c33ef43ace372fb24970dc, type: 2}

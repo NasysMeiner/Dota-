@@ -12,5 +12,5 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public abstract void ChangePosition(Vector3 position);
     public abstract void GetDamage(float damage);
-    public abstract void InitUnit(Path path, Counter counter, int id, string name);
+    public abstract void InitUnit(Path path, Counter counter, WarriorData warriorData, int id, string name);
 }

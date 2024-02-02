@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b5ed965a43bc3346a451bcdc1cb98ca, type: 3}
-  m_Name: WarriorPlayer
+  m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
   HealPoint: 100
