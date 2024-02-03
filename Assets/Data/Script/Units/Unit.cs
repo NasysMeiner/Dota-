@@ -19,6 +19,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected StateMachine _stateMachine;
     protected Path _path;
     protected Scout _scout;
+    protected SpriteRenderer _spriteRenderer;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
@@ -50,6 +51,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public void LoadStats(WarriorData warriorData)
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.material.color = warriorData.Color;
         HealPoint = warriorData.HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;

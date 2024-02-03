@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TankWarrior
   m_EditorClassIdentifier: 
   Type: 0
+  Color: {r: 0.15566039, g: 1, b: 0.20875008, a: 1}
   HealPoint: 1000
   AttackDamage: 10
   AttackRange: 1

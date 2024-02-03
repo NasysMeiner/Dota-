@@ -5,6 +5,8 @@ public class WarriorData : ScriptableObject
 {
     public TypeUnit Type;
 
+    public Color Color;
+
     [Range(1, 1000)]
     public float HealPoint;
 
