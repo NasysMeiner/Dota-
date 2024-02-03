@@ -89,20 +89,21 @@ public class CompositeRoot : MonoBehaviour
 
     private void StartGame()
     {
-        foreach (var barrack in _barracksPlayer)
-        {
-            barrack.isEnemy = false;
-            barrack.SpawnUnits();
-        }
+        //foreach (var barrack in _barracksPlayer)
+        //{
+        //    barrack.isEnemy = false;
+        //    barrack.SpawnUnits();
+        //}
 
-        foreach (var barrack in _barracksAi)
-        {
-            barrack.isEnemy = true;
-            barrack.SpawnUnits();
-        }
+        //foreach (var barrack in _barracksAi)
+        //{
+        //    barrack.isEnemy = true;
+        //    barrack.SpawnUnits();
+        //}
 
-        //_barracksPlayer[0].SpawnUnits();
-        //_barracksPlayer[0].isEnemy = false;
-        //_barracksAi[0].SpawnUnits();
+        _barracksPlayer[0].SpawnUnits();
+        _barracksPlayer[0].isEnemy = false;
+        _barracksAi[0].SpawnUnits();
+        _barracksAi[0].isEnemy = false;
     }
 }

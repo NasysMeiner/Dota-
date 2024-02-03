@@ -42,11 +42,11 @@ public class StateMachine
         }
     }
 
-    //public void Stop()
-    //{
-    //    SetState<WalkState>();
-    //    CurrentState.Exit();
-    //}
+    public void Stop()
+    {
+        SetState<WalkState>();
+        CurrentState.Exit();
+    }
 
     public void Update()
     {

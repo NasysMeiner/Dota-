@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherAttackState : MonoBehaviour
+public class ArcherAttackState : AttackState
 {
-    // Start is called before the first frame update
-    void Start()
+    private Bullet _bullet;
+
+    public ArcherAttackState(StateMachine stateMachine, Bullet bullet) : base(stateMachine)
     {
-        
+        _bullet = bullet;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //protected override void MakeDamage()
+    //{
+    //    //var bullet = Inst
+    //}
 }

@@ -122,6 +122,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected void Die()
     {
+        _stateMachine.Stop();
         _meshAgent.enabled = false;
         Died?.Invoke(this);
     }

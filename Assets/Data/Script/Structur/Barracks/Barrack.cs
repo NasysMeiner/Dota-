@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,6 +25,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private bool _isWait = false;
     private bool _isSpawn = true;
+    private bool _isEnd = false;
 
     private int _id = 0;//time
 
@@ -124,8 +126,11 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         //Debug.Log(_currentIdWave);
         if (_currentIdWave < _waves.Count)
             _currentWave = _waves[_currentIdWave++];
+        else
+            _isEnd = true;
 
-        StartCoroutine(StartWave());
+        if(!_isEnd)
+            StartCoroutine(StartWave());
     }
 
     private IEnumerator StartWave()

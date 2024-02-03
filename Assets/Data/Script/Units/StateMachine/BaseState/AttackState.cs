@@ -15,6 +15,7 @@ public class AttackState : State
             _stateMachine.SetState<WalkState>();
 
         _isWork = true;
+        _time = 0;
     }
 
     public override void Exit()
