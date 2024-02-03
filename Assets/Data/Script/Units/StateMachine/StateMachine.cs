@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Transactions;
 using UnityEngine;
 
 public class StateMachine
@@ -32,7 +31,10 @@ public class StateMachine
         if (CurrentState != null && CurrentState.GetType() == typeof(T))
             return;
 
-        if(_states.TryGetValue(typeof(T), out State newState))
+        if (_states.TryGetValue(typeof(ArcherAttackState), out State state) && typeof(T) == typeof(AttackState))
+            SetState<ArcherAttackState>();
+
+        if (_states.TryGetValue(typeof(T), out State newState))
         {
             //Debug.Log("new: " + newState + " old: " + CurrentState + "   " + _warrior._healPoints);
             CurrentState?.Exit();
@@ -50,7 +52,7 @@ public class StateMachine
 
     public void Update()
     {
-        if(CurrentState.IsWork)
+        if (CurrentState.IsWork)
             CurrentState?.Update();
     }
 }

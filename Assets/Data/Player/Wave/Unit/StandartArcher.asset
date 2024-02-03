@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
+  m_Name: StandartArcher
+  m_EditorClassIdentifier: 
+  Type: 0
+  Color: {r: 1, g: 0.8247769, b: 0.1462264, a: 1}
+  HealPoint: 1000
+  AttackDamage: 1
+  AttackRange: 4
+  VisibilityRange: 6
+  AttackSpeed: 1
+  Speed: 1
+  Bullet: {fileID: 4470804474966191576, guid: 0b62406734066b7469695aac5ca4106d, type: 3}

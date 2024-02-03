@@ -12,7 +12,10 @@ public class AttackState : State
     public override void Enter()
     {
         if (_stateMachine.Warrior.CurrentTarget != null && Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange / 2)
+        {
+            Debug.Log("Вышел 1");
             _stateMachine.SetState<WalkState>();
+        }
 
         _isWork = true;
         _time = 0;
@@ -35,18 +38,25 @@ public class AttackState : State
                 if (leanght <= _stateMachine.Warrior.AttckRange && _time <= 0)
                 {
                     _time = _stateMachine.Warrior.AttackSpeed;
-                    _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
+                    MakeDamage();
                 }
                 else if (leanght > _stateMachine.Warrior.AttckRange)
                 {
+                    Debug.Log("Вышел 2");
                     _stateMachine.SetState<WalkState>();
                 }
             }
             else
             {
+                Debug.Log("Вышел 3");
                 _stateMachine.SetState<WalkState>();
             }
         }
 
+    }
+
+    protected virtual void MakeDamage()
+    {
+        _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
     }
 }

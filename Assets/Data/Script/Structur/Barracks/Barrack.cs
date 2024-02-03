@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -123,7 +124,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         if (_currentWave != null)
             yield return new WaitForSeconds(_waveTimeSpawn);
 
-        //Debug.Log(_currentIdWave);
         if (_currentIdWave < _waves.Count)
             _currentWave = _waves[_currentIdWave++];
         else
@@ -155,7 +155,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
                 currentPart = subWave.Parts[i];
                 currentPrefab = null;
                 warriorData = null;
-                Debug.Log("part " + i);
 
                 for (int j = 0; j < currentPart.Number; j++)
                 {
@@ -172,11 +171,9 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
                         }
                     }
 
-                    Unit unit = Instantiate(currentPrefab);
+                    var unit = Instantiate(currentPrefab);
                     InitNewUnit(unit, warriorData);
 
-                    Debug.Log((currentPart.Number == 1 && subWave.Parts.Count == 1) || (j != currentPart.Number - 1 && i != subWave.Parts.Count - 1));
-                    //((currentPart.Number == 1 || j != currentPart.Number - 1) && subWave.Parts.Count == 1) || (j == currentPart.Number - 1 && i != subWave.Parts.Count - 1)
                     if (j == currentPart.Number - 1 && i == subWave.Parts.Count - 1)
                         break;
                     else if ((currentPart.Number == 1 && subWave.Parts.Count == 1) || (j <= currentPart.Number - 1 && i <= subWave.Parts.Count - 1))

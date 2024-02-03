@@ -18,6 +18,8 @@ MonoBehaviour:
   Prefabs:
   - TypeUnit: 0
     Prefab: {fileID: 5499846042804253689, guid: 53b608b882125a542a0f860a7e3d7f3c, type: 3}
+  - TypeUnit: 1
+    Prefab: {fileID: 8624355644622367307, guid: 3b3efc72adf75c9498530518139fdbdb, type: 3}
   StatsPrefab:
   - VariertyUnit: 0
     WarriorData: {fileID: 11400000, guid: 68f87122dde08f84ab3b49f9376fc16e, type: 2}
@@ -25,3 +27,5 @@ MonoBehaviour:
     WarriorData: {fileID: 11400000, guid: 38a9b21a99e9bd4428d22639b3b07a6d, type: 2}
   - VariertyUnit: 2
     WarriorData: {fileID: 11400000, guid: 45f544e811eedac40af852efa96c29fa, type: 2}
+  - VariertyUnit: 3
+    WarriorData: {fileID: 11400000, guid: 3dd169d508660fc48b995eb388b4501a, type: 2}

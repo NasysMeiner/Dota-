@@ -49,18 +49,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         UnitLateUpdate();
     }
 
-    public void LoadStats(WarriorData warriorData)
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.material.color = warriorData.Color;
-        HealPoint = warriorData.HealPoint;
-        Damage = warriorData.AttackDamage;
-        AttckRange = warriorData.AttackRange;
-        VisibilityRange = warriorData.VisibilityRange;
-        AttackSpeed = warriorData.AttackSpeed;
-        Speed = warriorData.Speed;
-    }
-
     public void ChangePosition(Vector3 position)
     {
         _meshAgent.Warp(position);
@@ -82,6 +70,18 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _stateMachine = new StateMachine(this);
 
         CreateState();
+    }
+
+    public virtual void LoadStats(WarriorData warriorData)
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.material.color = warriorData.Color;
+        HealPoint = warriorData.HealPoint;
+        Damage = warriorData.AttackDamage;
+        AttckRange = warriorData.AttackRange;
+        VisibilityRange = warriorData.VisibilityRange;
+        AttackSpeed = warriorData.AttackSpeed;
+        Speed = warriorData.Speed;
     }
 
     public virtual void GetDamage(float damage)
@@ -138,10 +138,19 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private void OnChangeTarget(IEntity entity)
     {
         CurrentTarget = entity;
+        Debug.Log("Увидел " + _stateMachine.Warrior);
 
         if (entity != null)
             _target = true;
         else
             _target = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(Position, VisibilityRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Position, AttckRange);
     }
 }

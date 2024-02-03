@@ -65,7 +65,9 @@ public class WalkState : State
         if (_isWork)
         {
             if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+            {
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+            }
 
             if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
                 _stateMachine.SetState<IdleState>();

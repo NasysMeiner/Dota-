@@ -13,6 +13,6 @@ public class ArcherAttackState : AttackState
 
     //protected override void MakeDamage()
     //{
-    //    //var bullet = Inst
+    //    _stateMachine.Warrior.Crea
     //}
 }
