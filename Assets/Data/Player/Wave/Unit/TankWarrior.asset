@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   HealPoint: 1000
-  AttackDamage: 5
+  AttackDamage: 10
   AttackRange: 1
   VisibilityRange: 2
   AttackSpeed: 1.5

@@ -155,6 +155,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
                 currentPart = subWave.Parts[i];
                 currentPrefab = null;
                 warriorData = null;
+                Debug.Log("part " + i);
 
                 for (int j = 0; j < currentPart.Number; j++)
                 {
@@ -174,7 +175,11 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
                     Unit unit = Instantiate(currentPrefab);
                     InitNewUnit(unit, warriorData);
 
-                    if(((currentPart.Number == 1 || j != currentPart.Number - 1) && (subWave.Parts.Count == 1 || i != subWave.Parts.Count - 1)) || (j == currentPart.Number - 1 && i != subWave.Parts.Count - 1))
+                    Debug.Log((currentPart.Number == 1 && subWave.Parts.Count == 1) || (j != currentPart.Number - 1 && i != subWave.Parts.Count - 1));
+                    //((currentPart.Number == 1 || j != currentPart.Number - 1) && subWave.Parts.Count == 1) || (j == currentPart.Number - 1 && i != subWave.Parts.Count - 1)
+                    if (j == currentPart.Number - 1 && i == subWave.Parts.Count - 1)
+                        break;
+                    else if ((currentPart.Number == 1 && subWave.Parts.Count == 1) || (j <= currentPart.Number - 1 && i <= subWave.Parts.Count - 1))
                         yield return new WaitForSeconds(_spawnTimeUnit);
                 }
             }
