@@ -11,7 +11,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        if (_stateMachine.Warrior.CurrentTarget != null && Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange / 2)
+        if (_stateMachine.Warrior.CurrentTarget != null && Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange * _stateMachine.Warrior.ApproximationFactor)
         {
             Debug.Log("Вышел 1");
             _stateMachine.SetState<WalkState>();

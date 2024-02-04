@@ -16,9 +16,7 @@ public class Archer : Unit
 
     protected override void CreateState()
     {
-        AttackState archerAttackState = new ArcherAttackState(_stateMachine, _bullet);
-        Debug.Log(archerAttackState);
-        _stateMachine.AddState(archerAttackState);
+        _stateMachine.AddState(new ArcherAttackState(_stateMachine, _bullet));
         _stateMachine.AddState(new WalkState(_stateMachine, _path, _meshAgent, SearchStartPointId()));
         _stateMachine.AddState(new IdleState(_stateMachine));
 

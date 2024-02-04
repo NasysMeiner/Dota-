@@ -78,7 +78,7 @@ public class WalkState : State
 
             if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)
                 _stateMachine.SetState<AttackState>();
-            else if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == true && Math.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) <= _stateMachine.Warrior.AttckRange / 2)
+            else if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == true && Math.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) <= _stateMachine.Warrior.AttckRange * _stateMachine.Warrior.ApproximationFactor)
                 _stateMachine.SetState<AttackState>();
 
             if (_path.StandartPath[_currentPointId].CheckPointInLine(_stateMachine.Warrior.Position))

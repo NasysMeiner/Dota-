@@ -6,10 +6,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
 
-    private Warrior _target;
+    private Unit _target;
     private Vector3 _targetPosition;
 
-    public void Initialization(Warrior target)
+    public void Initialization(Unit target)
     {
         _target = target;
         _targetPosition = _target.transform.position;
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Warrior enemy) && enemy == _target)
+        if (collision.TryGetComponent(out Unit enemy) && enemy == _target)
         {
             enemy.GetDamage(_damage);
             Destroy(gameObject);

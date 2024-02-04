@@ -20,4 +20,5 @@ MonoBehaviour:
   VisibilityRange: 6
   AttackSpeed: 1
   Speed: 1
+  ApproximationFactor: 1
   Bullet: {fileID: 4470804474966191576, guid: 0b62406734066b7469695aac5ca4106d, type: 3}

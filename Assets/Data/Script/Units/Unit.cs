@@ -31,6 +31,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float HealPoint { get; protected set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
+    public float ApproximationFactor { get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -82,6 +83,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         VisibilityRange = warriorData.VisibilityRange;
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
+        ApproximationFactor = warriorData.ApproximationFactor;
     }
 
     public virtual void GetDamage(float damage)

@@ -24,4 +24,7 @@ public class WarriorData : ScriptableObject
 
     [Range(1, 100)]
     public float Speed;
+
+    [Range(0.1f, 1)]
+    public float ApproximationFactor;
 }
