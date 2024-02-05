@@ -15,7 +15,7 @@ MonoBehaviour:
   Type: 0
   Color: {r: 1, g: 0.8247769, b: 0.1462264, a: 1}
   HealPoint: 1000
-  AttackDamage: 1
+  AttackDamage: 10
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
