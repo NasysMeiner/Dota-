@@ -78,7 +78,7 @@ public class Tower : MonoBehaviour, IEntity
         {
             _rechangeDelay = _cooldown;
             Instantiate(_bulletPrefab, _muzzlePosition.position, Quaternion.identity).TryGetComponent(out Bullet newBullet);
-            newBullet.Initialization(_target);
+            newBullet.Initialization(_target, 10f);//eto kapec rebyta
         }
     }
 

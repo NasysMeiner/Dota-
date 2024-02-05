@@ -88,6 +88,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void GetDamage(float damage)
     {
+        Debug.Log(damage);
         HealPoint -= damage;
 
         if (HealPoint <= 0)
@@ -140,7 +141,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private void OnChangeTarget(IEntity entity)
     {
         CurrentTarget = entity;
-        Debug.Log("Увидел " + _stateMachine.Warrior);
 
         if (entity != null)
             _target = true;

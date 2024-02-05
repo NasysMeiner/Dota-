@@ -13,7 +13,6 @@ public class AttackState : State
     {
         if (_stateMachine.Warrior.CurrentTarget != null && Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) > _stateMachine.Warrior.AttckRange * _stateMachine.Warrior.ApproximationFactor)
         {
-            Debug.Log("Вышел 1");
             _stateMachine.SetState<WalkState>();
         }
 
@@ -42,13 +41,11 @@ public class AttackState : State
                 }
                 else if (leanght > _stateMachine.Warrior.AttckRange)
                 {
-                    Debug.Log("Вышел 2");
                     _stateMachine.SetState<WalkState>();
                 }
             }
             else
             {
-                Debug.Log("Вышел 3");
                 _stateMachine.SetState<WalkState>();
             }
         }

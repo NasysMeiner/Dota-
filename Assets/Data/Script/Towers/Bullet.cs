@@ -6,41 +6,44 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
 
-    private Unit _target;
+    private IEntity _target;
     private Vector3 _targetPosition;
 
-    public void Initialization(Unit target)
+    public void Initialization(IEntity target, float damage)
     {
+        _damage = damage;
         _target = target;
-        _targetPosition = _target.transform.position;
+        _targetPosition = _target.Position;
     }
 
     private void Update()
     {
         if (_target != null)
         {
-            if (_target.HealPoint > 0) 
-            {
-                _targetPosition = _target.transform.position;
-            }
-            else
+            if (Vector3.Distance(transform.position, _targetPosition) > 6f) 
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                _targetPosition = _target.Position;
+            }
         }
-        if (Vector3.Distance(transform.position, _targetPosition) < 0.1f)
+        if (Vector3.Distance(transform.position, _targetPosition) < 0.05f)
         {
+            _target.GetDamage(_damage);
             Destroy(gameObject);
         }
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Unit enemy) && enemy == _target)
-        {
-            enemy.GetDamage(_damage);
-            Destroy(gameObject);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out IEntity enemy) && enemy == _target)
+    //    {
+    //        Debug.Log(enemy + " " + _damage);
+    //        enemy.GetDamage(_damage);
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

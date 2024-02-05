@@ -143,6 +143,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         WarriorData warriorData;
         Part currentPart;
 
+
         for (int id = 0; id < _currentWave.SubWaves.Count; id++)
         {
             if (subWave != null)
