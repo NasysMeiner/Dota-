@@ -19,5 +19,10 @@ MonoBehaviour:
     - Parts:
       - TypeUnit: 1
         UnitVar: 3
-        Number: 1
-      TimeNextSubWave: 0
+        Number: 2
+      TimeNextSubWave: 3
+    - Parts:
+      - TypeUnit: 0
+        UnitVar: 0
+        Number: 3
+      TimeNextSubWave: 3
