@@ -15,11 +15,7 @@ MonoBehaviour:
   IsWait: 0
   SpawnerData: {fileID: 11400000, guid: 7881e3a94b89c9b48af134ad3ed00857, type: 2}
   DataStructure: {fileID: 11400000, guid: 8af1679a580bf1642bd8a25bb1d3b38f, type: 2}
-  Prefabs:
-  - TypeUnit: 0
-    Prefab: {fileID: 5499846042804253689, guid: 53b608b882125a542a0f860a7e3d7f3c, type: 3}
-  - TypeUnit: 1
-    Prefab: {fileID: 8624355644622367307, guid: 3b3efc72adf75c9498530518139fdbdb, type: 3}
+  Prefabs: {fileID: 11400000, guid: 3c691c3ab418ea04cbf3361a3b637f22, type: 2}
   StatsPrefab:
   - VariertyUnit: 0
     WarriorData: {fileID: 11400000, guid: d88318c171fdb4241a6b0c0b86b84fd2, type: 2}

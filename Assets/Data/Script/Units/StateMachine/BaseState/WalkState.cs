@@ -14,7 +14,6 @@ public class WalkState : State
     public WalkState(StateMachine stateMachine, Vector3 targetPoint, NavMeshAgent agent) : base(stateMachine)
     {
         _targetPoint = targetPoint;
-        //Debug.Log(_targetPoint);
         _meshAgent = agent;
         _startSpeed = _meshAgent.speed;
         StateName = "Walk";//временно
@@ -70,7 +69,7 @@ public class WalkState : State
             if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
                 _stateMachine.SetState<IdleState>();
 
-            if (Mathf.Abs((_targetPoint - _stateMachine.Warrior.Position).magnitude) < 0.1f)
+            if (Mathf.Abs((_targetPoint - _stateMachine.Warrior.Position).magnitude) < 0.2f)
                 _isEnd = true;
         }
     }

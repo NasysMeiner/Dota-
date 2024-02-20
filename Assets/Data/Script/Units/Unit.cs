@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(NavMeshAgent))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //||Bременно||

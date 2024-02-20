@@ -17,7 +17,7 @@ MonoBehaviour:
   Waves:
   - SubWaves:
     - Parts:
-      - TypeUnit: 1
-        UnitVar: 3
-        Number: 1
+      - TypeUnit: 0
+        UnitVar: 0
+        Number: 3
       TimeNextSubWave: 0

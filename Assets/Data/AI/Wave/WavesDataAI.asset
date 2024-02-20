@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc29a0cf93024d94f83e789921dac65e, type: 3}
   m_Name: WavesDataAI
   m_EditorClassIdentifier: 
-  SpawnTime: 5
+  SpawnTime: 2
   WaveTimeSpawn: 15
   Waves:
   - SubWaves:
     - Parts:
       - TypeUnit: 0
         UnitVar: 0
-        Number: 1
+        Number: 3
       TimeNextSubWave: 0

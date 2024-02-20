@@ -42,7 +42,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, List<Path> paths, Trash trash)
+    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, Trash trash)
     {
         InitializeStruct(dataGameInfo.DataStructure);
 
@@ -54,7 +54,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
         for (int i = 0; i < structurs.Count; i++)
         {
-            structurs[i].InitializeBarracks(dataStructureBarracks, paths[i], Counter, trash);
+            structurs[i].InitializeBarracks(dataStructureBarracks, Counter, trash);
             structurs[i].DestroyBarrack += OnDestroyBarrack;
         }
 
