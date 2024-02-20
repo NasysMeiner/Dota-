@@ -44,7 +44,6 @@ public class WalkState : State
         else
         {
             _stateMachine.SetState<IdleState>();
-            //Debug.Log("END Enter " + _stateMachine.Warrior._name + " :" + _stateMachine.Warrior._id + " " + _currentPointId + " " + _path.StandartPath.Count);
         }
 
         _meshAgent.speed = _startSpeed;
@@ -64,10 +63,10 @@ public class WalkState : State
     {
         if (_isWork)
         {
-            if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
-            {
-                _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
-            }
+            //if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+            //{
+            //    _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+            //}
 
             if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
                 _stateMachine.SetState<IdleState>();

@@ -33,6 +33,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private Path _path;
     private Counter _counter;
     private Counter _enemyCounter;
+    private PointCreator _pointCreator;
     private Trash _trash;
 
     private Warrior _unitPrefab;
@@ -71,6 +72,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
         _path = path;
         _counter = counter;
+        _pointCreator = barracksData.PointCreator;
         _trash = trash;
         _counter.AddEntity(this);
 

@@ -16,6 +16,15 @@ public class BarracksData : ScriptableObject
     [Header("UnitPrefab")]
     public List<PrefabUnit> Prefabs = new List<PrefabUnit>();
     public List<StatsPrefab> StatsPrefab = new List<StatsPrefab>();
+
+    private PointCreator _pointCreator;
+
+    public PointCreator PointCreator => _pointCreator;
+
+    public void WriteData(PointCreator pointCreator)
+    {
+        _pointCreator = pointCreator;
+    }
 }
 
 [System.Serializable]

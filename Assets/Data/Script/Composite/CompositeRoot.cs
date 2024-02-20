@@ -6,6 +6,7 @@ public class CompositeRoot : MonoBehaviour
 {
     [Header("CastlePlayer")]
     [SerializeField] private DataGameInfo _gameInfoPlayer;
+    [SerializeField] private PointCreator _pointCreatorPlayer;
     [SerializeField] private Castle _castlePlayer;
 
     [Header("StructPlayer")]
@@ -14,6 +15,7 @@ public class CompositeRoot : MonoBehaviour
 
     [Header("CastleAi")]
     [SerializeField] private DataGameInfo _gameInfoAi;
+    [SerializeField] private PointCreator _pointCreatorAi;
     [SerializeField] private Castle _castleAi;
 
     [Header("StructAi")]
@@ -65,12 +67,14 @@ public class CompositeRoot : MonoBehaviour
 
     private void InitializePlayer()
     {
+        _barracksDataPlayer.WriteData(_pointCreatorPlayer);
         _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _towers, _barracksDataPlayer, _path, _trash);
         _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
     }
 
     private void InitializeAi()
     {
+        _barracksDataAi.WriteData(_pointCreatorAi);
         _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, null, _barracksDataAi, _path, _trash);
     }
 

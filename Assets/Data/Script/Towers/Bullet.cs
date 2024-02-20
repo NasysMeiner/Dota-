@@ -7,10 +7,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
 
     private float _damage;
-    private IEntity _target;
+    private Vector3 _target;
     private Rigidbody2D _rigidbody;
 
-    public void Initialization(IEntity target, float damage)
+    public void Initialization(Vector3 target, float damage)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
 
@@ -22,13 +22,13 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs((_target.Position - transform.position).magnitude) < 0.2f)
+        if (Mathf.Abs((_target - transform.position).magnitude) <= 0.05f)
             Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IEntity enemy) && enemy == _target)
+        if (collision.TryGetComponent(out IEntity enemy))
         {
             enemy.GetDamage(_damage);
             Destroy(gameObject);
@@ -37,6 +37,6 @@ public class Bullet : MonoBehaviour
 
     public void PullOutOfGun()
     {
-        _rigidbody.velocity = (_target.Position - transform.position).normalized * _speed;
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
     }
 }
