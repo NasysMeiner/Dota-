@@ -13,14 +13,14 @@ public class PointCreator : MonoBehaviour
             float randomY;
             float maxRangeY;
 
-            randomX = Random.Range(-_radius, _radius);
+            randomX = Random.Range(transform.position.x - _radius, transform.position.x + _radius);
 
             if (randomX != 0)
-                maxRangeY = Mathf.Sqrt(_radius - Mathf.Abs(transform.position.x - randomX));
+                maxRangeY = Mathf.Sqrt(Mathf.Abs(_radius - Mathf.Abs(transform.position.x - randomX)));
             else
                 maxRangeY = _radius;
 
-            randomY = Random.Range(-maxRangeY, maxRangeY);
+            randomY = Random.Range(transform.position.y - maxRangeY, transform.position.y + maxRangeY);
 
             Vector3 resultVector = new Vector3(randomX, randomY, 0);
 

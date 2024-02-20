@@ -18,6 +18,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected NavMeshAgent _meshAgent;
     protected StateMachine _stateMachine;
     protected Path _path;
+    protected Vector3 _targetPoint;
     protected Scout _scout;
     protected SpriteRenderer _spriteRenderer;
 
@@ -55,7 +56,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _meshAgent.Warp(position);
     }
 
-    public void InitUnit(Path path, Counter counter, int id, string name)
+    public void InitUnit(Vector3 targetPoint, Counter counter, int id, string name)
     {
         _id = id;
         _name = name;
@@ -63,7 +64,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         _meshAgent = GetComponent<NavMeshAgent>();
         _meshAgent.speed = Speed;
-        _path = path;
+        //_path = path;
+        _targetPoint = targetPoint;
 
         _scout = new Scout(counter, transform, VisibilityRange);
         _scout.ChangeTarget += OnChangeTarget;
@@ -88,7 +90,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void GetDamage(float damage)
     {
-        Debug.Log(damage);
         HealPoint -= damage;
 
         if (HealPoint <= 0)
@@ -114,7 +115,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected virtual void CreateState()
     {
         _stateMachine.AddState(new AttackState(_stateMachine));
-        _stateMachine.AddState(new WalkState(_stateMachine, _path, _meshAgent, SearchStartPointId()));
+        _stateMachine.AddState(new WalkState(_stateMachine, _targetPoint, _meshAgent));
         _stateMachine.AddState(new IdleState(_stateMachine));
 
         _stateMachine.SetState<WalkState>();

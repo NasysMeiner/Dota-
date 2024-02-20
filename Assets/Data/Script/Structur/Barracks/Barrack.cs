@@ -199,7 +199,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         unit.Died += OnDied;
         _counter.AddEntity(unit);
         unit.LoadStats(warriorData);
-        unit.InitUnit(_path, _enemyCounter, _id++, Name);
+        unit.InitUnit(_pointCreator.CreateRangePoint, _enemyCounter, _id++, Name);
         unit.ChangePosition(_spawnPoint.position);
         unit.isEnemy = isEnemy;
         _id++;
