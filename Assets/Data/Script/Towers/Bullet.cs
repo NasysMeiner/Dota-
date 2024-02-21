@@ -28,11 +28,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IEntity enemy))
+        IEntity enemy = collision.GetComponent<IEntity>();
+        if (enemy != null)
         {
             enemy.GetDamage(_damage);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
+        //if (collision.TryGetComponent(out IEntity enemy))
+        //{
+        //    enemy.GetDamage(_damage);
+        //    Destroy(gameObject);
+        //}
     }
 
     public void PullOutOfGun()
