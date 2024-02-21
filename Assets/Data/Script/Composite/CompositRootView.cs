@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ public class CompositRootView : CompositeRoot
     [SerializeField] private HealPointView _healPointView;
 
     [Header("Spawn")]
+    [SerializeField] private List<ViewSprite> _images;
     [SerializeField] private ButtonUnitView _buttonUnitView;
     [SerializeField] private RadiusSpawner _radiusSpawner;
 
@@ -21,6 +21,6 @@ public class CompositRootView : CompositeRoot
     private void InitializeView()
     {
         _healPointView.Initialize(_castlePlayer, _hearts);
-        _buttonUnitView.Init(_radiusSpawner);
+        _buttonUnitView.Init(_radiusSpawner, _images);
     }
 }

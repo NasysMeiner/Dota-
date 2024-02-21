@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  Color: {r: 0.15566039, g: 1, b: 0.20875008, a: 1}
+  Color: {r: 0.15686274, g: 1, b: 0.9668856, a: 1}
   HealPoint: 29
   AttackDamage: 5
   AttackRange: 1

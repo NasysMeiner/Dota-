@@ -15,6 +15,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public bool _target = false;
     public string Targettt;
     public int _pointId = 0;
+    public bool isDie = false;
     //||Временно||
 
     protected NavMeshAgent _meshAgent;
@@ -35,6 +36,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
     public float ApproximationFactor { get; protected set; }
+    public Counter EnemyCounter { get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -63,7 +65,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _id = id;
         _name = name;
 
-
+        EnemyCounter = counter;
         _meshAgent = GetComponent<NavMeshAgent>();
         _meshAgent.speed = Speed;
         //_path = path;
@@ -79,6 +81,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void LoadStats(WarriorData warriorData)
     {
+        if(warriorData == null)
+            throw new System.NotImplementedException("Stats Null");
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.material.color = warriorData.Color;
         HealPoint = warriorData.HealPoint;
@@ -95,7 +100,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         HealPoint -= damage;
 
         if (HealPoint <= 0)
+        {
             Die();
+            isDie = true;
+        }
     }
 
     protected virtual void UnitOnDisable()
@@ -132,7 +140,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected void Die()
     {
         _stateMachine.Stop();
-        _meshAgent.enabled = false;
         Died?.Invoke(this);
     }
 
@@ -151,11 +158,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _target = false;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(Position, VisibilityRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(Position, AttckRange);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(Position, VisibilityRange);
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(Position, AttckRange);
+    //}
 }

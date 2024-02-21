@@ -42,14 +42,14 @@ public class CompositRootCastle : CompositeRoot
     private void InitializePlayer()
     {
         _barracksDataPlayer.WriteData(_pointCreatorPlayer);
-        _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _towers, _barracksDataPlayer, _trash);
+        _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _towers, _barracksDataPlayer, _trash, _pointCreatorPlayer);
         _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
     }
 
     private void InitializeAi()
     {
         _barracksDataAi.WriteData(_pointCreatorAi);
-        _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, null, _barracksDataAi, _trash);
+        _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, null, _barracksDataAi, _trash, _pointCreatorAi);
     }
 
     private void InitializeData()

@@ -1,19 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ButtonUnitView : MonoBehaviour
 {
     [SerializeField] private List<ButtonStatus> _buttons = new List<ButtonStatus>();
 
     private RadiusSpawner _radiusSpawner;
+    private List<ViewSprite> _images;
     private ButtonStatus _currentButton;
     private int _currentId = -1;
 
-    public void Init(RadiusSpawner radiusSpawner)
+    public void Init(RadiusSpawner radiusSpawner, List<ViewSprite> images)
     {
         _radiusSpawner = radiusSpawner;
+        _images = images;
     }
 
     public void ChangeUnit(ButtonStatus button)
@@ -24,6 +24,9 @@ public class ButtonUnitView : MonoBehaviour
         if (button == _currentButton)
         {
             _currentButton = null;
+            _currentId = -1;
+            _radiusSpawner.ChangeActiveUnit(_currentId);
+            DrawRadius();
 
             return;
         }
@@ -32,11 +35,23 @@ public class ButtonUnitView : MonoBehaviour
         _currentButton.ActiveButton();
 
         _currentId = SearchIdButton();
+        DrawRadius();
         _radiusSpawner.ChangeActiveUnit(_currentId);
     }
 
     private int SearchIdButton()
     {
         return _buttons.IndexOf(_currentButton);
+    }
+
+    private void DrawRadius()
+    {
+        if (_currentButton != null)
+            foreach (ViewSprite image in _images)
+                image.Active();
+
+        if (_currentButton == null)
+            foreach (ViewSprite image in _images)
+                image.InActive();
     }
 }

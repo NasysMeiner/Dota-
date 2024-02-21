@@ -17,7 +17,10 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public int Money { get; private set; }
     public float MaxHealPoint { get; private set; }
     public Counter Counter { get; private set; }
+    public Counter EnemyCounter { get; private set; }
     public string Name { get; private set; }
+    public PointCreator PointCreator { get; private set; }
+    public Color ColorUnit { get; private set; }
 
     public event UnityAction<float> HealPointChange;
 
@@ -42,7 +45,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, Trash trash)
+    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
     {
         InitializeStruct(dataGameInfo.DataStructure);
 
@@ -51,6 +54,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         Name = dataGameInfo.name;
         _barracks = structurs;
         _trash = trash;
+        PointCreator = pointCreator;
+        ColorUnit = dataGameInfo.ColorUnit;
 
         for (int i = 0; i < structurs.Count; i++)
         {
@@ -82,6 +87,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     public void SetEnemyCounter(Counter enemyCounter)
     {
+        EnemyCounter = enemyCounter;
+
         foreach (var barrack in _barracks)
         {
             barrack.SetEnemyCounter(enemyCounter);
