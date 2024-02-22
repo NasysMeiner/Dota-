@@ -52,11 +52,6 @@ public class Point : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Debug.Log("123");
-    //}
-
     public bool CheckPointInLine(Vector3 position)
     {
         if (_direction.x == 0)

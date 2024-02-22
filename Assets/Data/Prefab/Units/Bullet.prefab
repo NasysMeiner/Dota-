@@ -4746,6 +4746,7 @@ GameObject:
   - component: {fileID: 4470804474966191578}
   - component: {fileID: 4470804474966191576}
   - component: {fileID: 4470804474966191575}
+  - component: {fileID: 7861170219723035598}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -4835,7 +4836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9737d12e74f6ed346915eec706ee0586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7
+  _speed: 20
   _damage: 0
 --- !u!58 &4470804474966191575
 CircleCollider2D:

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
   m_Name: StandartArcher
   m_EditorClassIdentifier: 
-  Type: 0
-  Color: {r: 1, g: 0.8247769, b: 0.1462264, a: 1}
-  HealPoint: 1000
+  Type: 1
+  Color: {r: 0.14509803, g: 1, b: 0.81808174, a: 1}
+  HealPoint: 10
   AttackDamage: 10
   AttackRange: 4
   VisibilityRange: 6

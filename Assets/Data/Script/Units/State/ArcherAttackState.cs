@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class ArcherAttackState : AttackState
 {
-    private Bullet _bullet;
     private Archer _archer;
 
-    public ArcherAttackState(StateMachine stateMachine, Bullet bullet) : base(stateMachine)
-    {
-        _bullet = bullet;
-    }
+    public ArcherAttackState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void MakeDamage()
     {
@@ -19,6 +15,6 @@ public class ArcherAttackState : AttackState
 
         Bullet bullet = _archer.CreateBullet();
         bullet.transform.position = _archer.Position;
-        bullet.Initialization(_archer.CurrentTarget, _archer.Damage);
+        bullet.Initialization(_archer.CurrentTarget.Position, _archer.Damage);
     }
 }

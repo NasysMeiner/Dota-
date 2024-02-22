@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Archer : Unit
 {
     private Bullet _bullet;
@@ -16,8 +12,8 @@ public class Archer : Unit
 
     protected override void CreateState()
     {
-        _stateMachine.AddState(new ArcherAttackState(_stateMachine, _bullet));
-        _stateMachine.AddState(new WalkState(_stateMachine, _path, _meshAgent, SearchStartPointId()));
+        _stateMachine.AddState(new ArcherAttackState(_stateMachine));
+        _stateMachine.AddState(new WalkState(_stateMachine, _targetPoint, _meshAgent));
         _stateMachine.AddState(new IdleState(_stateMachine));
 
         _stateMachine.SetState<WalkState>();
