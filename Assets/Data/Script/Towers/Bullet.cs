@@ -21,14 +21,16 @@ public class Bullet : MonoBehaviour
     private float _maxDistanceFly;
     private Rigidbody2D _rigidbody;
 
-    public void Initialization(IEntity target, float damage, float maxDistanceFly)
+    public float Speed => _speed;
+
+    public void Initialization(IEntity target, Vector3 targetPosition, float damage, float maxDistanceFly)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
 
         _damage = damage;
         _target = target;
         _maxDistanceFly = maxDistanceFly;
-        _entityPosition = _target.Position;
+        _entityPosition = targetPosition;
 
         PullOutOfGun();
     }
@@ -49,11 +51,8 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Yes1 " + collision.name);
-
         if (collision.gameObject.TryGetComponent(out IEntity enemy) && enemy == _target)
         {
-            Debug.Log("Yes2");
             _updateEffect?.StopEffect();
 
             enemy?.GetDamage(_damage);

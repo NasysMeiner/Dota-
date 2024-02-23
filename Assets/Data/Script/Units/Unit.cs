@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //||Bременно||
@@ -19,6 +20,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||Временно||
 
     protected NavMeshAgent _meshAgent;
+    protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
@@ -27,6 +29,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
+    public NavMeshAgent MeshAgent => _meshAgent;
 
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
@@ -66,6 +69,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _name = name;
 
         EnemyCounter = counter;
+        _rigidbody = GetComponent<Rigidbody2D>();
         _meshAgent = GetComponent<NavMeshAgent>();
         _meshAgent.speed = Speed;
         _targetPoint = targetPoint;

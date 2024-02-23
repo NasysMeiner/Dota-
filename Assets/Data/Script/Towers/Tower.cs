@@ -69,7 +69,7 @@ public class Tower : MonoBehaviour, IEntity
         {
             _rechangeDelay = _cooldown;
             Instantiate(_bulletPrefab, _muzzlePosition.position, Quaternion.identity).TryGetComponent(out Bullet newBullet);
-            newBullet.Initialization(_target, 10f, _attackRange);
+            newBullet.Initialization(_target, _target.Position, 10f, _attackRange);
         }
     }
     private Warrior GetClosestTarget()
