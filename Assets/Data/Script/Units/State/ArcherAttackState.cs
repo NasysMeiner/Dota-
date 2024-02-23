@@ -15,6 +15,6 @@ public class ArcherAttackState : AttackState
 
         Bullet bullet = _archer.CreateBullet();
         bullet.transform.position = _archer.Position;
-        bullet.Initialization(_archer.CurrentTarget.Position, _archer.Damage);
+        bullet.Initialization(_archer.CurrentTarget, _archer.Damage, _archer.AttckRange);
     }
 }

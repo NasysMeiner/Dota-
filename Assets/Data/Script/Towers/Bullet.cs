@@ -1,41 +1,44 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    [Header("Effects")]
+    [Header("Effect")]
     [SerializeField] private Effect _startEffect;
     [SerializeField] private float _timeStartEffect;
-
     [SerializeField] private Effect _updateEffect;
-
     [SerializeField] private Effect _endEffect;
     [SerializeField] private float _timeEndEffect;
 
     private float _damage;
     private bool _isDestroy = false;
     private float _timeDestroy;
-    private Vector3 _target;
+    private IEntity _target;
+    private Vector3 _entityPosition;
+    private float _maxDistanceFly;
     private Rigidbody2D _rigidbody;
 
-    public void Initialization(Vector3 target, float damage)
+    public void Initialization(IEntity target, float damage, float maxDistanceFly)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
 
         _damage = damage;
         _target = target;
+        _maxDistanceFly = maxDistanceFly;
+        _entityPosition = _target.Position;
 
         PullOutOfGun();
     }
 
     private void Update()
     {
-        if (Mathf.Abs((_target - transform.position).magnitude) <= 0.05f)
+        if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly)
             Destroy();
+
+        //Debug.Log((_entityPosition - transform.position).magnitude);
 
         if (_isDestroy)
         {
@@ -46,23 +49,21 @@ public class Bullet : MonoBehaviour
         }
 
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_updateEffect != null)
-            _updateEffect.StopEffect();
+        if (collision.gameObject.TryGetComponent(out IEntity enemy) && enemy == _target)
+        {
+            _updateEffect?.StopEffect();
 
-        IEntity enemy = collision.GetComponent<IEntity>();
+            enemy?.GetDamage(_damage);
 
-        if (enemy != null)
-            enemy.GetDamage(_damage);
-
-        Destroy();
+            Destroy();
+        }
     }
-
-    public void PullOutOfGun()
-    {
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
+        //}
+    }
+        //}
+        _rigidbody.velocity = (_entityPosition - transform.position).normalized * _speed;
 
         if (_updateEffect != null)
             _updateEffect.StartEffect();
@@ -73,7 +74,7 @@ public class Bullet : MonoBehaviour
         _isDestroy = true;
         _rigidbody.velocity = Vector3.zero;
 
-        if(_endEffect != null)
+        if (_endEffect != null)
             StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
     }
 
@@ -84,5 +85,15 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         effect.StopEffect();
+        //}
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
+        //}
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
+        //}
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
+
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
+    {
+        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
     }
 }

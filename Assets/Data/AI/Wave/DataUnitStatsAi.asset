@@ -15,6 +15,8 @@ MonoBehaviour:
   StatsPrefab:
   - VariertyUnit: 2
     WarriorData: {fileID: 11400000, guid: 320c30fb8ab11dd459c7343783ed1e50, type: 2}
+  - VariertyUnit: 3
+    WarriorData: {fileID: 11400000, guid: 637cc4034a9d9664a8f7eafc63c4852d, type: 2}
   - VariertyUnit: 0
     WarriorData: {fileID: 11400000, guid: d88318c171fdb4241a6b0c0b86b84fd2, type: 2}
   - VariertyUnit: 1
