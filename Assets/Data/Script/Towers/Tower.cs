@@ -42,87 +42,68 @@ public class Tower : MonoBehaviour, IEntity
         _counter.AddEntity(this);
         _trash = trash;
         _possibleTargets = new List<Warrior>();
-    }
 
+    }
     private void Update()
     {
-        if (_target != null)
+
+        if (_possibleTargets.Count > 0)
         {
-            Shooting();
-            if (Vector2.Distance(_target.transform.position, transform.position) > _attackRange)
+            _target = GetClosestTarget();
+
+            if (_target != null)
             {
-                _target = null;
+                Shooting();
             }
         }
-        else
+        Debug.Log("Список возможных целей:");
+        foreach (var enemy in _possibleTargets)
         {
-            if (_possibleTargets.Count > 0)
-            {
-                FindTarget();
-            }
+            Debug.Log(enemy.name);
         }
 
-        if (_rechangeDelay > 0)
-        {
-            _rechangeDelay -= Time.deltaTime;
-        }
-        else
-        {
-            _rechangeDelay = 0;
-        }
     }
-
     private void Shooting()
     {
         if (_rechangeDelay <= 0 && _target != null)
         {
             _rechangeDelay = _cooldown;
             Instantiate(_bulletPrefab, _muzzlePosition.position, Quaternion.identity).TryGetComponent(out Bullet newBullet);
-            newBullet.Initialization(_target, 10f);//eto kapec rebyta
+            newBullet.Initialization(_target.Position, 10f);
         }
     }
-
-    private void FindTarget()
+    private Warrior GetClosestTarget()
     {
-        float minDistance = _attackRange;
-        Warrior target = null;
+        Warrior closestTarget = null;
+        float minDistance = Mathf.Infinity;
 
         foreach (var warrior in _possibleTargets)
         {
             if (warrior != null)
             {
-                float currentDistance = Vector2.Distance(warrior.transform.position, transform.position);
-                if (currentDistance < minDistance)
+                float distance = Vector2.Distance(warrior.transform.position, transform.position);
+                if (distance < minDistance)
                 {
-                    target = warrior;
-                    minDistance = currentDistance;
+                    closestTarget = warrior;
+                    minDistance = distance;
                 }
             }
         }
 
-        _target = target;
-        ClearList();
-    }
-
-    private void ClearList()
-    {
-        for (int i = 0; i < _possibleTargets.Count; i++)
-        {
-            Warrior warrior = _possibleTargets[i];
-
-            if (warrior == null || Vector2.Distance(warrior.transform.position, transform.position) > _attackRange * 2)
-            {
-                _possibleTargets.RemoveAt(i);
-                i--;
-            }
-        }
+        return closestTarget;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Warrior enemy) && enemy.isEnemy)
+        Warrior enemy = collision.GetComponent<Warrior>();
+        if (enemy != null && enemy.isEnemy)
         {
             _possibleTargets.Add(enemy);
+            Debug.Log("Добавлен враг ");
+        }
+        else
+        {
+            Debug.Log("Не удалось добавить врага " + collision.name + ". Объект не является врагом.");
         }
     }
 

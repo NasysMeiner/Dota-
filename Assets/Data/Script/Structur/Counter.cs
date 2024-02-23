@@ -9,6 +9,9 @@ public class Counter
 
     public void AddEntity(IEntity entity)
     {
+        if(entity == null)
+            throw new System.NotImplementedException("entity Null");
+
         if (!Entity.Contains(entity))
             Entity.Add(entity);
     }

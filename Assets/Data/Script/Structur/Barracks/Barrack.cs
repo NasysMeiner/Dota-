@@ -30,9 +30,9 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private int _id = 0;//time
 
-    private Path _path;
     private Counter _counter;
     private Counter _enemyCounter;
+    private PointCreator _pointCreator;
     private Trash _trash;
 
     private Warrior _unitPrefab;
@@ -65,12 +65,12 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _spawnPoint = transform.GetChild(0);
     }
 
-    public void InitializeBarracks(BarracksData barracksData, Path path, Counter counter, Trash trash)
+    public void InitializeBarracks(BarracksData barracksData, Counter counter, Trash trash)
     {
         InitializeStruct(barracksData.DataStructure);
 
-        _path = path;
         _counter = counter;
+        _pointCreator = barracksData.PointCreator;
         _trash = trash;
         _counter.AddEntity(this);
 
@@ -79,7 +79,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _waves = barracksData.SpawnerData.Waves;
         _isWait = barracksData.IsWait;
 
-        foreach (PrefabUnit prefab in barracksData.Prefabs)
+        foreach (PrefabUnit prefab in barracksData.Prefabs.Prefabs)
             _unitsPrefab.Add(prefab.TypeUnit, prefab.Prefab);
 
         foreach (StatsPrefab StatsPrefab in barracksData.StatsPrefab)
@@ -197,7 +197,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         unit.Died += OnDied;
         _counter.AddEntity(unit);
         unit.LoadStats(warriorData);
-        unit.InitUnit(_path, _enemyCounter, _id++, Name);
+        unit.InitUnit(_pointCreator.CreateRangePoint, _enemyCounter, _id++, Name);
         unit.ChangePosition(_spawnPoint.position);
         unit.isEnemy = isEnemy;
         _id++;

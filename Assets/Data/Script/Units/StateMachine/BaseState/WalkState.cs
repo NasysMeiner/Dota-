@@ -4,47 +4,39 @@ using UnityEngine.AI;
 
 public class WalkState : State
 {
-    private Path _path;
     private NavMeshAgent _meshAgent;
 
-    private int _currentPointId;
-    private Vector3 _currentPoint;
+    private Vector3 _targetPoint;
     private bool _isWalkToTarget = false;
     private bool _isEnd = false;
-    private int _nextPointConst;
     private float _startSpeed;
 
-    public WalkState(StateMachine stateMachine, Path path, NavMeshAgent agent, int startNumberPoint) : base(stateMachine)
+    public WalkState(StateMachine stateMachine, Vector3 targetPoint, NavMeshAgent agent) : base(stateMachine)
     {
-        _path = path;
+        _targetPoint = targetPoint;
         _meshAgent = agent;
-        _currentPointId = startNumberPoint;
-        _nextPointConst = startNumberPoint > 0 ? -1 : 1;
         _startSpeed = _meshAgent.speed;
         StateName = "Walk";//временно
     }
 
     public override void Enter()
     {
-        if (_stateMachine.Warrior.CurrentTarget == null && _currentPointId < _path.StandartPath.Count && _currentPointId >= 0)
+        if (_stateMachine.Warrior.CurrentTarget == null && _isEnd != true)
         {
-            _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
-            _stateMachine.Warrior._pointId = _currentPointId;
-
-            if (_meshAgent.SetDestination(_currentPoint))
-                _meshAgent.SetDestination(_currentPoint);
+            if (_meshAgent.SetDestination(_targetPoint))
+                _meshAgent.SetDestination(_targetPoint);
         }
         else if (_stateMachine.Warrior.CurrentTarget != null)
         {
             if (_meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position))
+            {
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
-
-            _isWalkToTarget = true;
+                _isWalkToTarget = true;
+            }
         }
         else
         {
             _stateMachine.SetState<IdleState>();
-            //Debug.Log("END Enter " + _stateMachine.Warrior._name + " :" + _stateMachine.Warrior._id + " " + _currentPointId + " " + _path.StandartPath.Count);
         }
 
         _meshAgent.speed = _startSpeed;
@@ -64,15 +56,8 @@ public class WalkState : State
     {
         if (_isWork)
         {
-            if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
-            {
-                _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
-            }
-
-            if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
-                _stateMachine.SetState<IdleState>();
-            else if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false)
-                _meshAgent.SetDestination(_currentPoint);
+            if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false)
+                _meshAgent.SetDestination(_targetPoint);
             else if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
                 _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
 
@@ -81,24 +66,11 @@ public class WalkState : State
             else if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == true && Math.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude) <= _stateMachine.Warrior.AttckRange * _stateMachine.Warrior.ApproximationFactor)
                 _stateMachine.SetState<AttackState>();
 
-            if (_path.StandartPath[_currentPointId].CheckPointInLine(_stateMachine.Warrior.Position))
-            {
-                if (_currentPointId + _nextPointConst < _path.StandartPath.Count && _currentPointId + _nextPointConst >= 0)
-                {
-                    _currentPointId += _nextPointConst;
-                    _currentPoint = _path.StandartPath[_currentPointId].RandomPoint;
+            if (_stateMachine.Warrior.CurrentTarget == null && _isEnd)
+                _stateMachine.SetState<IdleState>();
 
-                    _stateMachine.Warrior._pointId = _currentPointId;
-
-                    if (_stateMachine.Warrior.CurrentTarget == null)
-                        if (_meshAgent.SetDestination(_currentPoint))
-                            _meshAgent.SetDestination(_currentPoint);
-                }
-                else if (_currentPointId == _path.StandartPath.Count - 1 || _currentPointId == 0)
-                {
-                    _isEnd = true;
-                }
-            }
+            if (Mathf.Abs((_targetPoint - _stateMachine.Warrior.Position).magnitude) < 0.2f)
+                _isEnd = true;
         }
     }
 }
