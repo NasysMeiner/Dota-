@@ -53,12 +53,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private void Update()
     {
-        UnitUpdate();
+        if (_isAlive)
+            UnitUpdate();
     }
 
     private void LateUpdate()
     {
-        UnitLateUpdate();
+        if (_isAlive)
+            UnitLateUpdate();
     }
 
     public void ChangePosition(Vector3 position)
@@ -115,6 +117,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             Die();
             isDie = true;
+            CurrentTarget = null;
         }
     }
 

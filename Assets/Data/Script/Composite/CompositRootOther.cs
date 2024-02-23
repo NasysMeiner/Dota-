@@ -30,9 +30,9 @@ public class CompositRootOther : CompositeRoot
         _radiusSpawner.Init(_radiusList, _castleList, _prefabUnit.Prefabs, _dataStats, _trash);
 
         foreach(Tower item in _towerListPlayer)
-            item.Initialization(_towerDataPlayer, _trash);
+            item.Initialization(_towerDataPlayer, _trash, _castleList[0].Counter);
 
         foreach (Tower item in _towerListAI)
-            item.Initialization(_towerDataAi, _trash);
+            item.Initialization(_towerDataAi, _trash, _castleList[1].Counter);
     }
 }

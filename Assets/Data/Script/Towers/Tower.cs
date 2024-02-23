@@ -15,8 +15,10 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private float _healPoint;
     private bool _isAlive = true;
+    private bool _isDead = false;
 
     private Trash _trash;
+    private Counter _counter;
     private CircleCollider2D _circleCollider;
     private Unit _currentTarget = null;
 
@@ -25,14 +27,14 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public Vector3 Position => transform.position;
 
     public GameObject GameObject => gameObject;
-
+    
     public int Income => _income;
 
     public bool IsAlive => _isAlive;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.Name != _name)
+        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.Name != _name && _isAlive)
         {
             if (_currentTarget == null)
             {
@@ -75,6 +77,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public void Destruct()
     {
         _isAlive = false;
+        _currentTarget = null;
+        _counter.DeleteEntity(this);
         _trash.AddQueue(this);
     }
 
@@ -82,11 +86,11 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     {
         _healPoint -= damage;
 
-        if (_healPoint <= 0)
+        if (_healPoint <= 0 && _isDead == false)
         {
             _healPoint = 0;
-
-            _trash.AddQueue(this);
+            _isDead = true;
+            Destruct();
         }
     }
 
@@ -95,9 +99,10 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _name = name;
     }
 
-    public void Initialization(TowerData towerData, Trash trash)
+    public void Initialization(TowerData towerData, Trash trash, Counter counter)
     {
         _trash = trash;
+        _counter = counter;
 
         _damage = towerData.Damage;
         _attackRange = towerData.AttackRange;
