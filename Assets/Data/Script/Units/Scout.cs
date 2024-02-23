@@ -34,7 +34,7 @@ public class Scout
 
     private void SearchEntity()
     {
-        if (_counter != null && Target == null)
+        if (_counter != null /*&& Target == null*/)
         {
             float length;
             float minLenght = -1;
