@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Castle : MonoBehaviour, IStructur, IEntity
 {
     private float _healPoint;
+    private bool _isAlive = true;
     private Trash _trash;
 
     private List<Barrack> _barracks;
@@ -21,6 +22,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public string Name { get; private set; }
     public PointCreator PointCreator { get; private set; }
 
+    public bool IsAlive => _isAlive;
+
     public event UnityAction<float> HealPointChange;
 
     private void OnDisable()
@@ -31,6 +34,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     public void Destruct()
     {
+        _isAlive = false;
         Counter.DeleteEntity(this);
         _trash.AddQueue(this);
     }

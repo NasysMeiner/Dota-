@@ -83,7 +83,8 @@ public class Bullet : MonoBehaviour
 
     private void CheckTargetPosition()
     {
-        _entityPosition = _target.Position;
+        if(_target.IsAlive)
+            _entityPosition = _target.Position;
     }
 
     private IEnumerator WaitEffect(Effect effect, float time)

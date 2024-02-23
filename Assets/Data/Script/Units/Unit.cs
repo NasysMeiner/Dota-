@@ -19,6 +19,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public bool isDie = false;
     //||Временно||
 
+    private bool _isAlive = true;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
@@ -30,6 +31,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
     public NavMeshAgent MeshAgent => _meshAgent;
+    public bool IsAlive => _isAlive;
 
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
@@ -152,6 +154,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected void Die()
     {
+        _isAlive = false;
         _stateMachine.Stop();
         Died?.Invoke(this);
     }
