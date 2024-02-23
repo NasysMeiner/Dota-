@@ -33,6 +33,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
+    public string Name { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
     public float HealPoint { get; protected set; }
@@ -67,6 +68,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     {
         _id = id;
         _name = name;
+        Name = name;
 
         EnemyCounter = counter;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -153,11 +155,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _stateMachine.Stop();
         Died?.Invoke(this);
     }
-
-    //protected int SearchStartPointId()
-    //{
-    //    return Mathf.Abs((transform.position - _path.StandartPath[0].transform.position).magnitude) < Mathf.Abs((transform.position - _path.StandartPath[_path.StandartPath.Count - 1].transform.position).magnitude) ? 0 : _path.StandartPath.Count - 1;
-    //}
 
     private void OnChangeTarget(IEntity entity)
     {

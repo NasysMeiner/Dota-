@@ -13,6 +13,9 @@ public class CompositRootCastle : CompositeRoot
     [SerializeField] private BarracksData _barracksDataPlayer;
     [SerializeField] private List<Barrack> _barracksPlayer;
 
+    [Header("TowersPlayer")]
+    [SerializeField] private List<Tower> _towersPlayer;
+
     [Header("CastleAi")]
     [SerializeField] private DataGameInfo _gameInfoAi;
     [SerializeField] private PointCreator _pointCreatorAi;
@@ -22,15 +25,15 @@ public class CompositRootCastle : CompositeRoot
     [SerializeField] private BarracksData _barracksDataAi;
     [SerializeField] private List<Barrack> _barracksAi;
 
+    [Header("TowersAI")]
+    [SerializeField] private List<Tower> _towersAi;
+
     [Header("Other")]
     [SerializeField] private Trash _trash;
     [SerializeField] private BarricadeBuilder _barricadeBuilder;
     [SerializeField] private int _numberBarricade;
     [SerializeField] private Barricade _barricadePrefab;
     [SerializeField] private WaveCounter _waveCounter;
-
-    [Header("Towers")]
-    [SerializeField] private List<Tower> _towers;
 
     public override void Compose()
     {
@@ -42,14 +45,26 @@ public class CompositRootCastle : CompositeRoot
     private void InitializePlayer()
     {
         _barracksDataPlayer.WriteData(_pointCreatorPlayer);
-        _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _towers, _barracksDataPlayer, _trash, _pointCreatorPlayer);
+        _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _barracksDataPlayer, _trash, _pointCreatorPlayer);
         _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
+        
+        foreach(Tower tower in _towersPlayer)
+        {
+            _castlePlayer.Counter.AddEntity(tower);
+            tower.SetName(_castlePlayer.Name);
+        }
     }
 
     private void InitializeAi()
     {
         _barracksDataAi.WriteData(_pointCreatorAi);
-        _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, null, _barracksDataAi, _trash, _pointCreatorAi);
+        _castleAi.InitializeCastle(_gameInfoAi, _barracksAi, _barracksDataAi, _trash, _pointCreatorAi);
+
+        foreach (Tower tower in _towersAi)
+        {
+            _castleAi.Counter.AddEntity(tower);
+            tower.SetName(_castleAi.Name);
+        }
     }
 
     private void InitializeData()

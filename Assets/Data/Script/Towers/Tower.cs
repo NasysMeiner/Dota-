@@ -1,120 +1,67 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour, IEntity
+[RequireComponent(typeof(CircleCollider2D))]
+public class Tower : MonoBehaviour, IEntity, IStructur
 {
-    [SerializeField] private Transform _muzzlePosition;
-    [SerializeField] private GameObject _bulletPrefab;
+    private bool _drawRadius;
 
-    [SerializeField] private float _attackRange;
-    [SerializeField] private float _cooldown;
-    [SerializeField] private float _maxHealPoint;
+    private Bullet _prefabBullet;
+    private float _damage;
+    private float _attackRange;
+    private float _speedAttack;
+    private float _maxHealPoint;
+    private int _income;
+    private string _name;
 
-    private Counter _counter;
-    private Trash _trash;
-    private Warrior _target;
-    private List<Warrior> _possibleTargets;
-
-    private float _rechangeDelay = 0;
     private float _healPoint;
+
+    private Trash _trash;
+    private CircleCollider2D _circleCollider;
+    private Unit _currentTarget = null;
+
+    private float _time = 0;
 
     public Vector3 Position => transform.position;
 
     public GameObject GameObject => gameObject;
 
-    public int Income => throw new NotImplementedException();
+    public int Income => _income;
 
-    private void OnValidate()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (_bulletPrefab != null && !_bulletPrefab.TryGetComponent(out Bullet newBullet))
+        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.Name != _name)
         {
-            _bulletPrefab = null;
+            if (_currentTarget == null)
+            {
+                _currentTarget = unit;
+            }
+            else
+            {
+                float currentDistance = Mathf.Abs((_currentTarget.Position - transform.position).magnitude);
+                float newDistance = Mathf.Abs((unit.Position - transform.position).magnitude);
+
+                if (newDistance < currentDistance)
+                    _currentTarget = unit;
+            }
         }
-        GetComponent<CircleCollider2D>().radius = _attackRange;
     }
 
-    public void Initialization(Counter counter, Trash trash)
-    {
-        _healPoint = _maxHealPoint;
-        _counter = counter;
-        _counter.AddEntity(this);
-        _trash = trash;
-        _possibleTargets = new List<Warrior>();
-
-    }
     private void Update()
     {
-
-        if (_possibleTargets.Count > 0)
+        if (_currentTarget != null && _time >= _speedAttack)
         {
-            _target = GetClosestTarget();
-
-            if (_target != null)
+            if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange)
             {
-                Shooting();
+                _currentTarget = null;
             }
-        }
-        Debug.Log("Список возможных целей:");
-        foreach (var enemy in _possibleTargets)
-        {
-            Debug.Log(enemy.name);
-        }
-
-    }
-    private void Shooting()
-    {
-        if (_rechangeDelay <= 0 && _target != null)
-        {
-            _rechangeDelay = _cooldown;
-            Instantiate(_bulletPrefab, _muzzlePosition.position, Quaternion.identity).TryGetComponent(out Bullet newBullet);
-            newBullet.Initialization(_target, _target.Position, 10f, _attackRange);
-        }
-    }
-    private Warrior GetClosestTarget()
-    {
-        Warrior closestTarget = null;
-        float minDistance = Mathf.Infinity;
-
-        foreach (var warrior in _possibleTargets)
-        {
-            if (warrior != null)
+            else
             {
-                float distance = Vector2.Distance(warrior.transform.position, transform.position);
-                if (distance < minDistance)
-                {
-                    closestTarget = warrior;
-                    minDistance = distance;
-                }
-            }
+                _time = 0;
+                ShootTarget();
+            } 
         }
 
-        return closestTarget;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Warrior enemy = collision.GetComponent<Warrior>();
-        if (enemy != null && enemy.isEnemy)
-        {
-            _possibleTargets.Add(enemy);
-            Debug.Log("Добавлен враг ");
-        }
-        else
-        {
-            Debug.Log("Не удалось добавить врага " + collision.name + ". Объект не является врагом.");
-        }
-    }
-
-    public void GetDamage(float damage)
-    {
-        _healPoint -= damage;
-
-        if (_healPoint <= 0)
-        {
-            Destruct();
-        }
+        _time += Time.deltaTime;
     }
 
     public void ChangePosition(Vector3 position)
@@ -124,7 +71,77 @@ public class Tower : MonoBehaviour, IEntity
 
     public void Destruct()
     {
-        _counter.DeleteEntity(this);
         _trash.AddQueue(this);
+    }
+
+    public void GetDamage(float damage)
+    {
+        _healPoint -= damage;
+
+        if (_healPoint <= 0)
+        {
+            _healPoint = 0;
+
+            _trash.AddQueue(this);
+        }
+    }
+
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+
+    public void Initialization(TowerData towerData, Trash trash)
+    {
+        _trash = trash;
+
+        _damage = towerData.Damage;
+        _attackRange = towerData.AttackRange;
+        _speedAttack = towerData.SpeedAttack;
+        _prefabBullet = towerData.Bullet;
+        _drawRadius = towerData.DrawRadius;
+
+        _circleCollider = GetComponent<CircleCollider2D>();
+        _circleCollider.radius = _attackRange;
+
+        InitializeStruct(towerData.DataStructure);
+    }
+
+    public void InitializeStruct(DataStructure dataStructure)
+    {
+        _income = dataStructure.Income;
+        _maxHealPoint = dataStructure.MaxHealpPoint;
+        _healPoint = _maxHealPoint;
+    }
+
+    private void ShootTarget()
+    {
+        Bullet bullet = Instantiate(_prefabBullet);
+        bullet.transform.position = transform.position;
+        Vector3 targetPosition = CalculeutVector(bullet);
+        bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+    }
+
+    private Vector3 CalculeutVector(Bullet bullet)
+    {
+        Vector3 resultVector = _currentTarget.Position;
+
+        float time = (_currentTarget.Position - transform.position).magnitude / bullet.Speed;
+
+        float x = _currentTarget.Position.x + time * _currentTarget.MeshAgent.velocity.x;
+        float y = _currentTarget.Position.y + time * _currentTarget.MeshAgent.velocity.x;
+
+        resultVector = new Vector3(x, y, _currentTarget.Position.z);
+
+        return resultVector;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_drawRadius)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(Position, _attackRange);
+        }
     }
 }
