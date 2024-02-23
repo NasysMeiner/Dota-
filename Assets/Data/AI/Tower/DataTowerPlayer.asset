@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   SpeedAttack: 1
-  AttackRange: 10
+  AttackRange: 7
   Bullet: {fileID: 4470804474966191576, guid: 0b62406734066b7469695aac5ca4106d, type: 3}
   DataStructure: {fileID: 11400000, guid: 63ed92a862f35954ca0ab70d1e9f31bd, type: 2}
   DrawRadius: 0

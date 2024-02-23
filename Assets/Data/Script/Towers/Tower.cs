@@ -1,8 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class Tower : MonoBehaviour, IEntity, IStructur
 {
+    [SerializeField] private TowerRadius _towerRadius;
+
     private bool _drawRadius;
 
     private Bullet _prefabBullet;
@@ -19,37 +20,17 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private Trash _trash;
     private Counter _counter;
-    private CircleCollider2D _circleCollider;
     private Unit _currentTarget = null;
 
     private float _time = 0;
 
     public Vector3 Position => transform.position;
-
     public GameObject GameObject => gameObject;
     
     public int Income => _income;
-
     public bool IsAlive => _isAlive;
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.Name != _name && _isAlive)
-        {
-            if (_currentTarget == null)
-            {
-                _currentTarget = unit;
-            }
-            else
-            {
-                float currentDistance = Mathf.Abs((_currentTarget.Position - transform.position).magnitude);
-                float newDistance = Mathf.Abs((unit.Position - transform.position).magnitude);
-
-                if (newDistance < currentDistance)
-                    _currentTarget = unit;
-            }
-        }
-    }
+    public string Name => _name;    
+    public Unit CurrentTarget => _currentTarget;
 
     private void Update()
     {
@@ -67,6 +48,12 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         }
 
         _time += Time.deltaTime;
+    }
+
+    public void ChangeTarget(Unit unit)
+    {
+        _currentTarget = unit;
+        Debug.Log(_currentTarget);
     }
 
     public void ChangePosition(Vector3 position)
@@ -110,8 +97,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _prefabBullet = towerData.Bullet;
         _drawRadius = towerData.DrawRadius;
 
-        _circleCollider = GetComponent<CircleCollider2D>();
-        _circleCollider.radius = _attackRange;
+        _towerRadius.InitTowerRadius(this, _attackRange);
 
         InitializeStruct(towerData.DataStructure);
     }
