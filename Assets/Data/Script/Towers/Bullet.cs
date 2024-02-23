@@ -38,8 +38,6 @@ public class Bullet : MonoBehaviour
         if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly)
             Destroy();
 
-        //Debug.Log((_entityPosition - transform.position).magnitude);
-
         if (_isDestroy)
         {
             _timeDestroy += Time.deltaTime;
@@ -51,8 +49,11 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Yes1 " + collision.name);
+
         if (collision.gameObject.TryGetComponent(out IEntity enemy) && enemy == _target)
         {
+            Debug.Log("Yes2");
             _updateEffect?.StopEffect();
 
             enemy?.GetDamage(_damage);
@@ -60,13 +61,12 @@ public class Bullet : MonoBehaviour
             Destroy();
         }
     }
-        //}
-    }
-        //}
+
+    public void PullOutOfGun()
+    {
         _rigidbody.velocity = (_entityPosition - transform.position).normalized * _speed;
 
-        if (_updateEffect != null)
-            _updateEffect.StartEffect();
+        _updateEffect?.StartEffect();
     }
 
     private void Destroy()
@@ -85,15 +85,5 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         effect.StopEffect();
-        //}
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
-        //}
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
-        //}
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
-
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
-    {
-        _rigidbody.velocity = (_target - transform.position).normalized * _speed;
     }
 }
