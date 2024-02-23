@@ -169,11 +169,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _target = false;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(Position, VisibilityRange);
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireSphere(Position, AttckRange);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(Position, VisibilityRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Position, AttckRange);
+    }
 }

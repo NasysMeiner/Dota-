@@ -40,6 +40,9 @@ public class Bullet : MonoBehaviour
         if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly)
             Destroy();
 
+        if (_target != null)
+            CheckTargetPosition();
+
         if (_isDestroy)
         {
             _timeDestroy += Time.deltaTime;
@@ -48,6 +51,7 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
         }
 
+        transform.position = Vector3.MoveTowards(transform.position, _entityPosition, Speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -63,7 +67,7 @@ public class Bullet : MonoBehaviour
 
     public void PullOutOfGun()
     {
-        _rigidbody.velocity = (_entityPosition - transform.position).normalized * _speed;
+        //_rigidbody.velocity = (_entityPosition - transform.position).normalized * _speed;
 
         _updateEffect?.StartEffect();
     }
@@ -75,6 +79,11 @@ public class Bullet : MonoBehaviour
 
         if (_endEffect != null)
             StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
+    }
+
+    private void CheckTargetPosition()
+    {
+        _entityPosition = _target.Position;
     }
 
     private IEnumerator WaitEffect(Effect effect, float time)
