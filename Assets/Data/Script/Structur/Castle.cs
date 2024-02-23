@@ -20,7 +20,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public Counter EnemyCounter { get; private set; }
     public string Name { get; private set; }
     public PointCreator PointCreator { get; private set; }
-    public Color ColorUnit { get; private set; }
 
     public event UnityAction<float> HealPointChange;
 
@@ -33,6 +32,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public void Destruct()
     {
         Counter.DeleteEntity(this);
+        _trash.AddQueue(this);
     }
 
     public void GetDamage(float damage)
@@ -45,30 +45,23 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
+    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
     {
         InitializeStruct(dataGameInfo.DataStructure);
 
         Counter = new Counter();
         Money = dataGameInfo.StartMoney;
-        Name = dataGameInfo.name;
+        Name = dataGameInfo.Name;
+        dataGameInfo.DataStructure.Name = Name;
+        dataStructureBarracks.DataStructure.Name = Name;
         _barracks = structurs;
         _trash = trash;
         PointCreator = pointCreator;
-        ColorUnit = dataGameInfo.ColorUnit;
 
         for (int i = 0; i < structurs.Count; i++)
         {
             structurs[i].InitializeBarracks(dataStructureBarracks, Counter, trash);
             structurs[i].DestroyBarrack += OnDestroyBarrack;
-        }
-
-        if (towers!=null)
-        {
-            for (int i = 0; i < towers.Count; i++)
-            {
-                towers[i].Initialization(Counter, trash);
-            }
         }
     }
 

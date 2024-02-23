@@ -9,7 +9,11 @@ public class TowerData : ScriptableObject
 
     public float SpeedAttack;
 
-    public float AttackTange;
+    public float AttackRange;
 
     public Bullet Bullet;
+
+    public DataStructure DataStructure;
+
+    public bool DrawRadius;
 }
