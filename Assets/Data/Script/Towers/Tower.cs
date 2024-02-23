@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private string _name;
 
     private float _healPoint;
+    private bool _isAlive = true;
 
     private Trash _trash;
     private CircleCollider2D _circleCollider;
@@ -26,6 +27,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public GameObject GameObject => gameObject;
 
     public int Income => _income;
+
+    public bool IsAlive => _isAlive;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -71,6 +74,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public void Destruct()
     {
+        _isAlive = false;
         _trash.AddQueue(this);
     }
 

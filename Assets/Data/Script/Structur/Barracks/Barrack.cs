@@ -15,6 +15,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private int _income;
     private float _maxHealPoint;
     private float _healPoint;
+    private bool _isAlive = true;
 
     private float _spawnTimeUnit;
     private float _waveTimeSpawn;
@@ -45,11 +46,14 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     public GameObject GameObject => gameObject;
     public Vector3 Position => transform.position;
 
+    public bool IsAlive => _isAlive;
+
     public event UnityAction<Barrack> EndWave;
     public event UnityAction DestroyBarrack;
 
     public void Destruct()
     {
+        _isAlive = false;
         DestroyBarrack?.Invoke();
         _counter.DeleteEntity(this);
         _trash.AddQueue(this);
