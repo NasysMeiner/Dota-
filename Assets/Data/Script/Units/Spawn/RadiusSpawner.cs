@@ -9,7 +9,7 @@ public class RadiusSpawner : MonoBehaviour
     [SerializeField] private WarriorData _stats1;
 
     [SerializeField] private float _cooldownSpawn = 2f;
-    [SerializeField] private float _radius = 15.3f;
+    //[SerializeField] private float _radius = 15.3f;
 
     private Dictionary<TypeUnit, Unit> _prefabs = new Dictionary<TypeUnit, Unit>();
     private List<DataUnitStats> _stats;

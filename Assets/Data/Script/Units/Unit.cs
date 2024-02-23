@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //||Bременно||
@@ -19,14 +20,16 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||Временно||
 
     protected NavMeshAgent _meshAgent;
+    protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
-    protected Path _path;
     protected Vector3 _targetPoint;
     protected Scout _scout;
     protected SpriteRenderer _spriteRenderer;
+    protected Quaternion _startRotation;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
+    public NavMeshAgent MeshAgent => _meshAgent;
 
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
@@ -66,14 +69,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _name = name;
 
         EnemyCounter = counter;
+        _rigidbody = GetComponent<Rigidbody2D>();
         _meshAgent = GetComponent<NavMeshAgent>();
         _meshAgent.speed = Speed;
-        //_path = path;
         _targetPoint = targetPoint;
+        _startRotation = transform.rotation;
 
         _scout = new Scout(counter, transform, VisibilityRange);
         _scout.ChangeTarget += OnChangeTarget;
-
         _stateMachine = new StateMachine(this);
 
         CreateState();
@@ -85,7 +88,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             throw new System.NotImplementedException("Stats Null");
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.material.color = warriorData.Color;
+
+        if (warriorData.Sprite != null)
+            _spriteRenderer.sprite = warriorData.Sprite;
+        else
+            throw new System.NotImplementedException("Sprite Null");
+
         HealPoint = warriorData.HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;
@@ -119,6 +127,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _stateMachine.Update();
             CurrentState = _stateMachine.CurrentTextState;//временно
             Pathboll = _meshAgent.hasPath;
+
+            if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
+                transform.rotation = _startRotation;
         }
     }
 
@@ -143,10 +154,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Died?.Invoke(this);
     }
 
-    protected int SearchStartPointId()
-    {
-        return Mathf.Abs((transform.position - _path.StandartPath[0].transform.position).magnitude) < Mathf.Abs((transform.position - _path.StandartPath[_path.StandartPath.Count - 1].transform.position).magnitude) ? 0 : _path.StandartPath.Count - 1;
-    }
+    //protected int SearchStartPointId()
+    //{
+    //    return Mathf.Abs((transform.position - _path.StandartPath[0].transform.position).magnitude) < Mathf.Abs((transform.position - _path.StandartPath[_path.StandartPath.Count - 1].transform.position).magnitude) ? 0 : _path.StandartPath.Count - 1;
+    //}
 
     private void OnChangeTarget(IEntity entity)
     {
@@ -158,11 +169,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _target = false;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(Position, VisibilityRange);
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireSphere(Position, AttckRange);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(Position, VisibilityRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Position, AttckRange);
+    }
 }

@@ -14,10 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnTime: 2
   WaveTimeSpawn: 15
-  Waves:
-  - SubWaves:
-    - Parts:
-      - TypeUnit: 0
-        UnitVar: 0
-        Number: 3
-      TimeNextSubWave: 0
+  Waves: []
