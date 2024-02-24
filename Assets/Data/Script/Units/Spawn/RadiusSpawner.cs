@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class RadiusSpawner : MonoBehaviour
 {
+    [SerializeField] private HealthBar _healthBarPrefab;
+
     //[SerializeField] private List<Unit> _units = new List<Unit>();
     [SerializeField] private Unit _prefabUnit;
     [SerializeField] private WarriorData _stats1;
@@ -27,6 +30,7 @@ public class RadiusSpawner : MonoBehaviour
 
     private bool _isReady = true;
     private float _time = 0;
+
 
     private void Update()
     {
@@ -79,7 +83,10 @@ public class RadiusSpawner : MonoBehaviour
                         _playerUnit.Add(newUnit);
                     else
                         _enemyUnit.Add(newUnit);
-                     
+
+                    //HealthBar healthBar = Instantiate(_healthBarPrefab, newUnit.transform);
+                    //newUnit.healthBar = healthBar;
+
 
                     currentCastle.Counter.AddEntity(newUnit);
                     newUnit.Died += OnDied;
@@ -129,4 +136,5 @@ public class RadiusSpawner : MonoBehaviour
 
         _trash.AddQueue(unit);
     }
+
 }
