@@ -14,8 +14,10 @@ public class BarracksData : ScriptableObject
     public DataStructure DataStructure;
 
     [Header("UnitPrefab")]
-    public List<PrefabUnit> Prefabs = new List<PrefabUnit>();
-    public List<StatsPrefab> StatsPrefab = new List<StatsPrefab>();
+    public DataUnitPrefab Prefabs;
+    public DataUnitStats Stats;
+
+    public List<StatsPrefab> StatsPrefab => Stats.StatsPrefab;
 
     private PointCreator _pointCreator;
 

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Castle : MonoBehaviour, IStructur, IEntity
 {
     private float _healPoint;
+    private bool _isAlive = true;
     private Trash _trash;
 
     private List<Barrack> _barracks;
@@ -17,7 +18,11 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public int Money { get; private set; }
     public float MaxHealPoint { get; private set; }
     public Counter Counter { get; private set; }
+    public Counter EnemyCounter { get; private set; }
     public string Name { get; private set; }
+    public PointCreator PointCreator { get; private set; }
+
+    public bool IsAlive => _isAlive;
 
     public event UnityAction<float> HealPointChange;
 
@@ -29,7 +34,9 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     public void Destruct()
     {
+        _isAlive = false;
         Counter.DeleteEntity(this);
+        _trash.AddQueue(this);
     }
 
     public void GetDamage(float damage)
@@ -42,28 +49,23 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             Destruct();
     }
 
-    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, List<Tower> towers, BarracksData dataStructureBarracks, List<Path> paths, Trash trash)
+    public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
     {
         InitializeStruct(dataGameInfo.DataStructure);
 
         Counter = new Counter();
         Money = dataGameInfo.StartMoney;
-        Name = dataGameInfo.name;
+        Name = dataGameInfo.Name;
+        dataGameInfo.DataStructure.Name = Name;
+        dataStructureBarracks.DataStructure.Name = Name;
         _barracks = structurs;
         _trash = trash;
+        PointCreator = pointCreator;
 
         for (int i = 0; i < structurs.Count; i++)
         {
-            structurs[i].InitializeBarracks(dataStructureBarracks, paths[i], Counter, trash);
+            structurs[i].InitializeBarracks(dataStructureBarracks, Counter, trash);
             structurs[i].DestroyBarrack += OnDestroyBarrack;
-        }
-
-        if (towers!=null)
-        {
-            for (int i = 0; i < towers.Count; i++)
-            {
-                towers[i].Initialization(Counter, trash);
-            }
         }
     }
 
@@ -82,6 +84,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     public void SetEnemyCounter(Counter enemyCounter)
     {
+        EnemyCounter = enemyCounter;
+
         foreach (var barrack in _barracks)
         {
             barrack.SetEnemyCounter(enemyCounter);

@@ -15,6 +15,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private int _income;
     private float _maxHealPoint;
     private float _healPoint;
+    private bool _isAlive = true;
 
     private float _spawnTimeUnit;
     private float _waveTimeSpawn;
@@ -30,7 +31,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private int _id = 0;//time
 
-    private Path _path;
     private Counter _counter;
     private Counter _enemyCounter;
     private PointCreator _pointCreator;
@@ -46,11 +46,14 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     public GameObject GameObject => gameObject;
     public Vector3 Position => transform.position;
 
+    public bool IsAlive => _isAlive;
+
     public event UnityAction<Barrack> EndWave;
     public event UnityAction DestroyBarrack;
 
     public void Destruct()
     {
+        _isAlive = false;
         DestroyBarrack?.Invoke();
         _counter.DeleteEntity(this);
         _trash.AddQueue(this);
@@ -66,11 +69,10 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _spawnPoint = transform.GetChild(0);
     }
 
-    public void InitializeBarracks(BarracksData barracksData, Path path, Counter counter, Trash trash)
+    public void InitializeBarracks(BarracksData barracksData, Counter counter, Trash trash)
     {
         InitializeStruct(barracksData.DataStructure);
 
-        _path = path;
         _counter = counter;
         _pointCreator = barracksData.PointCreator;
         _trash = trash;
@@ -81,7 +83,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _waves = barracksData.SpawnerData.Waves;
         _isWait = barracksData.IsWait;
 
-        foreach (PrefabUnit prefab in barracksData.Prefabs)
+        foreach (PrefabUnit prefab in barracksData.Prefabs.Prefabs)
             _unitsPrefab.Add(prefab.TypeUnit, prefab.Prefab);
 
         foreach (StatsPrefab StatsPrefab in barracksData.StatsPrefab)
