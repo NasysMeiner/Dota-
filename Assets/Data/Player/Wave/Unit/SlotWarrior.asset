@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlotWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  Sprite: {fileID: 21300000, guid: 045b316b23ecab446b535da4ad7377d4, type: 3}
+  Sprite: {fileID: 21300000, guid: eadc0a921ae9bc24da964cd98696f7a8, type: 3}
   HealPoint: 494
   AttackDamage: 5
   AttackRange: 1
