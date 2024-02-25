@@ -58,9 +58,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IEntity enemy) && enemy == _target)
         {
             _updateEffect?.StopEffect();
-
             enemy?.GetDamage(_damage);
-
             Destroy();
         }
     }
@@ -83,7 +81,7 @@ public class Bullet : MonoBehaviour
 
     private void CheckTargetPosition()
     {
-        if(_target.IsAlive)
+        if (_target.IsAlive)
             _entityPosition = _target.Position;
     }
 

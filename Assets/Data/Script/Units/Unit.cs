@@ -10,7 +10,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||Bременно||
     public string CurrentState;
     public bool Pathboll;
-    public bool isEnemy;
     public int _id;
     public string _name;
     public bool _target = false;
@@ -46,6 +45,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public event UnityAction<Unit> Died;
 
+    //
+    public HealthBar healthBar;
+    public float MaxHealth;
+    public event UnityAction<float> HealthChanged;
+    //
+
     private void OnDisable()
     {
         UnitOnDisable();
@@ -53,12 +58,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private void Update()
     {
-        UnitUpdate();
+        if (_isAlive)
+            UnitUpdate();
     }
 
     private void LateUpdate()
     {
-        UnitLateUpdate();
+        if (_isAlive)
+            UnitLateUpdate();
     }
 
     public void ChangePosition(Vector3 position)
@@ -115,7 +122,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             Die();
             isDie = true;
+            CurrentTarget = null;
         }
+
+        HealthChanged?.Invoke(HealPoint);
+
+        UpdateHealthBar();
     }
 
     protected virtual void UnitOnDisable()
@@ -176,4 +188,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Position, AttckRange);
     }
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(HealPoint);
+        }
+    }
+
 }

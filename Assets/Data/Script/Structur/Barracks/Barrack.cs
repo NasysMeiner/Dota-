@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class Barrack : MonoBehaviour, IStructur, IEntity
 {
-    public bool isEnemy;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Transform _spawnPoint;
     private string _name;
@@ -28,6 +28,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private bool _isWait = false;
     private bool _isSpawn = true;
     private bool _isEnd = false;
+    private bool _isDead = false;
 
     private int _id = 0;//time
 
@@ -35,6 +36,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private Counter _enemyCounter;
     private PointCreator _pointCreator;
     private Trash _trash;
+    private Effect _effectDamage;
+    private Effect _effectDestruct;
 
     private Warrior _unitPrefab;
     private Dictionary<TypeUnit, Unit> _unitsPrefab = new Dictionary<TypeUnit, Unit>();
@@ -56,7 +59,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _isAlive = false;
         DestroyBarrack?.Invoke();
         _counter.DeleteEntity(this);
-        _trash.AddQueue(this);
     }
 
     public void InitializeStruct(DataStructure dataStructure)
@@ -67,6 +69,12 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
         _healPoint = _maxHealPoint;
         _spawnPoint = transform.GetChild(0);
+
+        if (dataStructure.EffectDamage != null)
+            _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
+
+        if (dataStructure.EffectDestruct != null)
+            _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
     }
 
     public void InitializeBarracks(BarracksData barracksData, Counter counter, Trash trash)
@@ -99,8 +107,15 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         _healPoint -= damage;
 
-        if (_healPoint <= 0)
-            Destruct();
+        if (_healPoint <= 0 && _isDead == false)
+        {
+            _healPoint = 0;
+            _isDead = true;
+            StartCoroutine(DestructEffetc());
+        }
+
+        if (_effectDamage != null)
+            _effectDamage.StartEffect();
     }
 
     public int GetIncome()
@@ -203,7 +218,6 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         unit.LoadStats(warriorData);
         unit.InitUnit(_pointCreator.CreateRangePoint, _enemyCounter, _id++, Name);
         unit.ChangePosition(_spawnPoint.position);
-        unit.isEnemy = isEnemy;
         _id++;
     }
 
@@ -222,5 +236,19 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         unit.Died -= OnDied;
         _counter.DeleteEntity(unit);
         _trash.AddQueue(unit);
+    }
+
+    private IEnumerator DestructEffetc()
+    {
+        if (_effectDestruct != null)
+        {
+            Destruct();
+            _spriteRenderer.enabled = false;
+            _effectDestruct.StartEffect();
+
+            yield return new WaitForSeconds(_effectDestruct.Duration);
+
+            _trash.AddQueue(this);
+        }
     }
 }

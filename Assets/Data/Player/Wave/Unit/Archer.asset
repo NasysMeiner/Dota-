@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
-  m_Name: StandartArcher
+  m_Name: Archer
   m_EditorClassIdentifier: 
   Type: 1
   Sprite: {fileID: 21300000, guid: 0ef48568154db494c8be5861eebfca8f, type: 3}

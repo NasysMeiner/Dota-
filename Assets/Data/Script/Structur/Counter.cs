@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class Counter
 {
-    public List<IEntity> Entity = new List<IEntity>();
+    public List<IEntity> Entity = new();
 
     public event UnityAction<IEntity> Delete;
 
     public void AddEntity(IEntity entity)
     {
-        if(entity == null)
+        if (entity == null)
             throw new System.NotImplementedException("entity Null");
 
         if (!Entity.Contains(entity))
