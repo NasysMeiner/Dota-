@@ -22,7 +22,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private bool _isAlive = true;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
-    protected HealthBarUpdater _healthBarUpdater;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
@@ -44,7 +43,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float AttckRange { get; protected set; }
     public float MaxHealthPoint { get; private set; }
     public float HealPoint { get; protected set; }
-    public float MaxHealthPoint { get; private set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
     public float ApproximationFactor { get; protected set; }

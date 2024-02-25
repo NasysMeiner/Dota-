@@ -17,7 +17,6 @@ public class HealthBarUpdater : MonoBehaviour
             return;
         }
 
-        Debug.Log(_unit.MaxHealthPoint + " " + _unit.HealPoint);
         healthBar.SetMaxHealth(_unit.MaxHealthPoint);
         healthBar.SetHealth(_unit.HealPoint);
 
