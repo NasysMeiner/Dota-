@@ -7,6 +7,8 @@ public class Effect : MonoBehaviour
 {
     private ParticleSystem _particleSystem;
 
+    public float Duration => _particleSystem.main.duration;
+
     private void Awake()
     {
         _particleSystem = GetComponent<ParticleSystem>();
