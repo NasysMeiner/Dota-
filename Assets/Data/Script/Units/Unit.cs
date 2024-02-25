@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(HealthBarUpdater))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //||Bременно||
@@ -21,6 +22,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private bool _isAlive = true;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
+    protected HealthBarUpdater _healthBarUpdater;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
@@ -37,6 +39,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public string Name { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
+    public float MaxHealthPoint { get; private set; }
     public float HealPoint { get; protected set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
@@ -47,7 +50,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     //
     public HealthBar healthBar;
-    public float MaxHealth;
     public event UnityAction<float> HealthChanged;
     //
 
@@ -95,10 +97,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void LoadStats(WarriorData warriorData)
     {
-        if(warriorData == null)
-            throw new System.NotImplementedException("Stats Null");
-
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _healthBarUpdater = GetComponent<HealthBarUpdater>();
+
+        if (warriorData == null)
+            throw new System.NotImplementedException("Stats Null");
 
         if (warriorData.Sprite != null)
             _spriteRenderer.sprite = warriorData.Sprite;
@@ -106,12 +109,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             throw new System.NotImplementedException("Sprite Null");
 
         HealPoint = warriorData.HealPoint;
+        MaxHealthPoint = HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;
         VisibilityRange = warriorData.VisibilityRange;
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+
+        _healthBarUpdater.InitHealthBar(this);
     }
 
     public virtual void GetDamage(float damage)
