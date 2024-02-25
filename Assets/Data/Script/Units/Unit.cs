@@ -27,6 +27,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Scout _scout;
     protected SpriteRenderer _spriteRenderer;
     protected Quaternion _startRotation;
+    protected Effect _effectAttack;
 
     private Effect _effectDamage;
     private HealthBarUpdater _healthBarUpdater;
@@ -119,7 +120,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
 
-        _effectDamage = warriorData.EffectDamage;
+
+        if(warriorData.EffectDamage != null)
+            _effectDamage = Instantiate(warriorData.EffectDamage, transform);
+
+        if(warriorData.EffectAttack != null)
+            _effectAttack = Instantiate(warriorData.EffectAttack, transform);
 
         _healthBarUpdater.InitHealthBar(this);
     }
@@ -154,7 +160,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (_stateMachine != null && _stateMachine.CurrentState != null)
         {
             _stateMachine.Update();
-            CurrentState = _stateMachine.CurrentTextState;//��������
+            CurrentState = _stateMachine.CurrentTextState;
             Pathboll = _meshAgent.hasPath;
 
             if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
@@ -164,7 +170,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected virtual void CreateState()
     {
-        _stateMachine.AddState(new AttackState(_stateMachine));
+        _stateMachine.AddState(new AttackState(_stateMachine, _effectAttack));
         _stateMachine.AddState(new WalkState(_stateMachine, _targetPoint, _meshAgent));
         _stateMachine.AddState(new IdleState(_stateMachine));
 

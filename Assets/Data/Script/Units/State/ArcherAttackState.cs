@@ -6,7 +6,7 @@ public class ArcherAttackState : AttackState
 {
     private Archer _archer;
 
-    public ArcherAttackState(StateMachine stateMachine) : base(stateMachine) { }
+    public ArcherAttackState(StateMachine stateMachine, Effect atackEffect) : base(stateMachine, atackEffect) { }
 
     protected override void MakeDamage()
     {

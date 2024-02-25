@@ -31,4 +31,6 @@ public class WarriorData : ScriptableObject
     public float ApproximationFactor;
 
     public Effect EffectDamage;
+
+    public Effect EffectAttack;
 }

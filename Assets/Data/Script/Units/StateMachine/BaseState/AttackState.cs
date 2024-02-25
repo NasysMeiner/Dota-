@@ -3,10 +3,12 @@ using UnityEngine;
 public class AttackState : State
 {
     private float _time = 0;
+    private Effect _effectAtack;
 
-    public AttackState(StateMachine stateMachine) : base(stateMachine)
+    public AttackState(StateMachine stateMachine, Effect attackEffect) : base(stateMachine)
     {
         StateName = "Attack";//временно
+        _effectAtack = attackEffect;
     }
 
     public override void Enter()
@@ -38,6 +40,7 @@ public class AttackState : State
                 {
                     _time = _stateMachine.Warrior.AttackSpeed;
                     MakeDamage();
+                    MakeEffectAtack();
                 }
                 else if (leanght > _stateMachine.Warrior.AttckRange)
                 {
@@ -55,5 +58,10 @@ public class AttackState : State
     protected virtual void MakeDamage()
     {
         _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
+    }
+
+    private void MakeEffectAtack()
+    {
+        _effectAtack.StartEffect();
     }
 }
