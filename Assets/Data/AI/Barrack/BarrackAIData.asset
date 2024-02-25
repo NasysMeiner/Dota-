@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
   m_Name: BarrackAIData
   m_EditorClassIdentifier: 
-  Name: AI
   Income: 10
   MaxHealpPoint: 50
+  EffectDamage: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}
+  EffectDestruct: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}
