@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent (typeof(HealthBarUpdater))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
-    //||Bременно||
+    //||BпїЅпїЅпїЅпїЅпїЅпїЅпїЅ||
     public string CurrentState;
     public bool Pathboll;
     public int _id;
@@ -17,11 +17,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public string Targettt;
     public int _pointId = 0;
     public bool isDie = false;
-    //||Временно||
+    //||пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ||
 
     private bool _isAlive = true;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
+    protected HealthBarUpdater _healthBarUpdater;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
@@ -41,6 +42,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public string Name { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
+    public float MaxHealthPoint { get; private set; }
     public float HealPoint { get; protected set; }
     public float MaxHealthPoint { get; private set; }
     public float VisibilityRange { get; protected set; }
@@ -52,7 +54,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     //
     public HealthBar healthBar;
-    public float MaxHealth;
     public event UnityAction<float> HealthChanged;
     //
 
@@ -155,7 +156,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (_stateMachine != null && _stateMachine.CurrentState != null)
         {
             _stateMachine.Update();
-            CurrentState = _stateMachine.CurrentTextState;//временно
+            CurrentState = _stateMachine.CurrentTextState;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Pathboll = _meshAgent.hasPath;
 
             if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
