@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class Tower : MonoBehaviour, IEntity, IStructur
 {
     [SerializeField] private TowerRadius _towerRadius;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private bool _drawRadius;
 
@@ -22,7 +24,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private Counter _counter;
     private Unit _currentTarget = null;
 
-    private Effect _effect;
+    private Effect _effectDamage;
+    private Effect _effectDestruct;
 
     private float _time = 0;
 
@@ -67,7 +70,6 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _isAlive = false;
         _currentTarget = null;
         _counter.DeleteEntity(this);
-        _trash.AddQueue(this);
     }
 
     public void GetDamage(float damage)
@@ -78,11 +80,11 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         {
             _healPoint = 0;
             _isDead = true;
-            Destruct();
+            StartCoroutine(DestructEffetc());
         }
 
-        if (_effect != null)
-            _effect.StartEffect();
+        if (_effectDamage != null)
+            _effectDamage.StartEffect();
     }
 
     public void SetName(string name)
@@ -113,7 +115,10 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _healPoint = _maxHealPoint;
 
         if(dataStructure.EffectDamage != null)
-            _effect = Instantiate(dataStructure.EffectDamage, transform);
+            _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
+
+        if (dataStructure.EffectDestruct != null)
+            _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
     }
 
     private void ShootTarget()
@@ -134,6 +139,20 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         Vector3 resultVector = new Vector3(x, y, _currentTarget.Position.z);
 
         return resultVector;
+    }
+
+    private IEnumerator DestructEffetc()
+    {
+        if (_effectDestruct != null)
+        {
+            Destruct();
+            _spriteRenderer.enabled = false;
+            _effectDestruct.StartEffect();
+
+            yield return new WaitForSeconds(_effectDestruct.Duration);
+
+            _trash.AddQueue(this);
+        }
     }
 
     private void OnDrawGizmos()

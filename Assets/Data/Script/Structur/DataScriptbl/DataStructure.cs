@@ -9,7 +9,9 @@ public class DataStructure : ScriptableObject
     [Range(1, 100)]
     public float MaxHealpPoint;
 
-    public Effect EffectDamage; 
+    public Effect EffectDamage;
+
+    public Effect EffectDestruct;
 
     public string Name { get; set; }
 }

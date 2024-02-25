@@ -5,17 +5,22 @@ using UnityEngine.Events;
 
 public class Castle : MonoBehaviour, IStructur, IEntity
 {
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+
     private float _healPoint;
     private bool _isAlive = true;
     private bool _isDead = false;
+    private bool _isTarget = false;
 
     private Trash _trash;
-    private Effect _effect;
+    private Effect _effectDamage;
+    private Effect _effectDestruct;
 
     private List<Barrack> _barracks;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
+    public bool IsAlive => _isAlive;
 
     public int Income { get; private set; }
     public int Money { get; private set; }
@@ -25,13 +30,11 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public string Name { get; private set; }
     public PointCreator PointCreator { get; private set; }
 
-    public bool IsAlive => _isAlive;
-
     public event UnityAction<float> HealPointChange;
 
     private void OnDisable()
     {
-        foreach(var barracks in _barracks)
+        foreach (var barracks in _barracks)
             barracks.DestroyBarrack -= OnDestroyBarrack;
     }
 
@@ -39,7 +42,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     {
         _isAlive = false;
         Counter.DeleteEntity(this);
-        _trash.AddQueue(this);
     }
 
     public void GetDamage(float damage)
@@ -52,11 +54,11 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         {
             _healPoint = 0;
             _isDead = true;
-            Destruct();
+            StartCoroutine(DestructEffetc());
         }
 
-        if (_effect != null)
-            _effect.StartEffect();
+        if (_effectDamage != null)
+            _effectDamage.StartEffect();
     }
 
     public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
@@ -87,7 +89,10 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         _healPoint = MaxHealPoint;
 
         if (dataStructure.EffectDamage != null)
-            _effect = Instantiate(dataStructure.EffectDamage, transform);
+            _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
+
+        if(dataStructure.EffectDestruct != null)
+            _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
     }
 
     public void InitializeEvent()
@@ -112,6 +117,24 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     private void OnDestroyBarrack()
     {
-        Counter.AddEntity(this);
+        if(_isTarget == false)
+        {
+            _isTarget = true;
+            Counter.AddEntity(this);
+        }
+    }
+
+    private IEnumerator DestructEffetc()
+    {
+        if(_effectDestruct != null)
+        {
+            Destruct();
+            _spriteRenderer.enabled = false;
+            _effectDestruct.StartEffect();
+
+            yield return new WaitForSeconds(_effectDestruct.Duration);
+
+            _trash.AddQueue(this);
+        }    
     }
 }

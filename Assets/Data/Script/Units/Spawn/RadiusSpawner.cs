@@ -1,27 +1,21 @@
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class RadiusSpawner : MonoBehaviour
 {
     [SerializeField] private HealthBar _healthBarPrefab;
 
-    //[SerializeField] private List<Unit> _units = new List<Unit>();
-    [SerializeField] private Unit _prefabUnit;
-    [SerializeField] private WarriorData _stats1;
-
     [SerializeField] private float _cooldownSpawn = 2f;
-    //[SerializeField] private float _radius = 15.3f;
+    [SerializeField] private float _radius = 7f;
 
-    private Dictionary<TypeUnit, Unit> _prefabs = new Dictionary<TypeUnit, Unit>();
+    private Dictionary<TypeUnit, Unit> _prefabs = new();
     private List<DataUnitStats> _stats;
 
     private List<Radius> _radiusList;
     private List<Castle> _castleList;
 
-    private List<Unit> _playerUnit = new List<Unit>();
-    private List<Unit> _enemyUnit = new List<Unit>();
+    private List<Unit> _playerUnit = new();
+    private List<Unit> _enemyUnit = new();
 
     private Trash _trash;
 
@@ -52,6 +46,10 @@ public class RadiusSpawner : MonoBehaviour
         _trash = trash;
         _radiusList = radiusList;
         _castleList = castleList;
+
+        foreach (Radius radius in _radiusList)
+            radius.InitRadius(_radius);
+
     }
 
     private void OnClick()
@@ -71,7 +69,7 @@ public class RadiusSpawner : MonoBehaviour
                     Unit newUnit = null;
                     Castle currentCastle = _castleList[_currentCastleSpawn];
 
-                    if(_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
+                    if (_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
                         stat = _stats[_currentCastleSpawn].StatsPrefab[_currentUnitId].WarriorData;
                     else
                         stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
@@ -79,14 +77,13 @@ public class RadiusSpawner : MonoBehaviour
                     if (_prefabs.TryGetValue(stat.Type, out Unit prefab))
                         newUnit = Instantiate(prefab);
 
-                    if(_currentCastleSpawn == 0)
+                    if (_currentCastleSpawn == 0)
                         _playerUnit.Add(newUnit);
                     else
                         _enemyUnit.Add(newUnit);
 
                     //HealthBar healthBar = Instantiate(_healthBarPrefab, newUnit.transform);
                     //newUnit.healthBar = healthBar;
-
 
                     currentCastle.Counter.AddEntity(newUnit);
                     newUnit.Died += OnDied;
@@ -112,7 +109,7 @@ public class RadiusSpawner : MonoBehaviour
 
     private bool CheckInSpawn(Vector3 point)
     {
-        for(int i = 0; i < _radiusList.Count; i++)
+        for (int i = 0; i < _radiusList.Count; i++)
         {
             if (_radiusList[i].CheckInRadius(point))
             {
@@ -129,7 +126,7 @@ public class RadiusSpawner : MonoBehaviour
     {
         unit.Died -= OnDied;
 
-        if(unit.EnemyCounter == _castleList[0].EnemyCounter)
+        if (unit.EnemyCounter == _castleList[0].EnemyCounter)
             _castleList[0].Counter.DeleteEntity(unit);
         else
             _castleList[1].Counter.DeleteEntity(unit);

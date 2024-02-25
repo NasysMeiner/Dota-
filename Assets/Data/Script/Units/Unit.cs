@@ -10,7 +10,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||Bременно||
     public string CurrentState;
     public bool Pathboll;
-    public bool isEnemy;
     public int _id;
     public string _name;
     public bool _target = false;
