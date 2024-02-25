@@ -28,6 +28,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private bool _isWait = false;
     private bool _isSpawn = true;
     private bool _isEnd = false;
+    private bool _isDead = false;
 
     private int _id = 0;//time
 
@@ -35,6 +36,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private Counter _enemyCounter;
     private PointCreator _pointCreator;
     private Trash _trash;
+    private Effect _effect;
 
     private Warrior _unitPrefab;
     private Dictionary<TypeUnit, Unit> _unitsPrefab = new Dictionary<TypeUnit, Unit>();
@@ -67,6 +69,9 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
         _healPoint = _maxHealPoint;
         _spawnPoint = transform.GetChild(0);
+
+        if (dataStructure.EffectDamage != null)
+            _effect = Instantiate(dataStructure.EffectDamage, transform);
     }
 
     public void InitializeBarracks(BarracksData barracksData, Counter counter, Trash trash)
@@ -99,8 +104,15 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         _healPoint -= damage;
 
-        if (_healPoint <= 0)
+        if (_healPoint <= 0 && _isDead == false)
+        {
+            _healPoint = 0;
+            _isDead = true;
             Destruct();
+        }
+
+        if (_effect != null)
+            _effect.StartEffect();
     }
 
     public int GetIncome()

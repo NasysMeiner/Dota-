@@ -7,7 +7,10 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 {
     private float _healPoint;
     private bool _isAlive = true;
+    private bool _isDead = false;
+
     private Trash _trash;
+    private Effect _effect;
 
     private List<Barrack> _barracks;
 
@@ -45,8 +48,15 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
         HealPointChange?.Invoke(_healPoint);
 
-        if (_healPoint <= 0)
+        if (_healPoint <= 0 && _isDead == false)
+        {
+            _healPoint = 0;
+            _isDead = true;
             Destruct();
+        }
+
+        if (_effect != null)
+            _effect.StartEffect();
     }
 
     public void InitializeCastle(DataGameInfo dataGameInfo, List<Barrack> structurs, BarracksData dataStructureBarracks, Trash trash, PointCreator pointCreator)
@@ -75,6 +85,9 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         MaxHealPoint = dataStructure.MaxHealpPoint;
 
         _healPoint = MaxHealPoint;
+
+        if (dataStructure.EffectDamage != null)
+            _effect = Instantiate(dataStructure.EffectDamage, transform);
     }
 
     public void InitializeEvent()

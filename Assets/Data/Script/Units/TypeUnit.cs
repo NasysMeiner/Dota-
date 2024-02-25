@@ -9,6 +9,6 @@ public enum VariertyUnit
 {
     StandartWarrior,
     TankWarrior,
-    SlotWarrior,
+    Archer,
     StandartArcher
 }

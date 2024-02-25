@@ -22,6 +22,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private Counter _counter;
     private Unit _currentTarget = null;
 
+    private Effect _effect;
+
     private float _time = 0;
 
     public Vector3 Position => transform.position;
@@ -53,7 +55,6 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public void ChangeTarget(Unit unit)
     {
         _currentTarget = unit;
-        Debug.Log(_currentTarget);
     }
 
     public void ChangePosition(Vector3 position)
@@ -79,6 +80,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             _isDead = true;
             Destruct();
         }
+
+        if (_effect != null)
+            _effect.StartEffect();
     }
 
     public void SetName(string name)
@@ -107,6 +111,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _income = dataStructure.Income;
         _maxHealPoint = dataStructure.MaxHealpPoint;
         _healPoint = _maxHealPoint;
+
+        if(dataStructure.EffectDamage != null)
+            _effect = Instantiate(dataStructure.EffectDamage, transform);
     }
 
     private void ShootTarget()
@@ -119,14 +126,12 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private Vector3 CalculeutVector(Bullet bullet)
     {
-        Vector3 resultVector = _currentTarget.Position;
-
         float time = (_currentTarget.Position - transform.position).magnitude / bullet.Speed;
 
         float x = _currentTarget.Position.x + time * _currentTarget.MeshAgent.velocity.x;
         float y = _currentTarget.Position.y + time * _currentTarget.MeshAgent.velocity.x;
 
-        resultVector = new Vector3(x, y, _currentTarget.Position.z);
+        Vector3 resultVector = new Vector3(x, y, _currentTarget.Position.z);
 
         return resultVector;
     }
