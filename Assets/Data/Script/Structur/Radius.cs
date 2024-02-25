@@ -17,9 +17,9 @@ public class Radius : MonoBehaviour
         return Mathf.Abs((point - transform.position).magnitude) <= _radius;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, _radius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.white;
+    //    Gizmos.DrawWireSphere(transform.position, _radius);
+    //}
 }
