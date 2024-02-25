@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent (typeof(HealthBarUpdater))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //||Bременно||
@@ -27,6 +28,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected SpriteRenderer _spriteRenderer;
     protected Quaternion _startRotation;
 
+    private Effect _effectDamage;
+    private HealthBarUpdater _healthBarUpdater;
+
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
     public NavMeshAgent MeshAgent => _meshAgent;
@@ -38,6 +42,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
     public float HealPoint { get; protected set; }
+    public float MaxHealthPoint { get; private set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
     public float ApproximationFactor { get; protected set; }
@@ -95,10 +100,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void LoadStats(WarriorData warriorData)
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _healthBarUpdater = GetComponent<HealthBarUpdater>();
+
         if(warriorData == null)
             throw new System.NotImplementedException("Stats Null");
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (warriorData.Sprite != null)
             _spriteRenderer.sprite = warriorData.Sprite;
@@ -106,12 +112,17 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             throw new System.NotImplementedException("Sprite Null");
 
         HealPoint = warriorData.HealPoint;
+        MaxHealthPoint = HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;
         VisibilityRange = warriorData.VisibilityRange;
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+
+        _effectDamage = warriorData.EffectDamage;
+
+        _healthBarUpdater.InitHealthBar(this);
     }
 
     public virtual void GetDamage(float damage)
@@ -124,6 +135,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             isDie = true;
             CurrentTarget = null;
         }
+
+        if (_effectDamage != null)
+            _effectDamage.StartEffect();
 
         HealthChanged?.Invoke(HealPoint);
 

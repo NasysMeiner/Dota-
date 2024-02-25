@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Unit))]
 public class HealthBarUpdater : MonoBehaviour
 {
     private HealthBar healthBar;
-    private Unit _unit; 
+    private Unit _unit;
 
-    void Start()
+    public void InitHealthBar(Unit unit)
     {
-        _unit = GetComponent<Unit>();
+        _unit = unit;
         healthBar = GetComponentInChildren<HealthBar>();
 
         if (healthBar == null)
@@ -19,12 +16,12 @@ public class HealthBarUpdater : MonoBehaviour
             return;
         }
 
-        healthBar.SetMaxHealth(_unit.MaxHealth);
+        healthBar.SetMaxHealth(_unit.MaxHealthPoint);
         healthBar.SetHealth(_unit.HealPoint);
 
         _unit.HealthChanged += UpdateHealthBar;
 
-        UpdateHealthBar(_unit.MaxHealth);
+        UpdateHealthBar(_unit.MaxHealthPoint);
     }
 
     void OnDestroy()
