@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
         {
             _timeDestroy += Time.deltaTime;
 
-            if (_timeDestroy >= _timeEndEffect + 0.5f)
+            if (_timeDestroy >= _timeEndEffect)
                 Destroy(gameObject);
         }
 
@@ -72,11 +72,11 @@ public class Bullet : MonoBehaviour
 
     private void Destroy()
     {
+        if (_endEffect != null && _isDestroy == false)
+            StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
+
         _isDestroy = true;
         _rigidbody.velocity = Vector3.zero;
-
-        if (_endEffect != null)
-            StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
     }
 
     private void CheckTargetPosition()
