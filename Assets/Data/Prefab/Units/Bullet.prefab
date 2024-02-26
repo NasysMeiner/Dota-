@@ -106,7 +106,7 @@ MonoBehaviour:
   _timeStartEffect: 0
   _updateEffect: {fileID: 2022397045514786585}
   _endEffect: {fileID: 4615578305223431994}
-  _timeEndEffect: 10
+  _timeEndEffect: 0.2
 --- !u!58 &4470804474966191575
 CircleCollider2D:
   m_ObjectHideFlags: 0

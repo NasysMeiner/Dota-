@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sprite: {fileID: 21300000, guid: 5e82b2c55179f004c9094791b70b33a1, type: 3}
-  HealPoint: 1000
-  AttackDamage: 10
+  HealPoint: 1930
+  AttackDamage: 120
   AttackRange: 1
   VisibilityRange: 2
   AttackSpeed: 1.5
-  Speed: 2
+  Speed: 1
   ApproximationFactor: 0.5
+  EffectDamage: {fileID: 0}
