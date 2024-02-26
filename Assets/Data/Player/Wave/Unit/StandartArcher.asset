@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: StandartArcher
   m_EditorClassIdentifier: 
   Type: 1
-  Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
-  HealPoint: 10
-  AttackDamage: 10
+  Sprite: {fileID: 21300000, guid: 0ef48568154db494c8be5861eebfca8f, type: 3}
+  HealPoint: 119
+  AttackDamage: 42
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
-  Speed: 1
+  Speed: 2
   ApproximationFactor: 1
   EffectDamage: {fileID: 0}
-  EffectAttack: {fileID: 0}
   Bullet: {fileID: 4470804474966191576, guid: 8b45feccd7227634c9a9c6750795aa12, type: 3}
