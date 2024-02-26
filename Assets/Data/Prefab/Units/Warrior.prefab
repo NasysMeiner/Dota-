@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -7101169011790584590}
   - component: {fileID: 762856216877324568}
   - component: {fileID: 17728816200721101}
+  - component: {fileID: 7712800665875093922}
   m_Layer: 6
   m_Name: Warrior
   m_TagString: Untagged
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.65, y: 10.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -177,8 +178,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.57}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 6.65, y: 10.14}
+    newSize: {x: 6.65, y: 10.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -238,6 +239,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94096dd6e1d6e6646959a236838f5255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7712800665875093922
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499846042804253687}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdc72e0aa6b7b81459f5bb810165e910, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3112576035351902322
 PrefabInstance:
   m_ObjectHideFlags: 0

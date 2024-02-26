@@ -62,6 +62,6 @@ public class AttackState : State
 
     private void MakeEffectAtack()
     {
-        _effectAtack.StartEffect();
+        _effectAtack?.StartEffect();
     }
 }
