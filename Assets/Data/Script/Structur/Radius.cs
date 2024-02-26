@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Radius : MonoBehaviour
 {
     private float _radius;
 
-    private void Awake()
+    public void InitRadius(float radius)
     {
-        _radius = 4f;
+        _radius = radius;
+        transform.localScale = new Vector3(_radius * 2, _radius * 2, 1);
     }
 
     public bool CheckInRadius(Vector3 point)
@@ -17,4 +16,10 @@ public class Radius : MonoBehaviour
 
         return Mathf.Abs((point - transform.position).magnitude) <= _radius;
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.white;
+    //    Gizmos.DrawWireSphere(transform.position, _radius);
+    //}
 }

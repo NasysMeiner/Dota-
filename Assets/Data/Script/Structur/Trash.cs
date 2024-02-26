@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] private float _timeDelete = 2f;
+    [SerializeField] private float _timeDelete = 4f;
 
     private Queue<IEntity> _queue = new Queue<IEntity>();
     private bool _isActive = false;
@@ -27,7 +27,6 @@ public class Trash : MonoBehaviour
             yield return new WaitForSeconds(_timeDelete);
 
             IEntity entity = _queue.Dequeue();
-            //Debug.Log(_queue.Count);
             Destroy(entity.GameObject);
 
             if (_queue.Count <= 0)

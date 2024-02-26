@@ -5,19 +5,19 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent (typeof(HealthBarUpdater))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
-    //||Bременно||
+    //||BпїЅпїЅпїЅпїЅпїЅпїЅпїЅ||
     public string CurrentState;
     public bool Pathboll;
-    public bool isEnemy;
     public int _id;
     public string _name;
     public bool _target = false;
     public string Targettt;
     public int _pointId = 0;
     public bool isDie = false;
-    //||Временно||
+    //||пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ||
 
     private bool _isAlive = true;
     protected NavMeshAgent _meshAgent;
@@ -27,6 +27,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Scout _scout;
     protected SpriteRenderer _spriteRenderer;
     protected Quaternion _startRotation;
+
+    private Effect _effectDamage;
+    private HealthBarUpdater _healthBarUpdater;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
@@ -38,6 +41,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public string Name { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
+    public float MaxHealthPoint { get; private set; }
     public float HealPoint { get; protected set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
@@ -46,6 +50,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public event UnityAction<Unit> Died;
 
+    //
+    public HealthBar healthBar;
+    public event UnityAction<float> HealthChanged;
+    //
+
     private void OnDisable()
     {
         UnitOnDisable();
@@ -53,12 +62,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private void Update()
     {
-        UnitUpdate();
+        if (_isAlive)
+            UnitUpdate();
     }
 
     private void LateUpdate()
     {
-        UnitLateUpdate();
+        if (_isAlive)
+            UnitLateUpdate();
     }
 
     public void ChangePosition(Vector3 position)
@@ -88,10 +99,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void LoadStats(WarriorData warriorData)
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _healthBarUpdater = GetComponent<HealthBarUpdater>();
+
         if(warriorData == null)
             throw new System.NotImplementedException("Stats Null");
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (warriorData.Sprite != null)
             _spriteRenderer.sprite = warriorData.Sprite;
@@ -99,12 +111,17 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             throw new System.NotImplementedException("Sprite Null");
 
         HealPoint = warriorData.HealPoint;
+        MaxHealthPoint = HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;
         VisibilityRange = warriorData.VisibilityRange;
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+
+        _effectDamage = warriorData.EffectDamage;
+
+        _healthBarUpdater.InitHealthBar(this);
     }
 
     public virtual void GetDamage(float damage)
@@ -115,7 +132,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             Die();
             isDie = true;
+            CurrentTarget = null;
         }
+
+        if (_effectDamage != null)
+            _effectDamage.StartEffect();
+
+        HealthChanged?.Invoke(HealPoint);
+
+        UpdateHealthBar();
     }
 
     protected virtual void UnitOnDisable()
@@ -129,7 +154,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (_stateMachine != null && _stateMachine.CurrentState != null)
         {
             _stateMachine.Update();
-            CurrentState = _stateMachine.CurrentTextState;//временно
+            CurrentState = _stateMachine.CurrentTextState;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Pathboll = _meshAgent.hasPath;
 
             if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
@@ -176,4 +201,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Position, AttckRange);
     }
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(HealPoint);
+        }
+    }
+
 }

@@ -19,13 +19,11 @@ public class CompositRootStart : CompositeRoot
     {
         foreach (var barrack in _barracksPlayer)
         {
-            barrack.isEnemy = false;
             barrack.SpawnUnits();
         }
 
         foreach (var barrack in _barracksAi)
         {
-            barrack.isEnemy = true;
             barrack.SpawnUnits();
         }
 
