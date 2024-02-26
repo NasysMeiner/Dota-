@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  Sprite: {fileID: 21300000, guid: f024ecf3b71ea1c41a0c54d57ae7e8d1, type: 3}
+  Sprite: {fileID: 21300000, guid: 307989f081e1c554eac82313fff4fa67, type: 3}
   HealPoint: 30
   AttackDamage: 5
   AttackRange: 1
@@ -21,3 +21,5 @@ MonoBehaviour:
   AttackSpeed: 1.5
   Speed: 2
   ApproximationFactor: 0.5
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}

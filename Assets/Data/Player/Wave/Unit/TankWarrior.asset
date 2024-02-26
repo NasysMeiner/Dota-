@@ -20,4 +20,6 @@ MonoBehaviour:
   VisibilityRange: 2
   AttackSpeed: 1.5
   Speed: 2
-  ApproximationFactor: 0.5
+  ApproximationFactor: 0.75
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}
