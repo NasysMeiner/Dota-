@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DataStructTowerAI
   m_EditorClassIdentifier: 
   Income: 0
-  MaxHealpPoint: 100
+  MaxHealpPoint: 1000
   EffectDamage: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}
   EffectDestruct: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}

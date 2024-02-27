@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TankWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  Sprite: {fileID: 21300000, guid: 0a6cb4fcb816c7644a7136be485596ab, type: 3}
-  HealPoint: 1000
-  AttackDamage: 5
+  Sprite: {fileID: 21300000, guid: 3b218ff1bca71a842a8d23f1712234ab, type: 3}
+  HealPoint: 1930
+  AttackDamage: 120
   AttackRange: 1
-  VisibilityRange: 2
+  VisibilityRange: 4
   AttackSpeed: 1.5
   Speed: 2
   ApproximationFactor: 0.75
