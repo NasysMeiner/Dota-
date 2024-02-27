@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent (typeof(HealthBarUpdater))]
+[RequireComponent(typeof(HealthBarUpdater))]
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
+    //Временно
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
+    [SerializeField] protected Animator _animator;
+
     //||B�������||
     public string CurrentState;
     public bool Pathboll;
@@ -25,12 +28,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
-    protected SpriteRenderer _spriteRenderer;
     protected Quaternion _startRotation;
     protected Effect _effectAttack;
 
     private Effect _effectDamage;
     private HealthBarUpdater _healthBarUpdater;
+    private AnimateChanger _animateChanger;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
@@ -95,21 +98,32 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _scout.ChangeTarget += OnChangeTarget;
         _stateMachine = new StateMachine(this);
 
+        _animateChanger = new AnimateChanger();
+        _animateChanger.Init(_animator);
+
         CreateState();
     }
 
     public virtual void LoadStats(WarriorData warriorData)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _healthBarUpdater = GetComponent<HealthBarUpdater>();
 
-        if(warriorData == null)
+        if (warriorData == null)
             throw new System.NotImplementedException("Stats Null");
 
-        if (warriorData.Sprite != null)
-            _spriteRenderer.sprite = warriorData.Sprite;
+        if (warriorData.Avatar != null)
+        {
+            _animator.runtimeAnimatorController = warriorData.Avatar;
+            _animator.transform.localScale = Vector3.one * 0.3f; //Temporarily, there are no animations yet
+        }
         else
-            throw new System.NotImplementedException("Sprite Null");
+        {
+            if (warriorData.Sprite != null)
+                _spriteRenderer.sprite = warriorData.Sprite;
+            else
+                throw new System.NotImplementedException("Sprite Null");
+            _animator.transform.localScale = Vector3.one;//Temporarily, there are no animations yet
+        }
 
         HealPoint = warriorData.HealPoint;
         MaxHealthPoint = HealPoint;
@@ -121,10 +135,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         ApproximationFactor = warriorData.ApproximationFactor;
 
 
-        if(warriorData.EffectDamage != null)
+        if (warriorData.EffectDamage != null)
             _effectDamage = Instantiate(warriorData.EffectDamage, transform);
 
-        if(warriorData.EffectAttack != null)
+        if (warriorData.EffectAttack != null)
             _effectAttack = Instantiate(warriorData.EffectAttack, transform);
 
         _healthBarUpdater.InitHealthBar(this);
@@ -163,8 +177,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             CurrentState = _stateMachine.CurrentTextState;
             Pathboll = _meshAgent.hasPath;
 
-            if(_meshAgent.velocity.x != 0)
-                _spriteRenderer.flipX = _meshAgent.velocity.x < 0;
+            if (_meshAgent.velocity.x != 0)
+                _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
 
             if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
                 transform.rotation = _startRotation;
@@ -173,9 +187,17 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected virtual void CreateState()
     {
-        _stateMachine.AddState(new AttackState(_stateMachine, _effectAttack));
-        _stateMachine.AddState(new WalkState(_stateMachine, _targetPoint, _meshAgent));
-        _stateMachine.AddState(new IdleState(_stateMachine));
+        State state = new AttackState(_stateMachine, _effectAttack);
+        state.onEnter += _animateChanger.OnPlayHit;
+        _stateMachine.AddState(state);
+
+        state = new WalkState(_stateMachine, _targetPoint, _meshAgent);
+        state.onEnter += _animateChanger.OnPlayWalk;
+        _stateMachine.AddState(state);
+
+        state = new IdleState(_stateMachine);
+        state.onEnter += _animateChanger.OnPlayDamage;
+        _stateMachine.AddState(state);
 
         _stateMachine.SetState<WalkState>();
     }

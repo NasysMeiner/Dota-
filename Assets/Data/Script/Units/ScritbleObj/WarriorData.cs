@@ -7,6 +7,8 @@ public class WarriorData : ScriptableObject
 
     //public Color Color;
 
+    public RuntimeAnimatorController Avatar;
+
     public Sprite Sprite;
 
     [Range(1, 100000)]

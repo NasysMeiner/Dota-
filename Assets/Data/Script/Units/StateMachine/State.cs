@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class State
 {
     protected readonly StateMachine _stateMachine;
     protected bool _isWork = false;
-    
+
+    public event UnityAction onEnter;
 
     public string StateName {  get; protected set; } //временно
 
@@ -22,4 +24,9 @@ public abstract class State
     public virtual void Exit() { }
 
     public virtual void Update() { }
+
+    public void ActionInvoke()
+    {
+       onEnter?.Invoke();
+    }
 }
