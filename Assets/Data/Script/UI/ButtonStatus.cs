@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +6,8 @@ using UnityEngine.UI;
 public class ButtonStatus : MonoBehaviour
 {
     [SerializeField] private Color _activeColor;
+    [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _price;
 
     private Color _standartColor;
     private Image _image;
@@ -25,5 +26,15 @@ public class ButtonStatus : MonoBehaviour
     public void InActiveButton()
     {
         _image.color = _standartColor;
+    }
+
+    public void SetName(string name)
+    {
+        _name.text = name;
+    }
+
+    public void SetPrice(int price)
+    {
+        _price.text = price.ToString();
     }
 }

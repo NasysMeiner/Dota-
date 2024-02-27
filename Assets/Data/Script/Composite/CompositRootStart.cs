@@ -10,6 +10,9 @@ public class CompositRootStart : CompositeRoot
     [Header("BarrackAi")]
     [SerializeField] private List<Barrack> _barracksAi;
 
+    [Header("Bank")]
+    [SerializeField] private Bank _bank;
+
     public override void Compose()
     {
         StartGame();
@@ -26,6 +29,8 @@ public class CompositRootStart : CompositeRoot
         {
             barrack.SpawnUnits();
         }
+
+        _bank.StartBank();
 
         //_barracksPlayer[0].SpawnUnits();
         //_barracksPlayer[0].isEnemy = false;

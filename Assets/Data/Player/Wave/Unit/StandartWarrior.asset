@@ -24,3 +24,5 @@ MonoBehaviour:
   ApproximationFactor: 0.5
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
+  Price: 10
+  Stats: []

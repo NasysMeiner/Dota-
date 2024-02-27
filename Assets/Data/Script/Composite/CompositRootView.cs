@@ -7,6 +7,7 @@ public class CompositRootView : CompositeRoot
     [SerializeField] private Castle _castlePlayer;
     [SerializeField] private List<Heart> _hearts;
     [SerializeField] private HealPointView _healPointView;
+    [SerializeField] private GoldView _goldView;
 
     [Header("Spawn")]
     [SerializeField] private List<ViewSprite> _images;
@@ -22,5 +23,6 @@ public class CompositRootView : CompositeRoot
     {
         _healPointView.Initialize(_castlePlayer, _hearts);
         _buttonUnitView.Init(_radiusSpawner, _images);
+        _goldView.InitGoldView(_castlePlayer.CashAccount);
     }
 }

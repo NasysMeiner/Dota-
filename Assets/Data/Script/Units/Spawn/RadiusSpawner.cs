@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class RadiusSpawner : MonoBehaviour
 {
-    [SerializeField] private HealthBar _healthBarPrefab;
-
     [SerializeField] private float _cooldownSpawn = 2f;
     [SerializeField] private float _radius = 7f;
 
@@ -18,6 +16,7 @@ public class RadiusSpawner : MonoBehaviour
     private List<Unit> _enemyUnit = new();
 
     private Trash _trash;
+    private Bank _bank;
 
     private int _currentCastleSpawn = -1;
     private int _currentUnitId = -1;
@@ -37,30 +36,44 @@ public class RadiusSpawner : MonoBehaviour
             OnClick();
     }
 
-    public void Init(List<Radius> radiusList, List<Castle> castleList, List<PrefabUnit> prefabs, List<DataUnitStats> stats, Trash trash)
+    public void Init(List<Radius> radiusList, List<Castle> castleList, List<PrefabUnit> prefabs, List<DataUnitStats> stats, Bank bank, Trash trash)
     {
         foreach (PrefabUnit unit in prefabs)
             _prefabs.Add(unit.TypeUnit, unit.Prefab);
 
         _stats = stats;
         _trash = trash;
+        _bank = bank;
         _radiusList = radiusList;
         _castleList = castleList;
 
         foreach (Radius radius in _radiusList)
             radius.InitRadius(_radius);
+    }
 
+    public void ChangeActiveUnit(int id)
+    {
+        _currentUnitId = id;
+    }
+
+    public int GetPriceUnit(int id)
+    {
+        return _stats[0].StatsPrefab[id].WarriorData.Price;
+    }
+
+    public string GetNameUnit(int id)
+    {
+        return _stats[0].StatsPrefab[id].WarriorData.Type.ToString();
     }
 
     private void OnClick()
     {
         if (_isReady)
         {
-            RaycastHit hit;
             Ray myRay;
 
             myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(myRay, out hit, 100))
+            if (Physics.Raycast(myRay, out RaycastHit hit, 100))
             {
                 if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
                 {
@@ -74,37 +87,34 @@ public class RadiusSpawner : MonoBehaviour
                     else
                         stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
 
-                    if (_prefabs.TryGetValue(stat.Type, out Unit prefab))
+                    if (_prefabs.TryGetValue(stat.Type, out Unit prefab) && _bank.Pay(stat.Price, currentCastle.Name))
+                    {
                         newUnit = Instantiate(prefab);
 
-                    if (_currentCastleSpawn == 0)
-                        _playerUnit.Add(newUnit);
+                        if (_currentCastleSpawn == 0)
+                            _playerUnit.Add(newUnit);
+                        else
+                            _enemyUnit.Add(newUnit);
+
+                        currentCastle.Counter.AddEntity(newUnit);
+                        newUnit.Died += OnDied;
+                        newUnit.LoadStats(stat);
+                        newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
+                        newUnit.ChangePosition(hit.point);
+
+                        _time = 0;
+                    }
                     else
-                        _enemyUnit.Add(newUnit);
-
-                    //HealthBar healthBar = Instantiate(_healthBarPrefab, newUnit.transform);
-                    //newUnit.healthBar = healthBar;
-
-                    currentCastle.Counter.AddEntity(newUnit);
-                    newUnit.Died += OnDied;
-                    newUnit.LoadStats(stat);
-                    newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
-                    newUnit.ChangePosition(hit.point);
-                    //Debug.Log(hit.point + " Spawn");
+                    {
+                        Debug.Log("No money");
+                    }
                 }
                 else
                 {
                     //Debug.Log("Nononono");
                 }
             }
-
-            _time = 0;
         }
-    }
-
-    public void ChangeActiveUnit(int id)
-    {
-        _currentUnitId = id;
     }
 
     private bool CheckInSpawn(Vector3 point)

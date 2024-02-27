@@ -20,19 +20,32 @@ public class CompositRootOther : CompositeRoot
     [SerializeField] private List<Tower> _towerListAI;
     [SerializeField] private TowerData _towerDataAi;
 
+    [Header("Bank")]
+    [SerializeField] private Bank _bank;
+    [SerializeField] private float _timeAddMoney = 3f;
+
     public override void Compose()
     {
-        Init();
+        InitTowers();
+        InitBank();
     }
 
-    private void Init()
+    private void InitTowers()
     {
-        _radiusSpawner.Init(_radiusList, _castleList, _prefabUnit.Prefabs, _dataStats, _trash);
+        _radiusSpawner.Init(_radiusList, _castleList, _prefabUnit.Prefabs, _dataStats, _bank, _trash);
 
         foreach(Tower item in _towerListPlayer)
             item.Initialization(_towerDataPlayer, _trash, _castleList[0].Counter);
 
         foreach (Tower item in _towerListAI)
             item.Initialization(_towerDataAi, _trash, _castleList[1].Counter);
+    }
+
+    private void InitBank()
+    {
+        _bank.InitBank(_timeAddMoney);
+
+        foreach (Castle castle in _castleList)
+            _bank.AddCashAccount(castle.CashAccount);
     }
 }

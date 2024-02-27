@@ -29,6 +29,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public Counter EnemyCounter { get; private set; }
     public string Name { get; private set; }
     public PointCreator PointCreator { get; private set; }
+    public CashAccount CashAccount { get; private set; }
 
     public event UnityAction<float> HealPointChange;
 
@@ -73,6 +74,8 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         _barracks = structurs;
         _trash = trash;
         PointCreator = pointCreator;
+
+        CashAccount = new CashAccount(Name, Income);
 
         for (int i = 0; i < structurs.Count; i++)
         {

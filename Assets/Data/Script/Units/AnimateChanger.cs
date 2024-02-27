@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimateChanger : MonoBehaviour
+public class AnimateChanger
 {
     private Animator _animator;
 
@@ -13,16 +11,19 @@ public class AnimateChanger : MonoBehaviour
 
     public void OnPlayWalk()
     {
-        _animator.Play("Walk");
+        if(_animator.avatar != null)
+            _animator.Play("Walk");
     }
 
     public void OnPlayHit()
     {
-        _animator.Play("Hit");
+        if (_animator.avatar != null)
+            _animator.Play("Hit");
     }
 
     public void OnPlayDamage()
     {
-        _animator.Play("Damage");
+        if (_animator.avatar != null)
+            _animator.Play("Damage");
     }
 }

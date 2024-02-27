@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ButtonUnitView : MonoBehaviour
 {
-    [SerializeField] private List<ButtonStatus> _buttons = new List<ButtonStatus>();
+    [SerializeField] private List<ButtonStatus> _buttons = new();
 
     private RadiusSpawner _radiusSpawner;
     private List<ViewSprite> _images;
@@ -14,6 +14,12 @@ public class ButtonUnitView : MonoBehaviour
     {
         _radiusSpawner = radiusSpawner;
         _images = images;
+
+        for(int i = 0; i < _buttons.Count; i++)
+        {
+            _buttons[i].SetName(_radiusSpawner.GetNameUnit(i));
+            _buttons[i].SetPrice(_radiusSpawner.GetPriceUnit(i));
+        }
     }
 
     public void ChangeUnit(ButtonStatus button)
