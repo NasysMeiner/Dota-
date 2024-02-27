@@ -240,10 +240,11 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private IEnumerator DestructEffetc()
     {
+        Destruct();
+        _spriteRenderer.enabled = false;
+
         if (_effectDestruct != null)
         {
-            Destruct();
-            _spriteRenderer.enabled = false;
             _effectDestruct.StartEffect();
 
             yield return new WaitForSeconds(_effectDestruct.Duration);
