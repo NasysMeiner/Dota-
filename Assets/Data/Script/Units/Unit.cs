@@ -114,7 +114,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (warriorData.Avatar != null)
         {
             _animator.runtimeAnimatorController = warriorData.Avatar;
-            _animator.transform.localScale = Vector3.one * 0.3f; //Temporarily, there are no animations yet
+            _animator.transform.localScale = Vector3.one * 0.25f; //Temporarily, there are no animations yet
         }
         else
         {
