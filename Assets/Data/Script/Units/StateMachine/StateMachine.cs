@@ -40,6 +40,7 @@ public class StateMachine
             CurrentState?.Exit();
             CurrentState = newState;
             CurrentState?.Enter();
+            CurrentState?.ActionInvoke();
             CurrentTextState = CurrentState.StateName;
         }
     }
