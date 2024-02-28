@@ -15,6 +15,6 @@ MonoBehaviour:
   Damage: 10
   SpeedAttack: 1
   AttackRange: 7
-  Bullet: {fileID: 4470804474966191576, guid: 0b62406734066b7469695aac5ca4106d, type: 3}
+  Bullet: {fileID: 4470804474966191576, guid: 560e9adae54e4954b8876357f2303953, type: 3}
   DataStructure: {fileID: 11400000, guid: 0b067062cc545324b9b1036a0d723335, type: 2}
   DrawRadius: 0
