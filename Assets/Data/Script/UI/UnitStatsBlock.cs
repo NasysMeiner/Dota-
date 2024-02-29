@@ -9,10 +9,14 @@ public class UnitStatsBlock : MonoBehaviour
     [SerializeField] private StatView _attackSpeed;
 
     private int _id;
+    private string _name;
+    private UpgrateStatsView _statsView;
 
-    public void InitUnitStatsView(int id)
+    public void InitUnitStatsView(int id, string name, UpgrateStatsView upgrateStatsView)
     {
         _id = id;
+        _name = name;
+        _statsView = upgrateStatsView;
     }
 
     public void UpdateValuesStats(StatsContainer statsContainer)
