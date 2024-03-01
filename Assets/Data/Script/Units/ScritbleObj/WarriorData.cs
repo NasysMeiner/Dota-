@@ -7,6 +7,8 @@ public class WarriorData : ScriptableObject
 {
     public TypeUnit Type;
 
+    public string Name;
+
     [Header("Graphic arts")]
 
     public RuntimeAnimatorController Avatar;
@@ -54,6 +56,7 @@ public class WarriorData : ScriptableObject
     public virtual void LoadStat(WarriorData warriorData)
     {
         Type = warriorData.Type;
+        Name = warriorData.Name;
 
         Avatar = warriorData.Avatar;
         Sprite = warriorData.Sprite;

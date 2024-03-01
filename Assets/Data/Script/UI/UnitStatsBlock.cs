@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UnitStatsBlock : MonoBehaviour
 {
-    [SerializeField] private List<TypeStat> _types = new(); 
+    [SerializeField] private List<TypeStat> _types = new();
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private StatView _healthPoint;
     [SerializeField] private StatView _attack;
     [SerializeField] private StatView _attackSpeed;
@@ -21,6 +23,7 @@ public class UnitStatsBlock : MonoBehaviour
 
     public void UpdateValuesStats(StatsContainer statsContainer)
     {
+        _nameText.text = statsContainer.Name;
         _healthPoint.UpdateValues(statsContainer.Health);
         _attack.UpdateValues(statsContainer.Attack);
         _attackSpeed.UpdateValues(statsContainer.AttackSpeed);
@@ -42,6 +45,7 @@ public class UnitStatsBlock : MonoBehaviour
 [System.Serializable]
 public class StatsContainer
 {
+    public string Name;
     public StatContainer Health { get; private set; }
     public StatContainer Attack { get; private set; }
     public StatContainer AttackSpeed { get; private set; }

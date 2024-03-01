@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class UpgrateStatsView : MonoBehaviour
@@ -8,7 +7,7 @@ public class UpgrateStatsView : MonoBehaviour
     private List<Content> _contents;
     private UnitStatsBlock _prefabBlock;
     private Dictionary<string, List<UnitStatsBlock>> _blocks = new();
-    private StatsContainer _container = new();
+    private readonly StatsContainer _container = new();
 
     private ChangerStats _changerStats;
 
@@ -19,7 +18,11 @@ public class UpgrateStatsView : MonoBehaviour
         _contents = containers;
         _changerStats = changerStats;
         _prefabBlock = prefabBlock;
-        _changerStats.AddStat += AddUnitBlocks;
+
+        foreach (var user in _changerStats.Users)
+            AddUnitBlocks(user.Key, user.Value.Count);
+
+        UpdateView();
     }
 
     public void AddUnitBlocks(string name, int count)
@@ -34,18 +37,18 @@ public class UpgrateStatsView : MonoBehaviour
                 unitStats.InitUnitStatsView(i, name, this);
                 unitStats.UpdateValuesStats(_container);
                 unitStatsBlocks.Add(unitStats);
-                _blocks.Add(name, unitStatsBlocks);
             }
 
+            _blocks.Add(name, unitStatsBlocks);
             _currentContainer++;
         }
     }
 
     public void UpdateView()
     {
-        foreach(var block in _blocks)
+        foreach (var block in _blocks)
         {
-            for(int i = 0; i < block.Value.Count; i++)
+            for (int i = 0; i < block.Value.Count; i++)
             {
                 LoadConteiner(block.Key, i);
                 block.Value[i].UpdateValuesStats(_container);
@@ -61,15 +64,16 @@ public class UpgrateStatsView : MonoBehaviour
         List<Stat> stats = containerPack.Stats;
         List<PriceStat> prices = containerPack.Prices;
 
-        int currentLevelNumber = 0;
+        int currentLevelStat;
+        int nextLevelStat;
+        int priceStat;
 
-        int currentLevelStat = 0;
-        int nextLevelStat = 0;
-        int priceStat = 0;
+        _container.Name = containerPack.Name;
 
         for (int i = 0; i < stats.Count; i++)
         {
-            currentLevelNumber = currentStats[i].CurrentLevel - 1;
+            int currentLevelNumber = currentStats[i].CurrentLevel - 1;
+            int nextLevelNumber = 0;
 
             if (currentLevelNumber < stats[i].Levels.Count)
                 currentLevelStat = stats[i].Levels[currentLevelNumber];
@@ -77,14 +81,20 @@ public class UpgrateStatsView : MonoBehaviour
                 throw new NotImplementedException("Level very high");
 
             if (currentLevelNumber + 1 < stats[i].Levels.Count)
-                nextLevelStat = stats[i].Levels[currentLevelStat + 1];
-            else
-                nextLevelStat = currentLevelStat;
-
-            if(currentLevelStat != nextLevelStat)
             {
-                if(currentLevelStat + 1 < prices[i].Price.Count)
-                    priceStat = prices[i].Price[currentLevelStat + 1];
+                nextLevelStat = stats[i].Levels[currentLevelNumber + 1];
+                nextLevelNumber = currentLevelNumber + 1;
+            }
+            else
+            {
+                nextLevelStat = currentLevelStat;
+                nextLevelNumber = currentLevelNumber;
+            }
+
+            if (currentLevelNumber != nextLevelNumber)
+            {
+                if (currentLevelStat + 1 < prices[i].Price.Count)
+                    priceStat = prices[i].Price[currentLevelNumber + 1];
                 else
                     priceStat = prices[i].Price[prices[i].Price.Count - 1];
             }

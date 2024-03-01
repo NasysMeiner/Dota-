@@ -2638,6 +2638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _types: 000000000100000002000000
+  _nameText: {fileID: 7697415498328974365}
   _healthPoint: {fileID: 6919967909806953587}
   _attack: {fileID: 2514635137859862686}
   _attackSpeed: {fileID: 1340111626276695178}

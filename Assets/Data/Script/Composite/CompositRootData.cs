@@ -4,31 +4,43 @@ public class CompositRootData : CompositeRoot
 {
     [SerializeField] private bool _isOverwrite;
 
-    [Header("PlayerUnit")]
+    [Header("Player")]
+    [SerializeField] private DataGameInfo _gameInfoPlayer;
     [SerializeField] private DataUnitStats _prefabUnitStatsPlayer;
     [SerializeField] private DataUnitStats _emptyUnitStatsPlayer;
 
-    [Header("PlayerAi")]
+    [Header("Ai")]
+    [SerializeField] private DataGameInfo _gameInfoAi;
     [SerializeField] private DataUnitStats _prefabUnitStatsAi;
     [SerializeField] private DataUnitStats _emptyUnitStatsAi;
+
+    [Header("System other")]
+    [SerializeField] private ChangerStats _changerStats;
 
     public override void Compose()
     {
         LoadDataPlayer();
         LoadDataAi();
+        ChangerStatsInit();
     }
 
-    public void LoadDataPlayer()
+    private void LoadDataPlayer()
     {
         if (_isOverwrite)
             for (int i = 0; i < _emptyUnitStatsPlayer.StatsPrefab.Count; i++)
                 _emptyUnitStatsPlayer.StatsPrefab[i].WarriorData.LoadStat(_prefabUnitStatsPlayer.StatsPrefab[i].WarriorData);
     }
 
-    public void LoadDataAi()
+    private void LoadDataAi()
     {
         if (_isOverwrite)
             for (int i = 0; i < _emptyUnitStatsPlayer.StatsPrefab.Count; i++)
                 _emptyUnitStatsAi.StatsPrefab[i].WarriorData.LoadStat(_prefabUnitStatsAi.StatsPrefab[i].WarriorData);
+    }
+
+    private void ChangerStatsInit()
+    {
+        _changerStats.AddUnitStat(_gameInfoPlayer.Name, _emptyUnitStatsPlayer);
+        _changerStats.AddUnitStat(_gameInfoAi.Name, _emptyUnitStatsAi);
     }
 }
