@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5ed965a43bc3346a451bcdc1cb98ca, type: 3}
+  m_Name: StandartWarrior
+  m_EditorClassIdentifier: 
+  Type: 0
+  Avatar: {fileID: 0}
+  Sprite: {fileID: 0}
+  HealPoint: 1
+  AttackDamage: 0.1
+  AttackRange: 0.1
+  VisibilityRange: 0.1
+  AttackSpeed: 0.1
+  Speed: 1
+  ApproximationFactor: 0.1
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}
+  Price: 0
+  CurrentStats: []
+  Stats: []
+  Prices: []

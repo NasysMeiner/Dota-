@@ -3862,7 +3862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1340, y: 24}
+  m_AnchoredPosition: {x: -0.000061035, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &157478138
@@ -9105,6 +9105,7 @@ GameObject:
   - component: {fileID: 493753299}
   - component: {fileID: 493753300}
   - component: {fileID: 493753304}
+  - component: {fileID: 493753306}
   - component: {fileID: 493753303}
   - component: {fileID: 493753305}
   - component: {fileID: 493753302}
@@ -9247,6 +9248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compositeRoots:
+  - {fileID: 493753306}
   - {fileID: 493753303}
   - {fileID: 493753305}
   - {fileID: 493753302}
@@ -9287,6 +9289,23 @@ MonoBehaviour:
   _towerDataAi: {fileID: 11400000, guid: 050c365e3609d8f4e9035e866deb16ba, type: 2}
   _bank: {fileID: 2068412911}
   _timeAddMoney: 3
+--- !u!114 &493753306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493753297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604d8ba84079bdd4dbcdc47b0f60b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isOverwrite: 1
+  _prefabUnitStatsPlayer: {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
+  _emptyUnitStatsPlayer: {fileID: 11400000, guid: 09fa0aef33d7fd6498ee4c606fd584d1, type: 2}
+  _prefabUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
+  _emptyUnitStatsAi: {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
 --- !u!1 &499071765
 GameObject:
   m_ObjectHideFlags: 0
@@ -27862,7 +27881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09966668, y: 0.057000004}
   m_AnchorMax: {x: 0.09966668, y: 0.057000004}
-  m_AnchoredPosition: {x: 1.0999756, y: 0.39996338}
+  m_AnchoredPosition: {x: 1375, y: 27}
   m_SizeDelta: {x: 114.98694, y: 80.88431}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632703653

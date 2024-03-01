@@ -25,4 +25,24 @@ MonoBehaviour:
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   Price: 10
-  Stats: []
+  CurrentStats:
+  - Type: 0
+    CurrentLevel: 1
+  - Type: 1
+    CurrentLevel: 1
+  - Type: 2
+    CurrentLevel: 1
+  Stats:
+  - Type: 0
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 1
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 2
+    Levels: 000000000000000000000000000000000000000000000000
+  Prices:
+  - Type: 0
+    Price: 64000000
+  - Type: 1
+    Price: 64000000
+  - Type: 2
+    Price: 64000000

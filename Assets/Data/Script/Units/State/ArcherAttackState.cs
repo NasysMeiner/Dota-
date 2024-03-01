@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArcherAttackState : AttackState
@@ -10,7 +8,7 @@ public class ArcherAttackState : AttackState
 
     protected override void MakeDamage()
     {
-        if(_archer == null)
+        if (_archer == null)
             _archer = _stateMachine.Warrior as Archer;
 
         Bullet bullet = _archer.CreateBullet();

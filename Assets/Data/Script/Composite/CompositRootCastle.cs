@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,8 +46,8 @@ public class CompositRootCastle : CompositeRoot
         _barracksDataPlayer.WriteData(_pointCreatorPlayer);
         _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _barracksDataPlayer, _trash, _pointCreatorPlayer);
         _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
-        
-        foreach(Tower tower in _towersPlayer)
+
+        foreach (Tower tower in _towersPlayer)
         {
             _castlePlayer.Counter.AddEntity(tower);
             tower.SetName(_castlePlayer.Name);

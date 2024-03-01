@@ -31,10 +31,10 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
-    
+
     public int Income => _income;
     public bool IsAlive => _isAlive;
-    public string Name => _name;    
+    public string Name => _name;
     public Unit CurrentTarget => _currentTarget;
 
     private void Update()
@@ -49,7 +49,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             {
                 _time = 0;
                 ShootTarget();
-            } 
+            }
         }
 
         _time += Time.deltaTime;
@@ -114,7 +114,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _maxHealPoint = dataStructure.MaxHealpPoint;
         _healPoint = _maxHealPoint;
 
-        if(dataStructure.EffectDamage != null)
+        if (dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
 
         if (dataStructure.EffectDestruct != null)
