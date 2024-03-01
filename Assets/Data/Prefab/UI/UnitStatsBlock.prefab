@@ -552,7 +552,6 @@ GameObject:
   - component: {fileID: 6221655458227842213}
   - component: {fileID: 6919967909806953587}
   - component: {fileID: 7570450202207523481}
-  - component: {fileID: 8152038344546361141}
   m_Layer: 5
   m_Name: HP
   m_TagString: Untagged
@@ -698,22 +697,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8152038344546361141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3385681189098078610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cc5643da66fca4e857e46ed311d13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _oldLevelText: {fileID: 0}
-  _newLevelText: {fileID: 0}
-  _priceText: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &4241255811737716481
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +709,6 @@ GameObject:
   - component: {fileID: 5459762588940298067}
   - component: {fileID: 2514635137859862686}
   - component: {fileID: 6862230265515803866}
-  - component: {fileID: 1392358855180929860}
   m_Layer: 5
   m_Name: Damage
   m_TagString: Untagged
@@ -872,22 +854,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1392358855180929860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4241255811737716481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cc5643da66fca4e857e46ed311d13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _oldLevelText: {fileID: 0}
-  _newLevelText: {fileID: 0}
-  _priceText: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &4254949288204123396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1136,6 @@ GameObject:
   - component: {fileID: 5102097460983271611}
   - component: {fileID: 1340111626276695178}
   - component: {fileID: 4015509859777604597}
-  - component: {fileID: 1882454009375133063}
   m_Layer: 5
   m_Name: AttackSpeed
   m_TagString: Untagged
@@ -1316,22 +1281,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1882454009375133063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4936922026123390388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cc5643da66fca4e857e46ed311d13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _oldLevelText: {fileID: 0}
-  _newLevelText: {fileID: 0}
-  _priceText: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &5159255521758245854
 GameObject:
   m_ObjectHideFlags: 0

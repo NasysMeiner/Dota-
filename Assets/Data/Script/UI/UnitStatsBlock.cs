@@ -38,7 +38,7 @@ public class UnitStatsBlock : MonoBehaviour
 
     public void IncreaseLevel(int typeStat)
     {
-
+        _statsView.IncreaseLevel(_name, typeStat, _id);
     }
 }
 

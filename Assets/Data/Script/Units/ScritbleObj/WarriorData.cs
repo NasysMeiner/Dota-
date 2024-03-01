@@ -74,9 +74,23 @@ public class WarriorData : ScriptableObject
 
         Price = warriorData.Price;
 
-        CurrentStats = warriorData.CurrentStats;
-        Stats = warriorData.Stats;
-        Prices = warriorData.Prices;
+        CurrentStats.Clear();
+        Stats.Clear();
+        Prices.Clear();
+
+        foreach(CurrentStat stat in warriorData.CurrentStats)
+        {
+            CurrentStat newStat = new();
+            newStat.Type = stat.Type;
+            newStat.CurrentLevel = stat.CurrentLevel;
+            CurrentStats.Add(newStat);
+        }
+
+        foreach (Stat stat in warriorData.Stats)
+            Stats.Add(stat);
+
+        foreach (PriceStat stat in warriorData.Prices)
+            Prices.Add(stat);
 
         if (Prices.Count < Stats.Count)
             throw new NotImplementedException("Not price stat");
@@ -89,6 +103,13 @@ public class WarriorData : ScriptableObject
             if (Prices[i].Price.Count == 0)
                 Prices[i].Price.Add(100);
         }
+    }
+
+    public void IncreaseLevel(ContainerPack containerPack)
+    {
+        HealPoint = containerPack.Stats[0].Levels[containerPack.CurrentStats[0].CurrentLevel - 1];
+        AttackDamage = containerPack.Stats[1].Levels[containerPack.CurrentStats[1].CurrentLevel - 1];
+        AttackSpeed = containerPack.Stats[2].Levels[containerPack.CurrentStats[2].CurrentLevel - 1];
     }
 }
 
