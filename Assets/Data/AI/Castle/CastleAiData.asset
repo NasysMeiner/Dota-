@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Income: 20
   MaxHealpPoint: 100
-  EffectDamage: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}
+  EffectDamage: {fileID: -1277435254148351930, guid: a50518a94987d354389ed17a3a24e126, type: 3}
   EffectDestruct: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}

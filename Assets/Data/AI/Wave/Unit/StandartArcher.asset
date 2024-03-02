@@ -32,4 +32,4 @@ MonoBehaviour:
     Levels: []
   - Type: 2
     Levels: []
-  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}
+  Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}
