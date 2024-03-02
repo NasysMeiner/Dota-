@@ -27,6 +27,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private Effect _effectDamage;
     private Effect _effectDestruct;
     private Effect _effectStart;
+    private float _timeStartEffect;
 
     private float _time = 0;
 
@@ -49,7 +50,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             else
             {
                 _time = 0;
-                ShootTarget();
+                StartCoroutine(ShootTarget());
             } 
         }
 
@@ -105,7 +106,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _drawRadius = towerData.DrawRadius;
 
         _towerRadius.InitTowerRadius(this, _attackRange);
-
+        
         InitializeStruct(towerData.DataStructure);
     }
 
@@ -125,15 +126,17 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             _effectStart = Instantiate(dataStructure.EffectStart, transform);
     }
 
-    private void ShootTarget()
+    private IEnumerator ShootTarget()
     {
+        if (_effectStart != null)
+            _effectStart.StartEffect();
+
+        yield return new WaitForSeconds(_timeStartEffect);
+
         Bullet bullet = Instantiate(_prefabBullet);
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
         bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
-
-        if(_effectStart != null)
-            _effectStart.StartEffect();
     }
 
     private Vector3 CalculeutVector(Bullet bullet)
