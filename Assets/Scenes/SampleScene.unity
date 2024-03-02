@@ -9327,6 +9327,7 @@ MonoBehaviour:
   _prefabUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
   _emptyUnitStatsAi: {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
   _changerStats: {fileID: 1801616538}
+  _bank: {fileID: 2068412911}
 --- !u!1 &499071765
 GameObject:
   m_ObjectHideFlags: 0

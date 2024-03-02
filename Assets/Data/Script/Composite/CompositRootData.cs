@@ -16,6 +16,7 @@ public class CompositRootData : CompositeRoot
 
     [Header("System other")]
     [SerializeField] private ChangerStats _changerStats;
+    [SerializeField] private Bank _bank;
 
     public override void Compose()
     {
@@ -40,6 +41,7 @@ public class CompositRootData : CompositeRoot
 
     private void ChangerStatsInit()
     {
+        _changerStats.InitChangerStats(_bank);
         _changerStats.AddUnitStat(_gameInfoPlayer.Name, _emptyUnitStatsPlayer);
         _changerStats.AddUnitStat(_gameInfoAi.Name, _emptyUnitStatsAi);
     }

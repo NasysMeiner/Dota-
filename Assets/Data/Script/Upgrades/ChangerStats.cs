@@ -7,14 +7,15 @@ public class ChangerStats : MonoBehaviour
     private readonly Dictionary<string, List<ContainerPack>> _users = new();
     private readonly Dictionary<string, List<WarriorData>> _unitsStats = new();
 
+    private Bank _bank;
 
     public Dictionary<string, List<ContainerPack>> Users => _users;
 
     public event UnityAction ChangeUnitStat;
 
-    public void InitChangerStats()
+    public void InitChangerStats(Bank bank)
     {
-
+        _bank = bank;
     }
 
     public void AddUnitStat(string name, DataUnitStats dataUnitStats)
@@ -39,16 +40,34 @@ public class ChangerStats : MonoBehaviour
         return _users[name][id];
     }
 
+    public int GetPrice(ContainerPack containerPack, int idStat)
+    {
+        int price;
+
+        if (containerPack.CurrentStats[idStat].CurrentLevel < containerPack.Prices[idStat].Price.Count)
+            price = containerPack.Prices[idStat].Price[containerPack.CurrentStats[idStat].CurrentLevel];
+        else
+            price = containerPack.Prices[idStat].Price[containerPack.Prices[idStat].Price.Count - 1];
+
+        return price;
+    }
+
     public void IncreaseLevel(string name, int idStat, int id)
     {
         ContainerPack containerPack = GetStatUnit(name, id);
-        bool isSuccess = containerPack.IncreaseLevel(idStat);
-
-        if (isSuccess)
+        if (containerPack.CheckLevelUp(idStat))
         {
-            WarriorData warriorData = _unitsStats[name][id];
-            warriorData.IncreaseLevel(containerPack);
-            ChangeUnitStat?.Invoke();
+            if (_bank.Pay(GetPrice(containerPack, idStat), name))
+            {
+                bool isSuccess = containerPack.IncreaseLevel(idStat);
+
+                if (isSuccess)
+                {
+                    WarriorData warriorData = _unitsStats[name][id];
+                    warriorData.IncreaseLevel(containerPack);
+                    ChangeUnitStat?.Invoke();
+                }
+            }
         }
     }
 }
@@ -72,15 +91,22 @@ public class ContainerPack
     public bool IncreaseLevel(int idStat)
     {
         CurrentStat currentStat = CurrentStats[idStat];
-        Stat stat = Stats[idStat];
 
-        if (currentStat.CurrentLevel + 1 <= stat.Levels.Count)
+        if (CheckLevelUp(idStat))
         {
-            currentStat.CurrentLevel = currentStat.CurrentLevel + 1;
+            currentStat.CurrentLevel++;
 
             return true;
         }
 
         return false;
+    }
+
+    public bool CheckLevelUp(int idStat)
+    {
+        CurrentStat currentStat = CurrentStats[idStat];
+        Stat stat = Stats[idStat];
+
+        return currentStat.CurrentLevel < stat.Levels.Count;
     }
 }
