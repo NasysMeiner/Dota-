@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ButtonUnitView : MonoBehaviour
 {
+    [SerializeField] private GameObject _spellSpwanZone;
     [SerializeField] private List<ButtonStatus> _buttons = new();
 
     private RadiusSpawner _radiusSpawner;
@@ -12,10 +13,11 @@ public class ButtonUnitView : MonoBehaviour
 
     public void Init(RadiusSpawner radiusSpawner, List<ViewSprite> images)
     {
+        _spellSpwanZone.SetActive(false);
         _radiusSpawner = radiusSpawner;
         _images = images;
 
-        for(int i = 0; i < _buttons.Count; i++)
+        for (int i = 0; i < _buttons.Count; i++)
         {
             _buttons[i].SetName(_radiusSpawner.GetNameUnit(i));
             _buttons[i].SetPrice(_radiusSpawner.GetPriceUnit(i));
@@ -52,6 +54,8 @@ public class ButtonUnitView : MonoBehaviour
 
     private void DrawRadius()
     {
+        _spellSpwanZone.SetActive(false);
+
         if (_currentButton != null)
             foreach (ViewSprite image in _images)
                 image.Active();
@@ -59,5 +63,33 @@ public class ButtonUnitView : MonoBehaviour
         if (_currentButton == null)
             foreach (ViewSprite image in _images)
                 image.InActive();
+    }
+
+    private void HideRadius()
+    {
+        foreach (ViewSprite image in _images)
+            image.InActive();
+    }
+
+    public void DrawSpellZone(ButtonStatus button)
+    {
+        _spellSpwanZone.SetActive(true);
+        HideRadius();
+
+        if (_currentButton != null)
+            _currentButton.InActiveButton();
+
+        if (button == _currentButton)
+        {
+            _currentButton = null;
+            _currentId = -1;
+
+            _spellSpwanZone.SetActive(false);
+
+            return;
+        }
+
+        _currentButton = button;
+        _currentButton.ActiveButton();
     }
 }
