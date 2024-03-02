@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7363759334894596198}
   - component: {fileID: 7363759334894596196}
   - component: {fileID: 7363759334894596197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e744aed2946c2734d8feed46141ceca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _towerRadius: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
 --- !u!1 &7363759335265325753
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected Animator _animator;
 
+    [SerializeField] private bool _isDrawRadius;
+    [SerializeField] protected Skill _skill;
+
     //||B�������||
     public string CurrentState;
     public bool Pathboll;
@@ -30,6 +33,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Scout _scout;
     protected Quaternion _startRotation;
     protected Effect _effectAttack;
+
+    protected Skill _slotOne;
+    protected Skill _slotTwo;
 
     private Effect _effectDamage;
     private HealthBarUpdater _healthBarUpdater;
@@ -134,6 +140,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
 
+        _slotOne = Instantiate(warriorData.Skill1, transform);
+        _slotTwo = Instantiate(warriorData.Skill2, transform);
 
         if (warriorData.EffectDamage != null)
             _effectDamage = Instantiate(warriorData.EffectDamage, transform);
@@ -148,7 +156,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     {
         HealPoint -= damage;
 
-        if (HealPoint <= 0)
+        if (HealPoint <= 0 && isDie == false)
         {
             Die();
             isDie = true;
@@ -212,6 +220,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     {
         _isAlive = false;
         _stateMachine.Stop();
+
+        if (_skill != null)
+            _skill.UseSkill(Name);
+
         Died?.Invoke(this);
     }
 
@@ -227,10 +239,13 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(Position, VisibilityRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(Position, AttckRange);
+        if (_isDrawRadius)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(Position, VisibilityRange);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(Position, AttckRange);
+        }  
     }
     private void UpdateHealthBar()
     {

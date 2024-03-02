@@ -136,7 +136,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         float x = _currentTarget.Position.x + time * _currentTarget.MeshAgent.velocity.x;
         float y = _currentTarget.Position.y + time * _currentTarget.MeshAgent.velocity.x;
 
-        Vector3 resultVector = new Vector3(x, y, _currentTarget.Position.z);
+        Vector3 resultVector = new(x, y, _currentTarget.Position.z);
 
         return resultVector;
     }

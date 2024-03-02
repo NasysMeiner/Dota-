@@ -47,6 +47,10 @@ public class WarriorData : ScriptableObject
 
     [Header("Stats")]
     public List<Stat> Stats = new();
+
+    [Header("Skills")]
+    public Skill Skill1;
+    public Skill Skill2;
 }
 
 [System.Serializable]
