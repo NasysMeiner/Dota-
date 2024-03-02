@@ -115,6 +115,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _income = dataStructure.Income;
         _maxHealPoint = dataStructure.MaxHealpPoint;
         _healPoint = _maxHealPoint;
+        _timeStartEffect = dataStructure.TimeStartEffect;
 
         if(dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
