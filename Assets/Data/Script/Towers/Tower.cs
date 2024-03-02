@@ -26,6 +26,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private Effect _effectDamage;
     private Effect _effectDestruct;
+    private Effect _effectStart;
 
     private float _time = 0;
 
@@ -119,6 +120,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
         if (dataStructure.EffectDestruct != null)
             _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
+
+        if(dataStructure.EffectStart != null)
+            _effectStart = Instantiate(dataStructure.EffectStart, transform);
     }
 
     private void ShootTarget()
@@ -127,6 +131,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
         bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+
+        if(_effectStart != null)
+            _effectStart.StartEffect();
     }
 
     private Vector3 CalculeutVector(Bullet bullet)

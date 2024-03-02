@@ -12,6 +12,7 @@ public class DataStructure : ScriptableObject
     public Effect EffectDamage;
 
     public Effect EffectDestruct;
+    public Effect EffectStart;
 
     public string Name { get; set; }
 }
