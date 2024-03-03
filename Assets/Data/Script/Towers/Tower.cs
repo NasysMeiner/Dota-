@@ -19,6 +19,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private float _healPoint;
     private bool _isAlive = true;
     private bool _isDead = false;
+    private bool _isShoot = false;
 
     private Trash _trash;
     private Counter _counter;
@@ -41,7 +42,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private void Update()
     {
-        if (_currentTarget != null && _time >= _speedAttack)
+        if (_currentTarget != null && _time >= _speedAttack && _isShoot)
         {
             if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange)
             {
@@ -49,6 +50,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             }
             else
             {
+                _isShoot = true;
                 StartCoroutine(ShootTarget());
             } 
         }
@@ -137,6 +139,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
         bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+        _isShoot = false;
         _time = 0;
     }
 
