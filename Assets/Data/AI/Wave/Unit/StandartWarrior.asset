@@ -23,7 +23,7 @@ MonoBehaviour:
   AttackSpeed: 1.2
   Speed: 2
   ApproximationFactor: 0.5
-  EffectDamage: {fileID: 0}
+  EffectDamage: {fileID: 8544384729409408119, guid: 11a6065dee486534eae3dce764222065, type: 3}
   EffectAttack: {fileID: 0}
   Price: 10
   CurrentStats:

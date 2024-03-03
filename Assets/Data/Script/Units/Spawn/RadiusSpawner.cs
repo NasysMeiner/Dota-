@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,9 @@ public class RadiusSpawner : MonoBehaviour
 {
     [SerializeField] private float _cooldownSpawn = 2f;
     [SerializeField] private float _radius = 7f;
+
+    [Space]
+    [SerializeField] private float _timeWaitDeath;
 
     private Dictionary<TypeUnit, Unit> _prefabs = new();
     private List<DataUnitStats> _stats;
@@ -141,7 +145,13 @@ public class RadiusSpawner : MonoBehaviour
         else
             _castleList[1].Counter.DeleteEntity(unit);
 
-        _trash.AddQueue(unit);
+        StartCoroutine(WaitTimeDeathEffect(unit));
     }
 
+    private IEnumerator WaitTimeDeathEffect(Unit unit)
+    {
+        yield return new WaitForSeconds(_timeWaitDeath);
+
+        _trash.AddQueue(unit);
+    }
 }

@@ -26,25 +26,5 @@ MonoBehaviour:
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   Price: 20
-  CurrentStats:
-  - Type: 0
-    CurrentLevel: 1
-  - Type: 1
-    CurrentLevel: 1
-  - Type: 2
-    CurrentLevel: 1
-  Stats:
-  - Type: 0
-    Levels: 000000000000000000000000000000000000000000000000
-  - Type: 1
-    Levels: 000000000000000000000000000000000000000000000000
-  - Type: 2
-    Levels: 000000000000000000000000000000000000000000000000
-  Prices:
-  - Type: 0
-    Price: 64000000
-  - Type: 1
-    Price: 64000000
-  - Type: 2
-    Price: 64000000
-  Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}
+  Stats: []
+  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}
