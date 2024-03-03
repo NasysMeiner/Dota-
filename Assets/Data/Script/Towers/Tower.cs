@@ -19,6 +19,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private float _healPoint;
     private bool _isAlive = true;
     private bool _isDead = false;
+    private bool _isShoot = false;
 
     private Trash _trash;
     private Counter _counter;
@@ -33,15 +34,15 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
-    
+
     public int Income => _income;
     public bool IsAlive => _isAlive;
-    public string Name => _name;    
+    public string Name => _name;
     public Unit CurrentTarget => _currentTarget;
 
     private void Update()
     {
-        if (_currentTarget != null && _time >= _speedAttack)
+        if (_currentTarget != null && _time >= _speedAttack && _isShoot == false)
         {
             if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange)
             {
@@ -49,9 +50,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             }
             else
             {
-                _time = 0;
+                _isShoot = true;
                 StartCoroutine(ShootTarget());
-            } 
+            }
         }
 
         _time += Time.deltaTime;
@@ -106,7 +107,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _drawRadius = towerData.DrawRadius;
 
         _towerRadius.InitTowerRadius(this, _attackRange);
-        
+
         InitializeStruct(towerData.DataStructure);
     }
 
@@ -117,27 +118,31 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _healPoint = _maxHealPoint;
         _timeStartEffect = dataStructure.TimeStartEffect;
 
-        if(dataStructure.EffectDamage != null)
+        if (dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
 
         if (dataStructure.EffectDestruct != null)
             _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
 
-        if(dataStructure.EffectStart != null)
+        if (dataStructure.EffectStart != null)
             _effectStart = Instantiate(dataStructure.EffectStart, transform);
     }
 
     private IEnumerator ShootTarget()
     {
         if (_effectStart != null)
+        {
             _effectStart.StartEffect();
 
-        yield return new WaitForSeconds(_timeStartEffect);
+            yield return new WaitForSeconds(_timeStartEffect);
+        }
 
         Bullet bullet = Instantiate(_prefabBullet);
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
         bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+        _isShoot = false;
+        _time = 0;
     }
 
     private Vector3 CalculeutVector(Bullet bullet)

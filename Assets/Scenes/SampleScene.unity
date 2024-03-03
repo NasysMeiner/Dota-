@@ -990,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1756265472}
+  _timeWaitDeath: 0.5
 --- !u!212 &27970504
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3074,6 +3075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 317153591}
+  _timeWaitDeath: 0.5
 --- !u!61 &82114972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5672,6 +5674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cooldownSpawn: 0.2
   _radius: 7
+  _timeWaitDeath: 1
 --- !u!4 &244427665
 Transform:
   m_ObjectHideFlags: 0
@@ -6122,6 +6125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1531314014}
+  _timeWaitDeath: 0.5
 --- !u!212 &284226283
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15007,6 +15011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1760959436}
+  _timeWaitDeath: 0.5
 --- !u!61 &916709694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16192,6 +16197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1912784610}
+  _timeWaitDeath: 0.5
 --- !u!212 &972254936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25370,6 +25376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1237750261}
+  _timeWaitDeath: 0.5
 --- !u!61 &1552529503
 BoxCollider2D:
   m_ObjectHideFlags: 0
