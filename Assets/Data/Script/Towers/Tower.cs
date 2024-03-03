@@ -34,15 +34,15 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
-    
+
     public int Income => _income;
     public bool IsAlive => _isAlive;
-    public string Name => _name;    
+    public string Name => _name;
     public Unit CurrentTarget => _currentTarget;
 
     private void Update()
     {
-        if (_currentTarget != null && _time >= _speedAttack && _isShoot)
+        if (_currentTarget != null && _time >= _speedAttack && _isShoot == false)
         {
             if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange)
             {
@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             {
                 _isShoot = true;
                 StartCoroutine(ShootTarget());
-            } 
+            }
         }
 
         _time += Time.deltaTime;
@@ -107,7 +107,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _drawRadius = towerData.DrawRadius;
 
         _towerRadius.InitTowerRadius(this, _attackRange);
-        
+
         InitializeStruct(towerData.DataStructure);
     }
 
@@ -118,22 +118,24 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _healPoint = _maxHealPoint;
         _timeStartEffect = dataStructure.TimeStartEffect;
 
-        if(dataStructure.EffectDamage != null)
+        if (dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
 
         if (dataStructure.EffectDestruct != null)
             _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
 
-        if(dataStructure.EffectStart != null)
+        if (dataStructure.EffectStart != null)
             _effectStart = Instantiate(dataStructure.EffectStart, transform);
     }
 
     private IEnumerator ShootTarget()
     {
         if (_effectStart != null)
+        {
             _effectStart.StartEffect();
 
-        yield return new WaitForSeconds(_timeStartEffect);
+            yield return new WaitForSeconds(_timeStartEffect);
+        }
 
         Bullet bullet = Instantiate(_prefabBullet);
         bullet.transform.position = transform.position;
