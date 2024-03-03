@@ -49,7 +49,6 @@ public class Tower : MonoBehaviour, IEntity, IStructur
             }
             else
             {
-                _time = 0;
                 StartCoroutine(ShootTarget());
             } 
         }
@@ -138,6 +137,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
         bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+        _time = 0;
     }
 
     private Vector3 CalculeutVector(Bullet bullet)
