@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8315215070781412054}
   - component: {fileID: 8544384729409408119}
   m_Layer: 0
-  m_Name: BloodSplatWide
+  m_Name: BloodSplatWide 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,7 +537,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -590,7 +590,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 0
     angle: 41.102222
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
