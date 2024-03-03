@@ -1,22 +1,29 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UnitStatsBlock : MonoBehaviour
 {
-    [SerializeField] private List<TypeStat> _types = new(); 
+    [SerializeField] private List<TypeStat> _types = new();
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private StatView _healthPoint;
     [SerializeField] private StatView _attack;
     [SerializeField] private StatView _attackSpeed;
 
     private int _id;
+    private string _name;
+    private UpgrateStatsView _statsView;
 
-    public void InitUnitStatsView(int id)
+    public void InitUnitStatsView(int id, string name, UpgrateStatsView upgrateStatsView)
     {
         _id = id;
+        _name = name;
+        _statsView = upgrateStatsView;
     }
 
     public void UpdateValuesStats(StatsContainer statsContainer)
     {
+        _nameText.text = statsContainer.Name;
         _healthPoint.UpdateValues(statsContainer.Health);
         _attack.UpdateValues(statsContainer.Attack);
         _attackSpeed.UpdateValues(statsContainer.AttackSpeed);
@@ -31,13 +38,14 @@ public class UnitStatsBlock : MonoBehaviour
 
     public void IncreaseLevel(int typeStat)
     {
-
+        _statsView.IncreaseLevel(_name, typeStat, _id);
     }
 }
 
 [System.Serializable]
 public class StatsContainer
 {
+    public string Name;
     public StatContainer Health { get; private set; }
     public StatContainer Attack { get; private set; }
     public StatContainer AttackSpeed { get; private set; }
@@ -48,16 +56,26 @@ public class StatsContainer
         Attack = new StatContainer();
         AttackSpeed = new StatContainer();
     }
+
+    public void LoadStat(int currentLevel, int nextLevel, int price, int id)
+    {
+        if(id == 0)
+            Health.LoadStat(currentLevel, nextLevel, price);
+        else if(id == 1)
+            Attack.LoadStat(currentLevel, nextLevel, price);
+        else if(id == 2)
+            AttackSpeed.LoadStat(currentLevel, nextLevel, price);
+    }
 }
 
 [System.Serializable]
 public class StatContainer
 {
-    public float CurrentLevel { get; private set; }
-    public float NextLevel { get; private set; }
+    public int CurrentLevel { get; private set; }
+    public int NextLevel { get; private set; }
     public int Price { get; private set; }
 
-    public void LoadStat(float currentLevel, float nextLevel, int price)
+    public void LoadStat(int currentLevel, int nextLevel, int price)
     {
         CurrentLevel = currentLevel;
         NextLevel = nextLevel;

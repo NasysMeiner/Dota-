@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class State
@@ -10,7 +7,7 @@ public abstract class State
 
     public event UnityAction onEnter;
 
-    public string StateName {  get; protected set; } //временно
+    public string StateName { get; protected set; } //временно
 
     public bool IsWork => _isWork;
 
@@ -27,6 +24,6 @@ public abstract class State
 
     public void ActionInvoke()
     {
-       onEnter?.Invoke();
+        onEnter?.Invoke();
     }
 }

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
+  m_Name: StandartArcher
+  m_EditorClassIdentifier: 
+  Type: 1
+  Avatar: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 58ce3c1e6ee23244097a8da421c8848e, type: 3}
+  HealPoint: 119
+  AttackDamage: 42
+  AttackRange: 4
+  VisibilityRange: 6
+  AttackSpeed: 1
+  Speed: 2
+  ApproximationFactor: 1
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}
+  Price: 20
+  CurrentStats:
+  - Type: 0
+    CurrentLevel: 1
+  - Type: 1
+    CurrentLevel: 1
+  - Type: 2
+    CurrentLevel: 1
+  Stats:
+  - Type: 0
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 1
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 2
+    Levels: 000000000000000000000000000000000000000000000000
+  Prices:
+  - Type: 0
+    Price: 64000000
+  - Type: 1
+    Price: 64000000
+  - Type: 2
+    Price: 64000000
+  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}

@@ -53,7 +53,6 @@ public class WaveCounter : MonoBehaviour
         else
             _aIBarrackCount++;
 
-        Debug.Log("чек");
         CheckFullEndWave();
     }
 
@@ -61,8 +60,6 @@ public class WaveCounter : MonoBehaviour
     {
         if (_playerBarrackCount == _maxCountPlayer && _aIBarrackCount == _maxCountAI && _isWait)
         {
-            Debug.Log("Запускаю");
-
             foreach (Barrack barrack in _playerBarracks)
                 barrack.ContinueSpawn();
 

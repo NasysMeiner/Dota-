@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ public class CompositRootOther : CompositeRoot
     {
         _radiusSpawner.Init(_radiusList, _castleList, _prefabUnit.Prefabs, _dataStats, _bank, _trash);
 
-        foreach(Tower item in _towerListPlayer)
+        foreach (Tower item in _towerListPlayer)
             item.Initialization(_towerDataPlayer, _trash, _castleList[0].Counter);
 
         foreach (Tower item in _towerListAI)
