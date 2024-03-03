@@ -9,6 +9,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    [SerializeField] private float _timeWaitDeath;
+
     private Transform _spawnPoint;
     private string _name;
 
@@ -235,6 +237,18 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     {
         unit.Died -= OnDied;
         _counter.DeleteEntity(unit);
+
+        StartCoroutine(WaitTimeDeathEffect(unit));
+    }
+
+    private IEnumerator WaitTimeDeathEffect(Unit unit)
+    {
+        Debug.Log(_timeWaitDeath);
+
+        yield return new WaitForSeconds(_timeWaitDeath);
+
+        Debug.Log("Wait");
+
         _trash.AddQueue(unit);
     }
 

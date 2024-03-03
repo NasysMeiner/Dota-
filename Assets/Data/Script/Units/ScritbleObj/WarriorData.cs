@@ -41,6 +41,10 @@ public class WarriorData : ScriptableObject
 
     public Effect EffectAttack;
 
+    public Effect EffectDeath;
+
+    public float TimeEffectDeath;
+
     [Header("Other")]
 
     public int Price;

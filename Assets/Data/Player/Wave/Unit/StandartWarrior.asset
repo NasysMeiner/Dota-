@@ -24,5 +24,7 @@ MonoBehaviour:
   ApproximationFactor: 0.5
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: -1277435254148351930, guid: b1bbb0374d22b6f4b8ea4ce99dcb9639, type: 3}
+  TimeEffectDeath: 0.5
   Price: 10
   Stats: []
