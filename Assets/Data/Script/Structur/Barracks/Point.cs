@@ -19,7 +19,6 @@ public class Point : MonoBehaviour
     {
         get
         {
-
             if(_direction.x == 0)
                 return new Vector3(_leftPoint.position.x, Random.Range(_rightPoint.position.y, _leftPoint.position.y), 0);
             else if (_direction.y == 0)

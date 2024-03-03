@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -8,6 +9,7 @@ using UnityEngine.Events;
 public abstract class Unit : MonoBehaviour, IUnit, IEntity
 {
     //Временно
+    [SerializeField] private GameObject _HealthBar;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected Animator _animator;
 
@@ -29,9 +31,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Vector3 _targetPoint;
     protected Scout _scout;
     protected Quaternion _startRotation;
-    protected Effect _effectAttack;
 
+    protected Effect _effectAttack;
     private Effect _effectDamage;
+    private Effect _effectDeath;
+    private float _timeEffectDeath;
+
     private HealthBarUpdater _healthBarUpdater;
     private AnimateChanger _animateChanger;
 
@@ -141,6 +146,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (warriorData.EffectAttack != null)
             _effectAttack = Instantiate(warriorData.EffectAttack, transform);
 
+        if(warriorData.EffectDeath != null)
+            _effectDeath = Instantiate(warriorData.EffectDeath, transform);
+
+        _timeEffectDeath = warriorData.TimeEffectDeath;
+
         _healthBarUpdater.InitHealthBar(this);
     }
 
@@ -150,8 +160,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         if (HealPoint <= 0)
         {
-            Die();
             isDie = true;
+            Die();
             CurrentTarget = null;
         }
 
@@ -204,8 +214,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected virtual void UnitLateUpdate()
     {
-        if (_scout != null)
-            _scout.LateUpdate();
+        _scout?.LateUpdate();
     }
 
     protected void Die()
@@ -213,6 +222,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isAlive = false;
         _stateMachine.Stop();
         Died?.Invoke(this);
+        _spriteRenderer.enabled = false;
+        _HealthBar.SetActive(false);
+
+        if (_effectDeath != null)
+            _effectDeath.StartEffect();
     }
 
     private void OnChangeTarget(IEntity entity)
