@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Barrack : MonoBehaviour, IStructur, IEntity
 {
+    private float _maxHealPoint;
+    public float MaxHealPoint => _maxHealPoint;
+
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private float _timeWaitDeath;
@@ -15,7 +19,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private string _name;
 
     private int _income;
-    private float _maxHealPoint;
+    //private float _maxHealPoint;
     private float _healPoint;
     private bool _isAlive = true;
 
@@ -44,6 +48,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     private Warrior _unitPrefab;
     private Dictionary<TypeUnit, Unit> _unitsPrefab = new Dictionary<TypeUnit, Unit>();
     private Dictionary<VariertyUnit, WarriorData> _unitsStat = new Dictionary<VariertyUnit, WarriorData>();
+
 
     public string Name => _name;
     public int Income => _income;
@@ -265,5 +270,13 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
             _trash.AddQueue(this);
         }
+    }
+    public void Restore()
+    {
+        _healPoint = _maxHealPoint;
+    }
+    public void Repair()
+    {
+        _healPoint = _maxHealPoint;
     }
 }
