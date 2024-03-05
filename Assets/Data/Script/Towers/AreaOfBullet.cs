@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaOftBullet : MonoBehaviour
+public class Grenade : MonoBehaviour
 {
     [SerializeField] private float areaRadius;
     [SerializeField] private float damage; 
