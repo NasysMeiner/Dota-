@@ -1,28 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class Grenade : Bullet
 {
     [SerializeField] private float areaRadius;
-    [SerializeField] private float damage;
+    [SerializeField] private float _damageReductionPercentage = 0.5f;
 
-    public void ApplyAreaDamage()
+    protected override void MakeDamage(IEntity enemy)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, areaRadius); //raycast dlya  2d ne podhodit napisano
+        base.MakeDamage(enemy);
 
-        foreach (Collider2D col in colliders)
-        {
-            IEntity enemy = col.GetComponent<IEntity>();
 
-            enemy?.GetDamage(damage);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IEntity enemy = collision.GetComponent<IEntity>();
-
-        enemy?.GetDamage(damage);
-
-        Destroy(gameObject);
     }
 }

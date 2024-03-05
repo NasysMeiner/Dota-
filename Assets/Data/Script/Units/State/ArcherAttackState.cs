@@ -14,7 +14,7 @@ public class ArcherAttackState : AttackState
         Bullet bullet = _archer.CreateBullet();
         bullet.transform.position = _archer.Position;
         Vector3 targetPosition = CalculeutVector(bullet);
-        bullet.Initialization(_archer.CurrentTarget, targetPosition, _archer.Damage, _archer.AttckRange);
+        bullet.Initialization(_archer.CurrentTarget, targetPosition, _archer.Damage, _archer.AttckRange, _archer.Name);
     }
 
     private Vector3 CalculeutVector(Bullet bullet)

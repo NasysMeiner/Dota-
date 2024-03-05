@@ -140,7 +140,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         Bullet bullet = Instantiate(_prefabBullet);
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
-        bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+        bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange, _name);
         _isShoot = false;
         _time = 0;
     }

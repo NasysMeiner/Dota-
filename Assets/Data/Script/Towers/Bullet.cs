@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Effect _endEffect;
     [SerializeField] private float _timeEndEffect;
 
-    private float _damage;
+    protected float _damage;
+    protected string _name;
     private bool _isDestroy = false;
     private float _timeDestroy;
     private IEntity _target;
@@ -21,12 +22,13 @@ public class Bullet : MonoBehaviour
 
     public float Speed => _speed;
 
-    public virtual void Initialization(IEntity target, Vector3 targetPosition, float damage, float maxDistanceFly)
+    public virtual void Initialization(IEntity target, Vector3 targetPosition, float damage, float maxDistanceFly, string name)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
 
         _damage = damage;
         _target = target;
+        _name = name;
         _maxDistanceFly = maxDistanceFly;
         _entityPosition = targetPosition;
     }
