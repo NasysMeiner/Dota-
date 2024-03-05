@@ -15,6 +15,9 @@ public class WarriorData : ScriptableObject
 
     public Sprite Sprite;
 
+    [Header("Skills")]
+    public List<Skill> SkillList;
+
     [Header("Stats")]
 
     [Range(1, 100000)]
@@ -55,10 +58,6 @@ public class WarriorData : ScriptableObject
     [Header("Stats")]
     public List<CurrentStat> CurrentStats = new();
     public List<Stat> Stats = new();
-
-    [Header("Skills")]
-    public Skill Skill1;
-    public Skill Skill2;
     public List<PriceStat> Prices = new();
 
     public virtual void LoadStat(WarriorData warriorData)

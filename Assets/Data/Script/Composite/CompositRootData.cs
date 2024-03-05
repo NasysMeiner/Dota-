@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompositRootData : CompositeRoot
@@ -18,11 +19,15 @@ public class CompositRootData : CompositeRoot
     [SerializeField] private ChangerStats _changerStats;
     [SerializeField] private Bank _bank;
 
+    [Header("Skills")]
+    [SerializeField] private List<SkillData> _skillData;
+
     public override void Compose()
     {
         LoadDataPlayer();
         LoadDataAi();
         ChangerStatsInit();
+        LoadSkillData();
     }
 
     private void LoadDataPlayer()
@@ -44,5 +49,11 @@ public class CompositRootData : CompositeRoot
         _changerStats.InitChangerStats(_bank);
         _changerStats.AddUnitStat(_gameInfoPlayer.Name, _emptyUnitStatsPlayer);
         _changerStats.AddUnitStat(_gameInfoAi.Name, _emptyUnitStatsAi);
+    }
+
+    private void LoadSkillData()
+    {
+        foreach(var skill in _skillData)
+            skill.LoadData();
     }
 }

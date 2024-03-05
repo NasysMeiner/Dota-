@@ -31,6 +31,9 @@ public class Bullet : MonoBehaviour
         _name = name;
         _maxDistanceFly = maxDistanceFly;
         _entityPosition = targetPosition;
+
+        if (_updateEffect != null)
+            _updateEffect.StartEffect();
     }
 
     private void Update()

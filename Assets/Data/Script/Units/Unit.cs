@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -35,8 +35,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Scout _scout;
     protected Quaternion _startRotation;
 
-    protected Skill _slotOne;
-    protected Skill _slotTwo;
+    protected List<Skill> _skillList;
 
     protected Effect _effectAttack;
     private Effect _effectDamage;
@@ -94,6 +93,13 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public void InitUnit(Vector3 targetPoint, Counter counter, int id, string name)
     {
+        if (_skill != null)
+            _skill.SetUnit(this);
+
+
+
+
+
         _id = id;
         _name = name;
         Name = name;
@@ -145,8 +151,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
 
-        _slotOne = Instantiate(warriorData.Skill1, transform);
-        _slotTwo = Instantiate(warriorData.Skill2, transform);
+        foreach(Skill skill in warriorData.SkillList)
+        {
+            Skill newSkill = Instantiate(skill, transform);
+            newSkill.SetUnit(this);
+            _skillList.Add(newSkill);
+
+            if (newSkill.TypeSkill == TypeSkill.Init)
+                newSkill.UseSkill();
+        }
 
         if (warriorData.EffectDamage != null)
             _effectDamage = Instantiate(warriorData.EffectDamage, transform);
@@ -154,7 +167,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (warriorData.EffectAttack != null)
             _effectAttack = Instantiate(warriorData.EffectAttack, transform);
 
-        if(warriorData.EffectDeath != null)
+        if (warriorData.EffectDeath != null)
             _effectDeath = Instantiate(warriorData.EffectDeath, transform);
 
         _timeEffectDeath = warriorData.TimeEffectDeath;
@@ -230,15 +243,18 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isAlive = false;
         _stateMachine.Stop();
 
-        if (_skill != null)
-            _skill.UseSkill(Name);
+        if(_skillList.Count > 0)
+            foreach(Skill skill in _skillList)
+                if (skill.TypeSkill == TypeSkill.Deatch)
+                    skill.UseSkill();
 
-        Died?.Invoke(this);
         _spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);
 
         if (_effectDeath != null)
             _effectDeath.StartEffect();
+
+        Died?.Invoke(this);
     }
 
     private void OnChangeTarget(IEntity entity)
@@ -259,7 +275,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             Gizmos.DrawWireSphere(Position, VisibilityRange);
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(Position, AttckRange);
-        }  
+        }
     }
     private void UpdateHealthBar()
     {

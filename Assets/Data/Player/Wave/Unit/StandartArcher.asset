@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: StArcher
   Avatar: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
+  SkillList: []
   HealPoint: 119
   AttackDamage: 42
   AttackRange: 4
@@ -25,6 +26,28 @@ MonoBehaviour:
   ApproximationFactor: 1
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: 0}
+  TimeEffectDeath: 0
   Price: 20
-  Stats: []
-  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}
+  CurrentStats:
+  - Type: 0
+    CurrentLevel: 1
+  - Type: 1
+    CurrentLevel: 1
+  - Type: 2
+    CurrentLevel: 1
+  Stats:
+  - Type: 0
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 1
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 2
+    Levels: 000000000000000000000000000000000000000000000000
+  Prices:
+  - Type: 0
+    Price: 64000000
+  - Type: 1
+    Price: 64000000
+  - Type: 2
+    Price: 64000000
+  Bullet: {fileID: -8264313214411544747, guid: 341e57f061b1f154eaab74666a9c722e, type: 3}
