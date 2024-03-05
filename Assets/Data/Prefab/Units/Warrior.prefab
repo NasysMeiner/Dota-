@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d0afe677033e342bd26b5ca4ac9268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _HealthBar: {fileID: 225172037603288452}
   _spriteRenderer: {fileID: 1463789685010440925}
   _animator: {fileID: 7029461177843684176}
   _skill: {fileID: 5499314004831557075}
@@ -360,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hpBarPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2895233673743490550, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3961725071359369596, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -436,6 +441,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8401399613108007615, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8452227722664108816, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_fontSize
       value: 45.45
@@ -478,6 +487,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+--- !u!1 &225172037603288452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2895233673743490550, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+  m_PrefabInstance: {fileID: 3112576035351902322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5214976732673542604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}

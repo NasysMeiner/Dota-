@@ -6,7 +6,7 @@ public class Trash : MonoBehaviour
 {
     [SerializeField] private float _timeDelete = 4f;
 
-    private Queue<IEntity> _queue = new Queue<IEntity>();
+    private Queue<IEntity> _queue = new();
     private bool _isActive = false;
 
     public void AddQueue(IEntity entity)

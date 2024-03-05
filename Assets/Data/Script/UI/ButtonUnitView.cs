@@ -15,7 +15,7 @@ public class ButtonUnitView : MonoBehaviour
         _radiusSpawner = radiusSpawner;
         _images = images;
 
-        for(int i = 0; i < _buttons.Count; i++)
+        for (int i = 0; i < _buttons.Count; i++)
         {
             _buttons[i].SetName(_radiusSpawner.GetNameUnit(i));
             _buttons[i].SetPrice(_radiusSpawner.GetPriceUnit(i));

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   Type: 1
+  Name: Archer
   Avatar: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 0ef48568154db494c8be5861eebfca8f, type: 3}
   HealPoint: 340
@@ -25,5 +26,25 @@ MonoBehaviour:
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   Price: 100
-  Stats: []
+  CurrentStats:
+  - Type: 0
+    CurrentLevel: 1
+  - Type: 1
+    CurrentLevel: 1
+  - Type: 2
+    CurrentLevel: 1
+  Stats:
+  - Type: 0
+    Levels: 010000000200000003000000040000000500000006000000
+  - Type: 1
+    Levels: 0b0000000100000002000000030000000400000005000000
+  - Type: 2
+    Levels: 210000000100000002000000030000000400000005000000
+  Prices:
+  - Type: 0
+    Price: 640000000100000002000000030000000400000005000000
+  - Type: 1
+    Price: 6400000001000000020000000300000004000000
+  - Type: 2
+    Price: 64000000010000000200000003000000
   Bullet: {fileID: 4470804474966191576, guid: 8b45feccd7227634c9a9c6750795aa12, type: 3}

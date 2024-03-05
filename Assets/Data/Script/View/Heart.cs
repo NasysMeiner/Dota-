@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +8,9 @@ public class Heart : MonoBehaviour
 
     public void ChangeValue(float value, float fullValue)
     {
-        if(_image == null)
+        if (_image == null)
             _image = GetComponent<Image>();
-        
+
         _image.fillAmount = value / fullValue;
     }
 }

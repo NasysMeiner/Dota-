@@ -94,7 +94,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         if (dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);
 
-        if(dataStructure.EffectDestruct != null)
+        if (dataStructure.EffectDestruct != null)
             _effectDestruct = Instantiate(dataStructure.EffectDestruct, transform);
     }
 
@@ -120,7 +120,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     private void OnDestroyBarrack()
     {
-        if(_isTarget == false)
+        if (_isTarget == false)
         {
             _isTarget = true;
             Counter.AddEntity(this);
@@ -129,7 +129,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     private IEnumerator DestructEffetc()
     {
-        if(_effectDestruct != null)
+        if (_effectDestruct != null)
         {
             Destruct();
             _spriteRenderer.enabled = false;
@@ -138,6 +138,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
             yield return new WaitForSeconds(_effectDestruct.Duration);
 
             _trash.AddQueue(this);
-        }    
+        }
     }
 }

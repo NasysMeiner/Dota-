@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
+  Name: StWarrior
   Avatar: {fileID: 9100000, guid: aae6fb8cbf42cc84e89d32622320feda, type: 2}
   Sprite: {fileID: 21300000, guid: f024ecf3b71ea1c41a0c54d57ae7e8d1, type: 3}
   HealPoint: 690
@@ -22,7 +23,27 @@ MonoBehaviour:
   AttackSpeed: 1.2
   Speed: 2
   ApproximationFactor: 0.5
-  EffectDamage: {fileID: 0}
+  EffectDamage: {fileID: 8544384729409408119, guid: 11a6065dee486534eae3dce764222065, type: 3}
   EffectAttack: {fileID: 0}
   Price: 10
-  Stats: []
+  CurrentStats:
+  - Type: 0
+    CurrentLevel: 1
+  - Type: 1
+    CurrentLevel: 1
+  - Type: 2
+    CurrentLevel: 1
+  Stats:
+  - Type: 0
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 1
+    Levels: 000000000000000000000000000000000000000000000000
+  - Type: 2
+    Levels: 000000000000000000000000000000000000000000000000
+  Prices:
+  - Type: 0
+    Price: 64000000
+  - Type: 1
+    Price: 64000000
+  - Type: 2
+    Price: 64000000
