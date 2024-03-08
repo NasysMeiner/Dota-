@@ -24,6 +24,7 @@ public class ContainerSkill
 
 public enum TypeSkill
 {
-    Init,
-    Deatch
+    InitStart,
+    Deatch,
+    StatsUp,
 }

@@ -14,7 +14,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] protected Animator _animator;
 
     [SerializeField] private bool _isDrawRadius;
-    [SerializeField] protected Skill _skill;
 
     //||B�������||
     public string CurrentState;
@@ -35,7 +34,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Scout _scout;
     protected Quaternion _startRotation;
 
-    protected List<Skill> _skillList;
+    protected List<Skill> _skillList = new();
 
     protected Effect _effectAttack;
     private Effect _effectDamage;
@@ -93,13 +92,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public void InitUnit(Vector3 targetPoint, Counter counter, int id, string name)
     {
-        if (_skill != null)
-            _skill.SetUnit(this);
-
-
-
-
-
         _id = id;
         _name = name;
         Name = name;
@@ -157,7 +149,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             newSkill.SetUnit(this);
             _skillList.Add(newSkill);
 
-            if (newSkill.TypeSkill == TypeSkill.Init)
+            if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
                 newSkill.UseSkill();
         }
 

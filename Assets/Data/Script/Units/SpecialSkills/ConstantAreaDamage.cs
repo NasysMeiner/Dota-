@@ -68,7 +68,10 @@ public class ConstantAreaDamage : Skill
         {
             foreach (Unit unit in _unitList)
                 if(unit != null)
+                {
                     unit.GetDamage(_damage + _unit.Damage * _attackScaling);
+                    Debug.Log(unit.Name + " " + (_damage + _unit.Damage * _attackScaling));
+                }
 
             yield return new WaitForSeconds(_time);
         }
@@ -79,7 +82,7 @@ public class ConstantAreaDamage : Skill
         if (_isDrawRadius)
         {
             Gizmos.color = Color.black;
-            Gizmos.DrawWireSphere(transform.position, _radius);
+            Gizmos.DrawWireSphere(transform.position, _radius / 2);
         }
     }
 }
