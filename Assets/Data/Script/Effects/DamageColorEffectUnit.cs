@@ -4,13 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DamageColorEffectUnit : MonoBehaviour
 {
-    [SerializeField] private Unit _unit;
-    [Space]
-    [SerializeField] private Color DamageColor = Color.red;
-    [SerializeField] private float DamageTimeSec = 1f;
+    [SerializeField] private float _damageTimeSec = 1f;
 
     private SpriteRenderer _spriteRend;
     private Color _defaultColor;
+    private Unit _unit;
+    private Color _damageColor = Color.red;
 
     private void OnDisable()
     {
@@ -24,6 +23,12 @@ public class DamageColorEffectUnit : MonoBehaviour
         _defaultColor = _spriteRend.color;
     }
 
+    public void InitEffectDamage(Unit unit, Color color)
+    {
+        _unit = unit;
+        _damageColor = color;   
+    }
+
     public void StartEffect(float health)
     {
         StartCoroutine(StartEffectCoroutine());
@@ -32,12 +37,12 @@ public class DamageColorEffectUnit : MonoBehaviour
     private IEnumerator StartEffectCoroutine()
     {
         float time = 0;
-        float step = 1f / DamageTimeSec;
+        float step = 1f / _damageTimeSec;
 
-        while (time < DamageTimeSec)
+        while (time < _damageTimeSec)
         {
             time += Time.deltaTime;
-            _spriteRend.color = Color.Lerp(DamageColor, _defaultColor, step * time);
+            _spriteRend.color = Color.Lerp(_damageColor, _defaultColor, step * time);
 
             yield return null;
         }

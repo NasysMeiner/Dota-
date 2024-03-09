@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HealthBar: {fileID: 411304190484489749}
   _spriteRenderer: {fileID: 9126035773027932046}
+  _damageColorEffectUnit: {fileID: 7906301316647820066}
   _animator: {fileID: 542907647720514871}
   CurrentState: 
   Pathboll: 0
@@ -288,9 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89647a0eea306c479e4efa2f5cc8e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 8624355644622367307}
-  DamageColor: {r: 1, g: 0, b: 0, a: 1}
-  DamageTimeSec: 0.5
+  _damageTimeSec: 1
 --- !u!1001 &8152353793000674474
 PrefabInstance:
   m_ObjectHideFlags: 0

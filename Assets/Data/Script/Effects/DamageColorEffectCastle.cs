@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class DamageColorEffectCastle : MonoBehaviour
 {
     [SerializeField] private Castle _castle;

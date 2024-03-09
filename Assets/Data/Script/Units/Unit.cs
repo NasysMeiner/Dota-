@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Scripting;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,6 +12,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //Временно
     [SerializeField] private GameObject _HealthBar;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
+    [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
 
     //||B�������||
@@ -139,6 +141,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
 
+        _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 
         if (warriorData.EffectDamage != null)
             _effectDamage = Instantiate(warriorData.EffectDamage, transform);

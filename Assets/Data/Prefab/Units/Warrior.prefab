@@ -119,9 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89647a0eea306c479e4efa2f5cc8e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 5499846042804253689}
-  DamageColor: {r: 1, g: 0, b: 0, a: 1}
-  DamageTimeSec: 0.5
+  _damageTimeSec: 1
 --- !u!1 &5499846042804253687
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HealthBar: {fileID: 225172037603288452}
   _spriteRenderer: {fileID: 1463789685010440925}
+  _damageColorEffectUnit: {fileID: 5170661443732880340}
   _animator: {fileID: 7029461177843684176}
   CurrentState: 
   Pathboll: 0

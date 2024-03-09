@@ -15,6 +15,8 @@ public class WarriorData : ScriptableObject
 
     public Sprite Sprite;
 
+    public Color ColorEffectDamage = Color.red;
+
     [Header("Stats")]
 
     [Range(1, 100000)]
