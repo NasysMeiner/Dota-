@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7126c6ace587e48994506504ea3ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _HealthBar: {fileID: 411304190484489749}
   _spriteRenderer: {fileID: 9126035773027932046}
   _animator: {fileID: 542907647720514871}
   CurrentState: 
@@ -179,6 +180,7 @@ GameObject:
   - component: {fileID: 8264265922955081288}
   - component: {fileID: 9126035773027932046}
   - component: {fileID: 542907647720514871}
+  - component: {fileID: 7906301316647820066}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -274,6 +276,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7906301316647820066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412182524438405968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89647a0eea306c479e4efa2f5cc8e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unit: {fileID: 8624355644622367307}
+  DamageColor: {r: 1, g: 0, b: 0, a: 1}
+  DamageTimeSec: 0.5
 --- !u!1001 &8152353793000674474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,6 +436,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+--- !u!1 &411304190484489749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8401399613108007615, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+  m_PrefabInstance: {fileID: 8152353793000674474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1319480233777767700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
