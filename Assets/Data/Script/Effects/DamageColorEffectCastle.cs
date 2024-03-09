@@ -1,10 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-public class DamageColorEffect : MonoBehaviour
+public class DamageColorEffectCastle : MonoBehaviour
 {
-    [SerializeField] private Unit _unit;
+    [SerializeField] private Castle _castle;
     [Space]
     [SerializeField] private Color DamageColor = Color.red;
     [SerializeField] private float DamageTimeSec = 1f;
@@ -14,12 +14,12 @@ public class DamageColorEffect : MonoBehaviour
 
     private void OnDisable()
     {
-        _unit.HealthChanged -= StartEffect;
+        _castle.HealPointChange -= StartEffect;
     }
 
     private void Start()
     {
-        _unit.HealthChanged += StartEffect;
+        _castle.HealPointChange += StartEffect;
         _spriteRend = GetComponent<SpriteRenderer>();
         _defaultColor = _spriteRend.color;
     }
