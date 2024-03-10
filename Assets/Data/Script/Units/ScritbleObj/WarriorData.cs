@@ -20,6 +20,7 @@ public class WarriorData : ScriptableObject
 
     [Header("LevelUp")]
     public List<StatUp> LevelUpList = new();
+    public Color ColorEffectDamage = Color.red;
 
     [Header("Stats")]
 

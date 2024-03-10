@@ -55,6 +55,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public event UnityAction<Barrack> EndWave;
     public event UnityAction DestroyBarrack;
+    public event UnityAction<float> HealthChange;
 
     public void Destruct()
     {
@@ -118,6 +119,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
         if (_effectDamage != null)
             _effectDamage.StartEffect();
+
+        HealthChange?.Invoke(_healPoint);
     }
 
     public int GetIncome()

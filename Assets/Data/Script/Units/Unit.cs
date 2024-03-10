@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Scripting;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,6 +13,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //Временно
     [SerializeField] private GameObject _HealthBar;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
+    [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
 
     [SerializeField] private bool _isDrawRadius;
@@ -159,6 +161,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
                 newSkill.UseSkill();
         }
+        _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 
         if (warriorData.EffectDamage != null)
             _effectDamage = Instantiate(warriorData.EffectDamage, transform);

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tower : MonoBehaviour, IEntity, IStructur
 {
@@ -39,6 +40,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public bool IsAlive => _isAlive;
     public string Name => _name;
     public Unit CurrentTarget => _currentTarget;
+
+    public event UnityAction<float> HealthChange;
 
     private void Update()
     {
@@ -88,6 +91,8 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
         if (_effectDamage != null)
             _effectDamage.StartEffect();
+
+        HealthChange?.Invoke(_healPoint);
     }
 
     public void SetName(string name)

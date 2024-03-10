@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8949619834684756219}
   - component: {fileID: 1463789685010440925}
   - component: {fileID: 7029461177843684176}
+  - component: {fileID: 5170661443732880340}
   m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5170661443732880340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512198036413254323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89647a0eea306c479e4efa2f5cc8e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageTimeSec: 1
 --- !u!1 &5499846042804253687
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HealthBar: {fileID: 225172037603288452}
   _spriteRenderer: {fileID: 1463789685010440925}
+  _damageColorEffectUnit: {fileID: 5170661443732880340}
   _animator: {fileID: 7029461177843684176}
   _isDrawRadius: 0
   _spawnSkill: {fileID: 0}
