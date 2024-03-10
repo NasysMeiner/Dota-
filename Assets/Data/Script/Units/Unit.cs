@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -15,6 +16,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
 
+    [SerializeField] private bool _isDrawRadius;
+
     //||B�������||
     public string CurrentState;
     public bool Pathboll;
@@ -27,12 +30,17 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||��������||
 
     private bool _isAlive = true;
+    private bool _isDodgeRangeAttack = false;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
     protected Quaternion _startRotation;
+
+    private float _timeImmortality = 0f;
+
+    protected List<Skill> _skillList = new();
 
     protected Effect _effectAttack;
     private Effect _effectDamage;
@@ -57,6 +65,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
     public float ApproximationFactor { get; protected set; }
+    public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
 
     public event UnityAction<Unit> Died;
@@ -140,7 +149,18 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+        ProjectileBlockChance = warriorData.ProjectileBlockChance;
+        _timeImmortality = warriorData.TimeImmortaly;
 
+        foreach (Skill skill in warriorData.SkillList)
+        {
+            Skill newSkill = Instantiate(skill, transform);
+            newSkill.SetUnit(this);
+            _skillList.Add(newSkill);
+
+            if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
+                newSkill.UseSkill();
+        }
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 
         if (warriorData.EffectDamage != null)
@@ -149,7 +169,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (warriorData.EffectAttack != null)
             _effectAttack = Instantiate(warriorData.EffectAttack, transform);
 
-        if(warriorData.EffectDeath != null)
+        if (warriorData.EffectDeath != null)
             _effectDeath = Instantiate(warriorData.EffectDeath, transform);
 
         _timeEffectDeath = warriorData.TimeEffectDeath;
@@ -157,23 +177,38 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _healthBarUpdater.InitHealthBar(this);
     }
 
-    public virtual void GetDamage(float damage)
+    public virtual void GetDamage(float damage, AttackType attackType)
     {
-        HealPoint -= damage;
-
-        if (HealPoint <= 0)
+        if (ProjectileBlockChance > 0 && attackType == AttackType.Ranged)
         {
-            isDie = true;
-            Die();
-            CurrentTarget = null;
+            int randomNumber = Random.Range(1, 100);
+
+            if (randomNumber <= ProjectileBlockChance)
+                _isDodgeRangeAttack = true;
         }
 
-        if (_effectDamage != null)
-            _effectDamage.StartEffect();
+        if (_isDodgeRangeAttack == false)
+        {
+            HealPoint -= damage;
 
-        HealthChanged?.Invoke(HealPoint);
+            if (HealPoint <= 0 && isDie == false)
+            {
+                isDie = true;
+                StartCoroutine(LiveAfterDeath());
+            }
 
-        UpdateHealthBar();
+            if (_effectDamage != null)
+                _effectDamage.StartEffect();
+
+            HealthChanged?.Invoke(HealPoint);
+
+            UpdateHealthBar();
+        }
+        else
+        {
+            Debug.Log("Dodge");
+            _isDodgeRangeAttack = false;
+        }
     }
 
     protected virtual void UnitOnDisable()
@@ -224,12 +259,27 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     {
         _isAlive = false;
         _stateMachine.Stop();
-        Died?.Invoke(this);
+
+        if (_skillList.Count > 0)
+            foreach (Skill skill in _skillList)
+                if (skill.TypeSkill == TypeSkill.Deatch)
+                    skill.UseSkill();
+
         _spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);
 
         if (_effectDeath != null)
             _effectDeath.StartEffect();
+
+        Died?.Invoke(this);
+    }
+
+    private IEnumerator LiveAfterDeath()
+    {
+        yield return new WaitForSeconds(_timeImmortality);
+
+        Die();
+        CurrentTarget = null;
     }
 
     private void OnChangeTarget(IEntity entity)
@@ -244,10 +294,13 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(Position, VisibilityRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(Position, AttckRange);
+        if (_isDrawRadius)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(Position, VisibilityRange);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(Position, AttckRange);
+        }
     }
     private void UpdateHealthBar()
     {

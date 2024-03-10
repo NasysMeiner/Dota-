@@ -7,13 +7,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
 
     [Header("Effect")]
-    [SerializeField] private Effect _startEffect;
-    [SerializeField] private float _timeStartEffect;
     [SerializeField] private Effect _updateEffect;
     [SerializeField] private Effect _endEffect;
     [SerializeField] private float _timeEndEffect;
 
-    private float _damage;
+    protected float _damage;
+    protected string _name;
     private bool _isDestroy = false;
     private float _timeDestroy;
     private IEntity _target;
@@ -23,16 +22,18 @@ public class Bullet : MonoBehaviour
 
     public float Speed => _speed;
 
-    public void Initialization(IEntity target, Vector3 targetPosition, float damage, float maxDistanceFly)
+    public virtual void Initialization(IEntity target, Vector3 targetPosition, float damage, float maxDistanceFly, string name)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
 
         _damage = damage;
         _target = target;
+        _name = name;
         _maxDistanceFly = maxDistanceFly;
         _entityPosition = targetPosition;
 
-        PullOutOfGun();
+        if (_updateEffect != null)
+            _updateEffect.StartEffect();
     }
 
     private void Update()
@@ -57,17 +58,17 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out IEntity enemy) && enemy == _target)
         {
-            _updateEffect?.StopEffect();
-            enemy?.GetDamage(_damage);
+            if (_updateEffect != null)
+                _updateEffect.StopEffect();
+
+            MakeDamage(enemy);
             Destroy();
         }
     }
 
-    public void PullOutOfGun()
+    protected virtual void MakeDamage(IEntity enemy)
     {
-        //_rigidbody.velocity = (_entityPosition - transform.position).normalized * _speed;
-
-        _updateEffect?.StartEffect();
+        enemy?.GetDamage(_damage, AttackType.Ranged);
     }
 
     private void Destroy()

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2512198036413254323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.19000001, y: 0.19000001, z: 0.19000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5499846042804253684}
@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: -7101169011790584590}
   - component: {fileID: 762856216877324568}
   - component: {fileID: 17728816200721101}
+  - component: {fileID: 5499314004831557075}
   m_Layer: 6
   m_Name: Warrior
   m_TagString: Untagged
@@ -223,6 +224,8 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1463789685010440925}
   _damageColorEffectUnit: {fileID: 5170661443732880340}
   _animator: {fileID: 7029461177843684176}
+  _isDrawRadius: 0
+  _spawnSkill: {fileID: 0}
   CurrentState: 
   Pathboll: 0
   _id: 0
@@ -308,6 +311,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94096dd6e1d6e6646959a236838f5255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5499314004831557075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499846042804253687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2a991a0a11d9a4f84b92fab3633773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3112576035351902322

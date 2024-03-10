@@ -45,7 +45,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         Counter.DeleteEntity(this);
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, AttackType attackType)
     {
         _healPoint -= damage;
 

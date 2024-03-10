@@ -15,6 +15,11 @@ public class WarriorData : ScriptableObject
 
     public Sprite Sprite;
 
+    [Header("Skills")]
+    public List<Skill> SkillList = new();
+
+    [Header("LevelUp")]
+    public List<StatUp> LevelUpList = new();
     public Color ColorEffectDamage = Color.red;
 
     [Header("Stats")]
@@ -39,6 +44,11 @@ public class WarriorData : ScriptableObject
 
     [Range(0.1f, 1)]
     public float ApproximationFactor;
+
+    [Range(0, 100f)]
+    public float ProjectileBlockChance;
+
+    public float TimeImmortaly = 0;
 
     [Header("Effect")]
 
@@ -74,17 +84,22 @@ public class WarriorData : ScriptableObject
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+        ProjectileBlockChance = warriorData.ProjectileBlockChance;
+        TimeImmortaly = warriorData.TimeImmortaly;
 
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;
+        EffectDeath = warriorData.EffectDeath;
 
         Price = warriorData.Price;
 
         CurrentStats.Clear();
         Stats.Clear();
         Prices.Clear();
+        LevelUpList.Clear();
+        SkillList.Clear();
 
-        foreach(CurrentStat stat in warriorData.CurrentStats)
+        foreach (CurrentStat stat in warriorData.CurrentStats)
         {
             CurrentStat newStat = new();
             newStat.Type = stat.Type;
@@ -98,6 +113,9 @@ public class WarriorData : ScriptableObject
         foreach (PriceStat stat in warriorData.Prices)
             Prices.Add(stat);
 
+        foreach (StatUp stat in warriorData.LevelUpList)
+            LevelUpList.Add(stat);
+
         if (Prices.Count < Stats.Count)
             throw new NotImplementedException("Not price stat");
 
@@ -109,6 +127,13 @@ public class WarriorData : ScriptableObject
             if (Prices[i].Price.Count == 0)
                 Prices[i].Price.Add(100);
         }
+
+        foreach(StatUp statUp in LevelUpList)
+            if(statUp.IsPurchased)
+                statUp.LevelUpStat(this);
+
+        foreach (Skill skill in warriorData.SkillList)
+            SkillList.Add(skill);
     }
 
     public void IncreaseLevel(ContainerPack containerPack)

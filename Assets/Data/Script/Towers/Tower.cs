@@ -78,7 +78,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _counter.DeleteEntity(this);
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, AttackType attackType)
     {
         _healPoint -= damage;
 
@@ -145,7 +145,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         Bullet bullet = Instantiate(_prefabBullet);
         bullet.transform.position = transform.position;
         Vector3 targetPosition = CalculeutVector(bullet);
-        bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange);
+        bullet.Initialization(_currentTarget, targetPosition, _damage, _attackRange, _name);
         _isShoot = false;
         _time = 0;
     }
@@ -157,7 +157,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         float x = _currentTarget.Position.x + time * _currentTarget.MeshAgent.velocity.x;
         float y = _currentTarget.Position.y + time * _currentTarget.MeshAgent.velocity.x;
 
-        Vector3 resultVector = new Vector3(x, y, _currentTarget.Position.z);
+        Vector3 resultVector = new(x, y, _currentTarget.Position.z);
 
         return resultVector;
     }

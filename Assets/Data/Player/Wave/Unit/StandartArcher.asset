@@ -16,6 +16,9 @@ MonoBehaviour:
   Name: StArcher
   Avatar: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
+  SkillList: []
+  LevelUpList:
+  - {fileID: 11400000, guid: 5b350dc195dd1fb4b975acf0857e2169, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   HealPoint: 119
   AttackDamage: 42
@@ -24,6 +27,8 @@ MonoBehaviour:
   AttackSpeed: 1
   Speed: 2
   ApproximationFactor: 1
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 0}
