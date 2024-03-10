@@ -68,7 +68,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void MakeDamage(IEntity enemy)
     {
-        enemy?.GetDamage(_damage);
+        enemy?.GetDamage(_damage, AttackType.Ranged);
     }
 
     private void Destroy()

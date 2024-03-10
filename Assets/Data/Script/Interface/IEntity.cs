@@ -6,6 +6,6 @@ public interface IEntity
     public GameObject GameObject { get; }
     public bool IsAlive { get; }
 
-    public void GetDamage(float damage);
+    public void GetDamage(float damage, AttackType attackType);
     public void ChangePosition(Vector3 position);
 }

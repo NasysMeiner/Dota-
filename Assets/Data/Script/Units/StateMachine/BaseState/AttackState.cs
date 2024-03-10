@@ -57,7 +57,7 @@ public class AttackState : State
 
     protected virtual void MakeDamage()
     {
-        _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage);
+        _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage, AttackType.Melee);
     }
 
     private void MakeEffectAtack()

@@ -69,7 +69,7 @@ public class ConstantAreaDamage : Skill
             foreach (Unit unit in _unitList)
                 if(unit != null)
                 {
-                    unit.GetDamage(_damage + _unit.Damage * _attackScaling);
+                    unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
                     Debug.Log(unit.Name + " " + (_damage + _unit.Damage * _attackScaling));
                 }
 

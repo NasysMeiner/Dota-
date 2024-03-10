@@ -33,7 +33,7 @@ public class ExplosionAroundSkill : Skill
             {
                 if (unit.Name != _unit.Name)
                 {
-                    unit.GetDamage(_damage + _unit.Damage * _attackScaling);
+                    unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
                 }
             }
         }

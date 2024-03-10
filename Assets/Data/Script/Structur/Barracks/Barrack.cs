@@ -105,7 +105,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _enemyCounter = enemyCounter;
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, AttackType attackType)
     {
         _healPoint -= damage;
 

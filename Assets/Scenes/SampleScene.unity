@@ -9349,8 +9349,8 @@ MonoBehaviour:
   - {fileID: 133553829}
   _prefabUnit: {fileID: 11400000, guid: 3c691c3ab418ea04cbf3361a3b637f22, type: 2}
   _dataStats:
-  - {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
-  - {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
+  - {fileID: 11400000, guid: 09fa0aef33d7fd6498ee4c606fd584d1, type: 2}
+  - {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
   _trash: {fileID: 2073568122}
   _towerListPlayer:
   - {fileID: 1591314832}

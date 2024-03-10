@@ -20,7 +20,7 @@ public class Grenade : Bullet
                 if (unit.Name != _name)
                 {
                     //Debug.Log(unit.Name + " " + _damage * _damageReductionPercentage);
-                    unit.GetDamage(_damage * _damageReductionPercentage);
+                    unit.GetDamage(_damage * _damageReductionPercentage, AttackType.Ranged);
                 }
             }
         }

@@ -75,7 +75,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _counter.DeleteEntity(this);
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, AttackType attackType)
     {
         _healPoint -= damage;
 

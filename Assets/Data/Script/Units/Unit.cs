@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,12 +28,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     //||��������||
 
     private bool _isAlive = true;
+    private bool _isDodgeRangeAttack = false;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
     protected Vector3 _targetPoint;
     protected Scout _scout;
     protected Quaternion _startRotation;
+
+    private float _timeImmortality = 0f;
 
     protected List<Skill> _skillList = new();
 
@@ -59,6 +63,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
     public float ApproximationFactor { get; protected set; }
+    public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
 
     public event UnityAction<Unit> Died;
@@ -142,8 +147,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         AttackSpeed = warriorData.AttackSpeed;
         Speed = warriorData.Speed;
         ApproximationFactor = warriorData.ApproximationFactor;
+        ProjectileBlockChance = warriorData.ProjectileBlockChance;
+        _timeImmortality = warriorData.TimeImmortaly;
 
-        foreach(Skill skill in warriorData.SkillList)
+        foreach (Skill skill in warriorData.SkillList)
         {
             Skill newSkill = Instantiate(skill, transform);
             newSkill.SetUnit(this);
@@ -167,23 +174,38 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _healthBarUpdater.InitHealthBar(this);
     }
 
-    public virtual void GetDamage(float damage)
+    public virtual void GetDamage(float damage, AttackType attackType)
     {
-        HealPoint -= damage;
-
-        if (HealPoint <= 0 && isDie == false)
+        if (ProjectileBlockChance > 0 && attackType == AttackType.Ranged)
         {
-            isDie = true;
-            Die();
-            CurrentTarget = null;
+            int randomNumber = Random.Range(1, 100);
+
+            if (randomNumber <= ProjectileBlockChance)
+                _isDodgeRangeAttack = true;
         }
 
-        if (_effectDamage != null)
-            _effectDamage.StartEffect();
+        if (_isDodgeRangeAttack == false)
+        {
+            HealPoint -= damage;
 
-        HealthChanged?.Invoke(HealPoint);
+            if (HealPoint <= 0 && isDie == false)
+            {
+                isDie = true;
+                StartCoroutine(LiveAfterDeath());
+            }
 
-        UpdateHealthBar();
+            if (_effectDamage != null)
+                _effectDamage.StartEffect();
+
+            HealthChanged?.Invoke(HealPoint);
+
+            UpdateHealthBar();
+        }
+        else
+        {
+            Debug.Log("Dodge");
+            _isDodgeRangeAttack = false;
+        }
     }
 
     protected virtual void UnitOnDisable()
@@ -235,8 +257,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isAlive = false;
         _stateMachine.Stop();
 
-        if(_skillList.Count > 0)
-            foreach(Skill skill in _skillList)
+        if (_skillList.Count > 0)
+            foreach (Skill skill in _skillList)
                 if (skill.TypeSkill == TypeSkill.Deatch)
                     skill.UseSkill();
 
@@ -247,6 +269,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _effectDeath.StartEffect();
 
         Died?.Invoke(this);
+    }
+
+    private IEnumerator LiveAfterDeath()
+    {
+        yield return new WaitForSeconds(_timeImmortality);
+
+        Die();
+        CurrentTarget = null;
     }
 
     private void OnChangeTarget(IEntity entity)
