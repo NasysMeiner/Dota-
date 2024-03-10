@@ -50,6 +50,8 @@ public class WarriorData : ScriptableObject
 
     public float TimeImmortaly = 0;
 
+    public bool IsDoubleAttack = false;
+
     [Header("Effect")]
 
     public Effect EffectDamage;

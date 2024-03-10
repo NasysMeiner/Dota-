@@ -4,6 +4,7 @@ public class AttackState : State
 {
     private float _time = 0;
     private Effect _effectAtack;
+    private bool _isDoubleAttack = false;
 
     public AttackState(StateMachine stateMachine, Effect attackEffect) : base(stateMachine)
     {
@@ -37,10 +38,20 @@ public class AttackState : State
                 float leanght = Mathf.Abs((_stateMachine.Warrior.Position - _stateMachine.Warrior.CurrentTarget.Position).magnitude);
 
                 if (leanght <= _stateMachine.Warrior.AttckRange && _time <= 0)
-                {
-                    _time = _stateMachine.Warrior.AttackSpeed;
+                {      
                     MakeDamage();
                     MakeEffectAtack();
+
+                    if (_stateMachine.Warrior.IsDoubleAttack && _isDoubleAttack == false)
+                    {
+                        _isDoubleAttack = true;
+                        _time = 0.3f;
+                    }
+                    else
+                    {
+                        _isDoubleAttack = false;
+                        _time = _stateMachine.Warrior.AttackSpeed;
+                    }
                 }
                 else if (leanght > _stateMachine.Warrior.AttckRange)
                 {
@@ -62,6 +73,7 @@ public class AttackState : State
 
     private void MakeEffectAtack()
     {
-        _effectAtack?.StartEffect();
+        if (_effectAtack != null)
+            _effectAtack.StartEffect();
     }
 }
