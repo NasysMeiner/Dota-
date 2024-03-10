@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class BarracksMenu : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class BarracksMenu : MonoBehaviour
     public Button repairButton;
 
     private Barrack[] barracks;
+    private BarracksData barracksData;
 
+    public Counter counter;
+    public Trash trash;
     private void Start()
     {
         barracks = FindObjectsOfType<Barrack>();
+
         UpdateBarracksHP();
     }
 
@@ -38,7 +43,7 @@ public class BarracksMenu : MonoBehaviour
         }
         else
         {
-            TextMeshProUGUI buttonText = repairButton.GetComponentInChildren<TextMeshProUGUI>(); 
+            TextMeshProUGUI buttonText = repairButton.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
             {
                 buttonText.text = "Ремонт";
@@ -65,7 +70,7 @@ public class BarracksMenu : MonoBehaviour
         {
             if (barrack.HealPoint == 0)
             {
-                barrack.Restore();
+                barrack.Restore(barracksData, counter, trash);
             }
             else
             {
@@ -76,3 +81,4 @@ public class BarracksMenu : MonoBehaviour
         UpdateBarracksHP();
     }
 }
+

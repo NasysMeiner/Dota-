@@ -5,6 +5,7 @@ using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Barrack : MonoBehaviour, IStructur, IEntity
 {
@@ -38,6 +39,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private int _id = 0;//time
 
+    private BarracksData _barracksData;
     private Counter _counter;
     private Counter _enemyCounter;
     private PointCreator _pointCreator;
@@ -87,7 +89,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     public void InitializeBarracks(BarracksData barracksData, Counter counter, Trash trash)
     {
         InitializeStruct(barracksData.DataStructure);
-
+        _barracksData = barracksData;
         _counter = counter;
         _pointCreator = barracksData.PointCreator;
         _trash = trash;
@@ -155,7 +157,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         else
             _isEnd = true;
 
-        if(!_isEnd)
+        if (!_isEnd)
             StartCoroutine(StartWave());
     }
 
@@ -271,12 +273,30 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
             _trash.AddQueue(this);
         }
     }
-    public void Restore()
+    public void Restore(BarracksData barracksData, Counter counter, Trash trash)
+
     {
-        _healPoint = _maxHealPoint;
+        Debug.Log("Reached Restore method");
+
+        if (!_isAlive)
+        {
+            _healPoint = _maxHealPoint;
+            _isAlive = true;
+            Debug.Log("Counter: " + counter);
+            Debug.Log("Trash: " + trash);
+            GameObject newBarrackGameObject = Instantiate(gameObject, transform.position, Quaternion.identity);
+            Barrack newBarrack = newBarrackGameObject.GetComponent<Barrack>();
+            newBarrack.InitializeBarracks(_barracksData, counter, trash);
+            newBarrack._isAlive = true;
+            Destroy(gameObject);
+        }
     }
+
     public void Repair()
     {
-        _healPoint = _maxHealPoint;
+        if (!_isAlive)
+        {
+            Restore(_barracksData, _counter, _trash);
+        }
     }
-}
+    }
