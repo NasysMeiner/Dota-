@@ -19,8 +19,7 @@ MonoBehaviour:
   SkillList: []
   LevelUpList:
   - {fileID: 11400000, guid: c594a75ab81d81c41b5905d89160d55c, type: 2}
-  HealPoint: 10
-  ColorEffectDamage: {r: 0.36320752, g: 0.716981, b: 1, a: 1}
+  ColorEffectDamage: {r: 0.4198113, g: 0.7421382, b: 1, a: 1}
   HealPoint: 690
   AttackDamage: 79
   AttackRange: 1
