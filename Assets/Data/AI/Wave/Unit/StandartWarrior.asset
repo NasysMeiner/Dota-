@@ -16,6 +16,10 @@ MonoBehaviour:
   Name: StWarrior
   Avatar: {fileID: 9100000, guid: aae6fb8cbf42cc84e89d32622320feda, type: 2}
   Sprite: {fileID: 21300000, guid: f024ecf3b71ea1c41a0c54d57ae7e8d1, type: 3}
+  SkillList:
+  - {fileID: 567823933584045999, guid: 8775d2ddce88cbb4f8c47d7d57e55e4d, type: 3}
+  LevelUpList: []
+  ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   HealPoint: 690
   AttackDamage: 79
   AttackRange: 1
@@ -23,8 +27,13 @@ MonoBehaviour:
   AttackSpeed: 1.2
   Speed: 2
   ApproximationFactor: 0.5
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
+  IsDoubleAttack: 0
   EffectDamage: {fileID: 8544384729409408119, guid: 11a6065dee486534eae3dce764222065, type: 3}
   EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: 0}
+  TimeEffectDeath: 0
   Price: 10
   CurrentStats:
   - Type: 0

@@ -21,6 +21,7 @@ public class ExplosionAroundSkillData : SkillData
             AttackScaling = AttackScaling,
             TypeSkill = TypeSkill
         };
+        Debug.Log(PrefabSkill.name + " " + TypeSkill);
 
         PrefabSkill.InitSkill(container);
     }

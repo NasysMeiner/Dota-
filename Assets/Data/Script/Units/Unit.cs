@@ -160,7 +160,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _skillList.Add(newSkill);
 
             if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
+            {
+                Debug.Log(newSkill.TypeSkill);
                 newSkill.UseSkill();
+            }
         }
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 

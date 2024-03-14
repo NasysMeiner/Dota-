@@ -92,6 +92,7 @@ public class WarriorData : ScriptableObject
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;
         EffectDeath = warriorData.EffectDeath;
+        ColorEffectDamage = warriorData.ColorEffectDamage;
 
         Price = warriorData.Price;
 
