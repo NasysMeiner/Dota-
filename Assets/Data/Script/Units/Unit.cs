@@ -45,7 +45,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Effect _effectAttack;
     private Effect _effectDamage;
     private Effect _effectDeath;
-    private float _timeEffectDeath;
 
     private HealthBarUpdater _healthBarUpdater;
     private AnimateChanger _animateChanger;
@@ -67,6 +66,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float ApproximationFactor { get; protected set; }
     public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
+    public bool IsDoubleAttack { get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -151,6 +151,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         ApproximationFactor = warriorData.ApproximationFactor;
         ProjectileBlockChance = warriorData.ProjectileBlockChance;
         _timeImmortality = warriorData.TimeImmortaly;
+        IsDoubleAttack = warriorData.IsDoubleAttack;
 
         foreach (Skill skill in warriorData.SkillList)
         {
@@ -159,7 +160,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _skillList.Add(newSkill);
 
             if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
+            {
+                Debug.Log(newSkill.TypeSkill);
                 newSkill.UseSkill();
+            }
         }
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 
@@ -171,8 +175,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         if (warriorData.EffectDeath != null)
             _effectDeath = Instantiate(warriorData.EffectDeath, transform);
-
-        _timeEffectDeath = warriorData.TimeEffectDeath;
 
         _healthBarUpdater.InitHealthBar(this);
     }

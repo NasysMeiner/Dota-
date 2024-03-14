@@ -50,6 +50,8 @@ public class WarriorData : ScriptableObject
 
     public float TimeImmortaly = 0;
 
+    public bool IsDoubleAttack = false;
+
     [Header("Effect")]
 
     public Effect EffectDamage;
@@ -90,6 +92,7 @@ public class WarriorData : ScriptableObject
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;
         EffectDeath = warriorData.EffectDeath;
+        ColorEffectDamage = warriorData.ColorEffectDamage;
 
         Price = warriorData.Price;
 

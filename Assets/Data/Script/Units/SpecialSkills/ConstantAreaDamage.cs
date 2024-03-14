@@ -58,7 +58,7 @@ public class ConstantAreaDamage : Skill
     public override void UseSkill()
     {
         _isActive = true;
-
+        Debug.Log("Damage");
         StartCoroutine(MakeDamageOfArea());
     }
 
@@ -70,7 +70,7 @@ public class ConstantAreaDamage : Skill
                 if(unit != null)
                 {
                     unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
-                    Debug.Log(unit.Name + " " + (_damage + _unit.Damage * _attackScaling));
+                    //Debug.Log(unit.Name + " " + (_damage + _unit.Damage * _attackScaling));
                 }
 
             yield return new WaitForSeconds(_time);

@@ -29,6 +29,7 @@ MonoBehaviour:
   ApproximationFactor: 1
   ProjectileBlockChance: 0
   TimeImmortaly: 0
+  IsDoubleAttack: 0
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 0}
@@ -37,4 +38,4 @@ MonoBehaviour:
   CurrentStats: []
   Stats: []
   Prices: []
-  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}
+  Bullet: {fileID: -8264313214411544747, guid: 341e57f061b1f154eaab74666a9c722e, type: 3}

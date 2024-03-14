@@ -29,6 +29,7 @@ public class ExplosionAroundSkill : Skill
 
         foreach (RaycastHit2D c in hitCollider)
         {
+            Debug.Log(c.collider.name);
             if (c.collider.gameObject.TryGetComponent(out Unit unit) && unit != null)
             {
                 if (unit.Name != _unit.Name)
