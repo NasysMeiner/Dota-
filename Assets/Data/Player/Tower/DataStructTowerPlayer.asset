@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Income: 0
   MaxHealpPoint: 100
-  EffectDamage: {fileID: -1277435254148351930, guid: 1ab4c5572527f3b4bba86bb68eaed603, type: 3}
-  EffectDestruct: {fileID: -1277435254148351930, guid: da96cdd158ef06b4fb3b6d175d10dd31, type: 3}
+  EffectDamage: {fileID: -4138366589552181953, guid: 3985d75afa1c8c54d9164271174e1420, type: 3}
+  EffectDestruct: {fileID: 5334876924989911983, guid: 1b9fa2657bf216743a7f514cc20b898d, type: 3}
   EffectStart: {fileID: 8203878054178735098, guid: 98f8db14c33b23d40823d54911eccd75, type: 3}
   TimeStartEffect: 0.2
