@@ -15,6 +15,6 @@ MonoBehaviour:
   Income: 20
   MaxHealpPoint: 100
   EffectDamage: {fileID: -4138366589552181953, guid: 3985d75afa1c8c54d9164271174e1420, type: 3}
-  EffectDestruct: {fileID: -4138366589552181953, guid: 2a15667ad484fe14f9323fc6456bf28e, type: 3}
+  EffectDestruct: {fileID: 5334876924989911983, guid: 7b00427065a6e7f4fbc40a0db278589b, type: 3}
   EffectStart: {fileID: 0}
   TimeStartEffect: 0
