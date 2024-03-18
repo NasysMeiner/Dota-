@@ -17499,19 +17499,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 229146068883272049, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 847935876548777427, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146301289049833474, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146301289049833474, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: simulationSpeed
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146301289049833474, guid: 420da087e43379045903958bf349d2c6, type: 3}
+      propertyPath: startDelay.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146301289049833474, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -17599,7 +17603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4116341718606788764, guid: 420da087e43379045903958bf349d2c6, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 420da087e43379045903958bf349d2c6, type: 3}
@@ -18291,7 +18295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: fe7bf5baa1c589848881dda204799f57, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.49954095, g: 0.9056604, b: 0.38020647, a: 0.18431373}
   m_FlipX: 0
   m_FlipY: 0
@@ -18299,7 +18303,7 @@ SpriteRenderer:
   m_Size: {x: 21.64, y: 21.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1212734031
