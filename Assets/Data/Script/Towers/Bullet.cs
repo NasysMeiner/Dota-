@@ -76,8 +76,8 @@ public class Bullet : MonoBehaviour
         if (_endEffect != null && _isDestroy == false)
             StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
 
-        _isDestroy = true;
         _rigidbody.velocity = Vector3.zero;
+        _isDestroy = true;
     }
 
     private void CheckTargetPosition()

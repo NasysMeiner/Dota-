@@ -11,6 +11,7 @@ public class ArcherAttackState : AttackState
         if (_archer == null)
             _archer = _stateMachine.Warrior as Archer;
 
+        StartAnimation();
         Bullet bullet = _archer.CreateBullet();
         bullet.transform.position = _archer.Position;
         Vector3 targetPosition = CalculeutVector(bullet);

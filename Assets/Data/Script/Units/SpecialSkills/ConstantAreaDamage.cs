@@ -58,7 +58,6 @@ public class ConstantAreaDamage : Skill
     public override void UseSkill()
     {
         _isActive = true;
-        Debug.Log("Damage");
         StartCoroutine(MakeDamageOfArea());
     }
 

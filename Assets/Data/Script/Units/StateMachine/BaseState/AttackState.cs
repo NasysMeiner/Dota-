@@ -70,6 +70,7 @@ public class AttackState : State
 
     protected virtual void MakeDamage()
     {
+        StartAnimation();
         _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage, AttackType.Melee);
     }
 

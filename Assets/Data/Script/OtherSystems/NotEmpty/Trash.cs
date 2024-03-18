@@ -12,7 +12,6 @@ public class Trash : MonoBehaviour
     public void AddQueue(IEntity entity)
     {
         _queue.Enqueue(entity);
-        entity.ChangePosition(transform.position);
 
         if (_queue.Count > 4 && _isActive == false)
             StartCoroutine(DeleteEntity());

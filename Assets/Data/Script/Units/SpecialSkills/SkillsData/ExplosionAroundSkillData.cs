@@ -20,8 +20,6 @@ public class ExplosionAroundSkillData : SkillData
             TypeSkill = TypeSkill
         };
 
-        Debug.Log(TypeSkill + " 0");
-
         ContainerSkill = container;
 
         skill.InitSkill(container);

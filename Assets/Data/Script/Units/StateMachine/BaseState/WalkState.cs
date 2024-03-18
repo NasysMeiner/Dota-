@@ -24,13 +24,13 @@ public class WalkState : State
         if (_stateMachine.Warrior.CurrentTarget == null && _isEnd != true)
         {
             if (_meshAgent.SetDestination(_targetPoint))
-                _meshAgent.SetDestination(_targetPoint);
+                SetTargetPoint(_targetPoint);
         }
         else if (_stateMachine.Warrior.CurrentTarget != null)
         {
             if (_meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position))
             {
-                _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+                SetTargetPoint(_stateMachine.Warrior.CurrentTarget.Position);
                 _isWalkToTarget = true;
             }
         }
@@ -48,7 +48,7 @@ public class WalkState : State
         _isWork = false;
 
         _isWalkToTarget = false;
-        _meshAgent.SetDestination(_stateMachine.Warrior.Position);
+        SetTargetPoint(_stateMachine.Warrior.Position);
         _meshAgent.speed = 0;
     }
 
@@ -57,9 +57,9 @@ public class WalkState : State
         if (_isWork)
         {
             if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false)
-                _meshAgent.SetDestination(_targetPoint);
+                SetTargetPoint(_targetPoint);
             else if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
-                _meshAgent.SetDestination(_stateMachine.Warrior.CurrentTarget.Position);
+                SetTargetPoint(_stateMachine.Warrior.CurrentTarget.Position);
 
             if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)
                 _stateMachine.SetState<AttackState>();
@@ -72,5 +72,11 @@ public class WalkState : State
             if (Mathf.Abs((_targetPoint - _stateMachine.Warrior.Position).magnitude) < 0.2f)
                 _isEnd = true;
         }
+    }
+
+    public void SetTargetPoint(Vector3 target)
+    {
+        StartAnimation();
+        _meshAgent.SetDestination(target);
     }
 }
