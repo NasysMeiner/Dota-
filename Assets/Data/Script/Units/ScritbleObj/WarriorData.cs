@@ -16,7 +16,7 @@ public class WarriorData : ScriptableObject
     public Sprite Sprite;
 
     [Header("Skills")]
-    public List<Skill> SkillList = new();
+    public List<SkillData> SkillList = new();
 
     [Header("LevelUp")]
     public List<StatUp> LevelUpList = new();
@@ -135,7 +135,7 @@ public class WarriorData : ScriptableObject
             if(statUp.IsPurchased)
                 statUp.LevelUpStat(this);
 
-        foreach (Skill skill in warriorData.SkillList)
+        foreach (SkillData skill in warriorData.SkillList)
             SkillList.Add(skill);
     }
 

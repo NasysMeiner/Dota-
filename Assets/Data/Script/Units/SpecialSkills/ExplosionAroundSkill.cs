@@ -28,12 +28,12 @@ public class ExplosionAroundSkill : Skill
         RaycastHit2D[] hitCollider = Physics2D.CircleCastAll(transform.position, _radius, Vector2.zero);
 
         foreach (RaycastHit2D c in hitCollider)
-        {
-            Debug.Log(c.collider.name);
+        { 
             if (c.collider.gameObject.TryGetComponent(out Unit unit) && unit != null)
             {
                 if (unit.Name != _unit.Name)
                 {
+                    Debug.Log(c.collider.name);
                     unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
                 }
             }

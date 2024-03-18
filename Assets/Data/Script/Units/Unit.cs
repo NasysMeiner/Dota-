@@ -31,6 +31,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private bool _isAlive = true;
     private bool _isDodgeRangeAttack = false;
+    protected bool _isDoubleAttack = false;
     protected NavMeshAgent _meshAgent;
     protected Rigidbody2D _rigidbody;
     protected StateMachine _stateMachine;
@@ -157,19 +158,23 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         ProjectileBlockChance = warriorData.ProjectileBlockChance;
         _timeImmortality = warriorData.TimeImmortaly;
         IsDoubleAttack = warriorData.IsDoubleAttack;
+        _isDoubleAttack = warriorData.IsDoubleAttack;
 
-        foreach (Skill skill in warriorData.SkillList)
+        foreach (SkillData skill in warriorData.SkillList)
         {
-            Skill newSkill = Instantiate(skill, transform);
+            Skill newSkill = Instantiate(skill.PrefabSkill, transform);
             newSkill.SetUnit(this);
+            skill.LoadData(newSkill);
+            //newSkill.InitSkill(skill.ContainerSkill);
             _skillList.Add(newSkill);
 
-            if (newSkill.TypeSkill == TypeSkill.InitStart || newSkill.TypeSkill == TypeSkill.StatsUp)
+            if (skill.TypeSkill == TypeSkill.InitStart || skill.TypeSkill == TypeSkill.StatsUp)
             {
                 Debug.Log(newSkill.TypeSkill);
                 newSkill.UseSkill();
             }
         }
+
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
 
         if (warriorData.EffectDamage != null)
@@ -242,7 +247,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     protected virtual void CreateState()
     {
-        State state = new AttackState(_stateMachine, _effectAttack);
+        State state = new AttackState(_stateMachine, _effectAttack, _isDoubleAttack);
         state.onEnter += _animateChanger.OnPlayHit;
         _stateMachine.AddState(state);
 

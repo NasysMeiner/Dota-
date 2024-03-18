@@ -5,11 +5,13 @@ public class AttackState : State
     private float _time = 0;
     private Effect _effectAtack;
     private bool _isDoubleAttack = false;
+    protected bool _isActiveAttack = false;
 
-    public AttackState(StateMachine stateMachine, Effect attackEffect) : base(stateMachine)
+    public AttackState(StateMachine stateMachine, Effect attackEffect, bool isDoubleAttack) : base(stateMachine)
     {
         StateName = "Attack";//временно
         _effectAtack = attackEffect;
+        _isActiveAttack = isDoubleAttack;
     }
 
     public override void Enter()
@@ -42,10 +44,10 @@ public class AttackState : State
                     MakeDamage();
                     MakeEffectAtack();
 
-                    if (_stateMachine.Warrior.IsDoubleAttack && _isDoubleAttack == false)
+                    if (_stateMachine.Warrior.IsDoubleAttack && _isDoubleAttack == false && _isActiveAttack)
                     {
                         _isDoubleAttack = true;
-                        _time = 0.3f;
+                        _time = 0.1f;
                     }
                     else
                     {

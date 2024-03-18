@@ -4,7 +4,7 @@ public class ArcherAttackState : AttackState
 {
     private Archer _archer;
 
-    public ArcherAttackState(StateMachine stateMachine, Effect atackEffect) : base(stateMachine, atackEffect) { }
+    public ArcherAttackState(StateMachine stateMachine, Effect atackEffect, bool isDoubleAttack) : base(stateMachine, atackEffect, isDoubleAttack) { }
 
     protected override void MakeDamage()
     {
