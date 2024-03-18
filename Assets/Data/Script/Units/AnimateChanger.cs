@@ -11,19 +11,19 @@ public class AnimateChanger
 
     public void OnPlayWalk()
     {
-        if (_animator.avatar != null)
+        if (_animator.runtimeAnimatorController != null)
             _animator.Play("Walk");
     }
 
     public void OnPlayHit()
     {
-        if (_animator.avatar != null)
+        if (_animator.runtimeAnimatorController != null)
             _animator.Play("Hit");
     }
 
-    public void OnPlayDamage()
+    public void OnPlayIdle()
     {
-        if (_animator.avatar != null)
-            _animator.Play("Damage");
+        if (_animator.runtimeAnimatorController != null)
+            _animator.Play("Idle");
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DamageColorEffectUnit : MonoBehaviour
 {
-    [SerializeField] private float _damageTimeSec = 1f;
+    [SerializeField] private float _damageTimeSec = 0.1f;
 
     private SpriteRenderer _spriteRend;
     private Color _defaultColor;

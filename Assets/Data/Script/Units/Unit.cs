@@ -84,6 +84,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     {
         if (_isAlive)
             UnitUpdate();
+
+        if(_spriteRenderer != null)
+        {
+            _spriteRenderer.sortingOrder = (int)((transform.position.y + 10) % 8);
+        }
     }
 
     private void LateUpdate()
@@ -246,7 +251,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _stateMachine.AddState(state);
 
         state = new IdleState(_stateMachine);
-        state.onEnter += _animateChanger.OnPlayDamage;
+        state.onEnter += _animateChanger.OnPlayIdle;
         _stateMachine.AddState(state);
 
         _stateMachine.SetState<WalkState>();

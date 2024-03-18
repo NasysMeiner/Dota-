@@ -57,7 +57,6 @@ MonoBehaviour:
   _damageColorEffectUnit: {fileID: 7906301316647820066}
   _animator: {fileID: 542907647720514871}
   _isDrawRadius: 0
-  _skill: {fileID: 0}
   CurrentState: 
   Pathboll: 0
   _id: 0
@@ -199,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6412182524438405968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -353,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.898
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -437,11 +436,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
---- !u!1 &411304190484489749 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8401399613108007615, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
-  m_PrefabInstance: {fileID: 8152353793000674474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1319480233777767700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
