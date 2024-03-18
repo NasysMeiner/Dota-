@@ -57,7 +57,6 @@ MonoBehaviour:
   _damageColorEffectUnit: {fileID: 7906301316647820066}
   _animator: {fileID: 542907647720514871}
   _isDrawRadius: 0
-  _skill: {fileID: 0}
   CurrentState: 
   Pathboll: 0
   _id: 0
@@ -66,7 +65,7 @@ MonoBehaviour:
   Targettt: 
   _pointId: 0
   isDie: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4136645010362728185}
 --- !u!195 &1679506944946346948
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -437,16 +436,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
---- !u!1 &411304190484489749 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8401399613108007615, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
-  m_PrefabInstance: {fileID: 8152353793000674474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1319480233777767700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164460497040060862, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
   m_PrefabInstance: {fileID: 8152353793000674474}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4136645010362728185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5209163028176759379, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+  m_PrefabInstance: {fileID: 8152353793000674474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41b32ea479b5a54394653ec8e989d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6417371337746532700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2895233673743490550, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
