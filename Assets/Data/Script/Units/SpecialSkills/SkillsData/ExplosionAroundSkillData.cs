@@ -3,8 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Skills/ExplosionAroundSkill")]
 public class ExplosionAroundSkillData : SkillData
 {
-    public ExplosionAroundSkill PrefabSkill;
-
     [Header("Stat")]
     public float AttackScaling = 0.5f;
 
@@ -12,7 +10,7 @@ public class ExplosionAroundSkillData : SkillData
 
     public float Radius = 2;
 
-    public override void LoadData()
+    public override void LoadData(Skill skill)
     {
         ContainerExplosionAroundSkill container = new()
         {
@@ -21,9 +19,12 @@ public class ExplosionAroundSkillData : SkillData
             AttackScaling = AttackScaling,
             TypeSkill = TypeSkill
         };
-        Debug.Log(PrefabSkill.name + " " + TypeSkill);
 
-        PrefabSkill.InitSkill(container);
+        Debug.Log(TypeSkill + " 0");
+
+        ContainerSkill = container;
+
+        skill.InitSkill(container);
     }
 }
 

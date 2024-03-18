@@ -3,8 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Skills/ConstantAreaDamageSkill")]
 public class ConstantAreaDamageData : SkillData
 {
-    public ConstantAreaDamage PrefabSkill;
-
     [Header("Stat")]
     public float AttackScaling = 0;
 
@@ -14,7 +12,7 @@ public class ConstantAreaDamageData : SkillData
 
     public float Radius = 2;
 
-    public override void LoadData()
+    public override void LoadData(Skill skill)
     {
         ConstantAreaDamageSkill container = new()
         {
@@ -25,7 +23,12 @@ public class ConstantAreaDamageData : SkillData
             TypeSkill = TypeSkill
         };
 
-        PrefabSkill.InitSkill(container);
+        Debug.Log(TypeSkill + " 1");
+
+
+        ContainerSkill = container;
+
+        skill.InitSkill(container);
     }
 }
 

@@ -16,7 +16,9 @@ MonoBehaviour:
   Name: StWArrior
   Avatar: {fileID: 9100000, guid: bdc72e0aa6b7b81459f5bb810165e910, type: 2}
   Sprite: {fileID: 21300000, guid: eadc0a921ae9bc24da964cd98696f7a8, type: 3}
-  SkillList: []
+  SkillList:
+  - {fileID: 11400000, guid: 02b2eac67a2fca14fb938d3e3f4fe0de, type: 2}
+  - {fileID: 11400000, guid: 60cc32f299d34f5428620d5b44d7eb91, type: 2}
   LevelUpList:
   - {fileID: 11400000, guid: c594a75ab81d81c41b5905d89160d55c, type: 2}
   ColorEffectDamage: {r: 0.4198113, g: 0.7421382, b: 1, a: 1}
@@ -34,7 +36,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: cb34b9fb070a7584bbd2688495e53050, type: 3}
   TimeEffectDeath: 0.5
-  Price: 10
+  Price: 1
   CurrentStats:
   - Type: 0
     CurrentLevel: 1

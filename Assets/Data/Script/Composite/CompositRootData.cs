@@ -53,7 +53,7 @@ public class CompositRootData : CompositeRoot
 
     private void LoadSkillData()
     {
-        foreach(var skill in _skillData)
-            skill.LoadData();
+        //foreach(var skill in _skillData)
+        //    skill.LoadData();
     }
 }

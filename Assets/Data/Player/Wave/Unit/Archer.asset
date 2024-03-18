@@ -16,6 +16,9 @@ MonoBehaviour:
   Name: Archer
   Avatar: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 0ef48568154db494c8be5861eebfca8f, type: 3}
+  SkillList: []
+  LevelUpList:
+  - {fileID: 11400000, guid: b7b5086b59d344d47a24b26e18f23b96, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   HealPoint: 340
   AttackDamage: 103
@@ -24,11 +27,14 @@ MonoBehaviour:
   AttackSpeed: 1
   Speed: 1
   ApproximationFactor: 1
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
+  IsDoubleAttack: 0
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 0}
   TimeEffectDeath: 0
-  Price: 100
+  Price: 1
   CurrentStats:
   - Type: 0
     CurrentLevel: 1
