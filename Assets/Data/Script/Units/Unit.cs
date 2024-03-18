@@ -162,17 +162,20 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         foreach (SkillData skill in warriorData.SkillList)
         {
-            Skill newSkill = Instantiate(skill.PrefabSkill, transform);
-            newSkill.SetUnit(this);
-            skill.LoadData(newSkill);
-            //newSkill.InitSkill(skill.ContainerSkill);
-            _skillList.Add(newSkill);
-
-            if (skill.TypeSkill == TypeSkill.InitStart || skill.TypeSkill == TypeSkill.StatsUp)
+            if(skill != null)
             {
-                Debug.Log(newSkill.TypeSkill);
-                newSkill.UseSkill();
-            }
+                Skill newSkill = Instantiate(skill.PrefabSkill, transform);
+                newSkill.SetUnit(this);
+                skill.LoadData(newSkill);
+                //newSkill.InitSkill(skill.ContainerSkill);
+                _skillList.Add(newSkill);
+
+                if (skill.TypeSkill == TypeSkill.InitStart || skill.TypeSkill == TypeSkill.StatsUp)
+                {
+                    Debug.Log(newSkill.TypeSkill);
+                    newSkill.UseSkill();
+                }
+            }     
         }
 
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
