@@ -245,11 +245,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
             if (_meshAgent.velocity.x != 0)
                 _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
-
-            Debug.Log(_meshAgent.updateRotation + " " + _meshAgent.angularSpeed);
-
-            //if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
-            //    transform.rotation = _startRotation;
         }
     }
 

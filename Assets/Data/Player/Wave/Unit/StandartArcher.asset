@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0882f83855115aa4f8958febe8c9dccf, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   HealPoint: 119
-  AttackDamage: 42
+  AttackDamage: 1
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
