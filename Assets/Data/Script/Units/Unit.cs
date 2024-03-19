@@ -112,6 +112,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         EnemyCounter = counter;
         _rigidbody = GetComponent<Rigidbody2D>();
         _meshAgent = GetComponent<NavMeshAgent>();
+        _meshAgent.updateRotation = false;
+        _meshAgent.angularSpeed = 0;
         _meshAgent.speed = Speed;
         _targetPoint = targetPoint;
         _startRotation = transform.rotation;
@@ -244,8 +246,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             if (_meshAgent.velocity.x != 0)
                 _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
 
-            if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
-                transform.rotation = _startRotation;
+            Debug.Log(_meshAgent.updateRotation + " " + _meshAgent.angularSpeed);
+
+            //if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
+            //    transform.rotation = _startRotation;
         }
     }
 
