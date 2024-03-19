@@ -29,7 +29,6 @@ public class AnimateChanger
     {
         if (_animator.runtimeAnimatorController != null)
         {
-            Debug.Log("Ent");
             _currentState = _hit;
             _animator.SetTrigger(_hit);
         }
