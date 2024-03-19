@@ -13,6 +13,10 @@ public class WarriorData : ScriptableObject
 
     public RuntimeAnimatorController Avatar;
 
+    public Vector3 Bias;
+
+    public float Scale;
+
     public Sprite Sprite;
 
     [Header("Skills")]
@@ -88,6 +92,8 @@ public class WarriorData : ScriptableObject
         ApproximationFactor = warriorData.ApproximationFactor;
         ProjectileBlockChance = warriorData.ProjectileBlockChance;
         TimeImmortaly = warriorData.TimeImmortaly;
+        Bias = warriorData.Bias;
+        Scale = warriorData.Scale;
 
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;

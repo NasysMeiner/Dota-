@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Name: Tank
-  Avatar: {fileID: 0}
+  Avatar: {fileID: 9100000, guid: 07372936ccaf071409d7ba845194e856, type: 2}
+  Bias: {x: 0, y: 0.76, z: 0}
+  Scale: 0.4
   Sprite: {fileID: 21300000, guid: 5e82b2c55179f004c9094791b70b33a1, type: 3}
-  SkillList:
-  - {fileID: 2737793477371155391, guid: c3c69e7beb67bb741a0c387bf1d49943, type: 3}
-  - {fileID: 567823933584045999, guid: 8775d2ddce88cbb4f8c47d7d57e55e4d, type: 3}
+  SkillList: []
   LevelUpList:
   - {fileID: 11400000, guid: c94a17f9e9d31954d99c61dfb9ce3d37, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}

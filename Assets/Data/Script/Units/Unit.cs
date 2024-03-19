@@ -48,7 +48,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private Effect _effectDeath;
 
     private HealthBarUpdater _healthBarUpdater;
-    private AnimateChanger _animateChanger;
+    protected AnimateChanger _animateChanger;
 
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
@@ -112,6 +112,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         EnemyCounter = counter;
         _rigidbody = GetComponent<Rigidbody2D>();
         _meshAgent = GetComponent<NavMeshAgent>();
+        _meshAgent.updateRotation = false;
+        _meshAgent.angularSpeed = 0;
         _meshAgent.speed = Speed;
         _targetPoint = targetPoint;
         _startRotation = transform.rotation;
@@ -136,7 +138,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (warriorData.Avatar != null)
         {
             _animator.runtimeAnimatorController = warriorData.Avatar;
-            _animator.transform.localScale = Vector3.one * 0.25f; //Temporarily, there are no animations yet
+            _animator.transform.localScale = Vector3.one * warriorData.Scale; //Temporarily, there are no animations yet
+            _animator.transform.localPosition = warriorData.Bias;
         }
         else
         {
@@ -242,24 +245,25 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
             if (_meshAgent.velocity.x != 0)
                 _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
-
-            if (_meshAgent.velocity != Vector3.zero || transform.rotation.z != 0)
-                transform.rotation = _startRotation;
         }
     }
 
     protected virtual void CreateState()
     {
         State state = new AttackState(_stateMachine, _effectAttack, _isDoubleAttack);
-        state.onEnter += _animateChanger.OnPlayHit;
+        state.StateActive += _animateChanger.OnPlayHit;
         _stateMachine.AddState(state);
 
         state = new WalkState(_stateMachine, _targetPoint, _meshAgent);
-        state.onEnter += _animateChanger.OnPlayWalk;
+        state.StateActive += _animateChanger.OnPlayWalk;
         _stateMachine.AddState(state);
 
         state = new IdleState(_stateMachine);
-        state.onEnter += _animateChanger.OnPlayIdle;
+        state.StateActive += _animateChanger.OnPlayIdle;
+        _stateMachine.AddState(state);
+
+        state = new DeathState(_stateMachine);
+        state.StateActive += _animateChanger.OnPlayDeath;
         _stateMachine.AddState(state);
 
         _stateMachine.SetState<WalkState>();
@@ -273,14 +277,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected void Die()
     {
         _isAlive = false;
-        _stateMachine.Stop();
+        _stateMachine.Die();
 
         if (_skillList.Count > 0)
             foreach (Skill skill in _skillList)
                 if (skill.TypeSkill == TypeSkill.Deatch)
                     skill.UseSkill();
 
-        _spriteRenderer.enabled = false;
+        //_spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);
 
         if (_effectDeath != null)

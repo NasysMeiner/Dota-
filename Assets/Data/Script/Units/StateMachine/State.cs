@@ -5,7 +5,7 @@ public abstract class State
     protected readonly StateMachine _stateMachine;
     protected bool _isWork = false;
 
-    public event UnityAction onEnter;
+    public event UnityAction StateActive;
 
     public string StateName { get; protected set; } //временно
 
@@ -22,8 +22,8 @@ public abstract class State
 
     public virtual void Update() { }
 
-    public void ActionInvoke()
+    protected void StartAnimation()
     {
-        onEnter?.Invoke();
+        StateActive?.Invoke();
     }
 }

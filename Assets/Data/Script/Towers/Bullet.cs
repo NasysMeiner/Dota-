@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly || _target.IsAlive == false)
+        if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly /*|| _target.IsAlive == false*/)
             Destroy();
 
         if (_target != null)
@@ -76,8 +76,8 @@ public class Bullet : MonoBehaviour
         if (_endEffect != null && _isDestroy == false)
             StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
 
-        _isDestroy = true;
         _rigidbody.velocity = Vector3.zero;
+        _isDestroy = true;
     }
 
     private void CheckTargetPosition()

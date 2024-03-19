@@ -150,8 +150,10 @@ public class RadiusSpawner : MonoBehaviour
 
     private IEnumerator WaitTimeDeathEffect(Unit unit)
     {
+        _trash.AddQueue(unit);
+
         yield return new WaitForSeconds(_timeWaitDeath);
 
-        _trash.AddQueue(unit);
+        unit.ChangePosition(_trash.transform.position);
     }
 }

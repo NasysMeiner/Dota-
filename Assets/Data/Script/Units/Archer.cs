@@ -12,9 +12,21 @@ public class Archer : Unit
 
     protected override void CreateState()
     {
-        _stateMachine.AddState(new ArcherAttackState(_stateMachine, _effectAttack, _isDoubleAttack));
-        _stateMachine.AddState(new WalkState(_stateMachine, _targetPoint, _meshAgent));
-        _stateMachine.AddState(new IdleState(_stateMachine));
+        State state = new ArcherAttackState(_stateMachine, _effectAttack, _isDoubleAttack);
+        state.StateActive += _animateChanger.OnPlayHit;
+        _stateMachine.AddState(state);
+
+        state = new WalkState(_stateMachine, _targetPoint, _meshAgent);
+        _stateMachine.AddState(state);
+        state.StateActive += _animateChanger.OnPlayWalk;
+
+        state = new IdleState(_stateMachine);
+        _stateMachine.AddState(state);
+        state.StateActive += _animateChanger.OnPlayIdle;
+
+        state = new DeathState(_stateMachine);
+        _stateMachine.AddState(state);
+        state.StateActive += _animateChanger.OnPlayDeath;
 
         _stateMachine.SetState<WalkState>();
     }

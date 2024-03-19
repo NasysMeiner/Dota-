@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class StateMachine
 {
-    private Unit _warrior;
+    private readonly Unit _warrior;
 
     public StateMachine(Unit warrior)
     {
@@ -39,20 +39,18 @@ public class StateMachine
             CurrentState?.Exit();
             CurrentState = newState;
             CurrentState?.Enter();
-            CurrentState?.ActionInvoke();
             CurrentTextState = CurrentState.StateName;
         }
-    }
-
-    public void Stop()
-    {
-        SetState<WalkState>();
-        CurrentState.Exit();
     }
 
     public void Update()
     {
         if (CurrentState.IsWork)
             CurrentState?.Update();
+    }
+
+    internal void Die()
+    {
+        SetState<DeathState>();
     }
 }

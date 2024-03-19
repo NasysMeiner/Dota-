@@ -47,7 +47,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     {
         if (_currentTarget != null && _time >= _speedAttack && _isShoot == false)
         {
-            if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange)
+            if (Mathf.Abs((_currentTarget.Position - transform.position).magnitude) > _attackRange || _currentTarget.IsAlive == false)
             {
                 _currentTarget = null;
             }

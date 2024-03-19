@@ -4,7 +4,7 @@ public class AttackState : State
 {
     private float _time = 0;
     private Effect _effectAtack;
-    private bool _isDoubleAttack = false;
+    protected bool _isDoubleAttack = false;
     protected bool _isActiveAttack = false;
 
     public AttackState(StateMachine stateMachine, Effect attackEffect, bool isDoubleAttack) : base(stateMachine)
@@ -70,6 +70,9 @@ public class AttackState : State
 
     protected virtual void MakeDamage()
     {
+        if(!_isDoubleAttack)
+            StartAnimation();
+
         _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage, AttackType.Melee);
     }
 
