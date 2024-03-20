@@ -22,7 +22,7 @@ public class HealthBarUpdater : MonoBehaviour
 
         _unit.HealthChanged += UpdateHealthBar;
 
-        UpdateHealthBar(_unit.MaxHealthPoint);
+        UpdateHealthBar(_unit.MaxHealthPoint, AttackType.ConstDamage);
     }
 
     void OnDestroy()
@@ -30,7 +30,7 @@ public class HealthBarUpdater : MonoBehaviour
         _unit.HealthChanged -= UpdateHealthBar;
     }
 
-    void UpdateHealthBar(float health)
+    void UpdateHealthBar(float health, AttackType attackType)
     {
         healthBar.SetHealth(health);
     }

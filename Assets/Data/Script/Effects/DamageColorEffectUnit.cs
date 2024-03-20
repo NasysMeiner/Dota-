@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DamageColorEffectUnit : MonoBehaviour
 {
-    [SerializeField] private float _damageTimeSec = 0.1f;
+    [SerializeField] private float _damageTimeSec = 1f;
 
     private SpriteRenderer _spriteRend;
     private Color _defaultColor;
@@ -14,11 +14,13 @@ public class DamageColorEffectUnit : MonoBehaviour
     private void OnDisable()
     {
         _unit.HealthChanged -= StartEffect;
+        _unit.Died -= StopEffect;
     }
 
     private void Start()
     {
         _unit.HealthChanged += StartEffect;
+        _unit.Died += StopEffect;
         _spriteRend = GetComponent<SpriteRenderer>();
         _defaultColor = _spriteRend.color;
     }
@@ -26,12 +28,19 @@ public class DamageColorEffectUnit : MonoBehaviour
     public void InitEffectDamage(Unit unit, Color color)
     {
         _unit = unit;
-        _damageColor = color;   
+        _damageColor = color;
     }
 
-    public void StartEffect(float health)
+    public void StartEffect(float health, AttackType attackType)
     {
-        StartCoroutine(StartEffectCoroutine());
+        if(attackType != AttackType.ConstDamage)
+            StartCoroutine(StartEffectCoroutine());
+    }
+
+    public void StopEffect(Unit unit)
+    {
+        StopAllCoroutines();
+        _spriteRend.color = _defaultColor;
     }
 
     private IEnumerator StartEffectCoroutine()

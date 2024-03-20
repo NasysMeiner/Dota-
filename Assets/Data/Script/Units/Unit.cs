@@ -73,7 +73,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     //
     public HealthBar healthBar;
-    public event UnityAction<float> HealthChanged;
+    public event UnityAction<float, AttackType> HealthChanged;
     //
 
     private void OnDisable()
@@ -215,10 +215,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
                 StartCoroutine(LiveAfterDeath());
             }
 
-            if (_effectDamage != null)
+            if (_effectDamage != null && attackType != AttackType.ConstDamage)
                 _effectDamage.StartEffect();
 
-            HealthChanged?.Invoke(HealPoint);
+            HealthChanged?.Invoke(HealPoint, attackType);
 
             UpdateHealthBar();
         }
@@ -286,6 +286,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         //_spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);
+        _effectDamage.StopEffect();
 
         if (_effectDeath != null)
             _effectDeath.StartEffect();

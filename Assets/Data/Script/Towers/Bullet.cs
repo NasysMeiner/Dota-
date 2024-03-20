@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         if (Mathf.Abs((_entityPosition - transform.position).magnitude) >= 1.5 * _maxDistanceFly /*|| _target.IsAlive == false*/)
-            Destroy();
+            DestroyBullet();
 
         if (_target != null)
             CheckTargetPosition();
@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
                 _updateEffect.StopEffect();
 
             MakeDamage(enemy);
-            Destroy();
+            DestroyBullet();
         }
     }
 
@@ -71,12 +71,14 @@ public class Bullet : MonoBehaviour
         enemy?.GetDamage(_damage, AttackType.Ranged);
     }
 
-    private void Destroy()
+    private void DestroyBullet()
     {
         if (_endEffect != null && _isDestroy == false)
             StartCoroutine(WaitEffect(_endEffect, _timeEndEffect));
 
-        _rigidbody.velocity = Vector3.zero;
+        if(_rigidbody != null)
+            _rigidbody.velocity = Vector3.zero;
+
         _isDestroy = true;
     }
 
