@@ -110,8 +110,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         Name = name;
 
         EnemyCounter = counter;
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _meshAgent = GetComponent<NavMeshAgent>();
         _meshAgent.updateRotation = false;
         _meshAgent.angularSpeed = 0;
         _meshAgent.speed = Speed;
@@ -130,7 +128,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     public virtual void LoadStats(WarriorData warriorData)
     {
+        _meshAgent = GetComponent<NavMeshAgent>();
         _healthBarUpdater = GetComponent<HealthBarUpdater>();
+        _rigidbody = GetComponent<Rigidbody2D>();
 
         if (warriorData == null)
             throw new System.NotImplementedException("Stats Null");
@@ -175,7 +175,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
                 if (skill.TypeSkill == TypeSkill.InitStart || skill.TypeSkill == TypeSkill.StatsUp)
                 {
-                    Debug.Log(newSkill.TypeSkill);
                     newSkill.UseSkill();
                 }
             }     

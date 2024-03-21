@@ -23,9 +23,6 @@ public class ConstantAreaDamageData : SkillData
             TypeSkill = TypeSkill
         };
 
-        Debug.Log(TypeSkill + " 1");
-
-
         ContainerSkill = container;
 
         skill.InitSkill(container);
