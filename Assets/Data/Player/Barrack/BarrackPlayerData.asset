@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
   m_Name: BarrackPlayerData
   m_EditorClassIdentifier: 
-  Income: 10
-  MaxHealpPoint: 50
+  Income: 1
+  MaxHealpPoint: 1500
   EffectDamage: {fileID: -4138366589552181953, guid: 3985d75afa1c8c54d9164271174e1420, type: 3}
   EffectDestruct: {fileID: 5334876924989911983, guid: 1b9fa2657bf216743a7f514cc20b898d, type: 3}
   EffectStart: {fileID: 0}
