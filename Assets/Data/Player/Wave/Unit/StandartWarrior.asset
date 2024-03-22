@@ -24,7 +24,7 @@ MonoBehaviour:
   HealPoint: 690
   AttackDamage: 79
   AttackRange: 1
-  VisibilityRange: 3
+  VisibilityRange: 4
   AttackSpeed: 1.2
   Speed: 2
   ApproximationFactor: 0.5

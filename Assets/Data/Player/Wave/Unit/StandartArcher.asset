@@ -23,7 +23,7 @@ MonoBehaviour:
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   HealPoint: 120
   AttackDamage: 42
-  AttackRange: 3
+  AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
   Speed: 2
