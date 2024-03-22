@@ -57,4 +57,4 @@ MonoBehaviour:
     Price: 64000000
   - Type: 2
     Price: 64000000
-  Bullet: {fileID: 4470804474966191576, guid: 8b45feccd7227634c9a9c6750795aa12, type: 3}
+  Bullet: {fileID: 4470804474966191576, guid: 48cdd978038ee0e43be28aaf76e88e96, type: 3}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4470804474966191575}
   - component: {fileID: 6446086553170426262}
   m_Layer: 7
-  m_Name: Bullet spider
+  m_Name: Bullet spider 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1334401137347532132, guid: 9a0ab9411b51e0a4689b85953fcdfc09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1334401137347532132, guid: 9a0ab9411b51e0a4689b85953fcdfc09, type: 3}
       propertyPath: m_LocalPosition.y
