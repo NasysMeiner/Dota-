@@ -87,9 +87,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             UnitUpdate();
 
         if(_spriteRenderer != null)
-        {
-            _spriteRenderer.sortingOrder = (int)((transform.position.y + 10) % 8);
-        }
+            _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
     }
 
     private void LateUpdate()
