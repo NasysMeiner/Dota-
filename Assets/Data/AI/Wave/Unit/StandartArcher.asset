@@ -21,9 +21,9 @@ MonoBehaviour:
   SkillList: []
   LevelUpList: []
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
-  HealPoint: 119
-  AttackDamage: 1
-  AttackRange: 4
+  HealPoint: 120
+  AttackDamage: 42
+  AttackRange: 3
   VisibilityRange: 6
   AttackSpeed: 1
   Speed: 2

@@ -24,7 +24,7 @@ MonoBehaviour:
   HealPoint: 690
   AttackDamage: 79
   AttackRange: 1
-  VisibilityRange: 4
+  VisibilityRange: 3
   AttackSpeed: 1.2
   Speed: 2
   ApproximationFactor: 0.5
@@ -35,7 +35,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: 2d8b5343eae2a4f46bf99b4ca59577ad, type: 3}
   TimeEffectDeath: 0
-  Price: 1
+  Price: 2
   CurrentStats:
   - Type: 0
     CurrentLevel: 1

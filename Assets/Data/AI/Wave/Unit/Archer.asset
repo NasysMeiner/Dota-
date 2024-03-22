@@ -22,7 +22,7 @@ MonoBehaviour:
   LevelUpList: []
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   HealPoint: 340
-  AttackDamage: 103
+  AttackDamage: 100
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 0}
   TimeEffectDeath: 0
-  Price: 1
+  Price: 4
   CurrentStats:
   - Type: 0
     CurrentLevel: 1

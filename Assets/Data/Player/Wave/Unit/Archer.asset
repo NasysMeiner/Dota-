@@ -19,11 +19,10 @@ MonoBehaviour:
   Scale: 0.31
   Sprite: {fileID: 21300000, guid: 0ef48568154db494c8be5861eebfca8f, type: 3}
   SkillList: []
-  LevelUpList:
-  - {fileID: 11400000, guid: b7b5086b59d344d47a24b26e18f23b96, type: 2}
+  LevelUpList: []
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   HealPoint: 340
-  AttackDamage: 103
+  AttackDamage: 100
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
@@ -36,7 +35,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 0}
   TimeEffectDeath: 0
-  Price: 1
+  Price: 4
   CurrentStats:
   - Type: 0
     CurrentLevel: 1
