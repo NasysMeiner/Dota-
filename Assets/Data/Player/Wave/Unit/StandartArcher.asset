@@ -34,7 +34,7 @@ MonoBehaviour:
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: 9e6285cc5ff254949961a99807ba184c, type: 3}
-  TimeEffectDeath: 0
+  TimeEffectDeath: 0.1
   Price: 1
   CurrentStats: []
   Stats: []

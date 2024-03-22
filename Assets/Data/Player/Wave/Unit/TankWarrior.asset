@@ -33,7 +33,7 @@ MonoBehaviour:
   IsDoubleAttack: 0
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
-  EffectDeath: {fileID: 0}
+  EffectDeath: {fileID: 3599141429173347808, guid: b4ecb6412ddc3084e886254a20f07eae, type: 3}
   TimeEffectDeath: 0
   Price: 6
   CurrentStats:
