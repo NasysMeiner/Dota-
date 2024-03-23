@@ -103,8 +103,8 @@ public class RadiusSpawner : MonoBehaviour
                         currentCastle.Counter.AddEntity(newUnit);
                         newUnit.Died += OnDied;
                         newUnit.LoadStats(stat);
-                        newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
                         newUnit.ChangePosition(hit.point);
+                        newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
 
                         _time = 0;
                     }
