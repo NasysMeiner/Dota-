@@ -152,6 +152,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     private Vector3 CalculeutVector(Bullet bullet)
     {
+        if (bullet == null)
+            return Vector3.zero;
+
         float time = (_currentTarget.Position - transform.position).magnitude / bullet.Speed;
 
         float x = _currentTarget.Position.x + time * _currentTarget.MeshAgent.velocity.x;
