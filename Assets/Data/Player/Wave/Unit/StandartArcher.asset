@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: StArcher
   Avatar: {fileID: 9100000, guid: 1b148d6db42c87e4892e4d9d1b910b39, type: 2}
   Bias: {x: -0.089, y: 0.793, z: 0}
+  BiasShadow: {x: 0, y: -4, z: 0}
   Scale: 0.4
   Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
   SkillList: []
