@@ -55,6 +55,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 9126035773027932046}
   _damageColorEffectUnit: {fileID: 7906301316647820066}
   _animator: {fileID: 542907647720514871}
+  _shadow: {fileID: 3549921252892213585}
   _isDrawRadius: 0
   CurrentState: 
   Pathboll: 0

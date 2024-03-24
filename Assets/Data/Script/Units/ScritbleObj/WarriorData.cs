@@ -14,6 +14,7 @@ public class WarriorData : ScriptableObject
     public RuntimeAnimatorController Avatar;
 
     public Vector3 Bias;
+    public Vector3 BiasShadow;
 
     public float Scale;
 
@@ -93,6 +94,7 @@ public class WarriorData : ScriptableObject
         ProjectileBlockChance = warriorData.ProjectileBlockChance;
         TimeImmortaly = warriorData.TimeImmortaly;
         Bias = warriorData.Bias;
+        BiasShadow = warriorData.BiasShadow;
         Scale = warriorData.Scale;
 
         EffectDamage = warriorData.EffectDamage;

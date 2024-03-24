@@ -15,6 +15,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
+    [SerializeField] private GameObject _shadow;
 
     [SerializeField] private bool _isDrawRadius;
 
@@ -147,6 +148,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
                 throw new System.NotImplementedException("Sprite Null");
             _animator.transform.localScale = Vector3.one;//Temporarily, there are no animations yet
         }
+
+        _shadow.transform.localPosition = warriorData.BiasShadow;
 
         HealPoint = warriorData.HealPoint;
         MaxHealthPoint = HealPoint;
