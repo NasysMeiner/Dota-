@@ -286,7 +286,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         //_spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);
-        _effectDamage.StopEffect();
 
         if (_effectDeath != null)
             _effectDeath.StartEffect();
