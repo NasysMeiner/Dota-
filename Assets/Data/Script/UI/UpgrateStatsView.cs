@@ -9,12 +9,30 @@ public class UpgrateStatsView : MonoBehaviour
     private PanelStat _activePanel;
 
     private ChangerStats _changerStats;
+    private RadiusSpawner _radiusSpawner;
 
     private int _currentId;
 
-    public void InitUpgrateStatsView(ChangerStats changerStats)
+    private void OnDisable()
+    {
+        _radiusSpawner.ChangeId -= OnChangeId;
+        _changerStats.ChangeUnitStat -= OnChangeUnitStat;
+    }
+
+    public void InitUpgrateStatsView(ChangerStats changerStats, RadiusSpawner radiusSpawner)
     {
         _changerStats = changerStats;
+        _radiusSpawner = radiusSpawner;
+
+        _radiusSpawner.ChangeId += OnChangeId;
+        _changerStats.ChangeUnitStat += OnChangeUnitStat;
+        _activePanel = _defaultPanel;
+        _currentId = -1;
+
+        foreach(PanelStat panelStat in _panelStats)
+        {
+            panelStat.InitPanelStat("Player", this);
+        }
     }
 
     public WarriorData GetWarriorData(string name, int id)
@@ -24,21 +42,31 @@ public class UpgrateStatsView : MonoBehaviour
 
     public void OnChangeId(int id)
     {
-        _currentId = id;
-
         foreach (PanelStat stat in _panelStats)
         {
-            if (stat.CheckCorrect(_currentId))
+            if (stat.CheckCorrect(id))
             {
-                _activePanel.enabled = false;
+                PanelStat nextPanel;
 
                 if (id == _currentId)
+                {
+                    _activePanel.gameObject.SetActive(false);
                     _activePanel = _defaultPanel;
-                else
-                    stat.UpdateView(_currentId);
+                    _activePanel.gameObject.SetActive(true);
+                    _currentId = -1;
 
-                _activePanel = stat;
-                _activePanel.enabled = true;
+                    return;
+                }
+                else
+                {
+                    _currentId = id;
+                    nextPanel = stat;
+                    stat.UpdateView(_currentId);
+                }
+
+                _activePanel.gameObject.SetActive(false);
+                nextPanel.gameObject.SetActive(true);
+                _activePanel = nextPanel;
 
                 return;
             }

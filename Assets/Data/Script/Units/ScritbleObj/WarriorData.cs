@@ -121,6 +121,7 @@ public class WarriorData : ScriptableObject
         foreach (StatUp stat in warriorData.LevelUpList)
         {
             AllSkillList.Add(stat);
+            Debug.Log(AllSkillList.Count + " " + name);
             LevelUpList.Add(stat);
         }
 
@@ -137,8 +138,11 @@ public class WarriorData : ScriptableObject
         foreach (SkillData skill in warriorData.SkillList)
         {
             AllSkillList.Add(skill);
+            Debug.Log(AllSkillList.Count + " " + name);
             SkillList.Add(skill);
         }
+
+        Debug.Log(AllSkillList.Count + " " + name);
 
         SkillUp();
     }
@@ -156,6 +160,27 @@ public class WarriorData : ScriptableObject
         return false;
     }
 
+    public int GetPrice(int level)
+    {
+        if (level < Prices.Count)
+            return Prices[level];
+        else
+            return Prices[Prices.Count - 1];
+    }
+
+    public int GetSkill(int id)
+    {
+        Debug.Log(SkillList.Count + " || " + id);
+
+        if(id < AllSkillList.Count)
+            if (AllSkillList[id].IsPurchased)
+                return 1;
+            else
+                return 0;
+
+        return -1;
+    }
+
     public void SkillUp()
     {
         int value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
@@ -163,7 +188,6 @@ public class WarriorData : ScriptableObject
         if (value != -1)
             HealPoint = value;
 
-        Debug.Log(value);
         value = GetValueStat(TypeStat.Damage, CurrentLevel);
 
         if (value != -1)
@@ -185,8 +209,6 @@ public class WarriorData : ScriptableObject
 
         if (currentStat == null)
             return -1;
-
-        Debug.Log(currentStat.Levels.Count + " " + currentStat.Type + " " + level + " " + " " + currentStat.Levels[level - 1]);
 
         if (level <= currentStat.Levels.Count)
             return currentStat.Levels[level - 1];

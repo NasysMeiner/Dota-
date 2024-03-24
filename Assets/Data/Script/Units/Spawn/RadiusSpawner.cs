@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RadiusSpawner : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class RadiusSpawner : MonoBehaviour
     private bool _isReady = true;
     private float _time = 0;
 
+    public event UnityAction<int> ChangeId;
 
     private void Update()
     {
@@ -75,11 +77,15 @@ public class RadiusSpawner : MonoBehaviour
         if (_isReady)
         {
             Ray myRay;
-
             myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(myRay, out RaycastHit hit, 100))
             {
-                if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
+                if(hit.collider.TryGetComponent(out BarrackBoxId barrack) && barrack.Barrack.Name == "Player")
+                {
+                    ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
+                }
+                else if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
                 {
                     Spawn(hit);
                 }

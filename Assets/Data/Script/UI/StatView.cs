@@ -29,7 +29,9 @@ public class StatView : MonoBehaviour
         _nameText.text = warriorData.name;
 
         foreach (ButtonView button in _buttons)
+        {
             button.UpdateButton(warriorData);
+        }
     }
 
     public void SetUnitId(int id)

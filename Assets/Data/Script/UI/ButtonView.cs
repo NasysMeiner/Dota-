@@ -22,21 +22,5 @@ public abstract class ButtonView : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    public virtual void CheckPrice(WarriorData warriorData)
-    {
-        if (warriorData.CurrentLevel < warriorData.MaxLevel)
-        {
-            _textPrice.text = warriorData.Prices[warriorData.CurrentLevel].ToString();
-            _textBuy.enabled = true;
-            _textActive.enabled = false;
-            _button.interactable = true;
-        }
-        else
-        {
-            _textPrice.enabled = false;
-            _textBuy.enabled = false;
-            _textActive.enabled = true;
-            _button.interactable = false;
-        }
-    }
+    public abstract void CheckPrice(WarriorData warriorData);
 }
