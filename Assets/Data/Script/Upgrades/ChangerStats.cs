@@ -26,7 +26,7 @@ public class ChangerStats : MonoBehaviour
         foreach (StatsPrefab statsPrefab in dataUnitStats.StatsPrefab)
         {
             ContainerPack containerPack = new();
-            containerPack.LoadStats(statsPrefab.WarriorData.CurrentStats, statsPrefab.WarriorData.Stats, statsPrefab.WarriorData.Prices, statsPrefab.WarriorData.Name);
+            containerPack.LoadStats(statsPrefab.WarriorData);
             packs.Add(containerPack);
             unitsStats.Add(statsPrefab.WarriorData);
         }
@@ -40,31 +40,35 @@ public class ChangerStats : MonoBehaviour
         return _users[name][id];
     }
 
-    public int GetPrice(ContainerPack containerPack, int idStat)
+    public WarriorData GetWarriorData(string name, int id)
+    {
+        return _unitsStats[name][id];
+    }
+
+    public int GetPrice(ContainerPack containerPack)
     {
         int price;
 
-        if (containerPack.CurrentStats[idStat].CurrentLevel < containerPack.Prices[idStat].Price.Count)
-            price = containerPack.Prices[idStat].Price[containerPack.CurrentStats[idStat].CurrentLevel];
+        if (containerPack.Price.Count >= containerPack.Currentevel)
+            price = containerPack.Price[containerPack.Currentevel];
         else
-            price = containerPack.Prices[idStat].Price[containerPack.Prices[idStat].Price.Count - 1];
+            price = containerPack.Price[containerPack.Price.Count - 1];
 
         return price;
     }
 
-    public void IncreaseLevel(string name, int idStat, int id)
+    public void IncreaseLevel(string name, int id)
     {
         ContainerPack containerPack = GetStatUnit(name, id);
-        if (containerPack.CheckLevelUp(idStat))
-        {
-            if (_bank.Pay(GetPrice(containerPack, idStat), name))
-            {
-                bool isSuccess = containerPack.IncreaseLevel(idStat);
+        WarriorData data = _unitsStats[containerPack.Name][id];
 
-                if (isSuccess)
+        if (containerPack.CheckLevelUp())
+        {
+            if (_bank.Pay(GetPrice(containerPack), name))
+            {
+                if (data.LevelUp())
                 {
-                    WarriorData warriorData = _unitsStats[name][id];
-                    warriorData.IncreaseLevel(containerPack);
+                    containerPack.LoadStats(data);
                     ChangeUnitStat?.Invoke();
                 }
             }
@@ -76,37 +80,22 @@ public class ChangerStats : MonoBehaviour
 public class ContainerPack
 {
     public string Name;
-    public List<CurrentStat> CurrentStats = new();
+    public int Currentevel;
+    public int MaxLevel;
     public List<Stat> Stats = new();
-    public List<PriceStat> Prices = new();
+    public List<int> Price = new();
 
-    public void LoadStats(List<CurrentStat> currentStats, List<Stat> stats, List<PriceStat> prices, string name)
+    public void LoadStats(WarriorData warriorData)
     {
-        CurrentStats = currentStats;
-        Stats = stats;
-        Prices = prices;
-        Name = name;
+        Currentevel = warriorData.CurrentLevel;
+        MaxLevel = warriorData.MaxLevel;
+        Stats = warriorData.Stats;
+        Price = warriorData.Prices;
+        Name = warriorData.Name;
     }
 
-    public bool IncreaseLevel(int idStat)
+    public bool CheckLevelUp()
     {
-        CurrentStat currentStat = CurrentStats[idStat];
-
-        if (CheckLevelUp(idStat))
-        {
-            currentStat.CurrentLevel++;
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public bool CheckLevelUp(int idStat)
-    {
-        CurrentStat currentStat = CurrentStats[idStat];
-        Stat stat = Stats[idStat];
-
-        return currentStat.CurrentLevel < stat.Levels.Count;
+        return Currentevel < MaxLevel;
     }
 }

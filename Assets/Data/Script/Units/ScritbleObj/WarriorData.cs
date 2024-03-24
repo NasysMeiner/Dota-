@@ -26,6 +26,8 @@ public class WarriorData : ScriptableObject
     public List<StatUp> LevelUpList = new();
     public Color ColorEffectDamage = Color.red;
 
+    public List<ISkill> AllSkillList = new();
+
     [Header("Stats")]
 
     [Range(1, 100000)]
@@ -71,9 +73,10 @@ public class WarriorData : ScriptableObject
     public int Price;
 
     [Header("Stats")]
-    public List<CurrentStat> CurrentStats = new();
+    public int CurrentLevel = 1;
+    public int MaxLevel = 3;
     public List<Stat> Stats = new();
-    public List<PriceStat> Prices = new();
+    public List<int> Prices = new();
 
     public virtual void LoadStat(WarriorData warriorData)
     {
@@ -101,56 +104,101 @@ public class WarriorData : ScriptableObject
         ColorEffectDamage = warriorData.ColorEffectDamage;
 
         Price = warriorData.Price;
+        CurrentLevel = warriorData.CurrentLevel;
 
-        CurrentStats.Clear();
         Stats.Clear();
         Prices.Clear();
         LevelUpList.Clear();
         SkillList.Clear();
-
-        foreach (CurrentStat stat in warriorData.CurrentStats)
-        {
-            CurrentStat newStat = new();
-            newStat.Type = stat.Type;
-            newStat.CurrentLevel = stat.CurrentLevel;
-            CurrentStats.Add(newStat);
-        }
+        AllSkillList.Clear();
 
         foreach (Stat stat in warriorData.Stats)
             Stats.Add(stat);
 
-        foreach (PriceStat stat in warriorData.Prices)
-            Prices.Add(stat);
+        //foreach (PriceStat stat in warriorData.Prices)
+        //    Prices.Add(stat);
 
         foreach (StatUp stat in warriorData.LevelUpList)
-            LevelUpList.Add(stat);
-
-        if (Prices.Count < Stats.Count)
-            throw new NotImplementedException("Not price stat");
-
-        for (int i  = 0; i < Stats.Count; i++)
         {
-            if(CurrentStats[i].CurrentLevel > Stats[i].Levels.Count)
-                CurrentStats[i].CurrentLevel = Stats[i].Levels.Count;
-
-            if (Prices[i].Price.Count == 0)
-                Prices[i].Price.Add(100);
+            AllSkillList.Add(stat);
+            LevelUpList.Add(stat);
         }
 
-        foreach(StatUp statUp in LevelUpList)
-            if(statUp.IsPurchased)
+        foreach (int value in warriorData.Prices)
+            Prices.Add(value);
+
+        if (Prices.Count == 0)
+            Prices.Add(100);
+
+        foreach (StatUp statUp in LevelUpList)
+            if (statUp.IsPurchased)
                 statUp.LevelUpStat(this);
 
         foreach (SkillData skill in warriorData.SkillList)
+        {
+            AllSkillList.Add(skill);
             SkillList.Add(skill);
+        }
+
+        
+
+        SkillUp();
     }
 
-    public void IncreaseLevel(ContainerPack containerPack)
+    public bool LevelUp()
     {
-        HealPoint = containerPack.Stats[0].Levels[containerPack.CurrentStats[0].CurrentLevel - 1];
-        AttackDamage = containerPack.Stats[1].Levels[containerPack.CurrentStats[1].CurrentLevel - 1];
-        AttackSpeed = containerPack.Stats[2].Levels[containerPack.CurrentStats[2].CurrentLevel - 1];
+        if (CurrentLevel + 1 <= MaxLevel)
+        {
+            CurrentLevel++;
+            SkillUp();
+
+            return true;
+        }
+
+        return false;
     }
+
+    public void SkillUp()
+    {
+        int value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
+
+        if (value != -1)
+            HealPoint = value;
+
+        value = GetValueStat(TypeStat.Damage, CurrentLevel);
+
+        if (value != -1)
+            AttackDamage = value;
+
+        value = GetValueStat(TypeStat.AttackSpeed, CurrentLevel);
+
+        if (value != -1)
+            AttackSpeed = value;
+    }
+
+    public int GetValueStat(TypeStat typeStat, int level)
+    {
+        Stat currentStat = null;
+
+        foreach (Stat stats in Stats)
+            if (stats.Type == typeStat)
+                currentStat = stats;
+
+        if (currentStat == null)
+            return -1;
+
+        if (currentStat.Levels.Count <= level)
+            return currentStat.Levels[level - 1];
+        else
+            return currentStat.Levels[currentStat.Levels.Count - 1];
+    }
+
+    //public void IncreaseLevel(ContainerPack containerPack)
+    //{
+    //    HealPoint = containerPack.Stats[0].Levels[containerPack.Currentevel[0].CurrentLevel - 1];
+    //    AttackDamage = containerPack.Stats[1].Levels[containerPack.Currentevel[1].CurrentLevel - 1];
+    //    AttackSpeed = containerPack.Stats[2].Levels[containerPack.Currentevel[2].CurrentLevel - 1];
+    //}
 }
 
 [System.Serializable]
@@ -158,6 +206,7 @@ public class Stat
 {
     public TypeStat Type;
     public List<int> Levels = new();
+    public List<int> Price = new();
 }
 
 [System.Serializable]
