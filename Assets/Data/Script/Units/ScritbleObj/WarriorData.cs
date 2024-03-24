@@ -140,8 +140,6 @@ public class WarriorData : ScriptableObject
             SkillList.Add(skill);
         }
 
-        
-
         SkillUp();
     }
 
@@ -165,6 +163,7 @@ public class WarriorData : ScriptableObject
         if (value != -1)
             HealPoint = value;
 
+        Debug.Log(value);
         value = GetValueStat(TypeStat.Damage, CurrentLevel);
 
         if (value != -1)
@@ -187,7 +186,9 @@ public class WarriorData : ScriptableObject
         if (currentStat == null)
             return -1;
 
-        if (currentStat.Levels.Count <= level)
+        Debug.Log(currentStat.Levels.Count + " " + currentStat.Type + " " + level + " " + " " + currentStat.Levels[level - 1]);
+
+        if (level <= currentStat.Levels.Count)
             return currentStat.Levels[level - 1];
         else
             return currentStat.Levels[currentStat.Levels.Count - 1];
@@ -206,7 +207,6 @@ public class Stat
 {
     public TypeStat Type;
     public List<int> Levels = new();
-    public List<int> Price = new();
 }
 
 [System.Serializable]
