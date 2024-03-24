@@ -81,43 +81,48 @@ public class RadiusSpawner : MonoBehaviour
             {
                 if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
                 {
-                    _isReady = false;
-                    WarriorData stat = null;
-                    Unit newUnit = null;
-                    Castle currentCastle = _castleList[_currentCastleSpawn];
-
-                    if (_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
-                        stat = _stats[_currentCastleSpawn].StatsPrefab[_currentUnitId].WarriorData;
-                    else
-                        stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
-
-                    if (_prefabs.TryGetValue(stat.Type, out Unit prefab) && _bank.Pay(stat.Price, currentCastle.Name))
-                    {
-                        newUnit = Instantiate(prefab);
-
-                        if (_currentCastleSpawn == 0)
-                            _playerUnit.Add(newUnit);
-                        else
-                            _enemyUnit.Add(newUnit);
-
-                        currentCastle.Counter.AddEntity(newUnit);
-                        newUnit.Died += OnDied;
-                        newUnit.LoadStats(stat);
-                        newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
-                        newUnit.ChangePosition(hit.point);
-
-                        _time = 0;
-                    }
-                    else
-                    {
-                        Debug.Log("No money");
-                    }
+                    Spawn(hit);
                 }
                 else
                 {
                     //Debug.Log("Nononono");
                 }
             }
+        }
+    }
+
+    private void Spawn(RaycastHit hit)
+    {
+        _isReady = false;
+        WarriorData stat = null;
+        Unit newUnit = null;
+        Castle currentCastle = _castleList[_currentCastleSpawn];
+
+        if (_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
+            stat = _stats[_currentCastleSpawn].StatsPrefab[_currentUnitId].WarriorData;
+        else
+            stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
+
+        if (_prefabs.TryGetValue(stat.Type, out Unit prefab) && _bank.Pay(stat.Price, currentCastle.Name))
+        {
+            newUnit = Instantiate(prefab);
+
+            if (_currentCastleSpawn == 0)
+                _playerUnit.Add(newUnit);
+            else
+                _enemyUnit.Add(newUnit);
+
+            currentCastle.Counter.AddEntity(newUnit);
+            newUnit.Died += OnDied;
+            newUnit.LoadStats(stat);
+            newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
+            newUnit.ChangePosition(hit.point);
+
+            _time = 0;
+        }
+        else
+        {
+            Debug.Log("No money");
         }
     }
 

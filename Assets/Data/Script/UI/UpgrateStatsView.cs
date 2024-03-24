@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgrateStatsView : MonoBehaviour
 {
+    [SerializeField] private PanelStat _defaultPanel;
     [SerializeField] private List<PanelStat> _panelStats;
 
     private PanelStat _activePanel;
@@ -26,12 +26,19 @@ public class UpgrateStatsView : MonoBehaviour
     {
         _currentId = id;
 
-        foreach(PanelStat stat in _panelStats)
+        foreach (PanelStat stat in _panelStats)
         {
             if (stat.CheckCorrect(_currentId))
             {
-                stat.UpdateView(_currentId);
+                _activePanel.enabled = false;
+
+                if (id == _currentId)
+                    _activePanel = _defaultPanel;
+                else
+                    stat.UpdateView(_currentId);
+
                 _activePanel = stat;
+                _activePanel.enabled = true;
 
                 return;
             }
