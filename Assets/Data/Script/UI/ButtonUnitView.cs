@@ -12,6 +12,9 @@ public class ButtonUnitView : PanelStat
 
     private void OnDisable()
     {
+        if (_currentButton != null)
+            _currentButton.InActiveButton();
+
         _currentButton = null;
         _currentId = -1;
         _radiusSpawner.ChangeActiveUnit(_currentId);

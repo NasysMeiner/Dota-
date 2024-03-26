@@ -8,9 +8,21 @@ public class SkillData : ScriptableObject, ISkill
     public Skill PrefabSkill;
     public ContainerSkill ContainerSkill;
 
+    protected bool _isUnlock;
+
     public int PriceSkill => Price;
 
-    bool ISkill.IsPurchased => IsPurchased;
+    bool ISkill.IsPurchased => _isUnlock;
 
     public virtual void LoadData(Skill skill) { }
+
+    public void InitData()
+    {
+        _isUnlock = IsPurchased;
+    }
+
+    public void UnlockSkill()
+    {
+        _isUnlock = true;
+    }
 }

@@ -17,6 +17,7 @@ public class ButtonLevelView : ButtonView
         else
         {
             _textPrice.enabled = false;
+            //_textPrice.text = "MAX";
             _textBuy.enabled = false;
             _textActive.enabled = true;
             _button.interactable = false;

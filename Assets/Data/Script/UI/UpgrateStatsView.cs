@@ -77,4 +77,12 @@ public class UpgrateStatsView : MonoBehaviour
     {
         _activePanel.UpdateView(_currentId);
     }
+
+    public void UpdateStat(string name, int id, int idSkill)
+    {
+        if (idSkill >= 0)
+            _changerStats.UnlockSkill(name, id, idSkill);
+        else
+            _changerStats.IncreaseLevelUnit(name, id);
+    }
 }

@@ -160,18 +160,46 @@ public class WarriorData : ScriptableObject
         return false;
     }
 
-    public int GetPrice(int level)
+    public void UnlockSkill(int idSkill)
     {
-        if (level < Prices.Count)
-            return Prices[level];
+        if(idSkill < AllSkillList.Count)
+            AllSkillList[idSkill].UnlockSkill();
+    }
+
+    public bool CheckLevelUp()
+    {
+        if(CurrentLevel + 1 <= MaxLevel)
+            return true;
+
+        return false;
+    }
+
+    public bool CheckUnlockSkill(int idSkill)
+    {
+        if (AllSkillList[idSkill].IsPurchased == false)
+            return true;
+
+        return false;
+    }
+
+    public int GetPriceSkill(int idSkill)
+    {
+        if (idSkill < AllSkillList.Count)
+            return AllSkillList[idSkill].PriceSkill;
+
+        return 0;
+    }
+
+    public int GetPriceLevel()
+    {
+        if (CurrentLevel < Prices.Count)
+            return Prices[CurrentLevel];
         else
             return Prices[Prices.Count - 1];
     }
 
     public int GetSkill(int id)
     {
-        Debug.Log(SkillList.Count + " || " + id);
-
         if(id < AllSkillList.Count)
             if (AllSkillList[id].IsPurchased)
                 return 1;

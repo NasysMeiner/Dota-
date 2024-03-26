@@ -12,6 +12,8 @@ public class ExplosionAroundSkillData : SkillData
 
     public override void LoadData(Skill skill)
     {
+        _isUnlock = IsPurchased;
+
         ContainerExplosionAroundSkill container = new()
         {
             Damage = Damage,

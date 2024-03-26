@@ -20,7 +20,14 @@ public class UnitStatsBlock : PanelStat
 
     public override void UpdateView(int id)
     {
+        Debug.Log(id + " update");
+
         for (int i = 0; i < _statViews.Count; i++)
             _statViews[i].SetUnitId(id++);
+    }
+
+    public void UpdateStat(string name, int id, int idSkill)
+    {
+        _upgrateStatsView.UpdateStat(name, id, idSkill);
     }
 }

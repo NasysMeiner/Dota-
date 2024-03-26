@@ -13,14 +13,22 @@ public abstract class ButtonView : MonoBehaviour
 
     protected int _idButton;
     protected Button _button;
+    protected StatView _statView;
 
     public abstract void UpdateButton(WarriorData warriorData);
 
-    public void InitButtonView(int id)
+    public abstract void CheckPrice(WarriorData warriorData);
+
+    public void InitButtonView(int id, StatView statView)
     {
         _idButton = id;
+        _statView = statView;
+
         _button = GetComponent<Button>();
     }
 
-    public abstract void CheckPrice(WarriorData warriorData);
+    public void UpdateStat()
+    {
+        _statView.UpdateStat(_idButton - 1);
+    }
 }

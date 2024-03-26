@@ -4,12 +4,9 @@ using UnityEngine.Events;
 
 public class ChangerStats : MonoBehaviour
 {
-    private readonly Dictionary<string, List<ContainerPack>> _users = new();
     private readonly Dictionary<string, List<WarriorData>> _unitsStats = new();
 
     private Bank _bank;
-
-    public Dictionary<string, List<ContainerPack>> Users => _users;
 
     public event UnityAction ChangeUnitStat;
 
@@ -20,24 +17,12 @@ public class ChangerStats : MonoBehaviour
 
     public void AddUnitStat(string name, DataUnitStats dataUnitStats)
     {
-        List<ContainerPack> packs = new();
         List<WarriorData> unitsStats = new();
 
         foreach (StatsPrefab statsPrefab in dataUnitStats.StatsPrefab)
-        {
-            ContainerPack containerPack = new();
-            containerPack.LoadStats(statsPrefab.WarriorData);
-            packs.Add(containerPack);
             unitsStats.Add(statsPrefab.WarriorData);
-        }
 
-        _users.Add(name, packs);
         _unitsStats.Add(name, unitsStats);
-    }
-
-    public ContainerPack GetStatUnit(string name, int id)
-    {
-        return _users[name][id];
     }
 
     public WarriorData GetWarriorData(string name, int id)
@@ -45,57 +30,32 @@ public class ChangerStats : MonoBehaviour
         return _unitsStats[name][id];
     }
 
-    public int GetPrice(ContainerPack containerPack)
+    public void IncreaseLevelUnit(string name, int id)
     {
-        int price;
+        WarriorData warrior = _unitsStats[name][id];
 
-        if (containerPack.Price.Count >= containerPack.Currentevel)
-            price = containerPack.Price[containerPack.Currentevel];
-        else
-            price = containerPack.Price[containerPack.Price.Count - 1];
-
-        return price;
-    }
-
-    public void IncreaseLevel(string name, int id)
-    {
-        ContainerPack containerPack = GetStatUnit(name, id);
-        WarriorData data = _unitsStats[containerPack.Name][id];
-
-        if (containerPack.CheckLevelUp())
+        if (warrior.CheckLevelUp())
         {
-            if (_bank.Pay(GetPrice(containerPack), name))
+            if(_bank.Pay(warrior.GetPriceLevel(), name))
             {
-                if (data.LevelUp())
-                {
-                    containerPack.LoadStats(data);
-                    ChangeUnitStat?.Invoke();
-                }
+                warrior.LevelUp();
+                ChangeUnitStat?.Invoke();
             }
         }
     }
-}
 
-[System.Serializable]
-public class ContainerPack
-{
-    public string Name;
-    public int Currentevel;
-    public int MaxLevel;
-    public List<Stat> Stats = new();
-    public List<int> Price = new();
-
-    public void LoadStats(WarriorData warriorData)
+    public void UnlockSkill(string name, int id, int idSkill)
     {
-        Currentevel = warriorData.CurrentLevel;
-        MaxLevel = warriorData.MaxLevel;
-        Stats = warriorData.Stats;
-        Price = warriorData.Prices;
-        Name = warriorData.Name;
-    }
+        Debug.Log(name);
+        WarriorData warrior = _unitsStats[name][id];
 
-    public bool CheckLevelUp()
-    {
-        return Currentevel < MaxLevel;
+        if (warrior.CheckUnlockSkill(idSkill))
+        {
+            if(_bank.Pay(warrior.GetPriceSkill(idSkill), name))
+            {
+                warrior.UnlockSkill(idSkill);
+                ChangeUnitStat?.Invoke();
+            }
+        }
     }
 }

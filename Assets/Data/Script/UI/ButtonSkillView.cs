@@ -29,7 +29,7 @@ public class ButtonSkillView : ButtonView
         }
         else
         {
-            _textPrice.text = "Nooo";
+            _textPrice.text = "Max";
             _textBuy.enabled = false;
             _textActive.enabled = false;
             _button.interactable = false;

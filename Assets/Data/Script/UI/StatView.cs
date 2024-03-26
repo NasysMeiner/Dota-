@@ -16,7 +16,7 @@ public class StatView : MonoBehaviour
     public void InitPanelStat(string name, UnitStatsBlock upgrateStatsView)
     {
         for (int i = 0; i < _buttons.Count; i++)
-            _buttons[i].InitButtonView(i);
+            _buttons[i].InitButtonView(i, this);
 
         _unitStatsBlock = upgrateStatsView;
         _name = name;
@@ -39,5 +39,10 @@ public class StatView : MonoBehaviour
         _id = id;
 
         UpdateView();
+    }
+
+    public void UpdateStat(int idSkill)
+    {
+        _unitStatsBlock.UpdateStat(_name, _id, idSkill);
     }
 }
