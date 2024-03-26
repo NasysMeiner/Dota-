@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Tank
   Avatar: {fileID: 9100000, guid: 7e41538d6b9a7f04a93344035679088d, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
-  Scale: 0.4
+  Scale: 0.65
   Sprite: {fileID: 21300000, guid: 3b218ff1bca71a842a8d23f1712234ab, type: 3}
   SkillList: []
   LevelUpList: []
@@ -26,16 +26,16 @@ MonoBehaviour:
   AttackRange: 1
   VisibilityRange: 4
   AttackSpeed: 1.5
-  Speed: 2
+  Speed: 1
   ApproximationFactor: 0.75
   ProjectileBlockChance: 0
   TimeImmortaly: 0
   IsDoubleAttack: 0
   EffectDamage: {fileID: 0}
   EffectAttack: {fileID: 0}
-  EffectDeath: {fileID: 0}
+  EffectDeath: {fileID: 3599141429173347808, guid: 97be74e334bc749459a5819452711b77, type: 3}
   TimeEffectDeath: 0
-  Price: 1
+  Price: 6
   CurrentStats:
   - Type: 0
     CurrentLevel: 1

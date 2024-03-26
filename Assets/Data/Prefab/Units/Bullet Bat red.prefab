@@ -225,6 +225,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 204930662833225840, guid: c71b5ff9e04aa244cb53f99b0e44aed2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 204930662833229102, guid: c71b5ff9e04aa244cb53f99b0e44aed2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 32000
+      objectReference: {fileID: 0}
+    - target: {fileID: 204930662833294350, guid: c71b5ff9e04aa244cb53f99b0e44aed2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 30000
+      objectReference: {fileID: 0}
     - target: {fileID: 204930662834900986, guid: c71b5ff9e04aa244cb53f99b0e44aed2, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -406,27 +418,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3948050273215262718, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273215275774, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273215281250, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 32000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273215289822, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273215296118, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 32000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273215311220, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 3948050273217181376, guid: 478b5ed64858e614e9ea1dc963a1aaeb, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
