@@ -11,6 +11,8 @@ public abstract class StatUp : ScriptableObject, ISkill
 
     bool ISkill.IsPurchased => _isUnlock;
 
+    public TypeSkill TypeSkill => TypeSkill.StatsUp;
+
     public abstract void LevelUpStat(WarriorData warriorData);
 
     public void InitData()

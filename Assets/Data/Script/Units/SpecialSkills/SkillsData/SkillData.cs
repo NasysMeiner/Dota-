@@ -14,6 +14,8 @@ public class SkillData : ScriptableObject, ISkill
 
     bool ISkill.IsPurchased => _isUnlock;
 
+    TypeSkill ISkill.TypeSkill => TypeSkill;
+
     public virtual void LoadData(Skill skill) { }
 
     public void InitData()

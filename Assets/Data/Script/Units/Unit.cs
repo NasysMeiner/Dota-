@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -163,22 +164,28 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         IsDoubleAttack = warriorData.IsDoubleAttack;
         _isDoubleAttack = warriorData.IsDoubleAttack;
 
-        foreach (SkillData skill in warriorData.SkillList)
+        foreach(SkillCont skillCont in warriorData.SkillConts)
         {
-            if(skill != null)
+            Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
+            if(skillCont != null && skillCont.IsUnlock && skillCont.Skill.TypeSkill != TypeSkill.StatsUp)
             {
-                Skill newSkill = Instantiate(skill.PrefabSkill, transform);
-                newSkill.SetUnit(this);
-                skill.LoadData(newSkill);
-                //newSkill.InitSkill(skill.ContainerSkill);
-                _skillList.Add(newSkill);
+                Skill newSkill;
 
-                if (skill.TypeSkill == TypeSkill.InitStart || skill.TypeSkill == TypeSkill.StatsUp)
+                if(skillCont.Skill as SkillData)
                 {
-                    Debug.Log(newSkill.TypeSkill);
-                    newSkill.UseSkill();
+                    SkillData skillData = skillCont.Skill as SkillData;
+                    newSkill = Instantiate(skillData.PrefabSkill, transform);
+                    newSkill.SetUnit(this);
+                    skillData.LoadData(newSkill);
+                    _skillList.Add(newSkill);
+
+                    if (newSkill.TypeSkill == TypeSkill.InitStart)
+                    {
+                        Debug.Log(newSkill.TypeSkill);
+                        newSkill.UseSkill();
+                    }
                 }
-            }     
+            }
         }
 
         _damageColorEffectUnit.InitEffectDamage(this, warriorData.ColorEffectDamage);
