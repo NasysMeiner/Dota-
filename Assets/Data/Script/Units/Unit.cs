@@ -182,7 +182,6 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
                     if (newSkill.TypeSkill == TypeSkill.InitStart)
                     {
-                        Debug.Log(newSkill.TypeSkill);
                         newSkill.UseSkill();
                     }
                 }

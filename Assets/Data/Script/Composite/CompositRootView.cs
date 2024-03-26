@@ -17,7 +17,6 @@ public class CompositRootView : CompositeRoot
 
     [Header("Other System")]
     [SerializeField] private ChangerStats _changerStats;
-    [SerializeField] private List<Content> _contents;
     [SerializeField] private UnitStatsBlock _unitStatsBlockPrefab;
 
     public override void Compose()

@@ -157,7 +157,7 @@ public class WarriorData : ScriptableObject
         }
 
 
-        Debug.Log(AllSkillList.Count + " " + name);
+        //Debug.Log(AllSkillList.Count + " " + name);
         SkillUp();
     }
 
