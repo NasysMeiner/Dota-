@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RadiusSpawner : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class RadiusSpawner : MonoBehaviour
     private bool _isReady = true;
     private float _time = 0;
 
+    public event UnityAction<int> ChangeId;
 
     private void Update()
     {
@@ -75,49 +77,58 @@ public class RadiusSpawner : MonoBehaviour
         if (_isReady)
         {
             Ray myRay;
-
             myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(myRay, out RaycastHit hit, 100))
             {
-                if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
+                if(hit.collider.TryGetComponent(out BarrackBoxId barrack) && barrack.Barrack.Name == "Player")
                 {
-                    _isReady = false;
-                    WarriorData stat = null;
-                    Unit newUnit = null;
-                    Castle currentCastle = _castleList[_currentCastleSpawn];
-
-                    if (_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
-                        stat = _stats[_currentCastleSpawn].StatsPrefab[_currentUnitId].WarriorData;
-                    else
-                        stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
-
-                    if (_prefabs.TryGetValue(stat.Type, out Unit prefab) && _bank.Pay(stat.Price, currentCastle.Name))
-                    {
-                        newUnit = Instantiate(prefab);
-
-                        if (_currentCastleSpawn == 0)
-                            _playerUnit.Add(newUnit);
-                        else
-                            _enemyUnit.Add(newUnit);
-
-                        currentCastle.Counter.AddEntity(newUnit);
-                        newUnit.Died += OnDied;
-                        newUnit.LoadStats(stat);
-                        newUnit.ChangePosition(hit.point);
-                        newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
-
-                        _time = 0;
-                    }
-                    else
-                    {
-                        Debug.Log("No money");
-                    }
+                    ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
+                }
+                else if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
+                {
+                    Spawn(hit);
                 }
                 else
                 {
                     //Debug.Log("Nononono");
                 }
             }
+        }
+    }
+
+    private void Spawn(RaycastHit hit)
+    {
+        _isReady = false;
+        WarriorData stat = null;
+        Unit newUnit = null;
+        Castle currentCastle = _castleList[_currentCastleSpawn];
+
+        if (_stats[_currentCastleSpawn].StatsPrefab.Count > _currentUnitId)
+            stat = _stats[_currentCastleSpawn].StatsPrefab[_currentUnitId].WarriorData;
+        else
+            stat = _stats[_currentCastleSpawn].StatsPrefab[_stats[_currentCastleSpawn].StatsPrefab.Count - 1].WarriorData;
+
+        if (_prefabs.TryGetValue(stat.Type, out Unit prefab) && _bank.Pay(stat.Price, currentCastle.Name))
+        {
+            newUnit = Instantiate(prefab);
+
+            if (_currentCastleSpawn == 0)
+                _playerUnit.Add(newUnit);
+            else
+                _enemyUnit.Add(newUnit);
+
+            currentCastle.Counter.AddEntity(newUnit);
+            newUnit.Died += OnDied;
+            newUnit.LoadStats(stat);
+            newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
+            newUnit.ChangePosition(hit.point);
+
+            _time = 0;
+        }
+        else
+        {
+            Debug.Log("No money");
         }
     }
 
@@ -150,10 +161,9 @@ public class RadiusSpawner : MonoBehaviour
 
     private IEnumerator WaitTimeDeathEffect(Unit unit)
     {
-        _trash.AddQueue(unit);
-
         yield return new WaitForSeconds(_timeWaitDeath);
 
+        _trash.AddQueue(unit);
         unit.ChangePosition(_trash.transform.position);
     }
 }

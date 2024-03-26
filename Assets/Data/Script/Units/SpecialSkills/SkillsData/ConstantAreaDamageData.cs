@@ -14,6 +14,8 @@ public class ConstantAreaDamageData : SkillData
 
     public override void LoadData(Skill skill)
     {
+        _isUnlock = IsPurchased;
+
         ConstantAreaDamageSkill container = new()
         {
             Damage = Damage,

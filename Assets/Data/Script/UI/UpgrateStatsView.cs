@@ -1,120 +1,88 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgrateStatsView : MonoBehaviour
 {
-    private List<Content> _contents;
-    private UnitStatsBlock _prefabBlock;
-    private Dictionary<string, List<UnitStatsBlock>> _blocks = new();
-    private readonly StatsContainer _container = new();
+    [SerializeField] private PanelStat _defaultPanel;
+    [SerializeField] private List<PanelStat> _panelStats;
+
+    private PanelStat _activePanel;
 
     private ChangerStats _changerStats;
+    private RadiusSpawner _radiusSpawner;
 
-    private int _currentContainer = 0;
+    private int _currentId;
 
     private void OnDisable()
     {
-        _changerStats.ChangeUnitStat -= UpdateView;
+        _radiusSpawner.ChangeId -= OnChangeId;
+        _changerStats.ChangeUnitStat -= OnChangeUnitStat;
     }
 
-    public void InitUpgrateStatsView(ChangerStats changerStats, List<Content> containers, UnitStatsBlock prefabBlock)
+    public void InitUpgrateStatsView(ChangerStats changerStats, RadiusSpawner radiusSpawner)
     {
-        _contents = containers;
         _changerStats = changerStats;
-        _prefabBlock = prefabBlock;
-        _changerStats.ChangeUnitStat += UpdateView;
+        _radiusSpawner = radiusSpawner;
 
-        foreach (var user in _changerStats.Users)
-            AddUnitBlocks(user.Key, user.Value.Count);
+        _radiusSpawner.ChangeId += OnChangeId;
+        _changerStats.ChangeUnitStat += OnChangeUnitStat;
+        _activePanel = _defaultPanel;
+        _currentId = -1;
 
-        UpdateView();
-    }
-
-    public void AddUnitBlocks(string name, int count)
-    {
-        if (_currentContainer < _contents.Count)
+        foreach(PanelStat panelStat in _panelStats)
         {
-            List<UnitStatsBlock> unitStatsBlocks = new();
-
-            for (int i = 0; i < count; i++)
-            {
-                UnitStatsBlock unitStats = Instantiate(_prefabBlock, _contents[_currentContainer].transform);
-                unitStats.InitUnitStatsView(i, name, this);
-                unitStats.UpdateValuesStats(_container);
-                unitStatsBlocks.Add(unitStats);
-            }
-
-            _blocks.Add(name, unitStatsBlocks);
-            _currentContainer++;
+            panelStat.InitPanelStat("Player", this);
         }
     }
 
-    public void UpdateView()
+    public WarriorData GetWarriorData(string name, int id)
     {
-        foreach (var block in _blocks)
-        {
-            for (int i = 0; i < block.Value.Count; i++)
-            {
-                LoadConteiner(block.Key, i);
-                block.Value[i].UpdateValuesStats(_container);
-            }
-        }
+        return _changerStats.GetWarriorData(name, id);
     }
 
-    public void IncreaseLevel(string name, int idStat, int id)
+    public void OnChangeId(int id)
     {
-        _changerStats.IncreaseLevel(name, idStat, id);
-    }
-
-    private void LoadConteiner(string name, int id)
-    {
-        ContainerPack containerPack = _changerStats.GetStatUnit(name, id);
-
-        List<CurrentStat> currentStats = containerPack.CurrentStats;
-        List<Stat> stats = containerPack.Stats;
-        List<PriceStat> prices = containerPack.Prices;
-
-        int currentLevelStat;
-        int nextLevelStat;
-        int priceStat;
-
-        _container.Name = containerPack.Name;
-
-        for (int i = 0; i < stats.Count; i++)
+        foreach (PanelStat stat in _panelStats)
         {
-            int currentLevelNumber = currentStats[i].CurrentLevel - 1;
-            int nextLevelNumber;
-
-            if (currentLevelNumber < stats[i].Levels.Count)
-                currentLevelStat = stats[i].Levels[currentLevelNumber];
-            else
-                throw new NotImplementedException("Level very high");
-
-            if (currentLevelNumber + 1 < stats[i].Levels.Count)
+            if (stat.CheckCorrect(id))
             {
-                nextLevelStat = stats[i].Levels[currentLevelNumber + 1];
-                nextLevelNumber = currentLevelNumber + 1;
-            }
-            else
-            {
-                nextLevelStat = currentLevelStat;
-                nextLevelNumber = currentLevelNumber;
-            }
+                PanelStat nextPanel;
 
-            if (currentLevelNumber != nextLevelNumber)
-            {
-                if (currentLevelNumber + 1 < prices[i].Price.Count)
-                    priceStat = prices[i].Price[currentLevelNumber + 1];
+                if (id == _currentId)
+                {
+                    _activePanel.gameObject.SetActive(false);
+                    _activePanel = _defaultPanel;
+                    _activePanel.gameObject.SetActive(true);
+                    _currentId = -1;
+
+                    return;
+                }
                 else
-                    priceStat = prices[i].Price[prices[i].Price.Count - 1];
-            }
-            else
-            {
-                priceStat = -1;
-            }
+                {
+                    _currentId = id;
+                    nextPanel = stat;
+                    stat.UpdateView(_currentId);
+                }
 
-            _container.LoadStat(currentLevelStat, nextLevelStat, priceStat, i);
+                _activePanel.gameObject.SetActive(false);
+                nextPanel.gameObject.SetActive(true);
+                _activePanel = nextPanel;
+
+                return;
+            }
         }
+    }
+
+    public void OnChangeUnitStat()
+    {
+        _activePanel.UpdateView(_currentId);
+    }
+
+    public void UpdateStat(string name, int id, int idSkill)
+    {
+        if (idSkill >= 0)
+            _changerStats.UnlockSkill(name, id, idSkill);
+        else
+            _changerStats.IncreaseLevelUnit(name, id);
     }
 }

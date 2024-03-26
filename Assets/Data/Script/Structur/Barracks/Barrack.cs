@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class Barrack : MonoBehaviour, IStructur, IEntity
 {
+    [SerializeField] private int _startIdUnit;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private float _timeWaitDeath;
@@ -50,6 +51,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     public float HealPoint => _healPoint;
     public GameObject GameObject => gameObject;
     public Vector3 Position => transform.position;
+    public int StartIdUnit => _startIdUnit;
 
     public bool IsAlive => _isAlive;
 
