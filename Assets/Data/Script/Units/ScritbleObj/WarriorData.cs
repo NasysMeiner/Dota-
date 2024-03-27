@@ -232,7 +232,7 @@ public class WarriorData : ScriptableObject
 
     public void SkillUp()
     {
-        int value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
+        float value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
 
         if (value != -1)
             HealPoint = value;
@@ -248,7 +248,7 @@ public class WarriorData : ScriptableObject
             AttackSpeed = value;
     }
 
-    public int GetValueStat(TypeStat typeStat, int level)
+    public float GetValueStat(TypeStat typeStat, int level)
     {
         Stat currentStat = null;
 
@@ -270,7 +270,7 @@ public class WarriorData : ScriptableObject
 public class Stat
 {
     public TypeStat Type;
-    public List<int> Levels = new();
+    public List<float> Levels = new();
 }
 
 [System.Serializable]
