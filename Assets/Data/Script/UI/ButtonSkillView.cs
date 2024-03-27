@@ -9,7 +9,7 @@ public class ButtonSkillView : ButtonView
 
     public override void CheckPrice(WarriorData warriorData)
     {
-        Debug.Log(warriorData.GetSkill(_idButton - 1) + " " + this.name);
+        //Debug.Log(warriorData.GetSkill(_idButton - 1) + " " + this.name);
 
         if (warriorData.GetSkill(_idButton - 1) == 1)
         {
