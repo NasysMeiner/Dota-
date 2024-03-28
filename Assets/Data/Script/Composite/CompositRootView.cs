@@ -17,7 +17,6 @@ public class CompositRootView : CompositeRoot
 
     [Header("Other System")]
     [SerializeField] private ChangerStats _changerStats;
-    [SerializeField] private List<Content> _contents;
     [SerializeField] private UnitStatsBlock _unitStatsBlockPrefab;
 
     public override void Compose()
@@ -30,6 +29,6 @@ public class CompositRootView : CompositeRoot
         _healPointView.Initialize(_castlePlayer, _hearts);
         _buttonUnitView.Init(_radiusSpawner, _images);
         _goldView.InitGoldView(_castlePlayer.CashAccount);
-        _upgradeStatsView.InitUpgrateStatsView(_changerStats, _contents, _unitStatsBlockPrefab);
+        _upgradeStatsView.InitUpgrateStatsView(_changerStats, _radiusSpawner);
     }
 }

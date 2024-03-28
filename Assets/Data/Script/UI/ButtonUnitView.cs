@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonUnitView : MonoBehaviour
+public class ButtonUnitView : PanelStat
 {
     [SerializeField] private List<ButtonStatus> _buttons = new();
 
@@ -9,6 +9,17 @@ public class ButtonUnitView : MonoBehaviour
     private List<ViewSprite> _images;
     private ButtonStatus _currentButton;
     private int _currentId = -1;
+
+    private void OnDisable()
+    {
+        if (_currentButton != null)
+            _currentButton.InActiveButton();
+
+        _currentButton = null;
+        _currentId = -1;
+        _radiusSpawner.ChangeActiveUnit(_currentId);
+        DrawRadius();
+    }
 
     public void Init(RadiusSpawner radiusSpawner, List<ViewSprite> images)
     {

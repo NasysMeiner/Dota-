@@ -27,6 +27,8 @@ public class WarriorData : ScriptableObject
     public List<StatUp> LevelUpList = new();
     public Color ColorEffectDamage = Color.red;
 
+    public List<ISkill> AllSkillList = new();
+
     [Header("Stats")]
 
     [Range(1, 100000)]
@@ -72,9 +74,20 @@ public class WarriorData : ScriptableObject
     public int Price;
 
     [Header("Stats")]
-    public List<CurrentStat> CurrentStats = new();
+    public int CurrentLevel = 1;
+    public int MaxLevel = 3;
     public List<Stat> Stats = new();
-    public List<PriceStat> Prices = new();
+    public List<int> Prices = new();
+
+    [Space]
+
+    [Header("UI")]
+
+    public Sprite Icon;
+
+    private List<SkillCont> _skillConts = new();
+
+    public List<SkillCont> SkillConts => _skillConts;
 
     public virtual void LoadStat(WarriorData warriorData)
     {
@@ -103,55 +116,160 @@ public class WarriorData : ScriptableObject
         ColorEffectDamage = warriorData.ColorEffectDamage;
 
         Price = warriorData.Price;
+        CurrentLevel = warriorData.CurrentLevel;
 
-        CurrentStats.Clear();
+        Icon = warriorData.Icon;
+
         Stats.Clear();
         Prices.Clear();
         LevelUpList.Clear();
         SkillList.Clear();
-
-        foreach (CurrentStat stat in warriorData.CurrentStats)
-        {
-            CurrentStat newStat = new();
-            newStat.Type = stat.Type;
-            newStat.CurrentLevel = stat.CurrentLevel;
-            CurrentStats.Add(newStat);
-        }
+        AllSkillList.Clear();
+        SkillConts.Clear();
 
         foreach (Stat stat in warriorData.Stats)
             Stats.Add(stat);
 
-        foreach (PriceStat stat in warriorData.Prices)
-            Prices.Add(stat);
+        //foreach (PriceStat stat in warriorData.Prices)
+        //    Prices.Add(stat);
 
-        foreach (StatUp stat in warriorData.LevelUpList)
-            LevelUpList.Add(stat);
-
-        if (Prices.Count < Stats.Count)
-            throw new NotImplementedException("Not price stat");
-
-        for (int i  = 0; i < Stats.Count; i++)
+        foreach (StatUp skill in warriorData.LevelUpList)
         {
-            if(CurrentStats[i].CurrentLevel > Stats[i].Levels.Count)
-                CurrentStats[i].CurrentLevel = Stats[i].Levels.Count;
+            SkillCont newSkillCont = new();
+            newSkillCont.LoadData(skill);
+            SkillConts.Add(newSkillCont);
 
-            if (Prices[i].Price.Count == 0)
-                Prices[i].Price.Add(100);
+            AllSkillList.Add(skill);
+            LevelUpList.Add(skill);
         }
 
-        foreach(StatUp statUp in LevelUpList)
-            if(statUp.IsPurchased)
+        foreach (int value in warriorData.Prices)
+            Prices.Add(value);
+
+        if (Prices.Count == 0)
+            Prices.Add(100);
+
+        foreach (StatUp statUp in LevelUpList)
+            if (statUp.IsPurchased)
                 statUp.LevelUpStat(this);
 
         foreach (SkillData skill in warriorData.SkillList)
+        {
+            SkillCont newSkillCont = new();
+            newSkillCont.LoadData(skill);
+            SkillConts.Add(newSkillCont);
+
+            AllSkillList.Add(skill);
             SkillList.Add(skill);
+        }
+
+
+        //Debug.Log(AllSkillList.Count + " " + name);
+        SkillUp();
     }
 
-    public void IncreaseLevel(ContainerPack containerPack)
+    public bool LevelUp()
     {
-        HealPoint = containerPack.Stats[0].Levels[containerPack.CurrentStats[0].CurrentLevel - 1];
-        AttackDamage = containerPack.Stats[1].Levels[containerPack.CurrentStats[1].CurrentLevel - 1];
-        AttackSpeed = containerPack.Stats[2].Levels[containerPack.CurrentStats[2].CurrentLevel - 1];
+        if (CurrentLevel + 1 <= MaxLevel)
+        {
+            CurrentLevel++;
+            SkillUp();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void UnlockSkill(int idSkill)
+    {
+        if (idSkill < SkillConts.Count)
+            SkillConts[idSkill].UnlockSkill();
+
+        if (SkillConts[idSkill].Skill.TypeSkill == TypeSkill.StatsUp)
+        {
+            StatUp statUp = SkillConts[idSkill].Skill as StatUp;
+            statUp.LevelUpStat(this);
+        }
+
+    }
+
+    public bool CheckLevelUp()
+    {
+        if (CurrentLevel + 1 <= MaxLevel)
+            return true;
+
+        return false;
+    }
+
+    public bool CheckUnlockSkill(int idSkill)
+    {
+        if (SkillConts[idSkill].IsUnlock == false)
+            return true;
+
+        return false;
+    }
+
+    public int GetPriceSkill(int idSkill)
+    {
+        if (idSkill < SkillConts.Count)
+            return SkillConts[idSkill].Skill.PriceSkill;
+
+        return 0;
+    }
+
+    public int GetPriceLevel()
+    {
+        if (CurrentLevel < Prices.Count)
+            return Prices[CurrentLevel];
+        else
+            return Prices[Prices.Count - 1];
+    }
+
+    public int GetSkill(int id)
+    {
+        if (id < SkillConts.Count)
+            if (SkillConts[id].IsUnlock)
+                return 1;
+            else
+                return 0;
+
+        return -1;
+    }
+
+    public void SkillUp()
+    {
+        float value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
+
+        if (value != -1)
+            HealPoint = value;
+
+        value = GetValueStat(TypeStat.Damage, CurrentLevel);
+
+        if (value != -1)
+            AttackDamage = value;
+
+        value = GetValueStat(TypeStat.AttackSpeed, CurrentLevel);
+
+        if (value != -1)
+            AttackSpeed = value;
+    }
+
+    public float GetValueStat(TypeStat typeStat, int level)
+    {
+        Stat currentStat = null;
+
+        foreach (Stat stats in Stats)
+            if (stats.Type == typeStat)
+                currentStat = stats;
+
+        if (currentStat == null)
+            return -1;
+
+        if (level <= currentStat.Levels.Count)
+            return currentStat.Levels[level - 1];
+        else
+            return currentStat.Levels[currentStat.Levels.Count - 1];
     }
 }
 
@@ -159,21 +277,24 @@ public class WarriorData : ScriptableObject
 public class Stat
 {
     public TypeStat Type;
-    public List<int> Levels = new();
+    public List<float> Levels = new();
 }
 
 [System.Serializable]
-public class CurrentStat
+public class SkillCont
 {
-    public TypeStat Type;
+    public ISkill Skill;
 
-    [Range(1, 1000)]
-    public int CurrentLevel;
-}
+    public bool IsUnlock;
 
-[System.Serializable]
-public class PriceStat
-{
-    public TypeStat Type;
-    public List<int> Price;
+    public void LoadData(ISkill skill)
+    {
+        Skill = skill;
+        IsUnlock = skill.IsPurchased;
+    }
+
+    internal void UnlockSkill()
+    {
+        IsUnlock = true;
+    }
 }

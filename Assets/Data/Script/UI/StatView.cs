@@ -1,30 +1,49 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StatView : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _oldLevelText;
-    [SerializeField] private TMP_Text _newLevelText;
-    [SerializeField] private TMP_Text _priceText;
-    [SerializeField] private Button _button;
+    [SerializeField] private Image _icon;
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private List<ButtonView> _buttons;
 
-    private int _price;
+    private UnitStatsBlock _unitStatsBlock;
+    private string _name;
+    private int _id;
 
-    public void UpdateValues(StatContainer statContainer)
+    public void InitPanelStat(string name, UnitStatsBlock upgrateStatsView)
     {
-        _oldLevelText.text = statContainer.CurrentLevel.ToString();
-        _newLevelText.text = statContainer.NextLevel.ToString();
-        _priceText.text = statContainer.Price.ToString();
+        for (int i = 0; i < _buttons.Count; i++)
+            _buttons[i].InitButtonView(i, this);
 
-        _price = statContainer.Price;
+        _unitStatsBlock = upgrateStatsView;
+        _name = name;
     }
 
-    public void UpdateActiveMoney(int money)
+    public void UpdateView()
     {
-        if (money > _price)
-            _button.interactable = true;
-        else
-            _button.interactable = false;
+        WarriorData warriorData = _unitStatsBlock.GetWarriorData(_name, _id);
+
+        _icon.sprite = warriorData.Icon;
+        _nameText.text = warriorData.name;
+
+        foreach (ButtonView button in _buttons)
+        {
+            button.UpdateButton(warriorData);
+        }
+    }
+
+    public void SetUnitId(int id)
+    {
+        _id = id;
+
+        UpdateView();
+    }
+
+    public void UpdateStat(int idSkill)
+    {
+        _unitStatsBlock.UpdateStat(_name, _id, idSkill);
     }
 }

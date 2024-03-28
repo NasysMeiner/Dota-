@@ -29,9 +29,6 @@ public class CompositRootCastle : CompositeRoot
 
     [Header("Other")]
     [SerializeField] private Trash _trash;
-    [SerializeField] private BarricadeBuilder _barricadeBuilder;
-    [SerializeField] private int _numberBarricade;
-    [SerializeField] private Barricade _barricadePrefab;
     [SerializeField] private WaveCounter _waveCounter;
 
     public override void Compose()
@@ -45,7 +42,6 @@ public class CompositRootCastle : CompositeRoot
     {
         _barracksDataPlayer.WriteData(_pointCreatorPlayer);
         _castlePlayer.InitializeCastle(_gameInfoPlayer, _barracksPlayer, _barracksDataPlayer, _trash, _pointCreatorPlayer);
-        _barricadeBuilder.InitBuilder(_barricadePrefab, _numberBarricade);
 
         foreach (Tower tower in _towersPlayer)
         {

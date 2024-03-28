@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -14,11 +12,13 @@ public class ViewSprite : MonoBehaviour
 
     public void Active()
     {
-        _spriteRenderer.enabled = true;
+        if (_spriteRenderer != null)
+            _spriteRenderer.enabled = true;
     }
 
     public void InActive()
     {
-        _spriteRenderer.enabled = false;
+        if (_spriteRenderer != null)
+            _spriteRenderer.enabled = false;
     }
 }

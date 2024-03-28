@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: Tank
   Avatar: {fileID: 9100000, guid: 07372936ccaf071409d7ba845194e856, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
+  BiasShadow: {x: 0, y: 0, z: 0}
   Scale: 0.65
   Sprite: {fileID: 21300000, guid: 5e82b2c55179f004c9094791b70b33a1, type: 3}
   SkillList: []
@@ -36,24 +37,23 @@ MonoBehaviour:
   EffectDeath: {fileID: 3599141429173347808, guid: b4ecb6412ddc3084e886254a20f07eae, type: 3}
   TimeEffectDeath: 0
   Price: 6
-  CurrentStats:
-  - Type: 0
-    CurrentLevel: 1
-  - Type: 1
-    CurrentLevel: 1
-  - Type: 2
-    CurrentLevel: 1
+  CurrentLevel: 1
+  MaxLevel: 3
   Stats:
   - Type: 0
-    Levels: 000000000000000000000000000000000000000000000000
+    Levels:
+    - 0
+    - 0
+    - 0
   - Type: 1
-    Levels: 000000000000000000000000000000000000000000000000
+    Levels:
+    - 0
+    - 0
+    - 0
   - Type: 2
-    Levels: 000000000000000000000000000000000000000000000000
-  Prices:
-  - Type: 0
-    Price: 64000000
-  - Type: 1
-    Price: 64000000
-  - Type: 2
-    Price: 64000000
+    Levels:
+    - 0
+    - 0
+    - 0
+  Prices: 000000000000000000000000
+  Icon: {fileID: 21300000, guid: 67a41fb7bcc2f404f92d0961e0762bc2, type: 3}
