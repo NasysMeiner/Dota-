@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: AttackRangeUpDataAi
   m_EditorClassIdentifier: 
   IsPurchased: 1
-  AttackRangeUp: 2
+  Price: 0
+  AttackRangeUp: 1

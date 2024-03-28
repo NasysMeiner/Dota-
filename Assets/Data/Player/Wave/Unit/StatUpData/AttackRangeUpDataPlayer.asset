@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: AttackRangeUpDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 1
-  AttackRangeUp: 2
+  Price: 30
+  AttackRangeUp: 1

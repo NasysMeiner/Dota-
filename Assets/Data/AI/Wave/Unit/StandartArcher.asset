@@ -22,11 +22,11 @@ MonoBehaviour:
   SkillList: []
   LevelUpList: []
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
-  HealPoint: 120
-  AttackDamage: 42
-  AttackRange: 3
+  HealPoint: 240
+  AttackDamage: 87
+  AttackRange: 4
   VisibilityRange: 6
-  AttackSpeed: 1
+  AttackSpeed: 0.7
   Speed: 2
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -36,25 +36,25 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: b90b3d3906749014b859d2d833676483, type: 3}
   TimeEffectDeath: 0
-  Price: 2
-  CurrentLevel: 1
+  Price: 1
+  CurrentLevel: 2
   MaxLevel: 3
   Stats:
   - Type: 0
     Levels:
-    - 0
-    - 0
-    - 0
+    - 240
+    - 240
+    - 240
   - Type: 1
     Levels:
-    - 0
-    - 0
-    - 0
+    - 87
+    - 106
+    - 125
   - Type: 2
     Levels:
-    - 0
-    - 0
-    - 0
+    - 0.7
+    - 0.6
+    - 0.5
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: 286ef65b3bb98bc4eb431e2cce1f8bb8, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}
