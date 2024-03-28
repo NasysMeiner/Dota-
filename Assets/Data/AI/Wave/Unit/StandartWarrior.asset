@@ -19,8 +19,10 @@ MonoBehaviour:
   BiasShadow: {x: 0, y: 0, z: 0}
   Scale: 0.4
   Sprite: {fileID: 21300000, guid: f024ecf3b71ea1c41a0c54d57ae7e8d1, type: 3}
-  SkillList: []
-  LevelUpList: []
+  SkillList:
+  - {fileID: 11400000, guid: 96d91f3237057544fb65582a4d921042, type: 2}
+  LevelUpList:
+  - {fileID: 11400000, guid: c94a17f9e9d31954d99c61dfb9ce3d37, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   HealPoint: 750
   AttackDamage: 80
@@ -37,7 +39,7 @@ MonoBehaviour:
   EffectDeath: {fileID: 3599141429173347808, guid: 2d8b5343eae2a4f46bf99b4ca59577ad, type: 3}
   TimeEffectDeath: 0
   Price: 1
-  CurrentLevel: 2
+  CurrentLevel: 1
   MaxLevel: 3
   Stats:
   - Type: 0

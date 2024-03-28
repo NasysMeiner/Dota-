@@ -19,5 +19,5 @@ MonoBehaviour:
   ContainerSkill:
     TypeSkill: 1
   AttackScaling: 0.5
-  Damage: 250
+  Damage: 100
   Radius: 2
