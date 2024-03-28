@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/DataWarrior")]
@@ -80,6 +79,12 @@ public class WarriorData : ScriptableObject
     public List<Stat> Stats = new();
     public List<int> Prices = new();
 
+    [Space]
+
+    [Header("UI")]
+
+    public Sprite Icon;
+
     private List<SkillCont> _skillConts = new();
 
     public List<SkillCont> SkillConts => _skillConts;
@@ -112,6 +117,8 @@ public class WarriorData : ScriptableObject
 
         Price = warriorData.Price;
         CurrentLevel = warriorData.CurrentLevel;
+
+        Icon = warriorData.Icon;
 
         Stats.Clear();
         Prices.Clear();
@@ -176,7 +183,7 @@ public class WarriorData : ScriptableObject
 
     public void UnlockSkill(int idSkill)
     {
-        if(idSkill < SkillConts.Count)
+        if (idSkill < SkillConts.Count)
             SkillConts[idSkill].UnlockSkill();
 
         if (SkillConts[idSkill].Skill.TypeSkill == TypeSkill.StatsUp)
@@ -184,12 +191,12 @@ public class WarriorData : ScriptableObject
             StatUp statUp = SkillConts[idSkill].Skill as StatUp;
             statUp.LevelUpStat(this);
         }
-            
+
     }
 
     public bool CheckLevelUp()
     {
-        if(CurrentLevel + 1 <= MaxLevel)
+        if (CurrentLevel + 1 <= MaxLevel)
             return true;
 
         return false;
@@ -221,7 +228,7 @@ public class WarriorData : ScriptableObject
 
     public int GetSkill(int id)
     {
-        if(id < SkillConts.Count)
+        if (id < SkillConts.Count)
             if (SkillConts[id].IsUnlock)
                 return 1;
             else

@@ -26,6 +26,7 @@ public class StatView : MonoBehaviour
     {
         WarriorData warriorData = _unitStatsBlock.GetWarriorData(_name, _id);
 
+        _icon.sprite = warriorData.Icon;
         _nameText.text = warriorData.name;
 
         foreach (ButtonView button in _buttons)

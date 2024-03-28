@@ -58,4 +58,5 @@ MonoBehaviour:
     - 0
     - 0
   Prices: 
+  Icon: {fileID: 21300000, guid: 839dd6d8db47b5c4988070f491359903, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}

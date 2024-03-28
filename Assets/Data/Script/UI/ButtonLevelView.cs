@@ -10,16 +10,17 @@ public class ButtonLevelView : ButtonView
         if (warriorData.CurrentLevel < warriorData.MaxLevel)
         {
             _textPrice.text = "+" + warriorData.CurrentLevel.ToString();
+            _textBuy.text = warriorData.GetPriceLevel().ToString();
             _textBuy.enabled = true;
             _textActive.enabled = false;
             _button.interactable = true;
         }
         else
         {
-            _textPrice.enabled = false;
-            //_textPrice.text = "MAX";
+            _textPrice.text = "+" + warriorData.CurrentLevel.ToString();
             _textBuy.enabled = false;
             _textActive.enabled = true;
+            _textActive.text = "MAX";
             _button.interactable = false;
         }
     }
