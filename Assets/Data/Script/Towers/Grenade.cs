@@ -4,7 +4,7 @@ public class Grenade : Bullet
 {
     [SerializeField] private float _radius;
     [SerializeField] private float _damageReductionPercentage = 0.5f;
-    private bool _isDrawRadius = false;
+    private bool _isDrawRadius = true;
 
     protected override void MakeDamage(IEntity enemy)
     {
@@ -19,7 +19,7 @@ public class Grenade : Bullet
             {
                 if (unit.Name != _name)
                 {
-                    //Debug.Log(unit.Name + " " + _damage * _damageReductionPercentage);
+                    Debug.Log(unit.Name + " " + _damage * _damageReductionPercentage);
                     unit.GetDamage(_damage * _damageReductionPercentage, AttackType.Ranged);
                 }
             }
