@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class StatUp : ScriptableObject, ISkill
 {
-    public bool IsPurchased = false;
+    public bool IsPurchased;
     public int Price;
 
     protected bool _isUnlock;
