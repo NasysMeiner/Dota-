@@ -12,7 +12,7 @@ public class SkillData : ScriptableObject, ISkill
 
     public int PriceSkill => Price;
 
-    bool ISkill.IsPurchased => _isUnlock;
+    bool ISkill.IsPurchased => IsPurchased;
 
     TypeSkill ISkill.TypeSkill => TypeSkill;
 
@@ -20,11 +20,11 @@ public class SkillData : ScriptableObject, ISkill
 
     public void InitData()
     {
-        _isUnlock = IsPurchased;
+        //_isUnlock = IsPurchased;
     }
 
     public void UnlockSkill()
     {
-        _isUnlock = true;
+        IsPurchased = true;
     }
 }
