@@ -28,18 +28,18 @@ public class HealPointView : MonoBehaviour
 
     private void OnHealPointChange(float currentHealPoint)
     {
-        for (int i = 0; i < _maxCell; i++)
-        {
-            if (currentHealPoint - _fullOneCell >= 0)
-            {
-                _hearts[i].ChangeValue(_fullOneCell, _fullOneCell);
-                currentHealPoint -= _fullOneCell;
-            }
-            else
-            {
-                _hearts[i].ChangeValue(currentHealPoint, _fullOneCell);
-                currentHealPoint -= currentHealPoint;
-            }
-        }
+        //for (int i = 0; i < _maxCell; i++)
+        //{
+        //    if (currentHealPoint - _fullOneCell >= 0)
+        //    {
+        //        _hearts[i].ChangeValue(_fullOneCell, _fullOneCell);
+        //        currentHealPoint -= _fullOneCell;
+        //    }
+        //    else
+        //    {
+        //        _hearts[i].ChangeValue(currentHealPoint, _fullOneCell);
+        //        currentHealPoint -= currentHealPoint;
+        //    }
+        //}
     }
 }
