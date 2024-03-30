@@ -67,6 +67,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         InitializeStruct(dataGameInfo.DataStructure);
 
         Counter = new Counter();
+        Counter.AddEntity(this);
         Money = dataGameInfo.StartMoney;
         Name = dataGameInfo.Name;
         dataGameInfo.DataStructure.Name = Name;
@@ -120,11 +121,11 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
     private void OnDestroyBarrack()
     {
-        if (_isTarget == false)
-        {
-            _isTarget = true;
-            Counter.AddEntity(this);
-        }
+        //if (_isTarget == false)
+        //{
+        //    _isTarget = true;
+        //    Counter.AddEntity(this);
+        //}
     }
 
     private IEnumerator DestructEffetc()

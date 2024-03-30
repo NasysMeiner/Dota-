@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de8e41ab8a653a489b8a262dba78e57, type: 3}
   m_Name: ProjectileBlockChanceUpDataPlayer
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
   Price: 30
   ProjectileBlockChance: 50
