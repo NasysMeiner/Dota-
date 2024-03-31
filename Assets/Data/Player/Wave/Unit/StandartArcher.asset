@@ -25,10 +25,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0882f83855115aa4f8958febe8c9dccf, type: 2}
   ColorEffectDamage: {r: 0.41960785, g: 0.7411765, b: 1, a: 1}
   HealPoint: 240
-  AttackDamage: 87
+  AttackDamage: 125
   AttackRange: 4
   VisibilityRange: 6
-  AttackSpeed: 0.7
+  AttackSpeed: 1
   Speed: 2
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: 9e6285cc5ff254949961a99807ba184c, type: 3}
   TimeEffectDeath: 0.1
-  Price: 2
+  Price: 4
   CurrentLevel: 1
   MaxLevel: 3
   Stats:
@@ -49,12 +49,12 @@ MonoBehaviour:
     - 240
   - Type: 1
     Levels:
-    - 87
+    - 125
     - 106
     - 125
   - Type: 2
     Levels:
-    - 0.7
+    - 1
     - 0.6
     - 0.5
   Prices: 000000000f00000014000000

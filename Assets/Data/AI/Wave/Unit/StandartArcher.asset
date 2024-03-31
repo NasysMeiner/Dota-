@@ -25,10 +25,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8198af81cba134f923abf6ce5f2651, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   HealPoint: 240
-  AttackDamage: 87
+  AttackDamage: 125
   AttackRange: 4
   VisibilityRange: 6
-  AttackSpeed: 0.7
+  AttackSpeed: 1
   Speed: 2
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -49,12 +49,12 @@ MonoBehaviour:
     - 240
   - Type: 1
     Levels:
-    - 87
+    - 125
     - 106
     - 125
   - Type: 2
     Levels:
-    - 0.7
+    - 1
     - 0.6
     - 0.5
   Prices: 000000000000000000000000

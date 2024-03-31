@@ -28,7 +28,7 @@ MonoBehaviour:
   AttackDamage: 200
   AttackRange: 4
   VisibilityRange: 6
-  AttackSpeed: 1
+  AttackSpeed: 0.7
   Speed: 1.5
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     - 240
   - Type: 2
     Levels:
-    - 1
+    - 0.7
     - 0.9
     - 0.8
   Prices: 000000000000000000000000

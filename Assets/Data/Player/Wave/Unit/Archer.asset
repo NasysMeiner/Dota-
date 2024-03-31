@@ -28,7 +28,7 @@ MonoBehaviour:
   AttackDamage: 200
   AttackRange: 4
   VisibilityRange: 6
-  AttackSpeed: 1
+  AttackSpeed: 0.7
   Speed: 1.5
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: 8208ebe99eee93148bda00948a902587, type: 3}
   TimeEffectDeath: 0
-  Price: 8
+  Price: 10
   CurrentLevel: 1
   MaxLevel: 3
   Stats:
@@ -54,7 +54,7 @@ MonoBehaviour:
     - 240
   - Type: 2
     Levels:
-    - 1
+    - 0.7
     - 0.9
     - 0.8
   Prices: 000000006400000078000000

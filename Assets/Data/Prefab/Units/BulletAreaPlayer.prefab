@@ -143,7 +143,7 @@ MonoBehaviour:
   _endEffect: {fileID: 4615578305223431994}
   _timeEndEffect: 0.5
   _radius: 1
-  _damageReductionPercentage: 0.5
+  _damageReductionPercentage: 1
 --- !u!1001 &6918632742822645355
 PrefabInstance:
   m_ObjectHideFlags: 0
