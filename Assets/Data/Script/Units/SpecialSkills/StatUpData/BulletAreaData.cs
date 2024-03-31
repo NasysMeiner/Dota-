@@ -9,5 +9,6 @@ public class BulletAreaData : StatUp
     {
         ArcherData archerData = warriorData as ArcherData;
         archerData.Bullet = AreaBullet;
+        Debug.Log(archerData.Bullet);
     }
 }

@@ -89,7 +89,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
         _counter = counter;
         _pointCreator = barracksData.PointCreator;
         _trash = trash;
-        _counter.AddEntity(this);
+        //_counter.AddEntity(this);
 
         _spawnTimeUnit = barracksData.SpawnerData.SpawnTime;
         _waveTimeSpawn = barracksData.SpawnerData.WaveTimeSpawn;
@@ -132,7 +132,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public void SpawnUnits()
     {
-        StartCoroutine(SetWave());
+        //StartCoroutine(SetWave());
     }
 
     public void ChangePosition(Vector3 position)
@@ -248,11 +248,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     private IEnumerator WaitTimeDeathEffect(Unit unit)
     {
-        Debug.Log(_timeWaitDeath);
-
         yield return new WaitForSeconds(_timeWaitDeath);
-
-        Debug.Log("Wait");
 
         _trash.AddQueue(unit);
     }

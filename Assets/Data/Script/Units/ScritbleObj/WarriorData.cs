@@ -115,6 +115,8 @@ public class WarriorData : ScriptableObject
         EffectDeath = warriorData.EffectDeath;
         ColorEffectDamage = warriorData.ColorEffectDamage;
 
+        IsDoubleAttack = warriorData.IsDoubleAttack;
+
         Price = warriorData.Price;
         CurrentLevel = warriorData.CurrentLevel;
 
@@ -141,6 +143,10 @@ public class WarriorData : ScriptableObject
 
             AllSkillList.Add(skill);
             LevelUpList.Add(skill);
+
+            Debug.Log(skill.IsPurchased + " " + name + " " + skill);
+            if (skill.IsPurchased)
+                skill.LevelUpStat(this);
         }
 
         foreach (int value in warriorData.Prices)
@@ -149,9 +155,9 @@ public class WarriorData : ScriptableObject
         if (Prices.Count == 0)
             Prices.Add(100);
 
-        foreach (StatUp statUp in LevelUpList)
-            if (statUp.IsPurchased)
-                statUp.LevelUpStat(this);
+        //foreach (StatUp statUp in LevelUpList)
+        //    if (statUp.IsPurchased)
+        //        statUp.LevelUpStat(this);
 
         foreach (SkillData skill in warriorData.SkillList)
         {

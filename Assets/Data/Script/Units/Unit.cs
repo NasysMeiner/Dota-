@@ -180,7 +180,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
                     skillData.LoadData(newSkill);
                     _skillList.Add(newSkill);
 
-                    if (newSkill.TypeSkill == TypeSkill.InitStart)
+                    if (newSkill.TypeSkill == TypeSkill.InitStart && skillCont.IsUnlock)
                     {
                         newSkill.UseSkill();
                     }
@@ -290,6 +290,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             foreach (Skill skill in _skillList)
                 if (skill.TypeSkill == TypeSkill.Deatch)
                     skill.UseSkill();
+                else if (skill.TypeSkill == TypeSkill.InitStart)
+                    skill.StopSkill();
 
         //_spriteRenderer.enabled = false;
         _HealthBar.SetActive(false);

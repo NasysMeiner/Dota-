@@ -2,14 +2,14 @@ using UnityEngine;
 
 public abstract class StatUp : ScriptableObject, ISkill
 {
-    public bool IsPurchased = false;
+    public bool IsPurchased;
     public int Price;
 
     protected bool _isUnlock;
 
     public int PriceSkill => Price;
 
-    bool ISkill.IsPurchased => _isUnlock;
+    bool ISkill.IsPurchased => IsPurchased;
 
     public TypeSkill TypeSkill => TypeSkill.StatsUp;
 
@@ -17,11 +17,11 @@ public abstract class StatUp : ScriptableObject, ISkill
 
     public void InitData()
     {
-        _isUnlock = IsPurchased;
+        //_isUnlock = IsPurchased;
     }
 
     public void UnlockSkill()
     {
-        _isUnlock = true;
+        IsPurchased = true;
     }
 }
