@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824a3005012e14349af35df4243c4b08, type: 3}
   m_Name: DoubleAttackDataAi
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
+  Price: 0

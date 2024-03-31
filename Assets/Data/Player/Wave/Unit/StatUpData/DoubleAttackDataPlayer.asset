@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DoubleAttackDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 0
-  Price: 30
+  Price: 200

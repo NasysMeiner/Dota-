@@ -24,7 +24,7 @@ MonoBehaviour:
   LevelUpList:
   - {fileID: 11400000, guid: 689af3eed5477aa41a7b318cee38b89b, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
-  HealPoint: 2000
+  HealPoint: 2200
   AttackDamage: 120
   AttackRange: 1
   VisibilityRange: 4
@@ -44,18 +44,18 @@ MonoBehaviour:
   Stats:
   - Type: 0
     Levels:
-    - 2000
-    - 2500
-    - 3000
+    - 2200
+    - 3500
+    - 4000
   - Type: 1
     Levels:
     - 120
     - 132
-    - 145
+    - 132
   - Type: 2
     Levels:
     - 1.3
     - 1.3
-    - 1.2
+    - 1.3
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: 1d8328b1b8ce4284c97262882ae46f60, type: 3}
