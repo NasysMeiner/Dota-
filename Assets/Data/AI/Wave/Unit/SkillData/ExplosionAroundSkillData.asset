@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34cc44ebba69f645848dabf06fd2c45, type: 3}
   m_Name: ExplosionAroundSkillData
   m_EditorClassIdentifier: 
+  IsPurchased: 0
+  Price: 0
   TypeSkill: 1
   PrefabSkill: {fileID: 567823933584045999, guid: 8775d2ddce88cbb4f8c47d7d57e55e4d, type: 3}
   ContainerSkill:
     TypeSkill: 1
-  AttackScaling: 0.5
-  Damage: 500
+  AttackScaling: 1
+  Damage: 0
   Radius: 2

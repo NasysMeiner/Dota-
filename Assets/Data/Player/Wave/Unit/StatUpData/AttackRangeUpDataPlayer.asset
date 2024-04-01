@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b34373c8adbc64680474b1e1f5aa07, type: 3}
   m_Name: AttackRangeUpDataPlayer
   m_EditorClassIdentifier: 
-  IsPurchased: 1
-  Price: 30
+  IsPurchased: 0
+  Price: 200
   AttackRangeUp: 1

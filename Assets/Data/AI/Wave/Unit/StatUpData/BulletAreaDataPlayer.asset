@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93387db7219ae3479870028c2c7b841, type: 3}
   m_Name: BulletAreaDataPlayer
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
+  Price: 0
   AreaBullet: {fileID: -8264313214411544747, guid: 9bc0945abcf1b7c43a0aeaeb65da90e7, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807c2f5eaa1555143b07fd066c2850c3, type: 3}
   m_Name: LiveAfterDeathDataPlayer
   m_EditorClassIdentifier: 
-  IsPurchased: 1
-  Price: 30
+  IsPurchased: 0
+  Price: 200
   TimeImmortaly: 3
