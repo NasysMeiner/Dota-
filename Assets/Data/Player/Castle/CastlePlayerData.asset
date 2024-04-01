@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CastlePlayerData
   m_EditorClassIdentifier: 
   Income: 15
-  MaxHealpPoint: 3000
+  MaxHealpPoint: 5000
   EffectDamage: {fileID: -4138366589552181953, guid: caafdc731359faa4c930488b01252df3, type: 3}
   EffectDestruct: {fileID: 5334876924989911983, guid: 7b00427065a6e7f4fbc40a0db278589b, type: 3}
   EffectStart: {fileID: 0}
