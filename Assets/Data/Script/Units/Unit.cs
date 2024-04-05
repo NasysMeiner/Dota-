@@ -16,7 +16,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
-    [SerializeField] private GameObject _shadow;
+    [SerializeField] protected GameObject _shadow;
 
     [SerializeField] private bool _isDrawRadius;
 
@@ -282,7 +282,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _scout?.LateUpdate();
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         _isAlive = false;
         _stateMachine.Die();
