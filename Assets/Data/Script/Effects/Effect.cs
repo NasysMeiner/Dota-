@@ -15,6 +15,9 @@ public class Effect : MonoBehaviour
 
     public void StartEffect()
     {
+        if(_particleSystem == null)
+            _particleSystem = GetComponent<ParticleSystem>();
+
         _particleSystem.gameObject.SetActive(true);
         _particleSystem.Play();
     }
