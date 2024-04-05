@@ -17,7 +17,9 @@ MonoBehaviour:
   Avatar: {fileID: 9100000, guid: 5164c28e9f6e86e41bd607f68ae754f5, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
   BiasShadow: {x: 0, y: -2.2, z: 0}
+  BiasHPBar: {x: 0, y: 0.73, z: 0}
   Scale: 0.4
+  ScaleEffact: 2
   Sprite: {fileID: 21300000, guid: eadc0a921ae9bc24da964cd98696f7a8, type: 3}
   SkillList:
   - {fileID: 11400000, guid: 60cc32f299d34f5428620d5b44d7eb91, type: 2}
@@ -38,7 +40,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: cb34b9fb070a7584bbd2688495e53050, type: 3}
   TimeEffectDeath: 0.5
-  Price: 4
+  Price: 6
   CurrentLevel: 1
   MaxLevel: 3
   Stats:
@@ -57,5 +59,5 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-  Prices: 000000000c00000014000000
-  Icon: {fileID: 21300000, guid: ecf4a7768a11d2849a7274631d1f909d, type: 3}
+  Prices: 000000000100000001000000
+  Icon: {fileID: 21300000, guid: ec36870d37784f44ea55bfc7559abe08, type: 3}

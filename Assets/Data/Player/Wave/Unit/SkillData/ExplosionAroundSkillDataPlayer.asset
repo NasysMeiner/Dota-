@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: ExplosionAroundSkillDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 0
-  Price: 30
+  Price: 200
+  IconSkill: {fileID: 21300000, guid: 7e1abf679786b3641a9d0ec9b5e47207, type: 3}
   TypeSkill: 1
   PrefabSkill: {fileID: 567823933584045999, guid: 8775d2ddce88cbb4f8c47d7d57e55e4d, type: 3}
   ContainerSkill:
     TypeSkill: 1
-  AttackScaling: 0.5
-  Damage: 250
+  AttackScaling: 1
+  Damage: 0
   Radius: 2

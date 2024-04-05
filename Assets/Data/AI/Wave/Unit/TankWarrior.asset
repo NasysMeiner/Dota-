@@ -17,12 +17,16 @@ MonoBehaviour:
   Avatar: {fileID: 9100000, guid: 7e41538d6b9a7f04a93344035679088d, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
   BiasShadow: {x: 0, y: -2.2, z: 0}
+  BiasHPBar: {x: 0, y: 1.51, z: 0}
   Scale: 0.65
+  ScaleEffact: 3
   Sprite: {fileID: 21300000, guid: 3b218ff1bca71a842a8d23f1712234ab, type: 3}
-  SkillList: []
-  LevelUpList: []
+  SkillList:
+  - {fileID: 11400000, guid: 73daea12b307c1849af3a7056543ce09, type: 2}
+  LevelUpList:
+  - {fileID: 11400000, guid: 689af3eed5477aa41a7b318cee38b89b, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
-  HealPoint: 2000
+  HealPoint: 2200
   AttackDamage: 120
   AttackRange: 1
   VisibilityRange: 4
@@ -37,23 +41,23 @@ MonoBehaviour:
   EffectDeath: {fileID: 3599141429173347808, guid: 97be74e334bc749459a5819452711b77, type: 3}
   TimeEffectDeath: 0
   Price: 1
-  CurrentLevel: 2
+  CurrentLevel: 1
   MaxLevel: 3
   Stats:
   - Type: 0
     Levels:
-    - 2000
-    - 2500
-    - 3000
+    - 2200
+    - 3500
+    - 4000
   - Type: 1
     Levels:
     - 120
     - 132
-    - 145
+    - 132
   - Type: 2
     Levels:
     - 1.3
     - 1.3
-    - 1.2
+    - 1.3
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: 1d8328b1b8ce4284c97262882ae46f60, type: 3}

@@ -4,6 +4,7 @@ public class SkillData : ScriptableObject, ISkill
 {
     public bool IsPurchased = false;
     public int Price;
+    public Sprite IconSkill;
     public TypeSkill TypeSkill;
     public Skill PrefabSkill;
     public ContainerSkill ContainerSkill;
@@ -15,6 +16,8 @@ public class SkillData : ScriptableObject, ISkill
     bool ISkill.IsPurchased => IsPurchased;
 
     TypeSkill ISkill.TypeSkill => TypeSkill;
+
+    public Sprite Icon => IconSkill;
 
     public virtual void LoadData(Skill skill) { }
 

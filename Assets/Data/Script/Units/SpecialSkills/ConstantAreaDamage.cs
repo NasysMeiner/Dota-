@@ -6,6 +6,7 @@ using UnityEngine;
 public class ConstantAreaDamage : Skill
 {
     [SerializeField] private bool _isDrawRadius = false;
+    [SerializeField] private Effect _boomEffect;
 
     private Unit _unit;
     private CircleCollider2D _circleCollider;
@@ -53,12 +54,20 @@ public class ConstantAreaDamage : Skill
     public override void SetUnit(Unit unit)
     {
         _unit = unit;
+        _boomEffect.Init(unit.ScaleEffect);
     }
 
     public override void UseSkill()
     {
         _isActive = true;
         StartCoroutine(MakeDamageOfArea());
+        _boomEffect.StartEffect();
+    }
+
+    public override void StopSkill()
+    {
+        base.StopSkill();
+        _boomEffect.StopEffect();
     }
 
     private IEnumerator MakeDamageOfArea()

@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class StatUp : ScriptableObject, ISkill
 {
     public bool IsPurchased;
+    public Sprite IconSkill;
     public int Price;
 
     protected bool _isUnlock;
@@ -12,6 +13,8 @@ public abstract class StatUp : ScriptableObject, ISkill
     bool ISkill.IsPurchased => IsPurchased;
 
     public TypeSkill TypeSkill => TypeSkill.StatsUp;
+
+    public Sprite Icon => IconSkill;
 
     public abstract void LevelUpStat(WarriorData warriorData);
 
