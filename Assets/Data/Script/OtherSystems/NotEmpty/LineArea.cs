@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class LineArea : MonoBehaviour
 {
-    private List<IUnit> _liveUnit = new();
+    [SerializeField] private List<Unit> _liveUnit = new();
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent(out Unit unit) && unit.Name == "Player" && !_liveUnit.Contains(unit))
         {
             unit.Died += OnDiedUnit;
-            _liveUnit.Add(unit);
+
+            if (_liveUnit.Contains(unit))
+                _liveUnit.Add(unit);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent(out Unit unit) && unit.Name == "Player")
         {
