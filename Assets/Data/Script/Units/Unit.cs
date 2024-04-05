@@ -151,6 +151,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         }
 
         _shadow.transform.localPosition = warriorData.BiasShadow;
+        _HealthBar.transform.localPosition = warriorData.BiasHPBar;
 
         HealPoint = warriorData.HealPoint;
         MaxHealthPoint = HealPoint;

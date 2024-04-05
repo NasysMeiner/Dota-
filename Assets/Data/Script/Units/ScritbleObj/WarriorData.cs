@@ -15,6 +15,7 @@ public class WarriorData : ScriptableObject
 
     public Vector3 Bias;
     public Vector3 BiasShadow;
+    public Vector3 BiasHPBar;
 
     public float Scale;
 
@@ -108,6 +109,7 @@ public class WarriorData : ScriptableObject
         TimeImmortaly = warriorData.TimeImmortaly;
         Bias = warriorData.Bias;
         BiasShadow = warriorData.BiasShadow;
+        BiasHPBar = warriorData.BiasHPBar;
         Scale = warriorData.Scale;
 
         EffectDamage = warriorData.EffectDamage;
