@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ExplosionAroundSkill : Skill
 {
+    [SerializeField] private Effect _boomEffect;
+
     private Unit _unit;
 
     private float _attackScaling = 0.5f;
@@ -21,10 +23,12 @@ public class ExplosionAroundSkill : Skill
     public override void SetUnit(Unit unit)
     {
         _unit = unit;
+        //_boomEffect.Init(unit.ScaleEffect);
     }
 
     public override void UseSkill()
     {
+        _boomEffect.StartEffect();
         RaycastHit2D[] hitCollider = Physics2D.CircleCastAll(transform.position, _radius, Vector2.zero);
 
         foreach (RaycastHit2D c in hitCollider)

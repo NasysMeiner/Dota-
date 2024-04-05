@@ -11,7 +11,7 @@ public class ButtonLevelView : ButtonView
     {
         if (warriorData.CurrentLevel < warriorData.MaxLevel)
         {
-            if(warriorData.CurrentLevel < _iconsLevel.Count && warriorData.CurrentLevel > 0)
+            if (warriorData.CurrentLevel < _iconsLevel.Count && warriorData.CurrentLevel > 0)
             {
                 _icon.sprite = _iconsLevel[warriorData.CurrentLevel - 1];
             }
@@ -23,6 +23,7 @@ public class ButtonLevelView : ButtonView
 
             _textPrice.text = warriorData.GetPriceLevel().ToString();
             _textBuy.text = warriorData.GetPriceLevel().ToString();
+            _textPrice.enabled = true;
             _textBuy.enabled = true;
             _textActive.enabled = false;
             _button.interactable = true;

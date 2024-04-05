@@ -15,8 +15,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] private GameObject _HealthBar;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
+    [SerializeField] private Effect _defEffect;
     [SerializeField] protected Animator _animator;
-    [SerializeField] private GameObject _shadow;
+    [SerializeField] protected bool _isChangeShadowDie;
+    [SerializeField] protected GameObject _shadow;
 
     [SerializeField] private bool _isDrawRadius;
 
@@ -70,6 +72,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
     public bool IsDoubleAttack { get; protected set; }
+    public float ScaleEffect {  get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -151,6 +154,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         }
 
         _shadow.transform.localPosition = warriorData.BiasShadow;
+        _HealthBar.transform.localPosition = warriorData.BiasHPBar;
 
         HealPoint = warriorData.HealPoint;
         MaxHealthPoint = HealPoint;
@@ -164,6 +168,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _timeImmortality = warriorData.TimeImmortaly;
         IsDoubleAttack = warriorData.IsDoubleAttack;
         _isDoubleAttack = warriorData.IsDoubleAttack;
+        ScaleEffect = warriorData.ScaleEffact;
 
         foreach(SkillCont skillCont in warriorData.SkillConts)
         {
@@ -232,6 +237,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         else
         {
             Debug.Log("Dodge");
+
+            if(_defEffect != null)
+                _defEffect.StartEffect();
+
             _isDodgeRangeAttack = false;
         }
     }
@@ -281,7 +290,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _scout?.LateUpdate();
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         _isAlive = false;
         _stateMachine.Die();

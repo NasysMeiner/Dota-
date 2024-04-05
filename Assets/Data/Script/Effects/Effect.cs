@@ -7,13 +7,17 @@ public class Effect : MonoBehaviour
 
     public float Duration => _particleSystem.main.duration;
 
-    private void Awake()
+    public void Init(float scale)
     {
         _particleSystem = GetComponent<ParticleSystem>();
+        _particleSystem.gameObject.transform.localScale = _particleSystem.gameObject.transform.localScale * scale;
     }
 
     public void StartEffect()
     {
+        if(_particleSystem == null)
+            _particleSystem = GetComponent<ParticleSystem>();
+
         _particleSystem.gameObject.SetActive(true);
         _particleSystem.Play();
     }
