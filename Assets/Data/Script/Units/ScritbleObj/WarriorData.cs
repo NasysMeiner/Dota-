@@ -18,6 +18,7 @@ public class WarriorData : ScriptableObject
     public Vector3 BiasHPBar;
 
     public float Scale;
+    public float ScaleEffact;
 
     public Sprite Sprite;
 
@@ -111,6 +112,7 @@ public class WarriorData : ScriptableObject
         BiasShadow = warriorData.BiasShadow;
         BiasHPBar = warriorData.BiasHPBar;
         Scale = warriorData.Scale;
+        ScaleEffact = warriorData.ScaleEffact;
 
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;

@@ -42,6 +42,7 @@ public class Archer : Unit
     {
         base.Die();
 
-        _shadow.transform.localPosition = new Vector3(0.23f, -2.47f, 0f);
+        if(_isChangeShadowDie)
+            _shadow.transform.localPosition = new Vector3(0.23f, -2.47f, 0f);
     }
 }

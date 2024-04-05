@@ -14572,6 +14572,7 @@ GameObject:
   - component: {fileID: 9109279082343591307}
   - component: {fileID: 5174998620892552735}
   - component: {fileID: 2068224456562486275}
+  - component: {fileID: 5053033645680147865}
   m_Layer: 0
   m_Name: Shield for units
   m_TagString: Untagged
@@ -19376,3 +19377,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5053033645680147865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166743839287278654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2c841570d1aa64cab529ef0e7529cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

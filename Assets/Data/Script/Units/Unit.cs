@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
     [SerializeField] protected Animator _animator;
+    [SerializeField] protected bool _isChangeShadowDie;
     [SerializeField] protected GameObject _shadow;
 
     [SerializeField] private bool _isDrawRadius;
@@ -70,6 +71,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
     public bool IsDoubleAttack { get; protected set; }
+    public float ScaleEffect {  get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -165,6 +167,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _timeImmortality = warriorData.TimeImmortaly;
         IsDoubleAttack = warriorData.IsDoubleAttack;
         _isDoubleAttack = warriorData.IsDoubleAttack;
+        ScaleEffect = warriorData.ScaleEffact;
 
         foreach(SkillCont skillCont in warriorData.SkillConts)
         {

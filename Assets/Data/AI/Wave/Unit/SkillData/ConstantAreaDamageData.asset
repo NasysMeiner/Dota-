@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad5f1c8ac010af4c8112befa966a327, type: 3}
   m_Name: ConstantAreaDamageData
   m_EditorClassIdentifier: 
-  IsPurchased: 0
+  IsPurchased: 1
   Price: 0
+  IconSkill: {fileID: 0}
   TypeSkill: 0
   PrefabSkill: {fileID: 2737793477371155391, guid: c3c69e7beb67bb741a0c387bf1d49943, type: 3}
   ContainerSkill:
