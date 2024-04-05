@@ -15,6 +15,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     [SerializeField] private GameObject _HealthBar;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageColorEffectUnit _damageColorEffectUnit;
+    [SerializeField] private Effect _defEffect;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected bool _isChangeShadowDie;
     [SerializeField] protected GameObject _shadow;
@@ -236,6 +237,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         else
         {
             Debug.Log("Dodge");
+
+            if(_defEffect != null)
+                _defEffect.StartEffect();
+
             _isDodgeRangeAttack = false;
         }
     }
