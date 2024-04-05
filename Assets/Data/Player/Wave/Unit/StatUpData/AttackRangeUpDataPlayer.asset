@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: AttackRangeUpDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 0
+  IconSkill: {fileID: 21300000, guid: 8d11d2aec2a56ab4984fb76ea6911dc0, type: 3}
   Price: 200
   AttackRangeUp: 1

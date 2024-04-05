@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DoubleAttackDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 0
+  IconSkill: {fileID: 21300000, guid: b632fb116ad03874fabd294bc4cb301c, type: 3}
   Price: 200

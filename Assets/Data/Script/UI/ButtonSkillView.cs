@@ -11,6 +11,9 @@ public class ButtonSkillView : ButtonView
     {
         //Debug.Log(warriorData.GetSkill(_idButton - 1) + " " + this.name);
 
+        if (warriorData.AllSkillList[_idButton - 1].Icon != null)
+            _icon.sprite = warriorData.AllSkillList[_idButton - 1].Icon;
+
         if (warriorData.GetSkill(_idButton - 1) == 1)
         {
             //_textPrice.text = "Off";

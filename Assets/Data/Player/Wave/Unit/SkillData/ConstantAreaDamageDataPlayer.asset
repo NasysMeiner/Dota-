@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPurchased: 0
   Price: 200
+  IconSkill: {fileID: 21300000, guid: 03995f982132c9e48b9bf372542419d1, type: 3}
   TypeSkill: 0
   PrefabSkill: {fileID: 2737793477371155391, guid: c3c69e7beb67bb741a0c387bf1d49943, type: 3}
   ContainerSkill:
