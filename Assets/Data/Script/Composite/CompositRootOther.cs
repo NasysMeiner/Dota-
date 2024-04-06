@@ -18,6 +18,8 @@ public class CompositRootOther : CompositeRoot
     [Header("Tower AI")]
     [SerializeField] private List<Tower> _towerListAI;
     [SerializeField] private TowerData _towerDataAi;
+    [SerializeField] private AutoSpawner _autoSpawner;
+    [SerializeField] private SelectorPointSpawner _selectorPointSpawner;
 
     [Header("Bank")]
     [SerializeField] private Bank _bank;
@@ -27,6 +29,7 @@ public class CompositRootOther : CompositeRoot
     {
         InitTowers();
         InitBank();
+        InitAiSpawner();
     }
 
     private void InitTowers()
@@ -46,5 +49,10 @@ public class CompositRootOther : CompositeRoot
 
         foreach (Castle castle in _castleList)
             _bank.AddCashAccount(castle.CashAccount);
+    }
+
+    private void InitAiSpawner()
+    {
+        _autoSpawner.InitAutoSpawner(_dataStats[1], _castleList[1], _prefabUnit, _trash, _selectorPointSpawner);
     }
 }

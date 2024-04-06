@@ -54,7 +54,9 @@ MonoBehaviour:
   _HealthBar: {fileID: 6417371337746532700}
   _spriteRenderer: {fileID: 9126035773027932046}
   _damageColorEffectUnit: {fileID: 7906301316647820066}
+  _defEffect: {fileID: 0}
   _animator: {fileID: 542907647720514871}
+  _isChangeShadowDie: 1
   _shadow: {fileID: 3549921252892213585}
   _isDrawRadius: 0
   CurrentState: 
