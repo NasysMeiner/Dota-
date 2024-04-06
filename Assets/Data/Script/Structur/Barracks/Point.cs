@@ -15,7 +15,7 @@ public class Point : MonoBehaviour
 
     private void Awake()
     {
-        _direction = new Vector2(_leftPoint.position.x - _rightPoint.position.x, _leftPoint.position.y - _rightPoint.position.y);
+        //_direction = new Vector2(_leftPoint.position.x - _rightPoint.position.x, _leftPoint.position.y - _rightPoint.position.y);
     }
 
     public Vector3 RandomPoint

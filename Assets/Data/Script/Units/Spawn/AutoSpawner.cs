@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AutoSpawner : MonoBehaviour
 {
     public List<int> IdLine;
-    public Group TestGroup;
     public float TimeSpawn = 1f;
 
     private DataUnitStats _dataUnitStatsAi;
@@ -13,6 +13,10 @@ public class AutoSpawner : MonoBehaviour
     private Castle _castle;
     private Trash _trash;
     private SelectorPointSpawner _selectorPointSpawner;
+
+    private bool _isActive = false;
+
+    public event UnityAction EndSpawn;
 
     public void InitAutoSpawner(DataUnitStats dataUnitStats, Castle castle, DataUnitPrefab dataUnitPrefab, Trash trash, SelectorPointSpawner selectorPointSpawner)
     {
@@ -23,9 +27,9 @@ public class AutoSpawner : MonoBehaviour
         _selectorPointSpawner = selectorPointSpawner;
     }
 
-    public void StartSpawn(/*Group groupUnit, Transform point*/)
+    public void StartSpawn(Group groupUnit, int idLine)
     {
-        StartCoroutine(SpawnUnit(TestGroup, IdLine[1]));
+        StartCoroutine(SpawnUnit(groupUnit, idLine));
     }
 
     public IEnumerator SpawnUnit(Group groupUnit, int idLine)
@@ -35,7 +39,7 @@ public class AutoSpawner : MonoBehaviour
 
         while (spawnUniy < maxSpawnUnit)
         {
-            StatsPrefab currentUnit = _dataUnitStatsAi.GetStatsPrefab(TestGroup.VariertyUnits[spawnUniy]);
+            StatsPrefab currentUnit = _dataUnitStatsAi.GetStatsPrefab(groupUnit.VariertyUnits[spawnUniy]);
             Vector3 newPointt;
 
             newPointt = _selectorPointSpawner.GetPointSpawn(currentUnit.TypeUnit, idLine);
@@ -47,9 +51,11 @@ public class AutoSpawner : MonoBehaviour
             newUnit.InitUnit(_castle.PointCreator.CreateRangePoint, _castle.EnemyCounter, 100, _castle.Name);
             newUnit.ChangePosition(newPointt);
 
-            spawnUniy++;
-
             yield return new WaitForSeconds(TimeSpawn);
+
+            spawnUniy++;
         }
+
+        EndSpawn?.Invoke();
     }
 }

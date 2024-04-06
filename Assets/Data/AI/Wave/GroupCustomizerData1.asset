@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GroupCustomizerData1
   m_EditorClassIdentifier: 
   GroupUnits:
-  - VariertyUnits: 00000000030000000300000003000000
+  - VariertyUnits: 01000000030000000200000003000000
+  - VariertyUnits: 03000000030000000300000003000000

@@ -6,11 +6,20 @@ using UnityEngine;
 public class GroupCustomizerData : ScriptableObject
 {
     public List<Group> GroupUnits;
+
+    //public void InitGroupPrice(DataUnitStats dataUnitStats)
+    //{
+
+    //}
 }
 
 [System.Serializable]
 public class Group
 {
     public List<VariertyUnit> VariertyUnits;
+
+    private int _price;
+
+    public int PriceGroup => _price;
 }
 

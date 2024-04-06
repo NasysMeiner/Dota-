@@ -9103,8 +9103,12 @@ MonoBehaviour:
   _gameInfoAi: {fileID: 11400000, guid: a51a8f501e1f9a54bb135678cfe56d92, type: 2}
   _prefabUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
   _emptyUnitStatsAi: {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
+  _autoSpawner: {fileID: 1532580625}
   _changerStats: {fileID: 1222438728}
   _bank: {fileID: 2068412911}
+  _counterUnit: {fileID: 2034646415}
+  _groupCustomizerData: {fileID: 11400000, guid: 6f48c30cb16bd704d9d88eed3abb758f, type: 2}
+  _selectorGroupUnit: {fileID: 1532580627}
   _skillData:
   - {fileID: 11400000, guid: 73daea12b307c1849af3a7056543ce09, type: 2}
   - {fileID: 11400000, guid: 96d91f3237057544fb65582a4d921042, type: 2}
@@ -14434,9 +14438,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1532580625}
-        m_TargetAssemblyTypeName: AutoSpawner, Assembly-CSharp
-        m_MethodName: StartSpawn
+      - m_Target: {fileID: 1532580627}
+        m_TargetAssemblyTypeName: SelectorGroupUnit, Assembly-CSharp
+        m_MethodName: StartBuildingGroup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15143,7 +15147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7d1f956093d94da567df03dbe9ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liveUnit: []
+  _liveUnitPlayer: []
+  _liveUnitAi: []
 --- !u!61 &870590622
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24925,6 +24930,7 @@ GameObject:
   - component: {fileID: 1532580626}
   - component: {fileID: 1532580625}
   - component: {fileID: 1532580624}
+  - component: {fileID: 1532580627}
   m_Layer: 0
   m_Name: AutoSpawner
   m_TagString: Untagged
@@ -24961,8 +24967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IdLine: 010000000100000000000000
-  TestGroup:
-    VariertyUnits: 01000000000000000300000002000000
   TimeSpawn: 1
 --- !u!4 &1532580626
 Transform:
@@ -24979,6 +24983,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1532580627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532580623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25760c9a63dc04f4a926084df6fd6d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeNextGroup: 5
+  CounterGroup: 0
+  IsCycle: 1
 --- !u!1 &1534930376
 GameObject:
   m_ObjectHideFlags: 0
@@ -26121,7 +26140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7d1f956093d94da567df03dbe9ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liveUnit: []
+  _liveUnitPlayer: []
+  _liveUnitAi: []
 --- !u!61 &1631261624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29435,7 +29455,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.49954095, g: 0.9056604, b: 0.38020647, a: 0.18431373}
   m_FlipX: 0
   m_FlipY: 0
@@ -29443,7 +29463,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1800481058
@@ -31207,7 +31227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7d1f956093d94da567df03dbe9ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liveUnit: []
+  _liveUnitPlayer: []
+  _liveUnitAi: []
 --- !u!61 &1925029227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33815,8 +33836,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeDelete: 2
-  _timeWaitDeath: 0
-  _castleList: []
+  _timeWaitDeath: 3
+  _castleList:
+  - {fileID: 1973439890}
+  - {fileID: 133553829}
 --- !u!4 &2073568123
 Transform:
   m_ObjectHideFlags: 0

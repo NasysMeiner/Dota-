@@ -14,10 +14,14 @@ public class CompositRootData : CompositeRoot
     [SerializeField] private DataGameInfo _gameInfoAi;
     [SerializeField] private DataUnitStats _prefabUnitStatsAi;
     [SerializeField] private DataUnitStats _emptyUnitStatsAi;
+    [SerializeField] private AutoSpawner _autoSpawner;
 
     [Header("System other")]
     [SerializeField] private ChangerStats _changerStats;
     [SerializeField] private Bank _bank;
+    [SerializeField] private CounterUnit _counterUnit;
+    [SerializeField] private GroupCustomizerData _groupCustomizerData;
+    [SerializeField] private SelectorGroupUnit _selectorGroupUnit;
 
     [Header("Skills")]
     [SerializeField] private List<SkillData> _skillData;
@@ -28,6 +32,7 @@ public class CompositRootData : CompositeRoot
         LoadDataAi();
         ChangerStatsInit();
         LoadSkillData();
+        InitAutoSpawner();
     }
 
     private void LoadDataPlayer()
@@ -55,5 +60,10 @@ public class CompositRootData : CompositeRoot
     {
         foreach (var skill in _skillData)
             skill.InitData();
+    }
+
+    private void InitAutoSpawner()
+    {
+        _selectorGroupUnit.InitSelectorGroupUnit(_groupCustomizerData, _counterUnit, _autoSpawner);
     }
 }
