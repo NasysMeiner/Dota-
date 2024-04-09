@@ -453,10 +453,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../Desktop/AEVA CHRIS/AUDIO/ORIGINAL MUSIC/Abode of Frozen
-    Dreams/Empire of the Dark Symphony/EDS_Audio/EDS_Audio.fspro
-  sourceBankPath: ../../../Desktop/AEVA CHRIS/AUDIO/ORIGINAL MUSIC/Abode of Frozen
-    Dreams/Empire of the Dark Symphony/EDS_Audio/Build
+  sourceProjectPath: Assets/Audio/EDS_Audio/EDS_Audio.fspro
+  sourceBankPath: Assets/Audio/EDS_Audio/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
