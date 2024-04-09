@@ -150,7 +150,7 @@ public class WarriorData : ScriptableObject
             AllSkillList.Add(skill);
             LevelUpList.Add(skill);
 
-            Debug.Log(skill.IsPurchased + " " + name + " " + skill);
+            Debug.Log(skill.IsPurchased + " " + name + " " + skill + "  _____--_____");
             if (skill.IsPurchased)
                 skill.LevelUpStat(this);
         }
@@ -302,6 +302,7 @@ public class SkillCont
     public void LoadData(ISkill skill)
     {
         Skill = skill;
+        Debug.Log(skill + " " + skill.IsPurchased);
         IsUnlock = skill.IsPurchased;
     }
 
