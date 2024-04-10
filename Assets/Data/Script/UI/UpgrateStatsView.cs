@@ -19,6 +19,13 @@ public class UpgrateStatsView : MonoBehaviour
         _changerStats.ChangeUnitStat -= OnChangeUnitStat;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            if (_activePanel != _defaultPanel)
+                OnChangeId(_currentId);
+    }
+
     public void InitUpgrateStatsView(ChangerStats changerStats, RadiusSpawner radiusSpawner)
     {
         _changerStats = changerStats;
