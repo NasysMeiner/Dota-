@@ -32,6 +32,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public CashAccount CashAccount { get; private set; }
 
     public event UnityAction<float> HealPointChange;
+    public event UnityAction<string> CastleDestroyed;
 
     private void OnDisable()
     {
@@ -43,6 +44,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     {
         _isAlive = false;
         Counter.DeleteEntity(this);
+        CastleDestroyed?.Invoke(Name);
     }
 
     public void GetDamage(float damage, AttackType attackType)

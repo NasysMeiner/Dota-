@@ -5,10 +5,14 @@ public class CompositRootView : CompositeRoot
 {
     [Header("View")]
     [SerializeField] private Castle _castlePlayer;
+    [SerializeField] private Castle _castleAi;
     [SerializeField] private List<Heart> _hearts;
     [SerializeField] private HealPointView _healPointView;
     [SerializeField] private GoldView _goldView;
     [SerializeField] private UpgrateStatsView _upgradeStatsView;
+    [Space]
+    [SerializeField] private GameResult _gameResult;
+    [SerializeField] private GameResultView _gameResultView;
 
     [Header("Spawn")]
     [SerializeField] private List<ViewSprite> _images;
@@ -30,5 +34,7 @@ public class CompositRootView : CompositeRoot
         _buttonUnitView.Init(_radiusSpawner, _images);
         _goldView.InitGoldView(_castlePlayer.CashAccount);
         _upgradeStatsView.InitUpgrateStatsView(_changerStats, _radiusSpawner);
+        _gameResult.InitGameResult(_castlePlayer, _castleAi);
+        _gameResultView.InitGameResultView(_gameResult);
     }
 }
