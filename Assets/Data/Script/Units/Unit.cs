@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.Scripting;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -72,7 +70,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float ProjectileBlockChance { get; protected set; }
     public Counter EnemyCounter { get; protected set; }
     public bool IsDoubleAttack { get; protected set; }
-    public float ScaleEffect {  get; protected set; }
+    public float ScaleEffect { get; protected set; }
 
     public event UnityAction<Unit> Died;
 
@@ -91,7 +89,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (_isAlive)
             UnitUpdate();
 
-        if(_spriteRenderer != null)
+        if (_spriteRenderer != null)
             _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
     }
 
@@ -170,14 +168,14 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isDoubleAttack = warriorData.IsDoubleAttack;
         ScaleEffect = warriorData.ScaleEffact;
 
-        foreach(SkillCont skillCont in warriorData.SkillConts)
+        foreach (SkillCont skillCont in warriorData.SkillConts)
         {
             Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
-            if(skillCont != null && skillCont.IsUnlock && skillCont.Skill.TypeSkill != TypeSkill.StatsUp)
+            if (skillCont != null && skillCont.IsUnlock && skillCont.Skill.TypeSkill != TypeSkill.StatsUp)
             {
                 Skill newSkill;
 
-                if(skillCont.Skill as SkillData)
+                if (skillCont.Skill as SkillData)
                 {
                     SkillData skillData = skillCont.Skill as SkillData;
                     newSkill = Instantiate(skillData.PrefabSkill, transform);
@@ -238,7 +236,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             Debug.Log("Dodge");
 
-            if(_defEffect != null)
+            if (_defEffect != null)
                 _defEffect.StartEffect();
 
             _isDodgeRangeAttack = false;
