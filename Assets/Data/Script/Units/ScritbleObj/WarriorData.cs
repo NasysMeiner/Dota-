@@ -302,7 +302,7 @@ public class SkillCont
     public void LoadData(ISkill skill)
     {
         Skill = skill;
-        Debug.Log(skill + " " + skill.IsPurchased);
+        //Debug.Log(skill + " " + skill.IsPurchased);
         IsUnlock = skill.IsPurchased;
     }
 

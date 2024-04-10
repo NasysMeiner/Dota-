@@ -171,7 +171,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         foreach (SkillCont skillCont in warriorData.SkillConts)
         {
-            Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
+            //Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
             if (skillCont != null && skillCont.IsUnlock && skillCont.Skill.TypeSkill != TypeSkill.StatsUp)
             {
                 Skill newSkill;
