@@ -15,6 +15,7 @@ public class WarriorData : ScriptableObject
 
     public Vector3 Bias;
     public Vector3 BiasShadow;
+    public bool IsShadowBias;
     public Vector3 BiasHPBar;
 
     public float Scale;
@@ -110,6 +111,7 @@ public class WarriorData : ScriptableObject
         TimeImmortaly = warriorData.TimeImmortaly;
         Bias = warriorData.Bias;
         BiasShadow = warriorData.BiasShadow;
+        IsShadowBias = warriorData.IsShadowBias;
         BiasHPBar = warriorData.BiasHPBar;
         Scale = warriorData.Scale;
         ScaleEffact = warriorData.ScaleEffact;
@@ -148,7 +150,7 @@ public class WarriorData : ScriptableObject
             AllSkillList.Add(skill);
             LevelUpList.Add(skill);
 
-            Debug.Log(skill.IsPurchased + " " + name + " " + skill);
+            Debug.Log(skill.IsPurchased + " " + name + " " + skill + "  _____--_____");
             if (skill.IsPurchased)
                 skill.LevelUpStat(this);
         }
@@ -300,6 +302,7 @@ public class SkillCont
     public void LoadData(ISkill skill)
     {
         Skill = skill;
+        //Debug.Log(skill + " " + skill.IsPurchased);
         IsUnlock = skill.IsPurchased;
     }
 

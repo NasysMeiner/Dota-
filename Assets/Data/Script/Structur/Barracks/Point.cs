@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
+    [SerializeField] private bool _isDrawRadius;
+    [SerializeField] private float _valuePoint = 0.5f;
+    [Space]
     [SerializeField] private Transform _leftPoint;
     [SerializeField] private Transform _rightPoint;
     [SerializeField] private float _faultMin = 0.15f;
@@ -12,7 +15,7 @@ public class Point : MonoBehaviour
 
     private void Awake()
     {
-        _direction = new Vector2(_leftPoint.position.x - _rightPoint.position.x, _leftPoint.position.y - _rightPoint.position.y);
+        //_direction = new Vector2(_leftPoint.position.x - _rightPoint.position.x, _leftPoint.position.y - _rightPoint.position.y);
     }
 
     public Vector3 RandomPoint
@@ -86,5 +89,35 @@ public class Point : MonoBehaviour
                 return true;
 
         return false;
+    }
+
+    public Vector3 GetPointInBox(TypeUnit typeUnit)
+    {
+        float x = _valuePoint;
+        float y = _valuePoint;
+
+        y = Random.Range(-y, y);
+
+        if (typeUnit == TypeUnit.Warrior)
+        {
+            x = Random.Range(-x, 0);
+        }
+        else
+        {
+            x = Random.Range(-x * 0.5f, x);
+        }
+
+        Vector3 point = new Vector3(transform.position.x + x, transform.position.y + y);
+
+        return point;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_isDrawRadius)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _valuePoint);
+        }
     }
 }

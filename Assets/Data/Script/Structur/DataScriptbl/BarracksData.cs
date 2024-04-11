@@ -39,6 +39,7 @@ public class PrefabUnit
 [System.Serializable]
 public class StatsPrefab
 {
+    public TypeUnit TypeUnit;
     public VariertyUnit VariertyUnit;
     public WarriorData WarriorData;
 }

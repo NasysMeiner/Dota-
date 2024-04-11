@@ -167,10 +167,11 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         IsDoubleAttack = warriorData.IsDoubleAttack;
         _isDoubleAttack = warriorData.IsDoubleAttack;
         ScaleEffect = warriorData.ScaleEffact;
+        _isChangeShadowDie = warriorData.IsShadowBias;
 
         foreach (SkillCont skillCont in warriorData.SkillConts)
         {
-            Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
+            //Debug.Log(skillCont.Skill + " " + skillCont.IsUnlock);
             if (skillCont != null && skillCont.IsUnlock && skillCont.Skill.TypeSkill != TypeSkill.StatsUp)
             {
                 Skill newSkill;
