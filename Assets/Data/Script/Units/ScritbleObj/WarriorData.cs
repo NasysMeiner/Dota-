@@ -6,6 +6,7 @@ using UnityEngine;
 public class WarriorData : ScriptableObject
 {
     public TypeUnit Type;
+    public int WeightUnit;
 
     public string Name;
 
@@ -95,6 +96,7 @@ public class WarriorData : ScriptableObject
     public virtual void LoadStat(WarriorData warriorData)
     {
         Type = warriorData.Type;
+        WeightUnit = warriorData.WeightUnit;
         Name = warriorData.Name;
 
         Avatar = warriorData.Avatar;
