@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
+  WeightUnit: 1
   Name: StWarrior
   Avatar: {fileID: 9100000, guid: 06eb05d55ea036d4390c8bb3e0495e74, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
   BiasShadow: {x: 0, y: -2.2, z: 0}
+  IsShadowBias: 0
   BiasHPBar: {x: 0, y: 0.73, z: 0}
   Scale: 0.4
   ScaleEffact: 2
