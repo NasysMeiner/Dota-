@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RepairView : MonoBehaviour
 {
+    [SerializeField] private bool _isViewAi = false;
+
     private TowerStorage _towerStorage;
     private RepairTowerButton _prefab;
 
@@ -30,6 +32,9 @@ public class RepairView : MonoBehaviour
 
     private void OnTowerDestruct(string name, int id, Vector3 position)
     {
+        if (name == "Ai" && _isViewAi == false)
+            return;
+
         RepairTowerButton button = GetInActiveButton();
         button.PlaceButton(name, id, _towerStorage.GetPrice(name), position);
     }
