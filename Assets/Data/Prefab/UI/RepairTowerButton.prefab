@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1520431187602768325}
   - component: {fileID: 7887647000703520943}
+  - component: {fileID: 5559950838661165663}
   m_Layer: 0
   m_Name: RepairTowerButton
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceText: {fileID: 1520431187969962511}
+  _canvas: {fileID: 1520431187620912740}
+--- !u!65 &5559950838661165663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520431187602768324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.494551, y: 1.4195518, z: 1}
+  m_Center: {x: 0.09403789, y: -0.08515787, z: 0}
 --- !u!1 &1520431187620912736
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1520431187620912737
 RectTransform:
   m_ObjectHideFlags: 0

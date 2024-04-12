@@ -45,7 +45,7 @@ public class CompositRootCastle : CompositeRoot
 
         foreach (Tower tower in _towersPlayer)
         {
-            _castlePlayer.Counter.AddEntity(tower);
+            //_castlePlayer.Counter.AddEntity(tower);
             tower.SetName(_castlePlayer.Name);
         }
     }
@@ -57,7 +57,7 @@ public class CompositRootCastle : CompositeRoot
 
         foreach (Tower tower in _towersAi)
         {
-            _castleAi.Counter.AddEntity(tower);
+            //_castleAi.Counter.AddEntity(tower);
             tower.SetName(_castleAi.Name);
         }
     }

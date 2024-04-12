@@ -17,8 +17,6 @@ public class LineArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-
         if(collision.gameObject.TryGetComponent(out Unit unit))
         {
             unit.Died += OnDiedUnit;

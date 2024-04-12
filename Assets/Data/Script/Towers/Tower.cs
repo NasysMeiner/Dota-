@@ -42,6 +42,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public Unit CurrentTarget => _currentTarget;
 
     public event UnityAction<float> HealthChange;
+    public event UnityAction Died;
 
     private void Update()
     {
@@ -73,9 +74,24 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public void Destruct()
     {
+        Died?.Invoke();
+
         _isAlive = false;
         _currentTarget = null;
-        _counter.DeleteEntity(this);
+        _spriteRenderer.enabled = false;
+        _isDead = true;
+        _healPoint = 0;
+
+        StartCoroutine(DestructEffetc());
+        //_counter.DeleteEntity(this);
+    }
+
+    public void Resurrect()
+    {
+        _isAlive = true;
+        _spriteRenderer.enabled = true;
+        _isDead = false;
+        _healPoint = _maxHealPoint;
     }
 
     public void GetDamage(float damage, AttackType attackType)
@@ -83,11 +99,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _healPoint -= damage;
 
         if (_healPoint <= 0 && _isDead == false)
-        {
-            _healPoint = 0;
-            _isDead = true;
-            StartCoroutine(DestructEffetc());
-        }
+            Destruct();
 
         if (_effectDamage != null)
             _effectDamage.StartEffect();
@@ -169,13 +181,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     {
         if (_effectDestruct != null)
         {
-            Destruct();
-            _spriteRenderer.enabled = false;
             _effectDestruct.StartEffect();
 
             yield return new WaitForSeconds(_effectDestruct.Duration);
-
-            _trash.AddQueue(this);
         }
     }
 

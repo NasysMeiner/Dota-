@@ -81,6 +81,13 @@ public class RadiusSpawner : MonoBehaviour
 
             if (Physics.Raycast(myRay, out RaycastHit hit, 100))
             {
+                if(hit.collider.TryGetComponent(out RepairTowerButton towerButton))
+                {
+                    towerButton.Repair();
+
+                    return;
+                }
+
                 if(hit.collider.TryGetComponent(out BarrackBoxId barrack) && barrack.Barrack.Name == "Player")
                 {
                     ChangeId?.Invoke(barrack.Barrack.StartIdUnit);

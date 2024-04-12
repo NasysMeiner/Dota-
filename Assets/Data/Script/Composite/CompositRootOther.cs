@@ -25,11 +25,17 @@ public class CompositRootOther : CompositeRoot
     [SerializeField] private Bank _bank;
     [SerializeField] private float _timeAddMoney = 3f;
 
+    [Header("Tower")]
+    [SerializeField] private RepairTowerButton _prefab;
+    [SerializeField] private TowerStorage _towerStorage;
+    [SerializeField] private RepairView _repairView;
+
     public override void Compose()
     {
         InitTowers();
         InitBank();
         InitAiSpawner();
+        InitTowerStorage();
     }
 
     private void InitTowers()
@@ -54,5 +60,20 @@ public class CompositRootOther : CompositeRoot
     private void InitAiSpawner()
     {
         _autoSpawner.InitAutoSpawner(_dataStats[1], _castleList[1], _prefabUnit, _trash, _selectorPointSpawner);
+    }
+
+    private void InitTowerStorage()
+    {
+        List<Tower> towers = new();
+
+        foreach(Tower tower in _towerListPlayer)
+            towers.Add(tower);
+
+        foreach(Tower tower in _towerListAI)
+            towers.Add(tower);
+
+        _towerStorage.InitTowerStorage(towers, _bank, _castleList);
+
+        _repairView.InitRepairView(_towerStorage, _prefab);
     }
 }

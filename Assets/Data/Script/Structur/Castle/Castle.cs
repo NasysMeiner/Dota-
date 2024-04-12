@@ -34,12 +34,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public event UnityAction<float> HealPointChange;
     public event UnityAction<string> CastleDestroyed;
 
-    private void OnDisable()
-    {
-        foreach (var barracks in _barracks)
-            barracks.DestroyBarrack -= OnDestroyBarrack;
-    }
-
     public void Destruct()
     {
         _isAlive = false;
@@ -81,10 +75,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         CashAccount = new CashAccount(Name, Income);
 
         for (int i = 0; i < structurs.Count; i++)
-        {
             structurs[i].InitializeBarracks(dataStructureBarracks, Counter, trash);
-            structurs[i].DestroyBarrack += OnDestroyBarrack;
-        }
     }
 
     public void InitializeStruct(DataStructure dataStructure)
@@ -119,15 +110,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public void ChangePosition(Vector3 position)
     {
         transform.position = position;
-    }
-
-    private void OnDestroyBarrack()
-    {
-        //if (_isTarget == false)
-        //{
-        //    _isTarget = true;
-        //    Counter.AddEntity(this);
-        //}
     }
 
     private IEnumerator DestructEffetc()
