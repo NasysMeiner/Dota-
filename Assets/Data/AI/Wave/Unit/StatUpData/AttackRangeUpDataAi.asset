@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: AttackRangeUpDataAi
   m_EditorClassIdentifier: 
   IsPurchased: 0
+  IconSkill: {fileID: 21300000, guid: 1af5c8f485a677f49b1d8eff99924530, type: 3}
   Price: 0
+  TextSkill: 
   AttackRangeUp: 1

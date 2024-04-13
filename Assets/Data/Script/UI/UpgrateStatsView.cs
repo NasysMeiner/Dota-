@@ -40,9 +40,7 @@ public class UpgrateStatsView : MonoBehaviour
         ChangeId(-1);
 
         foreach(PanelStat panelStat in _panelStats)
-        {
-            panelStat.InitPanelStat("Player", this);
-        }
+            panelStat.InitPanelStat(this);
     }
 
     public WarriorData GetWarriorData(string name, int id)

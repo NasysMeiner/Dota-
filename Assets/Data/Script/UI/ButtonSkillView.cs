@@ -16,7 +16,6 @@ public class ButtonSkillView : ButtonView
 
         if (warriorData.GetSkill(_idButton - 1) == 1)
         {
-            //_textPrice.text = "Off";
             _textPrice.enabled = false;
             _textBuy.enabled = false;
             _textActive.enabled = true;
@@ -25,7 +24,6 @@ public class ButtonSkillView : ButtonView
         else if(warriorData.GetSkill(_idButton - 1) == 0)
         {
             _textPrice.text = warriorData.AllSkillList[_idButton - 1].PriceSkill.ToString();
-            //_textPrice.text = "On";
             _textBuy.enabled = true;
             _textActive.enabled = false;
             _button.interactable = true;
