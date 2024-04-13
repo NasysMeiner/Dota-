@@ -22,6 +22,7 @@ public class CompositRootView : CompositeRoot
     [Header("Other System")]
     [SerializeField] private ChangerStats _changerStats;
     [SerializeField] private UnitStatsBlock _unitStatsBlockPrefab;
+    [SerializeField] private SelectionSelector _selectionSelector;
 
     public override void Compose()
     {
@@ -36,5 +37,6 @@ public class CompositRootView : CompositeRoot
         _upgradeStatsView.InitUpgrateStatsView(_changerStats, _radiusSpawner);
         _gameResult.InitGameResult(_castlePlayer, _castleAi);
         _gameResultView.InitGameResultView(_gameResult);
+        _selectionSelector.InitSelectionSelector(_upgradeStatsView);
     }
 }

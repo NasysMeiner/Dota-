@@ -140,9 +140,6 @@ public class WarriorData : ScriptableObject
         foreach (Stat stat in warriorData.Stats)
             Stats.Add(stat);
 
-        //foreach (PriceStat stat in warriorData.Prices)
-        //    Prices.Add(stat);
-
         foreach (StatUp skill in warriorData.LevelUpList)
         {
             SkillCont newSkillCont = new();
@@ -152,7 +149,6 @@ public class WarriorData : ScriptableObject
             AllSkillList.Add(skill);
             LevelUpList.Add(skill);
 
-            Debug.Log(skill.IsPurchased + " " + name + " " + skill + "  _____--_____");
             if (skill.IsPurchased)
                 skill.LevelUpStat(this);
         }
@@ -162,10 +158,6 @@ public class WarriorData : ScriptableObject
 
         if (Prices.Count == 0)
             Prices.Add(100);
-
-        //foreach (StatUp statUp in LevelUpList)
-        //    if (statUp.IsPurchased)
-        //        statUp.LevelUpStat(this);
 
         foreach (SkillData skill in warriorData.SkillList)
         {
@@ -177,8 +169,6 @@ public class WarriorData : ScriptableObject
             SkillList.Add(skill);
         }
 
-
-        //Debug.Log(AllSkillList.Count + " " + name);
         SkillUp();
     }
 
@@ -304,7 +294,6 @@ public class SkillCont
     public void LoadData(ISkill skill)
     {
         Skill = skill;
-        //Debug.Log(skill + " " + skill.IsPurchased);
         IsUnlock = skill.IsPurchased;
     }
 

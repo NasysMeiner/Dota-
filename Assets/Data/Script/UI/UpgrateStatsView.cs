@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UpgrateStatsView : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UpgrateStatsView : MonoBehaviour
     private RadiusSpawner _radiusSpawner;
 
     private int _currentId;
+
+    public event UnityAction<int> ChangeCurrentId;
 
     private void OnDisable()
     {
@@ -34,7 +37,7 @@ public class UpgrateStatsView : MonoBehaviour
         _radiusSpawner.ChangeId += OnChangeId;
         _changerStats.ChangeUnitStat += OnChangeUnitStat;
         _activePanel = _defaultPanel;
-        _currentId = -1;
+        ChangeId(-1);
 
         foreach(PanelStat panelStat in _panelStats)
         {
@@ -60,13 +63,13 @@ public class UpgrateStatsView : MonoBehaviour
                     _activePanel.gameObject.SetActive(false);
                     _activePanel = _defaultPanel;
                     _activePanel.gameObject.SetActive(true);
-                    _currentId = -1;
+                    ChangeId(-1);
 
                     return;
                 }
                 else
                 {
-                    _currentId = id;
+                    ChangeId(id);
                     nextPanel = stat;
                     stat.UpdateView(_currentId);
                 }
@@ -78,6 +81,12 @@ public class UpgrateStatsView : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void ChangeId(int id)
+    {
+        _currentId = id;
+        ChangeCurrentId?.Invoke(_currentId);
     }
 
     public void OnChangeUnitStat()
