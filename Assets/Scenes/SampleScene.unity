@@ -9243,7 +9243,7 @@ MonoBehaviour:
   _hearts:
   - {fileID: 0}
   - {fileID: 1132104296}
-  - {fileID: 410077224}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1778584840}
   _healPointView: {fileID: 0}
@@ -19505,7 +19505,7 @@ MeshFilter:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 3469612064558077930, guid: 6e3a72389f24a66448d222f730e23ebf, type: 3}
-  m_PrefabInstance: {fileID: 3469612065677532546}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -29498,7 +29498,7 @@ SpriteRenderer:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 3469612063899078794, guid: 6e3a72389f24a66448d222f730e23ebf, type: 3}
-  m_PrefabInstance: {fileID: 3469612065677532546}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
