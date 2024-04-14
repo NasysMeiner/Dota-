@@ -31,7 +31,7 @@ public class CompositRootView : CompositeRoot
 
     private void InitializeView()
     {
-        _healPointView.Initialize(_castlePlayer, _hearts);
+        //_healPointView.Initialize(_castlePlayer, _hearts);
         _buttonUnitView.Init(_radiusSpawner, _images);
         _goldView.InitGoldView(_castlePlayer.CashAccount);
         _upgradeStatsView.InitUpgrateStatsView(_changerStats, _radiusSpawner);
