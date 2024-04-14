@@ -10,7 +10,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     private float _healPoint;
     private bool _isAlive = true;
     private bool _isDead = false;
-    private bool _isTarget = false;
+    //private bool _isTarget = false;
 
     private Trash _trash;
     private Effect _effectDamage;
