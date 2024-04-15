@@ -13,6 +13,11 @@ public class ButtonLevelViewRight : ButtonLevelView
         _button = GetComponent<Button>();
     }
 
+    //public override void UpdateStat()
+    //{
+    //    _statViewRight.UpdateStat(_idButton - 1);
+    //}
+
     public override void UpdateButton(WarriorData warriorData)
     {
         _icon.sprite = _iconsLevel[warriorData.CurrentLevel - 1];

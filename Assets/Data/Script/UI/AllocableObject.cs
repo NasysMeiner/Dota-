@@ -58,6 +58,7 @@ public class AllocableObject : MonoBehaviour
     public void SetEnable()
     {
         _isActive = true;
+        _selection.gameObject.SetActive(true); 
         _selection.ChangeColor(_normalColor);
     }
 

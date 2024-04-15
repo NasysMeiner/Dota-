@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitStatsBlock : PanelStat
 {
-    [SerializeField] private List<StatView> _statViews;
+    [SerializeField] protected List<StatView> _statViews;
     [SerializeField] protected int _bias;
 
     public override void InitPanelStat(UpgrateStatsView upgrateStatsView)

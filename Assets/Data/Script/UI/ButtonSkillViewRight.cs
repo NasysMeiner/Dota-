@@ -7,6 +7,21 @@ public class ButtonSkillViewRight : ButtonSkillView
     [SerializeField] private Color _normalColor;
     [SerializeField] private Color _buyColor;
 
+    private StatViewRight _statViewRight;
+
+    public override void InitButtonView(int id, StatView statView)
+    {
+        _idButton = id;
+        _statViewRight = statView as StatViewRight;
+
+        _button = GetComponent<Button>();
+    }
+
+    //public override void UpdateStat()
+    //{
+    //    _statViewRight.UpdateStat(_idButton - 1);
+    //}
+
     public override void CheckPrice(WarriorData warriorData)
     {
         if (warriorData.AllSkillList[_idButton - 1].Icon != null)
@@ -25,4 +40,9 @@ public class ButtonSkillViewRight : ButtonSkillView
             _image.color = Color.black;
         }
     }
+
+    //public override void UpdateButton(WarriorData warriorData)
+    //{
+    //    _statViewRight.ViewText(GetTextSkill(warriorData));
+    //}
 }

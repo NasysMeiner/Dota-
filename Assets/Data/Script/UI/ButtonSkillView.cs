@@ -9,8 +9,6 @@ public class ButtonSkillView : ButtonView
 
     public override void CheckPrice(WarriorData warriorData)
     {
-        //Debug.Log(warriorData.GetSkill(_idButton - 1) + " " + this.name);
-
         if (warriorData.AllSkillList[_idButton - 1].Icon != null)
             _icon.sprite = warriorData.AllSkillList[_idButton - 1].Icon;
 

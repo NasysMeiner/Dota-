@@ -46,7 +46,6 @@ public class ChangerStats : MonoBehaviour
 
     public void UnlockSkill(string name, int id, int idSkill)
     {
-        Debug.Log(name);
         WarriorData warrior = _unitsStats[name][id];
 
         if (warrior.CheckUnlockSkill(idSkill))

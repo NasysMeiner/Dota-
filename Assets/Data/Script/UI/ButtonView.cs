@@ -27,7 +27,7 @@ public abstract class ButtonView : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    public void UpdateStat()
+    public virtual void UpdateStat()
     {
         _statView.UpdateStat(_idButton - 1);
     }
