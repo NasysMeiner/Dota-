@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34cc44ebba69f645848dabf06fd2c45, type: 3}
   m_Name: ExplosionAroundSkillData
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
   Price: 0
-  IconSkill: {fileID: 0}
+  IconSkill: {fileID: 21300000, guid: 7e1abf679786b3641a9d0ec9b5e47207, type: 3}
+  TextSkill: Bla bla
   TypeSkill: 1
   PrefabSkill: {fileID: 567823933584045999, guid: 8775d2ddce88cbb4f8c47d7d57e55e4d, type: 3}
   ContainerSkill:

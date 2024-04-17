@@ -63,6 +63,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
     public string Name { get; protected set; }
+    public int WeightUnit { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
     public float MaxHealthPoint { get; private set; }
@@ -171,6 +172,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _shadow.transform.localPosition = warriorData.BiasShadow;
         _HealthBar.transform.localPosition = warriorData.BiasHPBar;
 
+        WeightUnit = warriorData.WeightUnit;
         HealPoint = warriorData.HealPoint;
         MaxHealthPoint = HealPoint;
         Damage = warriorData.AttackDamage;

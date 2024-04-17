@@ -11,7 +11,15 @@ public class LineArea : MonoBehaviour
     {
         get
         {
-           return -_liveUnitPlayer.Count + _liveUnitAi.Count;
+            int totalWeightUnit = 0;
+
+            foreach (Unit unit in _liveUnitPlayer)
+                totalWeightUnit -= unit.WeightUnit;
+
+            foreach(Unit unit in _liveUnitAi)
+                totalWeightUnit += unit.WeightUnit;
+
+            return totalWeightUnit;
         }
     }
 

@@ -7,11 +7,11 @@ public class StatView : MonoBehaviour
 {
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private List<ButtonView> _buttons;
+    [SerializeField] protected List<ButtonView> _buttons;
 
-    private UnitStatsBlock _unitStatsBlock;
-    private string _name;
-    private int _id;
+    protected UnitStatsBlock _unitStatsBlock;
+    protected string _name;
+    protected int _id;
 
     public void InitPanelStat(string name, UnitStatsBlock upgrateStatsView)
     {
@@ -22,12 +22,15 @@ public class StatView : MonoBehaviour
         _name = name;
     }
 
-    public void UpdateView()
+    public virtual void UpdateView()
     {
         WarriorData warriorData = _unitStatsBlock.GetWarriorData(_name, _id);
 
-        _icon.sprite = warriorData.Icon;
-        _nameText.text = warriorData.name;
+        if(_icon != null)
+            _icon.sprite = warriorData.Icon;
+
+        if(_nameText != null)
+            _nameText.text = warriorData.name;
 
         foreach (ButtonView button in _buttons)
         {
@@ -38,6 +41,8 @@ public class StatView : MonoBehaviour
     public void SetUnitId(int id)
     {
         _id = id;
+
+        //Debug.Log(_id);
 
         UpdateView();
     }

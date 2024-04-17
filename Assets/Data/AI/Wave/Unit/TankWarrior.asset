@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: TankWarrior
   m_EditorClassIdentifier: 
   Type: 0
+  WeightUnit: 2
   Name: Tank
   Avatar: {fileID: 9100000, guid: 7e41538d6b9a7f04a93344035679088d, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
   BiasShadow: {x: 0, y: -2.2, z: 0}
+  IsShadowBias: 0
   BiasHPBar: {x: 0, y: 1.51, z: 0}
   Scale: 0.65
   ScaleEffact: 3
