@@ -52,6 +52,9 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     private HealthBarUpdater _healthBarUpdater;
     protected AnimateChanger _animateChanger;
 
+    private float _time;
+    private float _timeInActive = 1.5f;
+
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
     public NavMeshAgent MeshAgent => _meshAgent;
@@ -92,6 +95,20 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         if (_spriteRenderer != null)
             _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
+
+        if (_meshAgent.velocity == Vector3.zero && _time >= _timeInActive)
+        {
+            _rigidbody.WakeUp();
+            _time = 0;
+        }
+        else if (_meshAgent.velocity == Vector3.zero)
+        {
+            _time += Time.deltaTime;
+        }
+        else
+        {
+            _time = 0;
+        }
     }
 
     private void LateUpdate()
