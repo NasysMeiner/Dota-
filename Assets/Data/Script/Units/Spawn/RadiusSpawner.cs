@@ -88,7 +88,7 @@ public class RadiusSpawner : MonoBehaviour
                     return;
                 }
 
-                if(hit.collider.TryGetComponent(out BarrackBoxId barrack) && barrack.Barrack.Name == "Player")
+                if(hit.collider.TryGetComponent(out BarrackBoxId barrack))
                 {
                     ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
                 }
