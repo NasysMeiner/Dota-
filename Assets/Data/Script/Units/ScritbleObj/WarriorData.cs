@@ -241,6 +241,16 @@ public class WarriorData : ScriptableObject
         return -1;
     }
 
+    public string GetTextSkill(int id)
+    {
+        //Debug.Log(id + " " + SkillConts.Count + " Skilll");
+
+        if (id < SkillConts.Count)
+            return SkillConts[id].Skill.TextSkill;
+
+        return "-";
+    }
+
     public void SkillUp()
     {
         float value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);

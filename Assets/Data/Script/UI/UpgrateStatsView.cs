@@ -13,8 +13,12 @@ public class UpgrateStatsView : MonoBehaviour
     private RadiusSpawner _radiusSpawner;
 
     private int _currentId;
+    private int _currentAdditionalId = -1;
 
-    public event UnityAction<int> ChangeCurrentId;
+    private List<PanelStat> _additionalPanel = new();
+    private List<PanelStat> _mainPanel = new();
+
+    public event UnityAction<int, TypeBlockView> ChangeCurrentId;
 
     private void OnDisable()
     {
@@ -25,8 +29,7 @@ public class UpgrateStatsView : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            if (_activePanel != _defaultPanel)
-                OnChangeId(_currentId);
+            EnableDefaultPanel();
     }
 
     public void InitUpgrateStatsView(ChangerStats changerStats, RadiusSpawner radiusSpawner)
@@ -39,10 +42,16 @@ public class UpgrateStatsView : MonoBehaviour
         _activePanel = _defaultPanel;
         ChangeId(-1);
 
-        foreach(PanelStat panelStat in _panelStats)
+        foreach (PanelStat panelStat in _panelStats)
         {
-            panelStat.InitPanelStat("Player", this);
+            panelStat.InitPanelStat(this);
+
+            if(panelStat.TypeBlockView == TypeBlockView.MainType)
+                _mainPanel.Add(panelStat);
+            else if(panelStat.TypeBlockView == TypeBlockView.AdditionalType)
+                _additionalPanel.Add(panelStat);
         }
+
     }
 
     public WarriorData GetWarriorData(string name, int id)
@@ -56,37 +65,24 @@ public class UpgrateStatsView : MonoBehaviour
         {
             if (stat.CheckCorrect(id))
             {
-                PanelStat nextPanel;
-
-                if (id == _currentId)
-                {
-                    _activePanel.gameObject.SetActive(false);
-                    _activePanel = _defaultPanel;
-                    _activePanel.gameObject.SetActive(true);
-                    ChangeId(-1);
-
-                    return;
-                }
-                else
-                {
-                    ChangeId(id);
-                    nextPanel = stat;
-                    stat.UpdateView(_currentId);
-                }
-
-                _activePanel.gameObject.SetActive(false);
-                nextPanel.gameObject.SetActive(true);
-                _activePanel = nextPanel;
+                if (stat.TypeBlockView == TypeBlockView.MainType)
+                    EnableMainPanel(id, stat);
+                else if(stat.TypeBlockView == TypeBlockView.AdditionalType)
+                    EnableAdditionalPanel(id, stat);
 
                 return;
             }
         }
     }
 
-    public void ChangeId(int id)
+    public void ChangeId(int id, TypeBlockView typeBlockView = TypeBlockView.MainType)
     {
-        _currentId = id;
-        ChangeCurrentId?.Invoke(_currentId);
+        if(typeBlockView == TypeBlockView.MainType)
+            _currentId = id;
+        else if(typeBlockView == TypeBlockView.AdditionalType)
+            _currentAdditionalId = id;
+
+        ChangeCurrentId?.Invoke(id, typeBlockView);
     }
 
     public void OnChangeUnitStat()
@@ -101,4 +97,66 @@ public class UpgrateStatsView : MonoBehaviour
         else
             _changerStats.IncreaseLevelUnit(name, id);
     }
+
+    private void EnableAdditionalPanel(int id, PanelStat stat)
+    {
+        foreach (PanelStat panel in _additionalPanel)
+            if (panel != stat)
+                panel.gameObject.SetActive(false);
+
+        if (_currentAdditionalId == id)
+            id = -1;
+
+        ChangeId(id, TypeBlockView.AdditionalType);
+
+        if (id == -1)
+        {
+            if(stat != null)
+                stat.gameObject.SetActive(false);
+
+            return;
+        }
+
+        stat.UpdateView(id);
+        stat.gameObject.SetActive(true);
+    } 
+
+    private void EnableMainPanel(int id, PanelStat stat)
+    {
+        if (id == _currentId)
+        {
+            EnableDefaultPanel();
+
+            return;
+        }
+
+        ChangeId(id);
+        stat.UpdateView(_currentId);
+        _activePanel.gameObject.SetActive(false);
+        stat.gameObject.SetActive(true);
+        _activePanel = stat;
+        EnableAdditionalPanel(-1, null);
+
+        return;
+    }
+
+    private void EnableDefaultPanel()
+    {
+        if(_activePanel != _defaultPanel)
+        {
+            _activePanel.gameObject.SetActive(false);
+            _activePanel = _defaultPanel;
+            _activePanel.gameObject.SetActive(true);
+        }
+
+        EnableAdditionalPanel(-1, null);
+        ChangeId(-1);
+    }
+}
+
+[System.Serializable]
+public enum TypeBlockView
+{
+    MainType,
+    AdditionalType
 }

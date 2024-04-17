@@ -5,6 +5,7 @@ public class AllocableObject : MonoBehaviour
     [SerializeField] private Barrack _barrack;
     [Space]
     [SerializeField] private Selection _selection;
+    [SerializeField] private TypeBlockView _blockViewType;
     [Space]
     [SerializeField] private Color _normalColor;
     [SerializeField] private Color _pressedColor;
@@ -13,6 +14,7 @@ public class AllocableObject : MonoBehaviour
     private bool _isActive = false;
 
     public int GetUnitId => _barrack.StartIdUnit;
+    public TypeBlockView TypeBlockView => _blockViewType;
 
     private void OnMouseOver()
     {
@@ -56,6 +58,7 @@ public class AllocableObject : MonoBehaviour
     public void SetEnable()
     {
         _isActive = true;
+        _selection.gameObject.SetActive(true); 
         _selection.ChangeColor(_normalColor);
     }
 

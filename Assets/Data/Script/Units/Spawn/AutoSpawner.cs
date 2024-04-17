@@ -14,7 +14,7 @@ public class AutoSpawner : MonoBehaviour
     private Trash _trash;
     private SelectorPointSpawner _selectorPointSpawner;
 
-    private bool _isActive = false;
+    //private bool _isActive = false;
 
     public event UnityAction EndSpawn;
 

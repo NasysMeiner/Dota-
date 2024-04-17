@@ -4,14 +4,18 @@ using UnityEngine;
 public class PanelStat : MonoBehaviour, IPanelStat
 {
     [SerializeField] private List<int> _correctId;
+    [SerializeField] protected string _nameView;
+    [SerializeField] private TypeBlockView _blockViewType;
 
     protected UpgrateStatsView _upgrateStatsView;
     protected string _name;
 
-    public virtual void InitPanelStat(string name, UpgrateStatsView upgrateStatsView)
+    public TypeBlockView TypeBlockView => _blockViewType;
+
+    public virtual void InitPanelStat(UpgrateStatsView upgrateStatsView)
     {
         _upgrateStatsView = upgrateStatsView;
-        _name = name;
+        _name = _nameView;
     }
 
     public virtual void UpdateView(int id)
