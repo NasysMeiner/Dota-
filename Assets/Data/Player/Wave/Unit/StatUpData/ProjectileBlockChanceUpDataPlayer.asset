@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ProjectileBlockChanceUpDataPlayer
   m_EditorClassIdentifier: 
   IsPurchased: 1
-  IconSkill: {fileID: 21300000, guid: 8bdc02d0c5ac36847aa76e7711063b51, type: 3}
+  IconSkill: {fileID: 21300000, guid: bfebc8afcb481cb498c56f841ac89762, type: 3}
   Price: 200
+  TextSkill: 
   ProjectileBlockChance: 50
