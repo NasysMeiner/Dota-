@@ -4834,7 +4834,7 @@ GameObject:
   - component: {fileID: 2717320181371355835}
   - component: {fileID: -5316183305773250156}
   m_Layer: 0
-  m_Name: radius attack
+  m_Name: radius attack blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
