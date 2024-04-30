@@ -19,7 +19,8 @@ public class ExplosionAroundSkillData : SkillData
             Damage = Damage,
             Radius = Radius,
             AttackScaling = AttackScaling,
-            TypeSkill = TypeSkill
+            TypeSkill = TypeSkill,
+            Effect = effect
         };
 
         ContainerSkill = container;
@@ -36,4 +37,6 @@ public class ContainerExplosionAroundSkill : ContainerSkill
     public float Damage = 500;
 
     public float Radius = 2;
+
+    public Effect Effect;
 }

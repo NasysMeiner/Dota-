@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: radius attack
       objectReference: {fileID: 0}
+    - target: {fileID: 5057757430167540358, guid: 1e7d4a6d284d83f44b36cd4f51551be6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5146693457136386867, guid: 1e7d4a6d284d83f44b36cd4f51551be6, type: 3}
       propertyPath: m_RootOrder
       value: 0

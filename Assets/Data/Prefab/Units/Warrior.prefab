@@ -606,6 +606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shield blue
       objectReference: {fileID: 0}
+    - target: {fileID: 3302103282017352743, guid: 0c9ea385448af5845943dab05ebac5de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4260218425569501833, guid: 0c9ea385448af5845943dab05ebac5de, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -20,8 +20,11 @@ MonoBehaviour:
   BiasShadow: {x: 0, y: -2.2, z: 0}
   IsShadowBias: 0
   BiasHPBar: {x: 0, y: 0.73, z: 0}
+  Effects:
+  - effect: {fileID: 8379032181484805120, guid: 0c9ea385448af5845943dab05ebac5de, type: 3}
+    position: {x: 0, y: 0, z: 0}
   Scale: 0.4
-  ScaleEffact: 2
+  ScaleEffact: 0.5
   Sprite: {fileID: 21300000, guid: eadc0a921ae9bc24da964cd98696f7a8, type: 3}
   SkillList:
   - {fileID: 11400000, guid: 60cc32f299d34f5428620d5b44d7eb91, type: 2}

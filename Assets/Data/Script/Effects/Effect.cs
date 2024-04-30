@@ -15,7 +15,7 @@ public class Effect : MonoBehaviour
 
     public void ChangePosition(Vector3 position)
     {
-        transform.position = position;
+        transform.localPosition = position;
     }
 
     public void StartEffect()

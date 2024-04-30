@@ -16,6 +16,8 @@ public class ConstantAreaDamage : Skill
     private float _time = 0.2f;
     private float _radius = 2;
 
+    private float _scaleEffect;
+
     private List<Unit> _unitList = new();
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +47,9 @@ public class ConstantAreaDamage : Skill
         _time = data.Time;
         _radius = data.Radius;
         TypeSkill = data.TypeSkill;
-
+        _boomEffect = Instantiate(data.Effect, transform);
+        _boomEffect.transform.position = transform.position;
+        _boomEffect.Init(_scaleEffect);
         _circleCollider = GetComponent<CircleCollider2D>();
         _circleCollider.isTrigger = true;
         _circleCollider.radius = _radius;
@@ -54,7 +58,7 @@ public class ConstantAreaDamage : Skill
     public override void SetUnit(Unit unit)
     {
         _unit = unit;
-        _boomEffect.Init(unit.ScaleEffect);
+        _scaleEffect = unit.ScaleEffect;
     }
 
     public override void UseSkill()

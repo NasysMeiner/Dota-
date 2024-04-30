@@ -22,7 +22,8 @@ public class ConstantAreaDamageData : SkillData
             Radius = Radius,
             AttackScaling = AttackScaling,
             Time = Time,
-            TypeSkill = TypeSkill
+            TypeSkill = TypeSkill,
+            Effect = effect
         };
 
         ContainerSkill = container;
@@ -41,4 +42,5 @@ public class ConstantAreaDamageSkill : ContainerSkill
     public float Time;
 
     public float Radius;
+    public Effect Effect;
 }
