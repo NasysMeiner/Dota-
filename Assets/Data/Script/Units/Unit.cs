@@ -261,7 +261,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         }
         else
         {
-            Debug.Log("Dodge");
+            //Debug.Log("Dodge");
 
             if (_defEffect != null)
                 _defEffect.StartEffect();
