@@ -43,7 +43,7 @@ public class ExplosionAroundSkill : Skill
             {
                 if (unit.Name != _unit.Name)
                 {
-                    Debug.Log(c.collider.name);
+                    //Debug.Log(c.collider.name);
                     unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
                 }
             }
