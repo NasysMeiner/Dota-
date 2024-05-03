@@ -9,6 +9,7 @@ public class SkillData : ScriptableObject, ISkill
     public TypeSkill TypeSkill;
     public Skill PrefabSkill;
     public ContainerSkill ContainerSkill;
+    public Effect effect;
 
     protected bool _isUnlock;
 

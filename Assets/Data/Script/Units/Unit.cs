@@ -169,6 +169,13 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _animator.transform.localScale = Vector3.one;//Temporarily, there are no animations yet
         }
 
+        foreach(EffectSettings effect in warriorData.Effects)
+        {
+            Effect newEffect = Instantiate(effect.effect, transform);
+            newEffect.ChangePosition(effect.position);
+            _defEffect = newEffect;
+        }
+
         _shadow.transform.localPosition = warriorData.BiasShadow;
         _HealthBar.transform.localPosition = warriorData.BiasHPBar;
 
@@ -254,7 +261,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         }
         else
         {
-            Debug.Log("Dodge");
+            //Debug.Log("Dodge");
 
             if (_defEffect != null)
                 _defEffect.StartEffect();

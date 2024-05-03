@@ -13,6 +13,11 @@ public class Effect : MonoBehaviour
         _particleSystem.gameObject.transform.localScale = _particleSystem.gameObject.transform.localScale * scale;
     }
 
+    public void ChangePosition(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
+
     public void StartEffect()
     {
         if(_particleSystem == null)

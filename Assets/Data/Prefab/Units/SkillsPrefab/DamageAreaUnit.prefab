@@ -57,6 +57,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: test explosion unit
       objectReference: {fileID: 0}
+    - target: {fileID: 1418222058383506348, guid: 90a0468bf67aeb34a84f4605571e49e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1418222058383644080, guid: 90a0468bf67aeb34a84f4605571e49e5, type: 3}
       propertyPath: m_RootOrder
       value: 0

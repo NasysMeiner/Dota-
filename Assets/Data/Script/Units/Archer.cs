@@ -7,12 +7,9 @@ public class Archer : Unit
     public override void LoadStats(WarriorData archerData)
     {
         ArcherData archer = archerData as ArcherData;
-        Debug.Log(archer.Bullet + " _____________________________________1");
         _bullet = archer.Bullet;
 
         base.LoadStats(archerData);
-
-        Debug.Log(archer.Bullet + " _____________________________________2");
     }
 
     protected override void CreateState()

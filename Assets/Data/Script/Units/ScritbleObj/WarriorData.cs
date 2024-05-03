@@ -18,6 +18,7 @@ public class WarriorData : ScriptableObject
     public Vector3 BiasShadow;
     public bool IsShadowBias;
     public Vector3 BiasHPBar;
+    public List<EffectSettings> Effects;
 
     public float Scale;
     public float ScaleEffact;
@@ -136,6 +137,10 @@ public class WarriorData : ScriptableObject
         SkillList.Clear();
         AllSkillList.Clear();
         SkillConts.Clear();
+        Effects.Clear();
+
+        foreach (EffectSettings effect in warriorData.Effects)
+            Effects.Add(effect);
 
         foreach (Stat stat in warriorData.Stats)
             Stats.Add(stat);
@@ -311,4 +316,11 @@ public class SkillCont
     {
         IsUnlock = true;
     }
+}
+
+[System.Serializable]
+public class EffectSettings
+{
+    public Effect effect;
+    public Vector3 position;
 }
