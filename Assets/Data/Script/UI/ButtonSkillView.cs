@@ -22,6 +22,7 @@ public class ButtonSkillView : ButtonView
         else if(warriorData.GetSkill(_idButton - 1) == 0)
         {
             _textPrice.text = warriorData.AllSkillList[_idButton - 1].PriceSkill.ToString();
+            _textPrice.enabled = true;
             _textBuy.enabled = true;
             _textActive.enabled = false;
             _button.interactable = true;
