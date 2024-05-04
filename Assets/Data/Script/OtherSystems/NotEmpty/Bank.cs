@@ -6,7 +6,7 @@ public class Bank : MonoBehaviour
 {
     private List<CashAccount> _accounts = new();
 
-    private float _timeAddMoney = 3f;
+    private float _timeAddMoney = 1f;
 
     private bool _isWork = false;
 
