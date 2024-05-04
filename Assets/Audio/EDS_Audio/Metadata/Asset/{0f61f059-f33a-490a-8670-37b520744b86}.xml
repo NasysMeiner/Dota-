@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{0f61f059-f33a-490a-8670-37b520744b86}">
+		<property name="assetPath">
+			<value>EDS_Main_Menu_STEMS/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d849dcd-7095-4da8-8106-df7685912a91}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{431fc04b-94c8-41dd-b50f-6da7f0b3b2a4}">
+		<property name="assetPath">
+			<value>EDS_Battle_STEMS/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d849dcd-7095-4da8-8106-df7685912a91}</destination>
+		</relationship>
+	</object>
+</objects>
