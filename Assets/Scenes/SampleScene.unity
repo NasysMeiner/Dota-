@@ -9324,7 +9324,7 @@ MonoBehaviour:
   _autoSpawner: {fileID: 1532580625}
   _selectorPointSpawner: {fileID: 1532580624}
   _bank: {fileID: 2068412911}
-  _timeAddMoney: 3
+  _timeAddMoney: 1
   _prefab: {fileID: 7887647000703520943, guid: f83f16217eae43a4f895da564febf9d6, type: 3}
   _towerStorage: {fileID: 1483627346}
   _repairView: {fileID: 1483627348}
