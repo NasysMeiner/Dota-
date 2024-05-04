@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  WeightUnit: 1
+  WeightUnit: 855
   Name: StWArrior
   Avatar: {fileID: 9100000, guid: 5164c28e9f6e86e41bd607f68ae754f5, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
