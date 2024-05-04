@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Panel : MonoBehaviour
 {
-    public void ClosePanel()
+    public virtual void ClosePanel()
     {
         gameObject.SetActive(false);
     }
 
-    public void OpenPanel()
+    public virtual void OpenPanel()
     {
         gameObject.SetActive(true);
     }
