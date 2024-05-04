@@ -9,14 +9,11 @@ public class ButtonSkillView : ButtonView
 
     public override void CheckPrice(WarriorData warriorData)
     {
-        //Debug.Log(warriorData.GetSkill(_idButton - 1) + " " + this.name);
-
         if (warriorData.AllSkillList[_idButton - 1].Icon != null)
             _icon.sprite = warriorData.AllSkillList[_idButton - 1].Icon;
 
         if (warriorData.GetSkill(_idButton - 1) == 1)
         {
-            //_textPrice.text = "Off";
             _textPrice.enabled = false;
             _textBuy.enabled = false;
             _textActive.enabled = true;
@@ -25,7 +22,6 @@ public class ButtonSkillView : ButtonView
         else if(warriorData.GetSkill(_idButton - 1) == 0)
         {
             _textPrice.text = warriorData.AllSkillList[_idButton - 1].PriceSkill.ToString();
-            //_textPrice.text = "On";
             _textBuy.enabled = true;
             _textActive.enabled = false;
             _button.interactable = true;

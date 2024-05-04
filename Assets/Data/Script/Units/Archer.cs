@@ -6,10 +6,10 @@ public class Archer : Unit
 
     public override void LoadStats(WarriorData archerData)
     {
-        base.LoadStats(archerData);
-
         ArcherData archer = archerData as ArcherData;
         _bullet = archer.Bullet;
+
+        base.LoadStats(archerData);
     }
 
     protected override void CreateState()

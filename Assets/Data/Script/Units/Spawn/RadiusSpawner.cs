@@ -81,7 +81,14 @@ public class RadiusSpawner : MonoBehaviour
 
             if (Physics.Raycast(myRay, out RaycastHit hit, 100))
             {
-                if(hit.collider.TryGetComponent(out BarrackBoxId barrack) && barrack.Barrack.Name == "Player")
+                if(hit.collider.TryGetComponent(out RepairTowerButton towerButton))
+                {
+                    towerButton.Repair();
+
+                    return;
+                }
+
+                if(hit.collider.TryGetComponent(out BarrackBoxId barrack))
                 {
                     ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
                 }
@@ -119,7 +126,7 @@ public class RadiusSpawner : MonoBehaviour
                 _enemyUnit.Add(newUnit);
 
             currentCastle.Counter.AddEntity(newUnit);
-            newUnit.Died += OnDied;
+            _trash.WriteUnit(newUnit);
             newUnit.LoadStats(stat);
             newUnit.InitUnit(currentCastle.PointCreator.CreateRangePoint, currentCastle.EnemyCounter, 100, currentCastle.Name);
             newUnit.ChangePosition(hit.point);
@@ -145,25 +152,5 @@ public class RadiusSpawner : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void OnDied(Unit unit)
-    {
-        unit.Died -= OnDied;
-
-        if (unit.EnemyCounter == _castleList[0].EnemyCounter)
-            _castleList[0].Counter.DeleteEntity(unit);
-        else
-            _castleList[1].Counter.DeleteEntity(unit);
-
-        StartCoroutine(WaitTimeDeathEffect(unit));
-    }
-
-    private IEnumerator WaitTimeDeathEffect(Unit unit)
-    {
-        yield return new WaitForSeconds(_timeWaitDeath);
-
-        _trash.AddQueue(unit);
-        unit.ChangePosition(_trash.transform.position);
     }
 }

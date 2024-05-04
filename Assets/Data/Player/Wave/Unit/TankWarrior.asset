@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: TankWarrior
   m_EditorClassIdentifier: 
   Type: 0
+  WeightUnit: 2
   Name: Tank
   Avatar: {fileID: 9100000, guid: 07372936ccaf071409d7ba845194e856, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
   BiasShadow: {x: 0, y: -2.2, z: 0}
+  IsShadowBias: 0
   BiasHPBar: {x: 0, y: 1.51, z: 0}
   Scale: 0.65
   ScaleEffact: 3
@@ -60,4 +62,4 @@ MonoBehaviour:
     - 1.3
     - 1.3
   Prices: 000000006400000064000000
-  Icon: {fileID: 21300000, guid: bfce4bbffc95b2941bd16a260c27a77c, type: 3}
+  Icon: {fileID: 21300000, guid: fe7c8a55cf3ee154eba27f8154e4a2cb, type: 3}

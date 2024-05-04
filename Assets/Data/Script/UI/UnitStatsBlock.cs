@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class UnitStatsBlock : PanelStat
 {
-    [SerializeField] private List<StatView> _statViews;
-
-    public override void InitPanelStat(string name, UpgrateStatsView upgrateStatsView)
+    [SerializeField] protected List<StatView> _statViews;
+    [SerializeField] protected int _bias;
+    [SerializeField] private List<GameObject> _image;
+ 
+    public override void InitPanelStat(UpgrateStatsView upgrateStatsView)
     {
-        base.InitPanelStat(name, upgrateStatsView);
+        base.InitPanelStat(upgrateStatsView);
 
         foreach (StatView statView in _statViews)
-            statView.InitPanelStat(name, this);
+            statView.InitPanelStat(_nameView ,this);
     }
 
     public WarriorData GetWarriorData(string name, int id)
@@ -20,10 +22,19 @@ public class UnitStatsBlock : PanelStat
 
     public override void UpdateView(int id)
     {
-        //Debug.Log(id + " update");
+        if(id == 0 && _image.Count > 0) 
+        { 
+            _image[0].gameObject.SetActive(true);
+            _image[1].gameObject.SetActive(false);
+        }
+        else if(id == 2 && _image.Count > 0)
+        {
+            _image[1].gameObject.SetActive(true);
+            _image[0].gameObject.SetActive(false);
+        }
 
         for (int i = 0; i < _statViews.Count; i++)
-            _statViews[i].SetUnitId(id++);
+            _statViews[i].SetUnitId(id++ + _bias);
     }
 
     public void UpdateStat(string name, int id, int idSkill)

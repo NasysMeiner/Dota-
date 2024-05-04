@@ -6,6 +6,7 @@ using UnityEngine;
 public class WarriorData : ScriptableObject
 {
     public TypeUnit Type;
+    public int WeightUnit;
 
     public string Name;
 
@@ -15,7 +16,9 @@ public class WarriorData : ScriptableObject
 
     public Vector3 Bias;
     public Vector3 BiasShadow;
+    public bool IsShadowBias;
     public Vector3 BiasHPBar;
+    public List<EffectSettings> Effects;
 
     public float Scale;
     public float ScaleEffact;
@@ -94,6 +97,7 @@ public class WarriorData : ScriptableObject
     public virtual void LoadStat(WarriorData warriorData)
     {
         Type = warriorData.Type;
+        WeightUnit = warriorData.WeightUnit;
         Name = warriorData.Name;
 
         Avatar = warriorData.Avatar;
@@ -110,6 +114,7 @@ public class WarriorData : ScriptableObject
         TimeImmortaly = warriorData.TimeImmortaly;
         Bias = warriorData.Bias;
         BiasShadow = warriorData.BiasShadow;
+        IsShadowBias = warriorData.IsShadowBias;
         BiasHPBar = warriorData.BiasHPBar;
         Scale = warriorData.Scale;
         ScaleEffact = warriorData.ScaleEffact;
@@ -132,12 +137,13 @@ public class WarriorData : ScriptableObject
         SkillList.Clear();
         AllSkillList.Clear();
         SkillConts.Clear();
+        Effects.Clear();
+
+        foreach (EffectSettings effect in warriorData.Effects)
+            Effects.Add(effect);
 
         foreach (Stat stat in warriorData.Stats)
             Stats.Add(stat);
-
-        //foreach (PriceStat stat in warriorData.Prices)
-        //    Prices.Add(stat);
 
         foreach (StatUp skill in warriorData.LevelUpList)
         {
@@ -148,7 +154,6 @@ public class WarriorData : ScriptableObject
             AllSkillList.Add(skill);
             LevelUpList.Add(skill);
 
-            Debug.Log(skill.IsPurchased + " " + name + " " + skill);
             if (skill.IsPurchased)
                 skill.LevelUpStat(this);
         }
@@ -158,10 +163,6 @@ public class WarriorData : ScriptableObject
 
         if (Prices.Count == 0)
             Prices.Add(100);
-
-        //foreach (StatUp statUp in LevelUpList)
-        //    if (statUp.IsPurchased)
-        //        statUp.LevelUpStat(this);
 
         foreach (SkillData skill in warriorData.SkillList)
         {
@@ -173,8 +174,6 @@ public class WarriorData : ScriptableObject
             SkillList.Add(skill);
         }
 
-
-        //Debug.Log(AllSkillList.Count + " " + name);
         SkillUp();
     }
 
@@ -247,6 +246,16 @@ public class WarriorData : ScriptableObject
         return -1;
     }
 
+    public string GetTextSkill(int id)
+    {
+        //Debug.Log(id + " " + SkillConts.Count + " Skilll");
+
+        if (id < SkillConts.Count)
+            return SkillConts[id].Skill.TextSkill;
+
+        return "-";
+    }
+
     public void SkillUp()
     {
         float value = GetValueStat(TypeStat.HealthPoint, CurrentLevel);
@@ -307,4 +316,11 @@ public class SkillCont
     {
         IsUnlock = true;
     }
+}
+
+[System.Serializable]
+public class EffectSettings
+{
+    public Effect effect;
+    public Vector3 position;
 }

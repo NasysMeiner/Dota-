@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: StandartArcher
   m_EditorClassIdentifier: 
   Type: 1
+  WeightUnit: 1
   Name: StArcher
   Avatar: {fileID: 9100000, guid: 1b148d6db42c87e4892e4d9d1b910b39, type: 2}
   Bias: {x: -0.089, y: 0.793, z: 0}
   BiasShadow: {x: 0, y: -4, z: 0}
+  IsShadowBias: 0
   BiasHPBar: {x: 0, y: 1.36, z: 0}
   Scale: 0.4
+  ScaleEffact: 0
   Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
   SkillList: []
   LevelUpList:
@@ -59,5 +62,5 @@ MonoBehaviour:
     - 0.9
     - 0.8
   Prices: 000000006400000064000000
-  Icon: {fileID: 21300000, guid: ee170792914119b4d8b44d1b7e36f51e, type: 3}
+  Icon: {fileID: 21300000, guid: 01edb9ccee5855540b9f8e87d6c76574, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}

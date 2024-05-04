@@ -10,6 +10,8 @@ public class ExplosionAroundSkill : Skill
     private float _damage = 500;
     private float _radius = 2;
 
+    private float _scaleEffect;
+
     public override void InitSkill(ContainerSkill container)
     {
         ContainerExplosionAroundSkill newContainer = container as ContainerExplosionAroundSkill;
@@ -18,11 +20,15 @@ public class ExplosionAroundSkill : Skill
         _radius = newContainer.Radius;
         _attackScaling = newContainer.AttackScaling;
         TypeSkill = newContainer.TypeSkill;
+        _boomEffect = Instantiate(newContainer.Effect, transform);
+        _boomEffect.transform.position = transform.position;
+        _boomEffect.Init(_scaleEffect);
     }
 
     public override void SetUnit(Unit unit)
     {
         _unit = unit;
+        _scaleEffect = unit.ScaleEffect;
         //_boomEffect.Init(unit.ScaleEffect);
     }
 
@@ -37,7 +43,7 @@ public class ExplosionAroundSkill : Skill
             {
                 if (unit.Name != _unit.Name)
                 {
-                    Debug.Log(c.collider.name);
+                    //Debug.Log(c.collider.name);
                     unit.GetDamage(_damage + _unit.Damage * _attackScaling, AttackType.Melee);
                 }
             }

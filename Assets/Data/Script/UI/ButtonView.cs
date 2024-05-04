@@ -19,7 +19,7 @@ public abstract class ButtonView : MonoBehaviour
 
     public abstract void CheckPrice(WarriorData warriorData);
 
-    public void InitButtonView(int id, StatView statView)
+    public virtual void InitButtonView(int id, StatView statView)
     {
         _idButton = id;
         _statView = statView;
@@ -27,8 +27,13 @@ public abstract class ButtonView : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    public void UpdateStat()
+    public virtual void UpdateStat()
     {
         _statView.UpdateStat(_idButton - 1);
+    }
+
+    public string GetTextSkill(WarriorData warriorData)
+    {
+        return warriorData.GetTextSkill(_idButton);
     }
 }

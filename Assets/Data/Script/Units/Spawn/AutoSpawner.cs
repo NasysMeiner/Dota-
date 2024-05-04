@@ -1,18 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AutoSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<int> IdLine;
+    public float TimeSpawn = 1f;
+
+    private DataUnitStats _dataUnitStatsAi;
+    private DataUnitPrefab _dataUnitPrefab;
+    private Castle _castle;
+    private Trash _trash;
+    private SelectorPointSpawner _selectorPointSpawner;
+
+    //private bool _isActive = false;
+
+    public event UnityAction EndSpawn;
+
+    public void InitAutoSpawner(DataUnitStats dataUnitStats, Castle castle, DataUnitPrefab dataUnitPrefab, Trash trash, SelectorPointSpawner selectorPointSpawner)
     {
-        
+        _dataUnitStatsAi = dataUnitStats;
+        _dataUnitPrefab = dataUnitPrefab;
+        _castle = castle;
+        _trash = trash;
+        _selectorPointSpawner = selectorPointSpawner;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartSpawn(Group groupUnit, int idLine)
     {
-        
+        StartCoroutine(SpawnUnit(groupUnit, idLine));
+    }
+
+    public IEnumerator SpawnUnit(Group groupUnit, int idLine)
+    {
+        int maxSpawnUnit = groupUnit.VariertyUnits.Count;
+        int spawnUniy = 0;
+
+        while (spawnUniy < maxSpawnUnit)
+        {
+            StatsPrefab currentUnit = _dataUnitStatsAi.GetStatsPrefab(groupUnit.VariertyUnits[spawnUniy]);
+            Vector3 newPointt;
+
+            newPointt = _selectorPointSpawner.GetPointSpawn(currentUnit.TypeUnit, idLine);
+
+            Unit newUnit = Instantiate(_dataUnitPrefab.GetPrefab(currentUnit.TypeUnit));
+            _castle.Counter.AddEntity(newUnit);
+            _trash.WriteUnit(newUnit);
+            newUnit.LoadStats(currentUnit.WarriorData);
+            newUnit.InitUnit(_castle.PointCreator.CreateRangePoint, _castle.EnemyCounter, 100, _castle.Name);
+            newUnit.ChangePosition(newPointt);
+
+            yield return new WaitForSeconds(TimeSpawn);
+
+            spawnUniy++;
+        }
+
+        EndSpawn?.Invoke();
     }
 }

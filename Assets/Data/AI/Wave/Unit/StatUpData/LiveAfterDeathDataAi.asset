@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: LiveAfterDeathDataAi
   m_EditorClassIdentifier: 
   IsPurchased: 0
+  IconSkill: {fileID: 21300000, guid: 8129a251e6054674ca54f106748170ee, type: 3}
   Price: 0
+  TextSkill: 
   TimeImmortaly: 3

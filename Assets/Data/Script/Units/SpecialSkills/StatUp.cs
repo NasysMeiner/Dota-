@@ -5,6 +5,7 @@ public abstract class StatUp : ScriptableObject, ISkill
     public bool IsPurchased;
     public Sprite IconSkill;
     public int Price;
+    public string TextSkill;
 
     protected bool _isUnlock;
 
@@ -15,6 +16,8 @@ public abstract class StatUp : ScriptableObject, ISkill
     public TypeSkill TypeSkill => TypeSkill.StatsUp;
 
     public Sprite Icon => IconSkill;
+
+    string ISkill.TextSkill => TextSkill;
 
     public abstract void LevelUpStat(WarriorData warriorData);
 

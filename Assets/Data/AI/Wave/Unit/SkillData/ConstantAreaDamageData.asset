@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPurchased: 1
   Price: 0
-  IconSkill: {fileID: 0}
+  IconSkill: {fileID: 21300000, guid: 03995f982132c9e48b9bf372542419d1, type: 3}
+  TextSkill: Bla
   TypeSkill: 0
   PrefabSkill: {fileID: 2737793477371155391, guid: c3c69e7beb67bb741a0c387bf1d49943, type: 3}
   ContainerSkill:
     TypeSkill: 0
+  effect: {fileID: -5316183305773250156, guid: cca7d78a1cdcaad40a1cf56a7771e474, type: 3}
   AttackScaling: 0
   Damage: 15
   Time: 0.2

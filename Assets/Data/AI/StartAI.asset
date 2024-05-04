@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c20dbc019b94ba47ae1e93b678fbf51, type: 3}
   m_Name: StartAI
   m_EditorClassIdentifier: Assembly-CSharp::DataGameInfo/DataStructure
-  Name: AI
+  Name: Ai
   ColorUnit: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
   StartMoney: 1000
   DataStructure: {fileID: 11400000, guid: 8ba4e9c86254d8743865c5000c73dd99, type: 2}

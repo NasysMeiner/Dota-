@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824a3005012e14349af35df4243c4b08, type: 3}
   m_Name: DoubleAttackDataPlayer
   m_EditorClassIdentifier: 
-  IsPurchased: 0
-  IconSkill: {fileID: 21300000, guid: b632fb116ad03874fabd294bc4cb301c, type: 3}
+  IsPurchased: 1
+  IconSkill: {fileID: 21300000, guid: 805d64d3862524d429335f9d1af15e93, type: 3}
   Price: 200
+  TextSkill: 

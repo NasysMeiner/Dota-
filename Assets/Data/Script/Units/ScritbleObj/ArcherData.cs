@@ -8,8 +8,6 @@ public class ArcherData : WarriorData
 
     public override void LoadStat(WarriorData warriorData)
     {
-        base.LoadStat(warriorData);
-
         ArcherData archerData;
 
         if (archerData = warriorData as ArcherData)
@@ -20,5 +18,7 @@ public class ArcherData : WarriorData
         {
             Debug.Log("Not load ;(");
         }
+
+        base.LoadStat(warriorData);
     }
 }
