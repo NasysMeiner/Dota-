@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{54d6ffff-c79f-47ed-8113-81e5140fd488}">
+		<property name="assetPath">
+			<value>EDS_Battle_STEMS/EDS_Battle_Theme_Doublebass.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>58</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d849dcd-7095-4da8-8106-df7685912a91}</destination>
+		</relationship>
+	</object>
+</objects>
