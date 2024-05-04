@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638504429591083944
+  lastModified: 638504431003764660
   FileSizes: []
   Exists: 1
 --- !u!114 &-6547654781512111716
@@ -80,7 +80,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638504429590823867
+  lastModified: 638504431003504612
   FileSizes: []
   Exists: 1
 --- !u!114 &-2591767883722226936
@@ -145,7 +145,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638504429590833862
+  lastModified: 638504431003514609
   FileSizes:
   - Name: 
     Value: 916
@@ -193,7 +193,7 @@ MonoBehaviour:
   - {fileID: -2827609284560036717}
   StringsBanks:
   - {fileID: -786084238356966227}
-  cacheTime: 638504429591083944
+  cacheTime: 638504431003764660
   cacheVersion: 131617
 --- !u!114 &463878304941738380
 MonoBehaviour:
@@ -414,6 +414,6 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638504429591073922
+  lastModified: 638504431003744755
   FileSizes: []
   Exists: 1
