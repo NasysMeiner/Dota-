@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StandartWarrior
   m_EditorClassIdentifier: 
   Type: 0
-  WeightUnit: 1
+  WeightUnit: 855
   Name: StWarrior
   Avatar: {fileID: 9100000, guid: 06eb05d55ea036d4390c8bb3e0495e74, type: 2}
   Bias: {x: 0, y: 0.76, z: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: 2d8b5343eae2a4f46bf99b4ca59577ad, type: 3}
   TimeEffectDeath: 0
-  Price: 1
+  Price: 6
   CurrentLevel: 1
   MaxLevel: 3
   Stats:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de8e41ab8a653a489b8a262dba78e57, type: 3}
   m_Name: ProjectileBlockChanceUpDataAi
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
   IconSkill: {fileID: 21300000, guid: 8bdc02d0c5ac36847aa76e7711063b51, type: 3}
   Price: 0
   TextSkill: 
