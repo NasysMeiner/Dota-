@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7799925933894827511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/EDS_Audio/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638504431003764660
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-6547654781512111716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +65,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 116000
+--- !u!114 &-2827609284560036717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638504431003504612
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-2591767883722226936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +130,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 4745088
   Exists: 1
+--- !u!114 &-786084238356966227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638504431003514609
+  FileSizes:
+  - Name: 
+    Value: 916
+  Exists: 1
 --- !u!114 &-432822867046204631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,19 +181,19 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 7226637977483688040}
-  - {fileID: 1650964799736778600}
-  - {fileID: -432822867046204631}
-  - {fileID: 463878304941738380}
+  - {fileID: -786084238356966227}
+  - {fileID: -2827609284560036717}
+  - {fileID: 8255497608625388614}
+  - {fileID: -7799925933894827511}
   EditorEvents:
-  - {fileID: -2591767883722226936}
-  - {fileID: -4403733987857216183}
+  - {fileID: 4865736845365910796}
+  - {fileID: 7533266387724156563}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1650964799736778600}
+  - {fileID: -2827609284560036717}
   StringsBanks:
-  - {fileID: 7226637977483688040}
-  cacheTime: 638504422807050347
+  - {fileID: -786084238356966227}
+  cacheTime: 638504431003764660
   cacheVersion: 131617
 --- !u!114 &463878304941738380
 MonoBehaviour:
@@ -229,6 +285,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 116000
+--- !u!114 &4865736845365910796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Main_Menu_Theme
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Main_Menu_Theme
+  Guid:
+    Data1: -231604577
+    Data2: 1091796671
+    Data3: 1776455343
+    Data4: 133256956
+  Banks:
+  - {fileID: 8255497608625388614}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 50500
 --- !u!114 &5573840113075176434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,4 +371,49 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1036
+  Exists: 1
+--- !u!114 &7533266387724156563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Battle_Theme
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Battle_Theme
+  Guid:
+    Data1: 927718838
+    Data2: 1189572264
+    Data3: 1673862303
+    Data4: 1797185933
+  Banks:
+  - {fileID: 8255497608625388614}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 116000
+--- !u!114 &8255497608625388614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/EDS_Audio/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638504431003744755
+  FileSizes: []
   Exists: 1
