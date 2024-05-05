@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using System.Dynamic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public float masterVolume = 1;
 
     private Bus masterBus;
+
+    public float MasterVolume => masterVolume;
 
     private void Awake()
     {
@@ -26,5 +29,11 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic()
     {
         
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        masterVolume = volume;
+        masterBus.setVolume(masterVolume);
     }
 }
