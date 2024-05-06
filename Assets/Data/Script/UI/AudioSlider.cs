@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +13,7 @@ public class AudioSlider : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_slider != null)
+        if (_slider != null)
             _slider.value = AudioManager.Instance.MasterVolume;
     }
 
