@@ -5,8 +5,11 @@ public class CounterUnit : MonoBehaviour
 {
     [SerializeField] private List<LineArea> _lines;
 
-    public int GetDangerLine()
+    public int GetDangerLine(TypeGroup typeGroup = TypeGroup.AttackType)
     {
+        if (typeGroup == TypeGroup.DefType)
+            return 4;
+
         int maxWeight = 0;
         int idLine = 0;
 

@@ -19,15 +19,15 @@ public class CompositRootStart : CompositeRoot
 
     private void StartGame()
     {
-        foreach (var barrack in _barracksPlayer)
-        {
-            barrack.SpawnUnits();
-        }
+        //foreach (var barrack in _barracksPlayer)
+        //{
+        //    barrack.SpawnUnits();
+        //}
 
-        foreach (var barrack in _barracksAi)
-        {
-            barrack.SpawnUnits();
-        }
+        //foreach (var barrack in _barracksAi)
+        //{
+        //    barrack.SpawnUnits();
+        //}
 
         _bank.StartBank();
 
