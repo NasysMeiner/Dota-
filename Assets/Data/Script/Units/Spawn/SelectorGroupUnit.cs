@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SelectorGroupUnit : MonoBehaviour
 {
@@ -11,43 +12,97 @@ public class SelectorGroupUnit : MonoBehaviour
     private List<Group> _groups = new();
     private CounterUnit _unitCounter;
     private AutoSpawner _autoSpawner;
+    private Bank _bank;
+    private string _name;
 
-    public void InitSelectorGroupUnit(GroupCustomizerData groupCustomizerData, CounterUnit counterUnit, AutoSpawner autoSpawner)
+    private bool _isStopPay = false;
+
+    public event UnityAction EndSpawn;
+
+    public void InitSelectorGroupUnit(GroupCustomizerData groupCustomizerData, CounterUnit counterUnit, AutoSpawner autoSpawner, Bank bank, string name)
     {
         _groups = groupCustomizerData.GroupUnits;
         _unitCounter = counterUnit;
         _autoSpawner = autoSpawner;
+        _bank = bank;
+        _name = name;
     }
 
-    public void StartBuildingGroup()
+    public void StartBuildingGroup(TypeGroup typeGroup)
     {
-        if (CounterGroup < _groups.Count)
+        if (typeGroup == TypeGroup.DefType)
+            _isStopPay = true;
+        else
+            _isStopPay = false;
+
+        StartCoroutine(MakePurchase(GetGroup(typeGroup), typeGroup));
+    }
+
+    public IEnumerator MakePurchase(Group group, TypeGroup typeGroup = TypeGroup.AttackType)
+    {
+        bool pay = false;
+
+        while (true)
         {
+            if (_bank.Pay(group.PriceGroup, _name))
+            {
+                pay = true;
+
+                break;
+            }
+
+            if (_isStopPay && typeGroup != TypeGroup.DefType)
+                break;
+
+            yield return null;
+        }
+
+        if (pay)
+        {
+            Debug.Log("Spawn " + typeGroup + " " + group.PriceGroup);
             _autoSpawner.EndSpawn += OnEndSpawn;
-
-            _autoSpawner.StartSpawn(_groups[CounterGroup], _unitCounter.GetDangerLine());
-
-            CounterGroup++;
+            _autoSpawner.StartSpawn(group, _unitCounter.GetDangerLine(typeGroup));
         }
     }
 
-    public IEnumerator WaitForNextGroup(float time)
+    private Group GetGroup(TypeGroup typeGroup)
     {
-        yield return new WaitForSeconds(time);
+        int value = 0;
 
-        if(CounterGroup < _groups.Count)
-            StartBuildingGroup();
-        else
-            CounterGroup = 0;
+        foreach (var group in _groups)
+            if (group.TypeGroup == typeGroup)
+                value++;
 
-        if(CounterGroup == 0 && IsCycle)
-            StartBuildingGroup();
+        value = Random.Range(1, value + 1);
+
+        int ind = 0;
+
+        foreach (var group in _groups)
+        {
+            if (group.TypeGroup == typeGroup)
+            {
+                ind++;
+
+                if (ind == value)
+                    return group;
+            }
+        }
+
+        Debug.Log("Krivo " + value);
+
+        return null;
     }
 
     private void OnEndSpawn()
     {
         _autoSpawner.EndSpawn -= OnEndSpawn;
-
-        StartCoroutine(WaitForNextGroup(TimeNextGroup));
+        EndSpawn?.Invoke();
     }
+}
+
+[System.Serializable]
+public enum TypeGroup
+{
+    AttackType,
+    DefType,
 }

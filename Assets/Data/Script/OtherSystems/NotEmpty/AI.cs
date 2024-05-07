@@ -1,18 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private SelectorGroupUnit _groupUnit;
+    private TriggerZone _triggerZone;
+
+    private bool _isSpawnDef = false;
+
+    private TypeGroup _typeGroup = TypeGroup.AttackType;
+
+    private void OnDisable()
     {
-        
+        _triggerZone.EnterTriggerZone -= OnSpawnTriggerZone;
+        _triggerZone.ExitTriggetZone -= OnExitTriggerZone;
+        _groupUnit.EndSpawn -= SpawnGroup;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitAI(SelectorGroupUnit groupUnit, TriggerZone triggerZone)
     {
-        
+        _groupUnit = groupUnit;
+        _triggerZone = triggerZone;
+
+        _triggerZone.EnterTriggerZone += OnSpawnTriggerZone;
+        _triggerZone.ExitTriggetZone += OnExitTriggerZone;
+        _groupUnit.EndSpawn += SpawnGroup;
+    }
+
+    public void StartGame()
+    {
+        SpawnGroup();
+    }
+
+    private void SpawnGroup()
+    {
+        _groupUnit.StartBuildingGroup(_typeGroup);
+    }
+
+    private void OnSpawnTriggerZone()
+    {
+        if (_isSpawnDef == false)
+        {
+            _isSpawnDef = true;
+            _typeGroup = TypeGroup.DefType;
+            SpawnGroup();
+        }
+    }
+
+    private void OnExitTriggerZone()
+    {
+        if (_isSpawnDef)
+        {
+            _isSpawnDef = false;
+            _typeGroup = TypeGroup.AttackType;
+        }
     }
 }

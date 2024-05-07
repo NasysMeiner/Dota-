@@ -29,6 +29,13 @@ public class AutoSpawner : MonoBehaviour
 
     public void StartSpawn(Group groupUnit, int idLine)
     {
+        if(groupUnit == null)
+        {
+            Debug.LogError("Group null");
+
+            return;
+        }
+
         StartCoroutine(SpawnUnit(groupUnit, idLine));
     }
 
