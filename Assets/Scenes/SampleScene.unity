@@ -9525,6 +9525,7 @@ MonoBehaviour:
   _upgradeStatsView: {fileID: 1158830143288748190}
   _gameResult: {fileID: 519420033}
   _gameResultView: {fileID: 6816021560938433525}
+  _triggerAnimation: {fileID: 1158830143814601621}
   _images:
   - {fileID: 1212734031}
   - {fileID: 1800481058}
@@ -9533,6 +9534,7 @@ MonoBehaviour:
   _changerStats: {fileID: 1222438728}
   _unitStatsBlockPrefab: {fileID: 7892503245446334662, guid: 9bef993fe55685e41b9d152c2d593faf, type: 3}
   _selectionSelector: {fileID: 519420034}
+  _bank: {fileID: 2068412911}
 --- !u!114 &493753303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28344,7 +28346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1656755110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28363,7 +28365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0049438477}
+  m_AnchoredPosition: {x: 0, y: -0.0048828125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1656755111
@@ -41106,6 +41108,8 @@ GameObject:
   - component: {fileID: 1158830143814601618}
   - component: {fileID: 1158830143814601616}
   - component: {fileID: 1158830143814601619}
+  - component: {fileID: 1158830143814601620}
+  - component: {fileID: 1158830143814601621}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -41138,8 +41142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 30.400146, y: 1}
-  m_SizeDelta: {x: 143.6861, y: 50}
+  m_AnchoredPosition: {x: -3.454, y: 0.0000030994}
+  m_SizeDelta: {x: 75.9779, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158830143814601619
 MonoBehaviour:
@@ -41161,7 +41165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 128e33e3decb19a4c893041317e68547, type: 2}
   m_sharedMaterial: {fileID: -2324278902537931829, guid: 128e33e3decb19a4c893041317e68547, type: 2}
@@ -41188,7 +41192,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.6
+  m_fontSize: 41.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -41230,6 +41234,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &1158830143814601620
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158830143814601581}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a723363f69592684e8a3353ead077015, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1158830143814601621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158830143814601581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccbc6c1b5061344a8fa7586d7bbdea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158830143853820216
 GameObject:
   m_ObjectHideFlags: 0
