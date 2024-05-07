@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bank : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Bank : MonoBehaviour
     private float _timeAddMoney = 1f;
 
     private bool _isWork = false;
+
+    public event UnityAction NoMoney;
 
     public void InitBank(float timeAddMoney)
     {
@@ -29,11 +33,16 @@ public class Bank : MonoBehaviour
 
     public bool Pay(int money, string name)
     {
+        bool isPurchase = false;
+
         foreach (CashAccount account in _accounts)
             if (account.Name == name)
-                return account.WithdrawMoney(money);
+                isPurchase = account.WithdrawMoney(money);
 
-        return false;
+        if (!isPurchase)
+            NoMoney?.Invoke();
+
+        return isPurchase;
     }
 
     private IEnumerator AddMoney()

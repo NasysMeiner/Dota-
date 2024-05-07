@@ -11,6 +11,7 @@ public class CompositRootView : CompositeRoot
     [Space]
     [SerializeField] private GameResult _gameResult;
     [SerializeField] private GameResultView _gameResultView;
+    [SerializeField] private TriggerAnimation _triggerAnimation;
 
     [Header("Spawn")]
     [SerializeField] private List<ViewSprite> _images;
@@ -21,6 +22,7 @@ public class CompositRootView : CompositeRoot
     [SerializeField] private ChangerStats _changerStats;
     [SerializeField] private UnitStatsBlock _unitStatsBlockPrefab;
     [SerializeField] private SelectionSelector _selectionSelector;
+    [SerializeField] private Bank _bank;
 
     public override void Compose()
     {
@@ -35,5 +37,6 @@ public class CompositRootView : CompositeRoot
         _gameResult.InitGameResult(_castlePlayer, _castleAi);
         _gameResultView.InitGameResultView(_gameResult);
         _selectionSelector.InitSelectionSelector(_upgradeStatsView);
+        _triggerAnimation.InitTriggerAnimation(_bank);
     }
 }
