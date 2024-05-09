@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7403806280391527228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8573447567661334641}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4719606207992226328
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +221,7 @@ GameObject:
   - component: {fileID: 3790628151966531768}
   - component: {fileID: 1110523404344601343}
   - component: {fileID: 7665642053932290913}
+  - component: {fileID: 8573447567661334641}
   m_Layer: 5
   m_Name: LevelSelection
   m_TagString: Untagged
@@ -276,6 +289,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8573447567661334641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699077654189150998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4a12cdc4a38e54297ff5f8041c1ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberText: {fileID: 5441967714919997811}
+  _icon: {fileID: 7892737158811107526}
 --- !u!1 &6492263383106258354
 GameObject:
   m_ObjectHideFlags: 0

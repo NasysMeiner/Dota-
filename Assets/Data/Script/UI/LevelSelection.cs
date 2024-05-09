@@ -7,15 +7,22 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private TMP_Text _numberText;
     [SerializeField] private Image _icon;
 
-    private int _levelNumber;
+    private string _nameLevel;
     private Sprite _levelIcon;
+    private LevelManager _levelManager;
 
-    public void SetLevel(int number, Sprite icon)
+    public void SetLevel(string name, Sprite icon, LevelManager levelManager)
     {
-        _levelNumber = number;
+        _levelManager = levelManager;
+        _nameLevel = name;
         _levelIcon = icon;
 
-        _numberText.text = _levelNumber.ToString();
+        _numberText.text = _nameLevel;
         _icon.sprite = _levelIcon;
+    }
+
+    public void LoadLevel()
+    {
+        _levelManager.LoadLevel(_nameLevel);
     }
 }
