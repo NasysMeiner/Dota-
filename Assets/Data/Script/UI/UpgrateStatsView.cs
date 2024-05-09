@@ -61,6 +61,13 @@ public class UpgrateStatsView : MonoBehaviour
 
     public void OnChangeId(int id)
     {
+        if (_defaultPanel.CheckCorrect(id))
+        {
+            EnableDefaultPanel();
+
+            return;
+        }
+
         foreach (PanelStat stat in _panelStats)
         {
             if (stat.CheckCorrect(id))
