@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private DataCountLevels _countLevels;
     [SerializeField] private LevelSelection _prefab;
     [SerializeField] private GameObject _content;
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(string name)
     {
+        _audioManager.Stop();
         _sceneLoader.LoadLevel(name);
     }
 

@@ -2512,6 +2512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneLoader: {fileID: 858200724}
+  _audioManager: {fileID: 1858530650}
   _countLevels: {fileID: 11400000, guid: 31337be993bf52244a0a85cbc5eadf37, type: 2}
   _prefab: {fileID: 8573447567661334641, guid: e9403cc83f29c5d43aa8b12e1c3a88e1, type: 3}
   _content: {fileID: 1537064969}
