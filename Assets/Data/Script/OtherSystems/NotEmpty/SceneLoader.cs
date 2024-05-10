@@ -7,4 +7,19 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void LoadLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
+    public void LoadMainMenu()
+    {
+        LoadLevel("MainMenu");
+    }
 }
