@@ -9435,8 +9435,8 @@ MonoBehaviour:
   - {fileID: 133553829}
   _prefabUnit: {fileID: 11400000, guid: 3c691c3ab418ea04cbf3361a3b637f22, type: 2}
   _dataStats:
-  - {fileID: 11400000, guid: 09fa0aef33d7fd6498ee4c606fd584d1, type: 2}
-  - {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
+  - {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
+  - {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
   _trash: {fileID: 2073568122}
   _towerListPlayer:
   - {fileID: 1591314832}
@@ -9469,11 +9469,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isOverwrite: 1
   _gameInfoPlayer: {fileID: 11400000, guid: 5790d0aab4008e743a634cf0608d6556, type: 2}
-  _prefabUnitStatsPlayer: {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
-  _emptyUnitStatsPlayer: {fileID: 11400000, guid: 09fa0aef33d7fd6498ee4c606fd584d1, type: 2}
+  _prefabUnitStatsPlayer: {fileID: 11400000, guid: e4b7068a4d37dbd469dfcee733f22cd3, type: 2}
+  _emptyUnitStatsPlayer: {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
   _gameInfoAi: {fileID: 11400000, guid: 20de0be9b21a70549b10352cf64cca4a, type: 2}
-  _prefabUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
-  _emptyUnitStatsAi: {fileID: 11400000, guid: 86dee250362dd434aaa5621f7fcbc597, type: 2}
+  _prefabUnitStatsAi: {fileID: 11400000, guid: 40c397c783282934896d8ec3c5705509, type: 2}
+  _emptyUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
   _autoSpawner: {fileID: 1532580625}
   _ai: {fileID: 741107102}
   _changerStats: {fileID: 1222438728}
