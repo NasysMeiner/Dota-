@@ -33,6 +33,12 @@ public class ButtonUnitView : PanelStat
         }
     }
 
+    public void StartGame()
+    {
+        foreach(var button in _buttons)
+            button.OnButton();
+    }
+
     public void ChangeUnit(ButtonStatus button)
     {
         if (_currentButton != null)

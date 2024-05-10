@@ -86,9 +86,9 @@ public class RadiusSpawner : MonoBehaviour
                     towerButton.Repair();
 
                     return;
-                }        
+                }
 
-                if(hit.collider.TryGetComponent(out BarrackBoxId barrack))
+                if (hit.collider.TryGetComponent(out BarrackBoxId barrack))
                 {
                     ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
                 }
@@ -96,7 +96,7 @@ public class RadiusSpawner : MonoBehaviour
                 {
                     Spawn(hit);
                 }
-                else if (_currentUnitId == -1)
+                else if (_currentUnitId == -1 && !hit.collider.TryGetComponent(out UiBlock block))
                 {
                     ChangeId?.Invoke(_currentUnitId);
                 }

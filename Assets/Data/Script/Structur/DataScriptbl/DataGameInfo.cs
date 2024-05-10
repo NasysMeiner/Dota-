@@ -7,7 +7,7 @@ public class DataGameInfo : ScriptableObject
 
     public Color ColorUnit;
 
-    [Range(1000, 100000)]
+    [Range(0, 100000)]
     public int StartMoney;
 
     public DataStructure DataStructure;
