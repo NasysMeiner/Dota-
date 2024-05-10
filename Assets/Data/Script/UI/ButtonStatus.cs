@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Button))]
 public class ButtonStatus : MonoBehaviour
 {
     [SerializeField] private Color _activeColor;
@@ -11,11 +12,20 @@ public class ButtonStatus : MonoBehaviour
 
     private Color _standartColor;
     private Image _image;
+    private Button _button;
 
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _button = GetComponent<Button>();
+
+        _button.interactable = false;
         _standartColor = _image.color;
+    }
+
+    public void OnButton()
+    {
+        _button.interactable = true;
     }
 
     public void ActiveButton()

@@ -12,6 +12,9 @@ public class CompositRootStart : CompositeRoot
     [Header("Bank")]
     [SerializeField] private Bank _bank;
 
+    [Header("View")]
+    [SerializeField] private ButtonUnitView _buttonUnitView;
+
     public override void Compose()
     {
         StartGame();
@@ -30,6 +33,7 @@ public class CompositRootStart : CompositeRoot
         //}
 
         _bank.StartBank();
+        _buttonUnitView.StartGame();
 
         //_barracksPlayer[0].SpawnUnits();
         //_barracksPlayer[0].isEnemy = false;

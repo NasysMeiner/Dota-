@@ -88,13 +88,17 @@ public class RadiusSpawner : MonoBehaviour
                     return;
                 }
 
-                if(hit.collider.TryGetComponent(out BarrackBoxId barrack))
+                if (hit.collider.TryGetComponent(out BarrackBoxId barrack))
                 {
                     ChangeId?.Invoke(barrack.Barrack.StartIdUnit);
                 }
                 else if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
                 {
                     Spawn(hit);
+                }
+                else if (_currentUnitId == -1 && !hit.collider.TryGetComponent(out UiBlock block))
+                {
+                    ChangeId?.Invoke(_currentUnitId);
                 }
                 else
                 {
@@ -135,7 +139,7 @@ public class RadiusSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("No money");
+            //Debug.Log("No money");
         }
     }
 

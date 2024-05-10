@@ -1,6 +1,5 @@
 using FMOD.Studio;
 using FMODUnity;
-using System.Dynamic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -24,11 +23,17 @@ public class AudioManager : MonoBehaviour
 
         masterBus = RuntimeManager.GetBus("bus:/");
         masterBus.setVolume(masterVolume);
+        Play();
     }
 
-    public void PlayMusic()
+    public void Stop()
     {
-        
+        masterBus.setPaused(true);
+    }
+
+    public void Play()
+    {
+        masterBus.setPaused(false);
     }
 
     public void ChangeVolume(float volume)

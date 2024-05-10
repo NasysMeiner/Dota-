@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Level/4/NavMesh-Nav.asset.meta
+guid: fc00dc99c37c7264db10b10537734dec
+========
+guid: 723bb0a7467ca9048909ef4fef84a29e
+>>>>>>>> main:Assets/Scenes/Level/1/NavMesh-Nav.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

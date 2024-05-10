@@ -59,7 +59,6 @@ public class SelectorGroupUnit : MonoBehaviour
 
         if (pay)
         {
-            Debug.Log("Spawn " + typeGroup + " " + group.PriceGroup);
             _autoSpawner.EndSpawn += OnEndSpawn;
             _autoSpawner.StartSpawn(group, _unitCounter.GetDangerLine(typeGroup));
         }
