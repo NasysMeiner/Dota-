@@ -7,11 +7,23 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [Range(0.0f, 1.0f)]
-    public float masterVolume = 1;
+    [SerializeField] private float _masterVolume = 1;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float _musicVolume = 1;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float _effectVolume = 1;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float _uiVolume = 1;
 
-    private Bus masterBus;
+    private Bus _masterBus;
+    private Bus _musicBus;
+    private Bus _effectBus;
+    private Bus _uiBus;
 
-    public float MasterVolume => masterVolume;
+    public float MasterVolume => _masterVolume;
+    public float MusicVolume => _musicVolume;
+    public float EffectVolume => _effectVolume;
+    public float UiVolume => _uiVolume;
 
     private void Awake()
     {
@@ -21,24 +33,50 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
 
-        masterBus = RuntimeManager.GetBus("bus:/");
-        masterBus.setVolume(masterVolume);
+        _masterBus = RuntimeManager.GetBus("bus:/");
+        _musicBus = RuntimeManager.GetBus("bus:/Music");
+        _effectBus = RuntimeManager.GetBus("bus:/SFX");
+        _uiBus = RuntimeManager.GetBus("bus:/UI");
+
+        _masterBus.setVolume(_masterVolume);
+        _musicBus.setVolume(_musicVolume);
+        _effectBus.setVolume(_effectVolume);
+        _uiBus.setVolume(_uiVolume);
+
         Play();
     }
 
     public void Stop()
     {
-        masterBus.setPaused(true);
+        _masterBus.setPaused(true);
     }
 
     public void Play()
     {
-        masterBus.setPaused(false);
+        _masterBus.setPaused(false);
     }
 
-    public void ChangeVolume(float volume)
+    public void ChangeMasterVolume(float volume)
     {
-        masterVolume = volume;
-        masterBus.setVolume(masterVolume);
+        _masterVolume = volume;
+        _masterBus.setVolume(_masterVolume);
+    }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        _musicVolume = volume;
+        _musicBus.setVolume(_musicVolume);
+    }
+
+    public void ChangeEffectVolume(float volume)
+    {
+        _effectVolume = volume;
+        _effectBus.setVolume(_effectVolume);
+    }
+
+    public void ChangeUiVolume(float volume)
+    {
+        _uiVolume = volume;
+        _uiBus.setVolume(_uiVolume);
     }
 }

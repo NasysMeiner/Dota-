@@ -15,9 +15,36 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638509483293761620
+  lastModified: 638509680927355110
   FileSizes: []
   Exists: 1
+--- !u!114 &-4583753097763576475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Fireball
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Fireball
+  Guid:
+    Data1: 1180004826
+    Data2: 1255025295
+    Data3: -19928921
+    Data4: 853222534
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2916122806125731272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,10 +60,10 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638509483293611219
+  lastModified: 638509680926875000
   FileSizes:
   - Name: 
-    Value: 916
+    Value: 1320
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -58,13 +85,47 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 1573737386266684811}
   - {fileID: 2232773224321114745}
+  - {fileID: 6689116458930916612}
+  - {fileID: 4995827689491096639}
+  - {fileID: 4043471671722864319}
+  - {fileID: 4558426295995364798}
+  - {fileID: 806669334559880059}
+  - {fileID: -4583753097763576475}
+  - {fileID: 3702597760219329588}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3750798804417697671}
   StringsBanks:
   - {fileID: -2916122806125731272}
-  cacheTime: 638509483293761620
+  cacheTime: 638509680927375117
   cacheVersion: 131617
+--- !u!114 &806669334559880059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Spider
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Spider
+  Guid:
+    Data1: -1788823878
+    Data2: 1198842225
+    Data3: -1929715048
+    Data4: -516056993
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1573737386266684811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +180,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 116000
+--- !u!114 &3702597760219329588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_BM
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_BM
+  Guid:
+    Data1: -1667773979
+    Data2: 1132704075
+    Data3: 1238999685
+    Data4: -1675145680
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3750798804417697671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,9 +222,90 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638509483293601195
+  lastModified: 638509680926855000
   FileSizes: []
   Exists: 1
+--- !u!114 &4043471671722864319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Menu_Click
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Menu_Click
+  Guid:
+    Data1: -914744426
+    Data2: 1239156118
+    Data3: 402132868
+    Data4: 2141345064
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4558426295995364798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_LM
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_LM
+  Guid:
+    Data1: 982170539
+    Data2: 1141372401
+    Data3: 1891438522
+    Data4: -640425533
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4995827689491096639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Bat
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Bat
+  Guid:
+    Data1: 1718639985
+    Data2: 1124356380
+    Data3: -1673335369
+    Data4: -616215841
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6162115934902087889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +321,33 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638509483293761620
+  lastModified: 638509680927375117
   FileSizes: []
   Exists: 1
+--- !u!114 &6689116458930916612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EDS_Stone_Damage
+  m_EditorClassIdentifier: 
+  Path: event:/EDS_Stone_Damage
+  Guid:
+    Data1: 558588472
+    Data2: 1220461751
+    Data3: -1569621318
+    Data4: -1744538242
+  Banks:
+  - {fileID: 6162115934902087889}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
