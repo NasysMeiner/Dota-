@@ -17,8 +17,23 @@ public class AudioSlider : MonoBehaviour
             _slider.value = AudioManager.Instance.MasterVolume;
     }
 
-    public void ChangeVolume()
+    public void ChangeAllVolume()
     {
-        AudioManager.Instance.ChangeVolume(_slider.value);
+        AudioManager.Instance.ChangeMasterVolume(_slider.value);
+    }
+
+    public void ChangeMusicVolume()
+    {
+        AudioManager.Instance.ChangeMusicVolume(_slider.value);
+    }
+
+    public void ChangeEffectVolume()
+    {
+        AudioManager.Instance.ChangeEffectVolume(_slider.value);
+    }
+
+    public void ChangeUiVolume()
+    {
+        AudioManager.Instance.ChangeUiVolume(_slider.value);
     }
 }
