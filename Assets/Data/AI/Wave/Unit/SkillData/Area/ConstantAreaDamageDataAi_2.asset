@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad5f1c8ac010af4c8112befa966a327, type: 3}
   m_Name: ConstantAreaDamageDataAi_2
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
   Price: 0
   IconSkill: {fileID: 21300000, guid: 03995f982132c9e48b9bf372542419d1, type: 3}
   TextSkill: Bla

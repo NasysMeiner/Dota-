@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807c2f5eaa1555143b07fd066c2850c3, type: 3}
   m_Name: LiveAfterDeathData_4
   m_EditorClassIdentifier: 
-  IsPurchased: 1
+  IsPurchased: 0
   IconSkill: {fileID: 21300000, guid: 8f152edf133cc504da1e8fce9ce75e04, type: 3}
-  Price: 0
+  Price: 50
   TextSkill: 
   TimeImmortaly: 5
