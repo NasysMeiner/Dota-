@@ -135,7 +135,7 @@ public class RadiusSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("No money");
+            //Debug.Log("No money");
         }
     }
 
