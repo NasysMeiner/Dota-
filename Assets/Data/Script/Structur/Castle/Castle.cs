@@ -23,7 +23,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public bool IsAlive => _isAlive;
 
     public int Income { get; private set; }
-    public int Money { get; private set; }
     public float MaxHealPoint { get; private set; }
     public Counter Counter { get; private set; }
     public Counter EnemyCounter { get; private set; }
@@ -64,7 +63,6 @@ public class Castle : MonoBehaviour, IStructur, IEntity
 
         Counter = new Counter();
         Counter.AddEntity(this);
-        Money = dataGameInfo.StartMoney;
         Name = dataGameInfo.Name;
         dataGameInfo.DataStructure.Name = Name;
         dataStructureBarracks.DataStructure.Name = Name;
@@ -72,7 +70,7 @@ public class Castle : MonoBehaviour, IStructur, IEntity
         _trash = trash;
         PointCreator = pointCreator;
 
-        CashAccount = new CashAccount(Name, Income);
+        CashAccount = new CashAccount(Name, Income, dataGameInfo.StartMoney);
 
         for (int i = 0; i < structurs.Count; i++)
             structurs[i].InitializeBarracks(dataStructureBarracks, Counter, trash);

@@ -12,10 +12,11 @@ public class CashAccount
 
     public event UnityAction ChangeMoney;
 
-    public CashAccount(string name, int increase)
+    public CashAccount(string name, int increase, int startMoney = 0)
     {
         _name = name;
         _increase = increase;
+        _money = startMoney;
     }
 
     public void MakePayment()
