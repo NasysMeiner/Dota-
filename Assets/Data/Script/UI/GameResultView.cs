@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameResultView : MonoBehaviour
 {
+    [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private Panel _victoryWindow;
     [SerializeField] private Panel _defeatWindow;
 
@@ -25,5 +24,15 @@ public class GameResultView : MonoBehaviour
     public void OnDefeat()
     {
         _defeatWindow.OpenPanel();
+    }
+
+    public void RestartLevel()
+    {
+        _sceneLoader.ReastartLevel();
+    }
+
+    public void LoadMainMenu()
+    {
+        _sceneLoader.LoadMainMenu();
     }
 }
