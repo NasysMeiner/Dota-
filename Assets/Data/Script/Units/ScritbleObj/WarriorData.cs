@@ -51,7 +51,7 @@ public class WarriorData : ScriptableObject
     [Range(0.1f, 100)]
     public float AttackSpeed;
 
-    [Range(1, 100)]
+    [Range(0, 100)]
     public float Speed;
 
     [Range(0.1f, 1)]
