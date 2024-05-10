@@ -30,9 +30,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8198af81cba134f923abf6ce5f2651, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   HealPoint: 320
-  AttackDamage: 125
-  AttackRange: 4
-  VisibilityRange: 6
+  AttackDamage: 30
+  AttackRange: 5
+  VisibilityRange: 7
   AttackSpeed: 1
   Speed: 2
   ApproximationFactor: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: b90b3d3906749014b859d2d833676483, type: 3}
   TimeEffectDeath: 0
-  Price: 4
+  Price: 10
   CurrentLevel: 1
   MaxLevel: 3
   Stats:
@@ -54,14 +54,14 @@ MonoBehaviour:
     - 320
   - Type: 1
     Levels:
-    - 25
     - 30
-    - 40
+    - 50
+    - 70
   - Type: 2
     Levels:
-    - 0.7
-    - 0.6
-    - 0.5
+    - 1
+    - 1
+    - 1
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: a71a3e41e141d904dbfbc08500a8b0cf, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}
