@@ -4538,6 +4538,7 @@ GameObject:
   - component: {fileID: 190692650}
   - component: {fileID: 190692652}
   - component: {fileID: 190692651}
+  - component: {fileID: 190692653}
   m_Layer: 0
   m_Name: BoxCol
   m_TagString: Untagged
@@ -4571,8 +4572,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1671746, y: 3.3877783, z: 1}
-  m_Center: {x: -0.07239794, y: 0.20959163, z: 0}
+  m_Size: {x: 2.1671746, y: 3.3877783, z: 3.1401465}
+  m_Center: {x: -0.07239794, y: 0.20959163, z: -1.0700742}
 --- !u!114 &190692652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4586,6 +4587,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrack: {fileID: 1552529502}
+--- !u!114 &190692653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190692649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barrack: {fileID: 1552529502}
+  _selection: {fileID: 1844873920}
+  _blockViewType: 1
+  _normalColor: {r: 1, g: 0.16509432, b: 0.17940691, a: 1}
+  _pressedColor: {r: 0.735849, g: 0.114542544, b: 0.12621023, a: 1}
 --- !u!1 &192060809
 GameObject:
   m_ObjectHideFlags: 0
@@ -5819,6 +5837,7 @@ GameObject:
   - component: {fileID: 256475127}
   - component: {fileID: 256475129}
   - component: {fileID: 256475128}
+  - component: {fileID: 256475130}
   m_Layer: 0
   m_Name: BoxBarrack
   m_TagString: Untagged
@@ -5852,8 +5871,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1919315, y: 2.7191305, z: 1}
-  m_Center: {x: 0, y: 0.10314708, z: 0}
+  m_Size: {x: 2.1919317, y: 2.7191315, z: 3.2470849}
+  m_Center: {x: 0, y: 0.10314706, z: -1.1235417}
 --- !u!114 &256475129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5867,6 +5886,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrack: {fileID: 284226282}
+--- !u!114 &256475130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256475126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barrack: {fileID: 284226282}
+  _selection: {fileID: 722045073}
+  _blockViewType: 0
+  _normalColor: {r: 0.3066038, g: 0.6075835, b: 1, a: 1}
+  _pressedColor: {r: 0, g: 0.33777294, b: 0.7830189, a: 1}
 --- !u!1 &259013157
 GameObject:
   m_ObjectHideFlags: 0
@@ -9169,6 +9205,7 @@ GameObject:
   - component: {fileID: 480036193}
   - component: {fileID: 480036195}
   - component: {fileID: 480036194}
+  - component: {fileID: 480036196}
   m_Layer: 0
   m_Name: BoxBarrack
   m_TagString: Untagged
@@ -9202,8 +9239,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.509935, y: 3.2300427, z: 1}
-  m_Center: {x: -0.07869217, y: 0.11801612, z: 0}
+  m_Size: {x: 1.509935, y: 3.2300427, z: 2.8482094}
+  m_Center: {x: -0.07869217, y: 0.11801612, z: -0.92410403}
 --- !u!114 &480036195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,6 +9254,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrack: {fileID: 82114971}
+--- !u!114 &480036196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480036192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barrack: {fileID: 82114971}
+  _selection: {fileID: 198687237}
+  _blockViewType: 1
+  _normalColor: {r: 1, g: 0.16470589, b: 0.18039216, a: 1}
+  _pressedColor: {r: 0.7372549, g: 0.11372549, b: 0.1254902, a: 1}
 --- !u!1 &493753297
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,10 +10295,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _allocableObjects:
-  - {fileID: 7363759335501395159}
-  - {fileID: 1591314837}
-  - {fileID: 6279761074654653246}
-  - {fileID: 789689458495078808}
+  - {fileID: 256475130}
+  - {fileID: 1198707809}
+  - {fileID: 480036196}
+  - {fileID: 190692653}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21296,6 +21350,7 @@ GameObject:
   - component: {fileID: 1198707806}
   - component: {fileID: 1198707808}
   - component: {fileID: 1198707807}
+  - component: {fileID: 1198707809}
   m_Layer: 0
   m_Name: BoxCol
   m_TagString: Untagged
@@ -21329,8 +21384,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1382153, y: 2.750686, z: 1}
-  m_Center: {x: -0.00000089472337, y: 0.15167442, z: 0}
+  m_Size: {x: 2.1382153, y: 2.750686, z: 3.6062381}
+  m_Center: {x: -0.00000089472337, y: 0.15167442, z: -1.3031192}
 --- !u!114 &1198707808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21344,6 +21399,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrack: {fileID: 27970503}
+--- !u!114 &1198707809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198707805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barrack: {fileID: 27970503}
+  _selection: {fileID: 1903557668}
+  _blockViewType: 0
+  _normalColor: {r: 0.3066038, g: 0.6075835, b: 1, a: 1}
+  _pressedColor: {r: 0, g: 0.33777294, b: 0.7830189, a: 1}
 --- !u!1001 &1205043754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24772,7 +24844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483627345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.60884047, y: 1.549054, z: -0.131594}
+  m_LocalPosition: {x: -27.45, y: 20.78, z: -0.131594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26284,8 +26356,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1591314835}
   - component: {fileID: 1591314832}
-  - component: {fileID: 1591314836}
-  - component: {fileID: 1591314837}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -26307,6 +26377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1521510033}
   _spriteRenderer: {fileID: 1157016398}
+  _allocableObject: {fileID: 1198707809}
 --- !u!4 &1591314835
 Transform:
   m_ObjectHideFlags: 0
@@ -26326,39 +26397,6 @@ Transform:
   m_Father: {fileID: 1222438727}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1591314836
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591314831}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &1591314837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591314831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _barrack: {fileID: 27970503}
-  _selection: {fileID: 1903557668}
-  _blockViewType: 0
-  _normalColor: {r: 0.3066038, g: 0.6075835, b: 1, a: 1}
-  _pressedColor: {r: 0, g: 0.33777294, b: 0.7830189, a: 1}
 --- !u!1 &1591779619
 GameObject:
   m_ObjectHideFlags: 0
@@ -31250,7 +31288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1104e40c353ef0444b46cef27a060217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _masterVolume: 1
+  _masterVolume: 0
   _musicVolume: 1
   _effectVolume: 1
   _uiVolume: 1
@@ -35781,8 +35819,6 @@ GameObject:
   m_Component:
   - component: {fileID: 789689458495078806}
   - component: {fileID: 789689458495078805}
-  - component: {fileID: 789689458495078807}
-  - component: {fileID: 789689458495078808}
   m_Layer: 8
   m_Name: TowerAi
   m_TagString: Untagged
@@ -35804,6 +35840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 704202271}
   _spriteRenderer: {fileID: 789689458660696907}
+  _allocableObject: {fileID: 0}
 --- !u!4 &789689458495078806
 Transform:
   m_ObjectHideFlags: 0
@@ -35823,39 +35860,6 @@ Transform:
   m_Father: {fileID: 741107101}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &789689458495078807
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789689458495078794}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &789689458495078808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789689458495078794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _barrack: {fileID: 82114971}
-  _selection: {fileID: 198687237}
-  _blockViewType: 1
-  _normalColor: {r: 1, g: 0.16470589, b: 0.18039216, a: 1}
-  _pressedColor: {r: 0.7372549, g: 0.11372549, b: 0.1254902, a: 1}
 --- !u!4 &789689458660696904
 Transform:
   m_ObjectHideFlags: 0
@@ -36006,6 +36010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1398697558}
   _spriteRenderer: {fileID: 2865173855982014086}
+  _allocableObject: {fileID: 0}
 --- !u!4 &2865173855882996827
 Transform:
   m_ObjectHideFlags: 0
@@ -36266,6 +36271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1730996448}
   _spriteRenderer: {fileID: 6279761075092228605}
+  _allocableObject: {fileID: 0}
 --- !u!1 &6279761074654653244
 GameObject:
   m_ObjectHideFlags: 0
@@ -36276,8 +36282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6279761074654653216}
   - component: {fileID: 6279761074654653219}
-  - component: {fileID: 6279761074654653245}
-  - component: {fileID: 6279761074654653246}
   m_Layer: 8
   m_Name: TowerAi3
   m_TagString: Untagged
@@ -36285,39 +36289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &6279761074654653245
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6279761074654653244}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &6279761074654653246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6279761074654653244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _barrack: {fileID: 1552529502}
-  _selection: {fileID: 1844873920}
-  _blockViewType: 1
-  _normalColor: {r: 1, g: 0.16509432, b: 0.17940691, a: 1}
-  _pressedColor: {r: 0.735849, g: 0.114542544, b: 0.12621023, a: 1}
 --- !u!212 &6279761075092228605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36593,6 +36564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 986175508}
   _spriteRenderer: {fileID: 7363759334384105548}
+  _allocableObject: {fileID: 0}
 --- !u!58 &7363759334548920979
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -36642,6 +36614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 976074135}
   _spriteRenderer: {fileID: 7363759335671453204}
+  _allocableObject: {fileID: 256475130}
 --- !u!1 &7363759335501395157
 GameObject:
   m_ObjectHideFlags: 0
@@ -36652,8 +36625,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7363759335501395145}
   - component: {fileID: 7363759335501395146}
-  - component: {fileID: 7363759335501395158}
-  - component: {fileID: 7363759335501395159}
   m_Layer: 8
   m_Name: Tower (2)
   m_TagString: Untagged
@@ -36661,39 +36632,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &7363759335501395158
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363759335501395157}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &7363759335501395159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363759335501395157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501adac80d8d4c24a9d295628202b8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _barrack: {fileID: 284226282}
-  _selection: {fileID: 722045073}
-  _blockViewType: 0
-  _normalColor: {r: 0.3066038, g: 0.6075835, b: 1, a: 1}
-  _pressedColor: {r: 0, g: 0.33777294, b: 0.7830189, a: 1}
 --- !u!212 &7363759335671453204
 SpriteRenderer:
   m_ObjectHideFlags: 0

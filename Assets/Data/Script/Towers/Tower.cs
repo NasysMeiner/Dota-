@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 {
     [SerializeField] private TowerRadius _towerRadius;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AllocableObject _allocableObject;
 
     private bool _drawRadius;
 
@@ -76,6 +77,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     {
         Died?.Invoke();
 
+        if(_allocableObject != null)
+            _allocableObject.SetOffSelection();
+
         _isAlive = false;
         _currentTarget = null;
         _spriteRenderer.enabled = false;
@@ -88,6 +92,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public void Resurrect()
     {
+        if (_allocableObject != null)
+            _allocableObject.SetOnSelection();
+
         _isAlive = true;
         _spriteRenderer.enabled = true;
         _isDead = false;

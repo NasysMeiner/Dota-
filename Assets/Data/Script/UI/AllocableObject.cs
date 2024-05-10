@@ -12,6 +12,7 @@ public class AllocableObject : MonoBehaviour
 
     private bool _isPressed = false;
     private bool _isActive = false;
+    private bool _isWorkSelection = true;
 
     public int GetUnitId => _barrack.StartIdUnit;
     public TypeBlockView TypeBlockView => _blockViewType;
@@ -53,6 +54,18 @@ public class AllocableObject : MonoBehaviour
             if (_isActive == false)
                 _selection.gameObject.SetActive(false);
         }
+    }
+
+    public void SetOffSelection()
+    {
+        _normalColor.a = 0;
+        _pressedColor.a = 0;
+    }
+
+    public void SetOnSelection()
+    {
+        _normalColor.a = 255;
+        _pressedColor.a = 255;
     }
 
     public void SetEnable()
