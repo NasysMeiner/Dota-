@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DataTowerAI
   m_EditorClassIdentifier: 
   Damage: 50
-  SpeedAttack: 0.5
+  SpeedAttack: 0.8
   AttackRange: 7
   Bullet: {fileID: 4470804474966191576, guid: 560e9adae54e4954b8876357f2303953, type: 3}
   DataStructure: {fileID: 11400000, guid: 63ed92a862f35954ca0ab70d1e9f31bd, type: 2}

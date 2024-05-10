@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DataTowerPlayer
   m_EditorClassIdentifier: 
   Damage: 50
-  SpeedAttack: 0.5
+  SpeedAttack: 0.8
   AttackRange: 7
   Bullet: {fileID: 4470804474966191576, guid: 0b62406734066b7469695aac5ca4106d, type: 3}
   DataStructure: {fileID: 11400000, guid: 0b067062cc545324b9b1036a0d723335, type: 2}

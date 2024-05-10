@@ -34,7 +34,7 @@ MonoBehaviour:
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
-  Speed: 1.5
+  Speed: 0.75
   ApproximationFactor: 1
   ProjectileBlockChance: 0
   TimeImmortaly: 0
@@ -62,6 +62,6 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-  Prices: 000000003200000032000000
+  Prices: 000000003200000064000000
   Icon: {fileID: 21300000, guid: 588263bf98bd8d948a73e28c3e32866c, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: 8b45feccd7227634c9a9c6750795aa12, type: 3}
