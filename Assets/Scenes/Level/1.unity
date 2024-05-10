@@ -6132,7 +6132,7 @@ MonoBehaviour:
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 723bb0a7467ca9048909ef4fef84a29e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1f0ece9def209894880faba0bc0dacef, type: 2}
 --- !u!4 &426044941
 Transform:
   m_ObjectHideFlags: 0
@@ -7014,7 +7014,7 @@ MonoBehaviour:
   _changerStats: {fileID: 1222438728}
   _bank: {fileID: 2068412911}
   _counterUnit: {fileID: 2034646415}
-  _groupCustomizerData: {fileID: 11400000, guid: 6f48c30cb16bd704d9d88eed3abb758f, type: 2}
+  _groupCustomizerData: {fileID: 11400000, guid: abe10fd8e0aa1ee4682c54354b670186, type: 2}
   _selectorGroupUnit: {fileID: 1532580627}
   _castleAi: {fileID: 133553829}
   _triggerZone: {fileID: 156796809}

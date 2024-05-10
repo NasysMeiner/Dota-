@@ -8325,7 +8325,7 @@ MonoBehaviour:
   _changerStats: {fileID: 1222438728}
   _bank: {fileID: 2068412911}
   _counterUnit: {fileID: 2034646415}
-  _groupCustomizerData: {fileID: 11400000, guid: 6f48c30cb16bd704d9d88eed3abb758f, type: 2}
+  _groupCustomizerData: {fileID: 11400000, guid: 09407c23b59c44f429870f5eaba3904c, type: 2}
   _selectorGroupUnit: {fileID: 1532580627}
   _castleAi: {fileID: 133553829}
   _triggerZone: {fileID: 156796809}
