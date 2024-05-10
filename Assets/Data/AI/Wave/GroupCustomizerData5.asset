@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c9cab1d219b34aa80166aee6ebba3, type: 3}
+  m_Name: GroupCustomizerData5
+  m_EditorClassIdentifier: 
+  GroupUnits:
+  - TypeGroup: 1
+    VariertyUnits: 01000000
+  - TypeGroup: 1
+    VariertyUnits: 00000000
+  - TypeGroup: 1
+    VariertyUnits: 03000000
+  - TypeGroup: 1
+    VariertyUnits: 02000000
+  - TypeGroup: 1
+    VariertyUnits: 000000000000000000000000
+  - TypeGroup: 1
+    VariertyUnits: 030000000300000003000000
+  - TypeGroup: 1
+    VariertyUnits: 0300000003000000
+  - TypeGroup: 1
+    VariertyUnits: 0000000000000000
+  - TypeGroup: 1
+    VariertyUnits: 0100000001000000
+  - TypeGroup: 1
+    VariertyUnits: 0200000002000000
+  - TypeGroup: 0
+    VariertyUnits: 01000000
+  - TypeGroup: 0
+    VariertyUnits: 00000000
+  - TypeGroup: 0
+    VariertyUnits: 02000000
+  - TypeGroup: 0
+    VariertyUnits: 03000000
+  - TypeGroup: 0
+    VariertyUnits: 0300000003000000
+  - TypeGroup: 0
+    VariertyUnits: 0200000002000000
+  - TypeGroup: 0
+    VariertyUnits: 0100000001000000
+  - TypeGroup: 0
+    VariertyUnits: 0000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 000000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 010000000200000002000000
+  - TypeGroup: 0
+    VariertyUnits: 030000000300000000000000
+  - TypeGroup: 0
+    VariertyUnits: 020000000200000000000000
+  - TypeGroup: 0
+    VariertyUnits: 020000000000000000000000
