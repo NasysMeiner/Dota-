@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
+  m_Name: StandartArcher_1
+  m_EditorClassIdentifier: 
+  Type: 1
+  WeightUnit: 160
+  Name: StArcher
+  Avatar: {fileID: 9100000, guid: 1b148d6db42c87e4892e4d9d1b910b39, type: 2}
+  Bias: {x: -0.089, y: 0.793, z: 0}
+  BiasShadow: {x: 0, y: -4, z: 0}
+  IsShadowBias: 0
+  BiasHPBar: {x: 0, y: 1.36, z: 0}
+  Effects: []
+  Scale: 0.4
+  ScaleEffact: 0
+  Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
+  SkillList: []
+  LevelUpList:
+  - {fileID: 11400000, guid: 5b350dc195dd1fb4b975acf0857e2169, type: 2}
+  - {fileID: 11400000, guid: 0882f83855115aa4f8958febe8c9dccf, type: 2}
+  ColorEffectDamage: {r: 0.41960785, g: 0.7411765, b: 1, a: 1}
+  HealPoint: 320
+  AttackDamage: 30
+  AttackRange: 5
+  VisibilityRange: 7
+  AttackSpeed: 1
+  Speed: 1.5
+  ApproximationFactor: 1
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
+  IsDoubleAttack: 0
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: 3599141429173347808, guid: 9e6285cc5ff254949961a99807ba184c, type: 3}
+  TimeEffectDeath: 0.1
+  Price: 10
+  CurrentLevel: 1
+  MaxLevel: 3
+  Stats:
+  - Type: 0
+    Levels:
+    - 320
+    - 320
+    - 320
+  - Type: 1
+    Levels:
+    - 30
+    - 50
+    - 70
+  - Type: 2
+    Levels:
+    - 1
+    - 1
+    - 1
+  Prices: 000000003200000064000000
+  Icon: {fileID: 21300000, guid: 01edb9ccee5855540b9f8e87d6c76574, type: 3}
+  Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed774ad0889d00141a288d83d7bc8756, type: 3}
+  m_Name: ArcherAi_3
+  m_EditorClassIdentifier: 
+  Type: 1
+  WeightUnit: 585
+  Name: Archer
+  Avatar: {fileID: 9100000, guid: d7b938ec09c82684b891fd2ff83468f6, type: 2}
+  Bias: {x: -0.089, y: 0.12, z: 0}
+  BiasShadow: {x: 0.21, y: -1.27, z: 0}
+  IsShadowBias: 0
+  BiasHPBar: {x: 0, y: 1.32, z: 0}
+  Effects: []
+  Scale: 0.45
+  ScaleEffact: 0
+  Sprite: {fileID: 21300000, guid: 49e94c36875d7314fb2dd3b25a400f3d, type: 3}
+  SkillList: []
+  LevelUpList:
+  - {fileID: 11400000, guid: 20b89142440b818418cfd0c5e3302821, type: 2}
+  - {fileID: 11400000, guid: b7b5086b59d344d47a24b26e18f23b96, type: 2}
+  ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
+  HealPoint: 450
+  AttackDamage: 70
+  AttackRange: 4
+  VisibilityRange: 6
+  AttackSpeed: 1
+  Speed: 0.75
+  ApproximationFactor: 1
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
+  IsDoubleAttack: 0
+  EffectDamage: {fileID: 0}
+  EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: 3599141429173347808, guid: 01072cfa0bab2814b91aee2293fd6a32, type: 3}
+  TimeEffectDeath: 0
+  Price: 20
+  CurrentLevel: 1
+  MaxLevel: 3
+  Stats:
+  - Type: 0
+    Levels:
+    - 450
+    - 450
+    - 450
+  - Type: 1
+    Levels:
+    - 70
+    - 90
+    - 110
+  - Type: 2
+    Levels:
+    - 1
+    - 1
+    - 1
+  Prices: 000000000000000000000000
+  Icon: {fileID: 21300000, guid: 648d9a3e35fb3f24f9aaf954ae50ede1, type: 3}
+  Bullet: {fileID: 4470804474966191576, guid: 48cdd978038ee0e43be28aaf76e88e96, type: 3}

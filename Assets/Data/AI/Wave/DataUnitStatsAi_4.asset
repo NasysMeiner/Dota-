@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcbcaf2d11bb954ab50a1bfa558ab0a, type: 3}
+  m_Name: DataUnitStatsAi_4
+  m_EditorClassIdentifier: 
+  StatsPrefab:
+  - TypeUnit: 0
+    VariertyUnit: 0
+    WarriorData: {fileID: 11400000, guid: 15c2c7d08cccd1b4c85dffcf9ea3d093, type: 2}
+  - TypeUnit: 1
+    VariertyUnit: 3
+    WarriorData: {fileID: 11400000, guid: f5731bb46a507b24d90096268979abae, type: 2}
+  - TypeUnit: 0
+    VariertyUnit: 1
+    WarriorData: {fileID: 11400000, guid: a990f836b000f2343a39bfeb792a1f37, type: 2}
+  - TypeUnit: 1
+    VariertyUnit: 2
+    WarriorData: {fileID: 11400000, guid: 7fb5849e8a97a434b9197569fe5c9871, type: 2}

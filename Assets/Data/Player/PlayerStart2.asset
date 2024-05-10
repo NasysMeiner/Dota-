@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Player
   ColorUnit: {r: 0.24813384, g: 1, b: 0.15566039, a: 1}
   StartMoney: 0
-  DataStructure: {fileID: 11400000, guid: 5f27548978e4af54b855997bcde35322, type: 2}
+  DataStructure: {fileID: 11400000, guid: f12e28e824676954a95047885a4d72a0, type: 2}

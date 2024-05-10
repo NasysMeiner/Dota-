@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: SaveDataUnitStatsPlayer
   m_EditorClassIdentifier: 
   StatsPrefab:
-  - VariertyUnit: 0
+  - TypeUnit: 0
+    VariertyUnit: 0
     WarriorData: {fileID: 11400000, guid: 5ba2686f69f205c43a68c52c6d9eda45, type: 2}
-  - VariertyUnit: 3
+  - TypeUnit: 0
+    VariertyUnit: 3
     WarriorData: {fileID: 11400000, guid: c521fc2a04a3bd74bbac4d7e9876320a, type: 2}
-  - VariertyUnit: 1
+  - TypeUnit: 0
+    VariertyUnit: 1
     WarriorData: {fileID: 11400000, guid: bbc5d6b5b4ed4704d96b99d25b402784, type: 2}
-  - VariertyUnit: 2
+  - TypeUnit: 0
+    VariertyUnit: 2
     WarriorData: {fileID: 11400000, guid: d7f65ecf3c74a3941997ff90350e86c0, type: 2}
