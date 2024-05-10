@@ -25,9 +25,9 @@ MonoBehaviour:
   ScaleEffact: 3
   Sprite: {fileID: 21300000, guid: 3b218ff1bca71a842a8d23f1712234ab, type: 3}
   SkillList:
-  - {fileID: 11400000, guid: 73daea12b307c1849af3a7056543ce09, type: 2}
+  - {fileID: 11400000, guid: 24b8ea9f754c8004d84908af0e23f601, type: 2}
   LevelUpList:
-  - {fileID: 11400000, guid: 689af3eed5477aa41a7b318cee38b89b, type: 2}
+  - {fileID: 11400000, guid: d40e68fd64a099b43bb4b9d22c861192, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   TimeWait: 2
   HealPoint: 2200
