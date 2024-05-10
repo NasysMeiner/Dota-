@@ -8427,7 +8427,7 @@ MonoBehaviour:
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: cacefa48fc6d5494f907e06cd3ca886c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d79df061030ac354988b2e2a67bd49b8, type: 2}
 --- !u!4 &426044941
 Transform:
   m_ObjectHideFlags: 0
@@ -12297,7 +12297,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671899285
 GameObject:
