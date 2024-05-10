@@ -86,7 +86,7 @@ public class RadiusSpawner : MonoBehaviour
                     towerButton.Repair();
 
                     return;
-                }        
+                }
 
                 if(hit.collider.TryGetComponent(out BarrackBoxId barrack))
                 {
@@ -95,10 +95,6 @@ public class RadiusSpawner : MonoBehaviour
                 else if (_currentUnitId >= 0 && hit.collider.TryGetComponent(out Ground ground) && CheckInSpawn(hit.point))
                 {
                     Spawn(hit);
-                }
-                else if (_currentUnitId == -1)
-                {
-                    ChangeId?.Invoke(_currentUnitId);
                 }
                 else
                 {
