@@ -34,8 +34,9 @@ public class WarriorData : ScriptableObject
 
     public List<ISkill> AllSkillList = new();
 
-    [Header("Stats")]
+    public float TimeWait;
 
+    [Header("Stats")]
     [Range(1, 100000)]
     public float HealPoint;
 
@@ -118,6 +119,7 @@ public class WarriorData : ScriptableObject
         BiasHPBar = warriorData.BiasHPBar;
         Scale = warriorData.Scale;
         ScaleEffact = warriorData.ScaleEffact;
+        TimeWait = warriorData.TimeWait;
 
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;

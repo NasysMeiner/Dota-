@@ -2320,7 +2320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6469628139357377571}
   - component: {fileID: 6469628139357377569}
-  - component: {fileID: 6469628139357377570}
+  - component: {fileID: 8489777448775809277}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6469628139357377570}
+      - m_Target: {fileID: 8489777448775809277}
         m_TargetAssemblyTypeName: AudioSlider, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
         m_Mode: 1
@@ -2415,7 +2415,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6469628139357377570
+--- !u!114 &8489777448775809277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6469628139357377572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03b6a49256981c47bf2738097bd0800, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b45606570fd5d44086bd1bb26f5e6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6469628139441854574
@@ -2926,7 +2926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9040419255836041558}
   - component: {fileID: 2866113168631933583}
-  - component: {fileID: 1977142341849859477}
+  - component: {fileID: 6447826843808510518}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3009,7 +3009,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1977142341849859477}
+      - m_Target: {fileID: 6447826843808510518}
         m_TargetAssemblyTypeName: AudioSlider, Assembly-CSharp
         m_MethodName: ChangeUiVolume
         m_Mode: 1
@@ -3021,7 +3021,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1977142341849859477
+--- !u!114 &6447826843808510518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3030,7 +3030,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6523530072736484297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03b6a49256981c47bf2738097bd0800, type: 3}
+  m_Script: {fileID: 11500000, guid: bc813c1a7dacbc042a84579de964083f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6786783808880614982
@@ -3580,7 +3580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196795633967544911}
   - component: {fileID: 970974489446803619}
-  - component: {fileID: 168045522869747524}
+  - component: {fileID: 8425544138831385532}
   m_Layer: 5
   m_Name: SFX
   m_TagString: Untagged
@@ -3663,7 +3663,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 168045522869747524}
+      - m_Target: {fileID: 8425544138831385532}
         m_TargetAssemblyTypeName: AudioSlider, Assembly-CSharp
         m_MethodName: ChangeEffectVolume
         m_Mode: 1
@@ -3675,7 +3675,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &168045522869747524
+--- !u!114 &8425544138831385532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3684,7 +3684,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8799191061318896918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03b6a49256981c47bf2738097bd0800, type: 3}
+  m_Script: {fileID: 11500000, guid: 35ece966e1e55584a93836714bbf86bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9013722281063928100

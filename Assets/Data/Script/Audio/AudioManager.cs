@@ -21,6 +21,9 @@ public class AudioManager : MonoBehaviour
     private Bus _uiBus;
 
     public float MasterVolume => _masterVolume;
+    public float MusicVolume => _musicVolume;
+    public float EffectVolume => _effectVolume;
+    public float UiVolume => _uiVolume;
 
     private void Awake()
     {

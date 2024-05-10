@@ -29,6 +29,7 @@ MonoBehaviour:
   LevelUpList:
   - {fileID: 11400000, guid: 689af3eed5477aa41a7b318cee38b89b, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
+  TimeWait: 2
   HealPoint: 2200
   AttackDamage: 120
   AttackRange: 1

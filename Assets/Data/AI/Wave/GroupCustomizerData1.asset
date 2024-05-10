@@ -15,14 +15,8 @@ MonoBehaviour:
   GroupUnits:
   - TypeGroup: 0
     VariertyUnits: 01000000030000000200000003000000
-  - TypeGroup: 0
-    VariertyUnits: 03000000030000000300000003000000
   - TypeGroup: 1
     VariertyUnits: 01000000010000000100000001000000
-  - TypeGroup: 0
-    VariertyUnits: 02000000020000000300000003000000
-  - TypeGroup: 0
-    VariertyUnits: 00000000000000000000000003000000
   - TypeGroup: 1
     VariertyUnits: 01000000000000000000000002000000
   - TypeGroup: 1
