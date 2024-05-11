@@ -20,7 +20,7 @@ MonoBehaviour:
   PrefabSkill: {fileID: 2737793477371155391, guid: c3c69e7beb67bb741a0c387bf1d49943, type: 3}
   ContainerSkill:
     TypeSkill: 0
-  effect: {fileID: -5316183305773250156, guid: cca7d78a1cdcaad40a1cf56a7771e474, type: 3}
+  effect: {fileID: -5316183305773250156, guid: 1e7d4a6d284d83f44b36cd4f51551be6, type: 3}
   AttackScaling: 0
   Damage: 15
   Time: 0.2
