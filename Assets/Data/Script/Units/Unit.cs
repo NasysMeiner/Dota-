@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -175,7 +174,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _animator.transform.localScale = Vector3.one;//Temporarily, there are no animations yet
         }
 
-        foreach(EffectSettings effect in warriorData.Effects)
+        foreach (EffectSettings effect in warriorData.Effects)
         {
             Effect newEffect = Instantiate(effect.effect, transform);
             newEffect.ChangePosition(effect.position);
