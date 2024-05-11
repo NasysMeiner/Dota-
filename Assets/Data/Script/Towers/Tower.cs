@@ -7,6 +7,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     [SerializeField] private TowerRadius _towerRadius;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private AllocableObject _allocableObject;
+    [SerializeField] private Barrack _barrack;
 
     private bool _drawRadius;
 
@@ -26,11 +27,13 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     private Trash _trash;
     private Counter _counter;
     private Unit _currentTarget = null;
+    private UpgrateStatsView _upgrateStatsView;
 
     private Effect _effectDamage;
     private Effect _effectDestruct;
     private Effect _effectStart;
     private float _timeStartEffect;
+    private ViewSkillPay _skillPay;
 
     private float _time = 0;
 
@@ -77,7 +80,12 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     {
         Died?.Invoke();
 
-        if(_allocableObject != null)
+        _upgrateStatsView.DestructTower(_barrack.StartIdUnit);
+
+        if(_skillPay != null)
+            _skillPay.Destruct();
+
+        if (_allocableObject != null)
             _allocableObject.SetOffSelection();
 
         _isAlive = false;
@@ -92,6 +100,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
 
     public void Resurrect()
     {
+        if (_skillPay != null)
+            _skillPay.Return();
+
         if (_allocableObject != null)
             _allocableObject.SetOnSelection();
 
@@ -119,16 +130,20 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _name = name;
     }
 
-    public void Initialization(TowerData towerData, Trash trash, Counter counter)
+    public void Initialization(TowerData towerData, Trash trash, Counter counter, UpgrateStatsView upgrateStatsView)
     {
         _trash = trash;
         _counter = counter;
+        _upgrateStatsView = upgrateStatsView;
 
         _damage = towerData.Damage;
         _attackRange = towerData.AttackRange;
         _speedAttack = towerData.SpeedAttack;
         _prefabBullet = towerData.Bullet;
         _drawRadius = towerData.DrawRadius;
+
+        if (Name == "Player")
+            _skillPay = GetComponent<ViewSkillPay>();
 
         _towerRadius.InitTowerRadius(this, _attackRange);
 
