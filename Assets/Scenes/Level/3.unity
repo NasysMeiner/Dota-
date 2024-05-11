@@ -9359,6 +9359,9 @@ MonoBehaviour:
   _unitStatsBlockPrefab: {fileID: 7892503245446334662, guid: 9bef993fe55685e41b9d152c2d593faf, type: 3}
   _selectionSelector: {fileID: 519420034}
   _bank: {fileID: 2068412911}
+  _skillPays: []
+  _effect: {fileID: 0}
+  _barracks: []
 --- !u!114 &493753303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34207,6 +34210,10 @@ PrefabInstance:
     - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_Name
       value: Canvas_Mein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236681730775049464, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: _loader
