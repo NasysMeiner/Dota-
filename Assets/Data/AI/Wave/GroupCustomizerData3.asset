@@ -13,49 +13,19 @@ MonoBehaviour:
   m_Name: GroupCustomizerData3
   m_EditorClassIdentifier: 
   GroupUnits:
+  - TypeGroup: 0
+    VariertyUnits: 0100000001000000030000000200000002000000
+  - TypeGroup: 0
+    VariertyUnits: 00000000000000000000000003000000030000000300000003000000
+  - TypeGroup: 0
+    VariertyUnits: 0000000000000000000000000300000002000000
+  - TypeGroup: 0
+    VariertyUnits: 0100000000000000000000000300000003000000
+  - TypeGroup: 0
+    VariertyUnits: 00000000030000000300000002000000
   - TypeGroup: 1
-    VariertyUnits: 01000000
+    VariertyUnits: 0100000001000000010000000000000000000000
   - TypeGroup: 1
-    VariertyUnits: 00000000
+    VariertyUnits: 0100000002000000020000000300000003000000
   - TypeGroup: 1
-    VariertyUnits: 03000000
-  - TypeGroup: 1
-    VariertyUnits: 02000000
-  - TypeGroup: 1
-    VariertyUnits: 000000000000000000000000
-  - TypeGroup: 1
-    VariertyUnits: 030000000300000003000000
-  - TypeGroup: 1
-    VariertyUnits: 0300000003000000
-  - TypeGroup: 1
-    VariertyUnits: 0000000000000000
-  - TypeGroup: 1
-    VariertyUnits: 0100000001000000
-  - TypeGroup: 1
-    VariertyUnits: 0200000002000000
-  - TypeGroup: 0
-    VariertyUnits: 01000000
-  - TypeGroup: 0
-    VariertyUnits: 00000000
-  - TypeGroup: 0
-    VariertyUnits: 02000000
-  - TypeGroup: 0
-    VariertyUnits: 03000000
-  - TypeGroup: 0
-    VariertyUnits: 0300000003000000
-  - TypeGroup: 0
-    VariertyUnits: 0200000002000000
-  - TypeGroup: 0
-    VariertyUnits: 0100000001000000
-  - TypeGroup: 0
-    VariertyUnits: 0000000000000000
-  - TypeGroup: 0
-    VariertyUnits: 000000000000000000000000
-  - TypeGroup: 0
-    VariertyUnits: 010000000200000002000000
-  - TypeGroup: 0
-    VariertyUnits: 030000000300000000000000
-  - TypeGroup: 0
-    VariertyUnits: 020000000200000000000000
-  - TypeGroup: 0
-    VariertyUnits: 020000000000000000000000
+    VariertyUnits: 0000000000000000000000000300000003000000

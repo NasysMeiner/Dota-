@@ -21,6 +21,6 @@ MonoBehaviour:
   ContainerSkill:
     TypeSkill: 1
   effect: {fileID: 8993748079310791262, guid: 90a0468bf67aeb34a84f4605571e49e5, type: 3}
-  AttackScaling: 2
+  AttackScaling: 3
   Damage: 0
   Radius: 2
