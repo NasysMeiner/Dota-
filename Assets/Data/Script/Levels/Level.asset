@@ -21,14 +21,14 @@ MonoBehaviour:
     status: 1
     Icon: {fileID: 21300000, guid: 5e8a57a792a94a547a80147a802ebca2, type: 3}
   - Scene: 2
-    status: 1
+    status: 0
     Icon: {fileID: 21300000, guid: cbbbcbae08745fa43a27d07054dfc209, type: 3}
   - Scene: 3
-    status: 1
+    status: 0
     Icon: {fileID: 21300000, guid: 3074cbc894222b34fbc27edf71d3077a, type: 3}
   - Scene: 4
-    status: 1
+    status: 0
     Icon: {fileID: 21300000, guid: bd256135e6687fb4f9e90bda182ece44, type: 3}
   - Scene: 5
-    status: 1
+    status: 0
     Icon: {fileID: 21300000, guid: d588182061685914cacce305b1bc23dc, type: 3}
