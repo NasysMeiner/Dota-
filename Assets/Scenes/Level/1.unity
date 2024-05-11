@@ -6924,6 +6924,10 @@ MonoBehaviour:
   _unitStatsBlockPrefab: {fileID: 7892503245446334662, guid: 9bef993fe55685e41b9d152c2d593faf, type: 3}
   _selectionSelector: {fileID: 519420034}
   _bank: {fileID: 2068412911}
+  _skillPays: []
+  _effect: {fileID: 0}
+  _barracks:
+  - {fileID: 972254935}
 --- !u!114 &493753303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7620,8 +7624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _allocableObjects:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1198707809}
+  - {fileID: 190692653}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0

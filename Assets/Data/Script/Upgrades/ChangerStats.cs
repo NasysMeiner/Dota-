@@ -44,6 +44,22 @@ public class ChangerStats : MonoBehaviour
         }
     }
 
+    public bool CheckUnlock(string name, int id)
+    {
+        WarriorData warrior = _unitsStats[name][id];
+
+        if (warrior.CheckLevelUp())
+            if (_bank.Pay(warrior.GetPriceLevel(), name, true))
+                return true;
+
+        if (warrior.CheckAllUnlockSkil())
+            for(int i = 0; i < warrior.SkillConts.Count; i++)
+                if(_bank.Pay(warrior.GetPriceSkill(i), name, true))
+                    return true;
+
+        return false;
+    }
+
     public void UnlockSkill(string name, int id, int idSkill)
     {
         WarriorData warrior = _unitsStats[name][id];

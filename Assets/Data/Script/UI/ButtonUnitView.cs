@@ -21,6 +21,30 @@ public class ButtonUnitView : PanelStat
         DrawRadius();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            if (_buttons.Count > 0)
+                ChangeUnit(_buttons[0]);
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            if (_buttons.Count > 1)
+                ChangeUnit(_buttons[1]);
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            if (_buttons.Count > 2)
+                ChangeUnit(_buttons[2]);
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            if (_buttons.Count > 3)
+                ChangeUnit(_buttons[3]);
+        }
+    }
+
     public void Init(RadiusSpawner radiusSpawner, List<ViewSprite> images)
     {
         _radiusSpawner = radiusSpawner;
@@ -35,12 +59,15 @@ public class ButtonUnitView : PanelStat
 
     public void StartGame()
     {
-        foreach(var button in _buttons)
+        foreach (var button in _buttons)
             button.OnButton();
     }
 
     public void ChangeUnit(ButtonStatus button)
     {
+        if (button.Interectable == false)
+            return;
+
         if (_currentButton != null)
             _currentButton.InActiveButton();
 

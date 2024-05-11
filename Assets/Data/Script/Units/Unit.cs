@@ -22,6 +22,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     //||B�������||
     public string CurrentState;
+    public Vector3 Direction;
     public bool Pathboll;
     public int _id;
     public string _name;
@@ -94,7 +95,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             UnitUpdate();
 
         if (_spriteRenderer != null)
+        {
             _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
+
+            if(_effectAttack != null)
+                _effectAttack.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
+
+            if(_effectDamage != null)
+                _effectDamage.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
+        }
 
         if (_meshAgent.velocity == Vector3.zero && _time >= _timeInActive)
         {
@@ -169,7 +178,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _animator.transform.localScale = Vector3.one;//Temporarily, there are no animations yet
         }
 
-        foreach(EffectSettings effect in warriorData.Effects)
+        foreach (EffectSettings effect in warriorData.Effects)
         {
             Effect newEffect = Instantiate(effect.effect, transform);
             newEffect.ChangePosition(effect.position);
@@ -230,6 +239,17 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             _effectDeath = Instantiate(warriorData.EffectDeath, transform);
 
         _healthBarUpdater.InitHealthBar(this);
+    }
+
+    public void ChangeFlip()
+    {
+        Vector3 direction = CurrentTarget.Position - transform.position;
+        Direction = direction;
+
+        if (direction.x > 0)
+            _spriteRenderer.flipX = true;
+        else if (direction.x < 0)
+            _spriteRenderer.flipX = false;
     }
 
     public virtual void GetDamage(float damage, AttackType attackType)

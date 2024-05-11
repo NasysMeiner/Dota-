@@ -9706,6 +9706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2c841570d1aa64cab529ef0e7529cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleSystems:
+  - {fileID: 2717320181371355835}
+  - {fileID: 7143297010404879188}
+  - {fileID: 8166828815628560675}
 --- !u!1 &8166828815628560673
 GameObject:
   m_ObjectHideFlags: 0
