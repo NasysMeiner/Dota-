@@ -8295,7 +8295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa3cf430e4b2d43b06766f3348444f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameInfoPlayer: {fileID: 11400000, guid: 097afe0f4c13600489508bcf1eb17f83, type: 2}
+  _gameInfoPlayer: {fileID: 11400000, guid: f45db88acf4261248a33cd4ce9a49961, type: 2}
   _pointCreatorPlayer: {fileID: 14237582}
   _castlePlayer: {fileID: 1973439890}
   _barracksDataPlayer: {fileID: 11400000, guid: c9e74c03ad8fb254eb1b19b8dab33f9d, type: 2}
@@ -8307,7 +8307,7 @@ MonoBehaviour:
   - {fileID: 1591314832}
   - {fileID: 7363759334548920978}
   - {fileID: 7363759335501395146}
-  _gameInfoAi: {fileID: 11400000, guid: a51a8f501e1f9a54bb135678cfe56d92, type: 2}
+  _gameInfoAi: {fileID: 11400000, guid: dfdba83868bea1043a60ee0317a67414, type: 2}
   _pointCreatorAi: {fileID: 1233358037}
   _castleAi: {fileID: 133553829}
   _barracksDataAi: {fileID: 11400000, guid: b87f6680fa0d29e4b8c988bd944ab280, type: 2}
@@ -8392,10 +8392,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOverwrite: 1
-  _gameInfoPlayer: {fileID: 11400000, guid: 097afe0f4c13600489508bcf1eb17f83, type: 2}
+  _gameInfoPlayer: {fileID: 11400000, guid: f45db88acf4261248a33cd4ce9a49961, type: 2}
   _prefabUnitStatsPlayer: {fileID: 11400000, guid: d8f228582e6b6e145a07c03355724d3c, type: 2}
   _emptyUnitStatsPlayer: {fileID: 11400000, guid: c056a71b1525428419123f7c5019a28b, type: 2}
-  _gameInfoAi: {fileID: 11400000, guid: a51a8f501e1f9a54bb135678cfe56d92, type: 2}
+  _gameInfoAi: {fileID: 11400000, guid: dfdba83868bea1043a60ee0317a67414, type: 2}
   _prefabUnitStatsAi: {fileID: 11400000, guid: 13b9a408840268f4f993d84141d3ed37, type: 2}
   _emptyUnitStatsAi: {fileID: 11400000, guid: 4523a37312a0bfd448a485f7d537c52d, type: 2}
   _autoSpawner: {fileID: 1532580625}
