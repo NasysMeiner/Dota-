@@ -24,6 +24,17 @@ public class LevelManager : MonoBehaviour
         InitMenuLevel();
     }
 
+    public void Reset()
+    {
+        _isReset = true;
+
+        foreach(var level in _selectedLevels)
+            Destroy(level.gameObject);
+
+        _selectedLevels.Clear();
+        InitMenuLevel();
+    }
+
     public void InitMenuLevel()
     {
         _currentData.LoadData(_countLevels);
