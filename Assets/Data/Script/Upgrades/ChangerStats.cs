@@ -46,7 +46,6 @@ public class ChangerStats : MonoBehaviour
 
     public bool CheckUnlock(string name, int id)
     {
-        Debug.Log(name + " " + id);
         WarriorData warrior = _unitsStats[name][id];
 
         if (warrior.CheckLevelUp())

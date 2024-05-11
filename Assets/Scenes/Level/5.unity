@@ -8207,8 +8207,8 @@ MonoBehaviour:
   _bank: {fileID: 2068412911}
   _skillPays:
   - {fileID: 1591314837}
-  - {fileID: 1591314837}
-  _effect: {fileID: 0}
+  - {fileID: 7363759335501395159}
+  _effect: {fileID: 2182568148618652356, guid: ce5ce86059e6e4b4aba0f85af20e60b1, type: 3}
   _barracks:
   - {fileID: 27970503}
   - {fileID: 284226282}
