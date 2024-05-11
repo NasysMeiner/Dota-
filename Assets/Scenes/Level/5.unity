@@ -4020,7 +4020,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190692649}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.1671746, y: 3.3877783, z: 3.4481056}
@@ -16902,7 +16902,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198707805}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.1382153, y: 2.750686, z: 3.5363452}
@@ -17423,7 +17423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236434642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.513335, y: 9.09, z: 0}
+  m_LocalPosition: {x: -18.246668, y: 0.6603327, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19331,7 +19331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403489581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.79, y: -7.3279996, z: 0}
+  m_LocalPosition: {x: 21.723, y: 1.6053319, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19653,6 +19653,10 @@ PrefabInstance:
     - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_Name
       value: Canvas_Mein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236681730775049464, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: _loader
@@ -21382,6 +21386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591314835}
   - component: {fileID: 1591314832}
+  - component: {fileID: 1591314836}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -21403,7 +21408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1521510033}
   _spriteRenderer: {fileID: 1157016398}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 1198707809}
 --- !u!4 &1591314835
 Transform:
   m_ObjectHideFlags: 0
@@ -21412,7 +21417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591314831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.3102, y: 0.32399893, z: 0}
+  m_LocalPosition: {x: -8.46, y: 5.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21423,6 +21428,22 @@ Transform:
   m_Father: {fileID: 1222438727}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1591314836
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591314831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.18}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1591779619
 GameObject:
   m_ObjectHideFlags: 0
@@ -24530,7 +24551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825787818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.35, y: 0.88, z: 0}
+  m_LocalPosition: {x: -11.9330015, y: 9.490001, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28514,7 +28535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113083640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.94, y: 1, z: 0}
+  m_LocalPosition: {x: 14.806668, y: -7.459998, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28749,6 +28770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789689458495078806}
   - component: {fileID: 789689458495078805}
+  - component: {fileID: 789689458495078807}
   m_Layer: 8
   m_Name: TowerAi
   m_TagString: Untagged
@@ -28770,7 +28792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 704202271}
   _spriteRenderer: {fileID: 789689458660696907}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 480036196}
 --- !u!4 &789689458495078806
 Transform:
   m_ObjectHideFlags: 0
@@ -28779,7 +28801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789689458495078794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.630199, y: -4.54, z: 0}
+  m_LocalPosition: {x: 12.79, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28790,6 +28812,22 @@ Transform:
   m_Father: {fileID: 741107101}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &789689458495078807
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789689458495078794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.18}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!4 &789689458660696904
 Transform:
   m_ObjectHideFlags: 0
@@ -29176,7 +29214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6279761074654653244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.88, y: 0.3759997, z: 0}
+  m_LocalPosition: {x: 8.6, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29201,7 +29239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1730996448}
   _spriteRenderer: {fileID: 6279761075092228605}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 190692653}
 --- !u!1 &6279761074654653244
 GameObject:
   m_ObjectHideFlags: 0
@@ -29212,6 +29250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279761074654653216}
   - component: {fileID: 6279761074654653219}
+  - component: {fileID: 6279761074654653245}
   m_Layer: 8
   m_Name: TowerAi3
   m_TagString: Untagged
@@ -29219,6 +29258,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!58 &6279761074654653245
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279761074654653244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.27}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!212 &6279761075092228605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29519,7 +29574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7363759335501395157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.31, y: 5.2578006, z: 0}
+  m_LocalPosition: {x: -12.35, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29544,7 +29599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 976074135}
   _spriteRenderer: {fileID: 7363759335671453204}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 256475130}
 --- !u!1 &7363759335501395157
 GameObject:
   m_ObjectHideFlags: 0
@@ -29555,6 +29610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7363759335501395145}
   - component: {fileID: 7363759335501395146}
+  - component: {fileID: 7363759335501395158}
   m_Layer: 8
   m_Name: Tower (2)
   m_TagString: Untagged
@@ -29562,6 +29618,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!58 &7363759335501395158
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363759335501395157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.15}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!212 &7363759335671453204
 SpriteRenderer:
   m_ObjectHideFlags: 0
