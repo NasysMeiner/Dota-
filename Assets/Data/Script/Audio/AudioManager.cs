@@ -34,6 +34,11 @@ public class AudioManager : MonoBehaviour
         _effectBus = RuntimeManager.GetBus("bus:/SFX");
         _uiBus = RuntimeManager.GetBus("bus:/UI");
 
+        _masterBus.setPaused(true);
+        _musicBus.setPaused(true);
+        _effectBus.setPaused(true);
+        _uiBus.setPaused(true);
+
         _masterBus.setVolume(_masterVolume);
         _musicBus.setVolume(_musicVolume);
         _effectBus.setVolume(_effectVolume);
@@ -49,11 +54,17 @@ public class AudioManager : MonoBehaviour
     public void Stop()
     {
         _masterBus.setPaused(true);
+        _musicBus.setPaused(true);
+        _effectBus.setPaused(true);
+        _uiBus.setPaused(true);
     }
 
     public void Play()
     {
         _masterBus.setPaused(false);
+        _musicBus.setPaused(false);
+        _effectBus.setPaused(false);
+        _uiBus.setPaused(false);
     }
 
     public void ChangeMasterVolume(float volume)

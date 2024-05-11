@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void ReastartLevel()
+    public void RestartLevel()
     {
         Repository.SaveState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

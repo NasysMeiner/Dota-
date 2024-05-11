@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: ReastartLevel
+      - m_Target: {fileID: 3739202735940938908}
+        m_TargetAssemblyTypeName: PanelLoad, Assembly-CSharp
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 8182285785104101361}
   - component: {fileID: 8769076124564405579}
   - component: {fileID: 5101782193190319906}
+  - component: {fileID: 3739202735940938908}
   m_Layer: 5
   m_Name: Defeat
   m_TagString: Untagged
@@ -301,6 +302,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3739202735940938908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616807751198945132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b060f1624c5fcab4395892a83fbe796b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 0}
 --- !u!1 &7236695165430978074
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,8 +437,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 3739202735940938908}
+        m_TargetAssemblyTypeName: PanelLoad, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:

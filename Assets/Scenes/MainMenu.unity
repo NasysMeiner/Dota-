@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82073774f35e51c47b596465939fac9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isLoad: 0
+  _isReset: 0
   _sceneLoader: {fileID: 858200724}
   _audioManager: {fileID: 1858530650}
   _countLevels: {fileID: 11400000, guid: 31337be993bf52244a0a85cbc5eadf37, type: 2}
