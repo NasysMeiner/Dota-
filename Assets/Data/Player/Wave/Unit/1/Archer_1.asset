@@ -31,7 +31,7 @@ MonoBehaviour:
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   TimeWait: 0
   HealPoint: 450
-  AttackDamage: 70
+  AttackDamage: 130
   AttackRange: 4
   VisibilityRange: 6
   AttackSpeed: 1
@@ -55,9 +55,9 @@ MonoBehaviour:
     - 450
   - Type: 1
     Levels:
-    - 70
-    - 90
-    - 110
+    - 130
+    - 150
+    - 180
   - Type: 2
     Levels:
     - 1
