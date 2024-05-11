@@ -97,8 +97,12 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         if (_spriteRenderer != null)
         {
             _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
-            _effectAttack.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
-            _effectDamage.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
+
+            if(_effectAttack != null)
+                _effectAttack.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
+
+            if(_effectDamage != null)
+                _effectDamage.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
         }
 
         if (_meshAgent.velocity == Vector3.zero && _time >= _timeInActive)

@@ -14,6 +14,8 @@ public class ButtonStatus : MonoBehaviour
     private Image _image;
     private Button _button;
 
+    public bool Interectable => _button.interactable;
+
     private void Awake()
     {
         _image = GetComponent<Image>();
@@ -37,7 +39,7 @@ public class ButtonStatus : MonoBehaviour
     {
         _image.color = _standartColor;
     }
-
+    
     public void SetName(string name)
     {
         _name.text = name;
