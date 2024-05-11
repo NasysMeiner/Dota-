@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private bool _isLoad;
+    [SerializeField] private bool _isReset;
     [Space]
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private AudioManager _audioManager;
@@ -24,12 +24,25 @@ public class LevelManager : MonoBehaviour
         InitMenuLevel();
     }
 
+    public void Reset()
+    {
+        _isReset = true;
+
+        foreach(var level in _selectedLevels)
+            Destroy(level.gameObject);
+
+        _selectedLevels.Clear();
+        InitMenuLevel();
+    }
+
     public void InitMenuLevel()
     {
         _currentData.LoadData(_countLevels);
 
-        if (Repository.TryGetData(out DataScene dataScene))
+        if (Repository.TryGetData(out DataScene dataScene) && _isReset == false)
             LoadDataDisk(dataScene);
+        else
+            _isReset = false;
 
         for (int i = 0; i < _currentData.Levels.Count; i++)
         {
@@ -73,6 +86,39 @@ public class DataScene
         foreach(LevelData levelData in dataCountLevels.Levels)
         {
             Scenes.Add(new SceneCell(levelData.Scene, levelData.status));
+        }
+    }
+
+    public bool TryGetNextScene(string currentScene, out string nextScene)
+    {
+        for(int i = 0; i < Scenes.Count; i++)
+        {
+            if (Scenes[i].Name == currentScene && (i + 1) < Scenes.Count)
+            {
+                nextScene = Scenes[i + 1].Name;
+
+                return true;
+            }
+        }
+
+        nextScene = default;
+
+        return false;
+    }
+
+    public void UnlockNextLevel(string currentScene)
+    {
+        for(int i = 0; i < Scenes.Count; i++)
+        {
+            if (Scenes[i].Name == currentScene)
+            {
+                Scenes[i].Status = 2;
+
+                if(i + 1 < Scenes.Count)
+                {
+                    Scenes[i + 1].Status = 1;
+                }
+            }
         }
     }
 }

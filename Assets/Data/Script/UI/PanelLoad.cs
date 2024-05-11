@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PanelLoad : MonoBehaviour
+public class PanelLoad : Panel
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameResultView _view;
+    [SerializeField] private Button _nextLevelButton;
+
+    public void RestartLevel()
     {
-        
+        _view.RestartLevel();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadLevel()
     {
-        
+        _view.LoadLevel("-");
+    }
+
+    public void LoadMainMenu()
+    {
+        _view.LoadMainMenu();
+    }
+
+    public void OnLevelButton()
+    {
+        _nextLevelButton.gameObject.SetActive(true);
     }
 }
