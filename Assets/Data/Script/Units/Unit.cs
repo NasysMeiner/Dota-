@@ -304,7 +304,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             CurrentState = _stateMachine.CurrentTextState;
             Pathboll = _meshAgent.hasPath;
 
-            if (_meshAgent.velocity.x != 0)
+            if (_meshAgent.velocity.x >= -0.1 && _meshAgent.velocity.x <= 0.1)
                 _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
         }
     }
