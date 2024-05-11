@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
+
     public void ReastartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

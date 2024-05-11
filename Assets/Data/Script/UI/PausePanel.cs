@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PausePanel : Panel
 {
+    [SerializeField] private SceneLoader _loader;
+
     public override void OpenPanel()
     {
         base.OpenPanel();
@@ -14,5 +14,15 @@ public class PausePanel : Panel
     {
         base.ClosePanel();
         Time.timeScale = 1;
+    }
+
+    public void RestartLevel()
+    {
+        _loader.ReastartLevel();
+    }
+
+    public void ReturnMainMenu()
+    {
+        _loader.LoadMainMenu();
     }
 }

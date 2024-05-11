@@ -58,7 +58,7 @@ public class AutoSpawner : MonoBehaviour
             newUnit.InitUnit(_castle.PointCreator.CreateRangePoint, _castle.EnemyCounter, 100, _castle.Name);
             newUnit.ChangePosition(newPointt);
 
-            yield return new WaitForSeconds(TimeSpawn);
+            yield return new WaitForSeconds(TimeSpawn + ((spawnUniy + 1 < maxSpawnUnit && groupUnit.VariertyUnits[spawnUniy + 1] == groupUnit.VariertyUnits[spawnUniy]) ? 0 : currentUnit.WarriorData.TimeWait));
 
             spawnUniy++;
         }

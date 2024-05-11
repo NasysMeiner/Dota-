@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class AudioSlider : MonoBehaviour
 {
-    private Slider _slider;
+    protected Slider _slider;
 
     private void Start()
     {
         _slider = GetComponent<Slider>();
-        _slider.value = AudioManager.Instance.MasterVolume;
+
+        InitSlider();
     }
 
     private void OnEnable()
@@ -17,8 +18,28 @@ public class AudioSlider : MonoBehaviour
             _slider.value = AudioManager.Instance.MasterVolume;
     }
 
-    public void ChangeVolume()
+    public void ChangeAllVolume()
     {
-        AudioManager.Instance.ChangeVolume(_slider.value);
+        AudioManager.Instance.ChangeMasterVolume(_slider.value);
+    }
+
+    public void ChangeMusicVolume()
+    {
+        AudioManager.Instance.ChangeMusicVolume(_slider.value);
+    }
+
+    public void ChangeEffectVolume()
+    {
+        AudioManager.Instance.ChangeEffectVolume(_slider.value);
+    }
+
+    public void ChangeUiVolume()
+    {
+        AudioManager.Instance.ChangeUiVolume(_slider.value);
+    }
+
+    protected virtual void InitSlider()
+    {
+        _slider.value = AudioManager.Instance.MasterVolume;
     }
 }

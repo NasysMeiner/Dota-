@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RepairTowerButton : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class RepairTowerButton : MonoBehaviour
 
     private string _name;
     private int _id;
+    private Vector3 _position;
 
     public bool IsActive { get; private set; }
 
@@ -23,6 +25,8 @@ public class RepairTowerButton : MonoBehaviour
         _name = name;
         _id = id;
         _priceText.text = price.ToString();
+        _position = position;
+
         transform.position = position;
         SetEnable();
     }

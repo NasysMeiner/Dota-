@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
+  m_Name: CastlePlayerData_4
+  m_EditorClassIdentifier: 
+  Income: 5
+  MaxHealpPoint: 3000
+  EffectDamage: {fileID: -4138366589552181953, guid: caafdc731359faa4c930488b01252df3, type: 3}
+  EffectDestruct: {fileID: 5334876924989911983, guid: 7b00427065a6e7f4fbc40a0db278589b, type: 3}
+  EffectStart: {fileID: 0}
+  TimeStartEffect: 0

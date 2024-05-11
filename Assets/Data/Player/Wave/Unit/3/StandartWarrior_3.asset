@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5ed965a43bc3346a451bcdc1cb98ca, type: 3}
+  m_Name: StandartWarrior_3
+  m_EditorClassIdentifier: 
+  Type: 0
+  WeightUnit: 855
+  Name: StWArrior
+  Avatar: {fileID: 9100000, guid: 5164c28e9f6e86e41bd607f68ae754f5, type: 2}
+  Bias: {x: 0, y: 0.76, z: 0}
+  BiasShadow: {x: 0, y: -2.2, z: 0}
+  IsShadowBias: 0
+  BiasHPBar: {x: 0, y: 0.73, z: 0}
+  Effects:
+  - effect: {fileID: 8379032181484805120, guid: 0c9ea385448af5845943dab05ebac5de, type: 3}
+    position: {x: 0, y: 1, z: 0}
+  Scale: 0.4
+  ScaleEffact: 0.5
+  Sprite: {fileID: 21300000, guid: eadc0a921ae9bc24da964cd98696f7a8, type: 3}
+  SkillList:
+  - {fileID: 11400000, guid: 7abe24d807cd1d94985f058a67eecbda, type: 2}
+  LevelUpList:
+  - {fileID: 11400000, guid: 10f82787db2dd8c4e88027132ff67855, type: 2}
+  ColorEffectDamage: {r: 0.4198113, g: 0.7421382, b: 1, a: 1}
+  TimeWait: 0
+  HealPoint: 750
+  AttackDamage: 80
+  AttackRange: 1
+  VisibilityRange: 4
+  AttackSpeed: 1
+  Speed: 2
+  ApproximationFactor: 0.5
+  ProjectileBlockChance: 0
+  TimeImmortaly: 0
+  IsDoubleAttack: 0
+  EffectDamage: {fileID: 8544384729409408119, guid: 9f0bec6c26f6bce4c8bef516f169cdf8, type: 3}
+  EffectAttack: {fileID: 0}
+  EffectDeath: {fileID: 3599141429173347808, guid: cb34b9fb070a7584bbd2688495e53050, type: 3}
+  TimeEffectDeath: 0.5
+  Price: 15
+  CurrentLevel: 1
+  MaxLevel: 3
+  Stats:
+  - Type: 0
+    Levels:
+    - 750
+    - 950
+    - 1200
+  - Type: 1
+    Levels:
+    - 80
+    - 90
+    - 100
+  - Type: 2
+    Levels:
+    - 1
+    - 1
+    - 1
+  Prices: 000000003200000064000000
+  Icon: {fileID: 21300000, guid: 53d309719c960e24095b6f056e918788, type: 3}

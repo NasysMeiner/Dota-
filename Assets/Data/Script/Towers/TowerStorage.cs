@@ -80,7 +80,7 @@ public class TowerStorage : MonoBehaviour
 
         Debug.Log(id);
 
-        StartCoroutine(TimerRepair(towerSlot.Name, id, towerSlot.Position));
+        StartCoroutine(TimerRepair(id, towerSlot));
     }
 
     public bool RepairTower(string name, int id)
@@ -94,10 +94,16 @@ public class TowerStorage : MonoBehaviour
         return true;
     }
 
-    public IEnumerator TimerRepair(string name, int id, Vector3 position)
+    public IEnumerator TimerRepair(int id, TowerSlot towerSlot)
     {
-        yield return new WaitForSeconds(_timeWait);
+        Vector3 position = towerSlot.Position;
 
-        TowerDestruct?.Invoke(name, id, position);
+        yield return new WaitForSeconds(_timeWait * 0.25f);
+
+        towerSlot.ChangePosition(transform.position);
+
+        yield return new WaitForSeconds(_timeWait * 0.75f);
+
+        TowerDestruct?.Invoke(towerSlot.Name, id, position);
     }
 }
