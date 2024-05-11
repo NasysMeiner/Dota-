@@ -11,6 +11,8 @@ public class ArcherAttackState : AttackState
         if (_archer == null)
             _archer = _stateMachine.Warrior as Archer;
 
+        _stateMachine.Warrior.ChangeFlip();
+
         if (!_isDoubleAttack)
             StartAnimation();
 
