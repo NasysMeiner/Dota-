@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DataGameInfo/DataStructure
   Name: Player
   ColorUnit: {r: 0.24813384, g: 1, b: 0.15566039, a: 1}
-  StartMoney: 150
+  StartMoney: 250
   DataStructure: {fileID: 11400000, guid: 9be62d209ce4d8f47b6363a6430c2af5, type: 2}
