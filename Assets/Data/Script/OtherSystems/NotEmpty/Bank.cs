@@ -31,13 +31,18 @@ public class Bank : MonoBehaviour
             _accounts.Add(cashAccount);
     }
 
-    public bool Pay(int money, string name)
+    public bool Pay(int money, string name, bool isCheck = false)
     {
         bool isPurchase = false;
 
         foreach (CashAccount account in _accounts)
             if (account.Name == name)
-                isPurchase = account.WithdrawMoney(money);
+            {
+                if(isCheck == false)
+                    isPurchase = account.WithdrawMoney(money);
+                else if(isCheck && account.Money >= money)
+                    isPurchase = true;
+            }
 
         if (!isPurchase)
             NoMoney?.Invoke();

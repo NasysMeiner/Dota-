@@ -213,6 +213,15 @@ public class WarriorData : ScriptableObject
         return false;
     }
 
+    public bool CheckAllUnlockSkil()
+    {
+        foreach (SkillCont skill in SkillConts)
+            if (skill.IsUnlock == false)
+                return true;
+
+        return false;
+    }
+
     public bool CheckUnlockSkill(int idSkill)
     {
         if (SkillConts[idSkill].IsUnlock == false)

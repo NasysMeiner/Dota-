@@ -24,9 +24,15 @@ public class CompositRootView : CompositeRoot
     [SerializeField] private SelectionSelector _selectionSelector;
     [SerializeField] private Bank _bank;
 
+    [Header("EffectPay")]
+    [SerializeField] private List<ViewSkillPay> _skillPays;
+    [SerializeField] private Effect _effect;
+    [SerializeField] private List<Barrack> _barracks;
+
     public override void Compose()
     {
         InitializeView();
+        InitEffectPay();
     }
 
     private void InitializeView()
@@ -38,5 +44,11 @@ public class CompositRootView : CompositeRoot
         _gameResultView.InitGameResultView(_gameResult);
         _selectionSelector.InitSelectionSelector(_upgradeStatsView);
         _triggerAnimation.InitTriggerAnimation(_bank);
+    }
+
+    private void InitEffectPay()
+    {
+        for(int i = 0; i < _skillPays.Count; i++)
+            _skillPays[i].InitViewSkillPay(_effect, _changerStats, _castlePlayer, _barracks[i]);
     }
 }
