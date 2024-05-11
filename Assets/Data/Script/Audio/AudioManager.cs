@@ -27,10 +27,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            //Debug.LogError("Found more than one Audion Manager in the scene.");
-        }
         Instance = this;
 
         _masterBus = RuntimeManager.GetBus("bus:/");
@@ -42,7 +38,11 @@ public class AudioManager : MonoBehaviour
         _musicBus.setVolume(_musicVolume);
         _effectBus.setVolume(_effectVolume);
         _uiBus.setVolume(_uiVolume);
+    }
 
+    private void Start()
+    {
+        LoadAudioData();
         Play();
     }
 
@@ -60,23 +60,67 @@ public class AudioManager : MonoBehaviour
     {
         _masterVolume = volume;
         _masterBus.setVolume(_masterVolume);
+        SaveDataAudio();
     }
 
     public void ChangeMusicVolume(float volume)
     {
         _musicVolume = volume;
         _musicBus.setVolume(_musicVolume);
+        SaveDataAudio();
     }
 
     public void ChangeEffectVolume(float volume)
     {
         _effectVolume = volume;
         _effectBus.setVolume(_effectVolume);
+        SaveDataAudio();
     }
 
     public void ChangeUiVolume(float volume)
     {
         _uiVolume = volume;
         _uiBus.setVolume(_uiVolume);
+        SaveDataAudio();
+    }
+
+    public void LoadAudioData()
+    {
+        if(Repository.TryGetData(out AudioData audioData))
+        {
+            _masterVolume = audioData.MasterVolume;
+            _musicVolume = audioData.MusicVolume;
+            _effectVolume = audioData.EffectVolume;
+            _uiVolume = audioData.UiVolume;
+
+            _masterBus.setVolume(_masterVolume);
+            _musicBus.setVolume(_musicVolume);
+            _effectBus.setVolume(_effectVolume);
+            _uiBus.setVolume(_uiVolume);
+        }
+    }
+
+    public void SaveDataAudio()
+    {
+        AudioData audioData = new(_masterVolume, _musicVolume, _effectVolume, _uiVolume);
+
+        Repository.SetData(audioData);
+    }
+}
+
+[System.Serializable]
+public class AudioData
+{
+    public float MasterVolume = 1;
+    public float MusicVolume = 1;
+    public float EffectVolume = 1;
+    public float UiVolume = 1;
+
+    public AudioData(float masterVolume, float musicVolume, float effectVolume, float uiVolume)
+    {
+        MasterVolume = masterVolume;
+        MusicVolume = musicVolume;
+        EffectVolume = effectVolume;
+        UiVolume = uiVolume;
     }
 }

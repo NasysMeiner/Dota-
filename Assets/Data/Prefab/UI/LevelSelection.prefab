@@ -303,6 +303,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberText: {fileID: 5441967714919997811}
   _icon: {fileID: 7892737158811107526}
+  _button: {fileID: 1208481692263151260}
+  _buttonImage: {fileID: 7403806280391527228}
+  _victoryColor: {r: 0.33490568, g: 1, b: 0.36446962, a: 1}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6492263383106258354
 GameObject:
   m_ObjectHideFlags: 0

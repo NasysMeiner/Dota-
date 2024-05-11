@@ -12,7 +12,6 @@ public class AllocableObject : MonoBehaviour
 
     private bool _isPressed = false;
     private bool _isActive = false;
-    private bool _isWorkSelection = true;
 
     public int GetUnitId => _barrack.StartIdUnit;
     public TypeBlockView TypeBlockView => _blockViewType;
