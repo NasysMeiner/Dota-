@@ -24,7 +24,7 @@ MonoBehaviour:
   - effect: {fileID: 8379032181484805120, guid: c0ba99017d88b81409a16ed03f5ad1ec, type: 3}
     position: {x: 0, y: 1, z: 0}
   Scale: 0.4
-  ScaleEffact: 2
+  ScaleEffact: 0.5
   Sprite: {fileID: 21300000, guid: f024ecf3b71ea1c41a0c54d57ae7e8d1, type: 3}
   SkillList:
   - {fileID: 11400000, guid: 203a1b24496d17842a9dadbecb949539, type: 2}

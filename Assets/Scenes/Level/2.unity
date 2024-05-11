@@ -23447,7 +23447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1521510033}
   _spriteRenderer: {fileID: 1157016398}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 1198707809}
 --- !u!4 &1591314835
 Transform:
   m_ObjectHideFlags: 0
@@ -23480,9 +23480,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.08870053}
+  m_Offset: {x: 0, y: -0.12}
   serializedVersion: 2
-  m_Radius: 0.73484826
+  m_Radius: 0.45
 --- !u!1 &1591779619
 GameObject:
   m_ObjectHideFlags: 0
@@ -31295,7 +31295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 704202271}
   _spriteRenderer: {fileID: 789689458660696907}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 480036196}
 --- !u!4 &789689458495078806
 Transform:
   m_ObjectHideFlags: 0
@@ -31328,9 +31328,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.002322793}
+  m_Offset: {x: 0, y: -0.18}
   serializedVersion: 2
-  m_Radius: 0.7727803
+  m_Radius: 0.44
 --- !u!4 &789689458660696904
 Transform:
   m_ObjectHideFlags: 0
@@ -31753,7 +31753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1730996448}
   _spriteRenderer: {fileID: 6279761075092228605}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 190692653}
 --- !u!1 &6279761074654653244
 GameObject:
   m_ObjectHideFlags: 0
@@ -31785,9 +31785,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0376451}
+  m_Offset: {x: 0, y: -0.16}
   serializedVersion: 2
-  m_Radius: 0.79657006
+  m_Radius: 0.46
 --- !u!212 &6279761075092228605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32113,7 +32113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 976074135}
   _spriteRenderer: {fileID: 7363759335671453204}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 256475130}
 --- !u!1 &7363759335501395157
 GameObject:
   m_ObjectHideFlags: 0
@@ -32147,7 +32147,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.015582144}
   serializedVersion: 2
-  m_Radius: 0.7156921
+  m_Radius: 0.48
 --- !u!212 &7363759335671453204
 SpriteRenderer:
   m_ObjectHideFlags: 0

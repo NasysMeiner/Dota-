@@ -19509,7 +19509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1521510033}
   _spriteRenderer: {fileID: 1157016398}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 1198707809}
 --- !u!4 &1591314835
 Transform:
   m_ObjectHideFlags: 0
@@ -27016,7 +27016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerRadius: {fileID: 1730996448}
   _spriteRenderer: {fileID: 6279761075092228605}
-  _allocableObject: {fileID: 0}
+  _allocableObject: {fileID: 190692653}
 --- !u!1 &6279761074654653244
 GameObject:
   m_ObjectHideFlags: 0
