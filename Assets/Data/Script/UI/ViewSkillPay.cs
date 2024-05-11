@@ -18,7 +18,9 @@ public class ViewSkillPay : MonoBehaviour
 
     public void InitViewSkillPay(Effect effect, ChangerStats changerStats, Castle castle, Barrack barrack)
     {
-        _effect = effect;
+        _effect = Instantiate(effect, transform);
+        _effect.Init(1);
+        _effect.StopEffect();
         _changerStats = changerStats;
         _name = castle.Name;
         _cashAccount = castle.CashAccount;
@@ -33,7 +35,7 @@ public class ViewSkillPay : MonoBehaviour
     {
         for (int i = 0; i < _units.Count; i++)
         {
-            if (_changerStats.CheckUnlock(name, _units[i]))
+            if (_changerStats.CheckUnlock(_name, _units[i]))
             {
                 PlayEffect();
 
@@ -44,6 +46,18 @@ public class ViewSkillPay : MonoBehaviour
         if(_isActive)
             StopEffect();
 
+    }
+
+    public void Destruct()
+    {
+        _cashAccount.ChangeMoney -= OnChangeMoney;
+        StopEffect();
+    }
+
+    public void Return()
+    {
+        _cashAccount.ChangeMoney += OnChangeMoney;
+        PlayEffect();
     }
 
     public void PlayEffect()

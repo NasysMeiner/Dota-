@@ -32,6 +32,14 @@ public class UpgrateStatsView : MonoBehaviour
             EnableDefaultPanel();
     }
 
+    public void DestructTower(int id)
+    {
+        if(_currentId == id)
+            EnableDefaultPanel();
+        else if(_currentAdditionalId == id)
+            EnableAdditionalPanel(-1, null);
+    }
+
     public void InitUpgrateStatsView(ChangerStats changerStats, RadiusSpawner radiusSpawner)
     {
         _changerStats = changerStats;

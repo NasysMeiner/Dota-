@@ -9653,6 +9653,7 @@ GameObject:
   - component: {fileID: 7630279580354697709}
   - component: {fileID: 6344071417915409412}
   - component: {fileID: 3927072006672874897}
+  - component: {fileID: 2182568148618652356}
   m_Layer: 0
   m_Name: vfx possible improve
   m_TagString: Untagged
@@ -14426,7 +14427,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 32000
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -14457,6 +14458,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2182568148618652356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333504321148945976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2c841570d1aa64cab529ef0e7529cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystems: []
 --- !u!1 &8259465111432128623
 GameObject:
   m_ObjectHideFlags: 0
