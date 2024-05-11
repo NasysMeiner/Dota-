@@ -4247,11 +4247,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190692649}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1671746, y: 3.3877783, z: 1}
-  m_Center: {x: -0.07239794, y: 0.20959163, z: 0}
+  m_Size: {x: 2.1671746, y: 3.3877783, z: 4.0460668}
+  m_Center: {x: -0.07239794, y: 0.20959163, z: -1.523034}
 --- !u!114 &190692652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5686,8 +5686,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1919315, y: 2.7191305, z: 1}
-  m_Center: {x: 0, y: 0.10314708, z: 0}
+  m_Size: {x: 2.1919317, y: 2.7191315, z: 3.5593064}
+  m_Center: {x: 0, y: 0.10314706, z: -1.2796527}
 --- !u!114 &256475129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8914,8 +8914,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.509935, y: 3.2300427, z: 1}
-  m_Center: {x: -0.07869217, y: 0.11801612, z: 0}
+  m_Size: {x: 1.509935, y: 3.2300427, z: 2.8112895}
+  m_Center: {x: -0.07869217, y: 0.11801612, z: -0.9056432}
 --- !u!114 &480036195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19185,11 +19185,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198707805}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1382153, y: 2.750686, z: 1}
-  m_Center: {x: -0.00000089472337, y: 0.15167442, z: 0}
+  m_Size: {x: 2.1382153, y: 2.750686, z: 2.4019587}
+  m_Center: {x: -0.00000089472337, y: 0.15167442, z: -0.70097977}
 --- !u!114 &1198707808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23425,6 +23425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591314835}
   - component: {fileID: 1591314832}
+  - component: {fileID: 1591314836}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -23466,6 +23467,22 @@ Transform:
   m_Father: {fileID: 1222438727}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1591314836
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591314831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08870053}
+  serializedVersion: 2
+  m_Radius: 0.73484826
 --- !u!1 &1591779619
 GameObject:
   m_ObjectHideFlags: 0
@@ -31256,6 +31273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789689458495078806}
   - component: {fileID: 789689458495078805}
+  - component: {fileID: 789689458495078807}
   m_Layer: 8
   m_Name: TowerAi
   m_TagString: Untagged
@@ -31297,6 +31315,22 @@ Transform:
   m_Father: {fileID: 741107101}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &789689458495078807
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789689458495078794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.002322793}
+  serializedVersion: 2
+  m_Radius: 0.7727803
 --- !u!4 &789689458660696904
 Transform:
   m_ObjectHideFlags: 0
@@ -31730,6 +31764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279761074654653216}
   - component: {fileID: 6279761074654653219}
+  - component: {fileID: 6279761074654653245}
   m_Layer: 8
   m_Name: TowerAi3
   m_TagString: Untagged
@@ -31737,6 +31772,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!58 &6279761074654653245
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279761074654653244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0376451}
+  serializedVersion: 2
+  m_Radius: 0.79657006
 --- !u!212 &6279761075092228605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32073,6 +32124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7363759335501395145}
   - component: {fileID: 7363759335501395146}
+  - component: {fileID: 7363759335501395158}
   m_Layer: 8
   m_Name: Tower (2)
   m_TagString: Untagged
@@ -32080,6 +32132,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!58 &7363759335501395158
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363759335501395157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.015582144}
+  serializedVersion: 2
+  m_Radius: 0.7156921
 --- !u!212 &7363759335671453204
 SpriteRenderer:
   m_ObjectHideFlags: 0
