@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7b5086b59d344d47a24b26e18f23b96, type: 2}
   - {fileID: 11400000, guid: 1c8198af81cba134f923abf6ce5f2651, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
+  TimeWait: 0
   HealPoint: 320
   AttackDamage: 30
   AttackRange: 5
@@ -43,7 +44,7 @@ MonoBehaviour:
   EffectAttack: {fileID: 0}
   EffectDeath: {fileID: 3599141429173347808, guid: b90b3d3906749014b859d2d833676483, type: 3}
   TimeEffectDeath: 0
-  Price: 10
+  Price: 15
   CurrentLevel: 1
   MaxLevel: 3
   Stats:
