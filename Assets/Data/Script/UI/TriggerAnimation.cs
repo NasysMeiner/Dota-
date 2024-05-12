@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -5,6 +6,9 @@ public class TriggerAnimation : MonoBehaviour
 {
     private Bank _bank;
     private Animator _animator;
+    private Animation _animation;
+
+    private bool _isPlaying = false;
 
     private void OnDisable()
     {
@@ -21,6 +25,19 @@ public class TriggerAnimation : MonoBehaviour
 
     private void PlayAnim()
     {
+        if (_isPlaying == false)
+        {
+            _isPlaying = true;
+            StartCoroutine(StartAnim());
+        }
+    }
+
+    private IEnumerator StartAnim()
+    {
         _animator.SetTrigger("Play");
+
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0).Length);
+
+        _isPlaying = false;
     }
 }
