@@ -32,8 +32,8 @@ MonoBehaviour:
   TimeWait: 0
   HealPoint: 320
   AttackDamage: 30
-  AttackRange: 5
-  VisibilityRange: 7
+  AttackRange: 4
+  VisibilityRange: 6
   AttackSpeed: 1
   Speed: 1.5
   ApproximationFactor: 1
