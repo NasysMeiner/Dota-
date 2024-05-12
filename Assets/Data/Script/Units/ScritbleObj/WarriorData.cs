@@ -332,6 +332,14 @@ public class SkillCont
 [System.Serializable]
 public class EffectSettings
 {
+    public TypeEffect typeEffect;
     public Effect effect;
     public Vector3 position;
+}
+
+[System.Serializable]
+public enum TypeEffect
+{
+    LifeAfterDeath,
+    BoomEffect,
 }

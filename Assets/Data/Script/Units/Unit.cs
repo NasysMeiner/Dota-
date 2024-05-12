@@ -49,6 +49,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Effect _effectAttack;
     private Effect _effectDamage;
     private Effect _effectDeath;
+    private Effect _effectLifeAfterDeath;
 
     private HealthBarUpdater _healthBarUpdater;
     protected AnimateChanger _animateChanger;
@@ -98,10 +99,10 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             _spriteRenderer.sortingOrder = (int)(10000 - transform.position.y * 1000);
 
-            if(_effectAttack != null)
+            if (_effectAttack != null)
                 _effectAttack.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
 
-            if(_effectDamage != null)
+            if (_effectDamage != null)
                 _effectDamage.ChangeOrderInLayer(_spriteRenderer.sortingOrder);
         }
 
@@ -182,7 +183,15 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         {
             Effect newEffect = Instantiate(effect.effect, transform);
             newEffect.ChangePosition(effect.position);
-            _defEffect = newEffect;
+
+            if (effect.typeEffect == TypeEffect.BoomEffect)
+            {
+                _defEffect = newEffect;
+            }
+            else if (effect.typeEffect == TypeEffect.LifeAfterDeath)
+            {
+                _effectLifeAfterDeath = newEffect;
+            }
         }
 
         _shadow.transform.localPosition = warriorData.BiasShadow;
@@ -358,7 +367,13 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
     private IEnumerator LiveAfterDeath()
     {
+        if (_effectLifeAfterDeath != null)
+            _effectLifeAfterDeath.StartEffect();
+
         yield return new WaitForSeconds(_timeImmortality);
+
+        if (_effectLifeAfterDeath != null)
+            _effectLifeAfterDeath.StopEffect();
 
         Die();
         CurrentTarget = null;
