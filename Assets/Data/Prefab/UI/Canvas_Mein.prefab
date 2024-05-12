@@ -8181,7 +8181,7 @@ MonoBehaviour:
   _textActive: {fileID: 0}
   _image: {fileID: 2435504339205475982}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _buyColor: {r: 0.8113208, g: 0, b: 0, a: 1}
+  _buyColor: {r: 1, g: 0.7801198, b: 0.15566039, a: 1}
 --- !u!1 &3786474146716465812
 GameObject:
   m_ObjectHideFlags: 0
@@ -8474,7 +8474,7 @@ MonoBehaviour:
   _textActive: {fileID: 0}
   _image: {fileID: 1623773698090846548}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _buyColor: {r: 0.8117647, g: 0, b: 0, a: 1}
+  _buyColor: {r: 1, g: 0.78039217, b: 0.15686275, a: 1}
 --- !u!1 &4248886742356122762
 GameObject:
   m_ObjectHideFlags: 0
@@ -8615,7 +8615,7 @@ MonoBehaviour:
   _textActive: {fileID: 0}
   _image: {fileID: 7607596028702143488}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _buyColor: {r: 0.8117647, g: 0, b: 0, a: 1}
+  _buyColor: {r: 1, g: 0.78039217, b: 0.15686275, a: 1}
 --- !u!1 &4356117430671714673
 GameObject:
   m_ObjectHideFlags: 0
@@ -9432,7 +9432,7 @@ MonoBehaviour:
   _textActive: {fileID: 0}
   _image: {fileID: 2553534297806078768}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _buyColor: {r: 0.8117647, g: 0, b: 0, a: 1}
+  _buyColor: {r: 1, g: 0.78039217, b: 0.15686275, a: 1}
 --- !u!1 &7972833950864859609
 GameObject:
   m_ObjectHideFlags: 0
