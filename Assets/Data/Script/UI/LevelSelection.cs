@@ -10,6 +10,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private Image _buttonImage;
     [SerializeField] private Color _victoryColor;
     [SerializeField] private Color _normalColor;
+    [SerializeField] private GameObject _blockImage;
 
     private string _nameLevel;
     private Sprite _levelIcon;
@@ -22,9 +23,15 @@ public class LevelSelection : MonoBehaviour
         _levelIcon = levelData.Icon;
 
         if (levelData.status == 0)
+        {
             _button.interactable = false;
+            _blockImage.SetActive(true);
+        }
         else if(levelData.status == 1 || levelData.status == 2)
+        {
             _button.interactable = true;
+            _blockImage.SetActive(false);
+        }
 
         if (levelData.status == 2)
             _buttonImage.color = _victoryColor;
