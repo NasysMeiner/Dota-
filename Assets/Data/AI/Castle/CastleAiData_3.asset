@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc008131c8ce4ff4ea9428ce4632cdda, type: 3}
   m_Name: CastleAiData_3
   m_EditorClassIdentifier: 
-  Income: 3
+  Income: 5
   MaxHealpPoint: 3000
   EffectDamage: {fileID: -4138366589552181953, guid: 422f9ab81969b414e85b6812dff53559, type: 3}
   EffectDestruct: {fileID: 5334876924989911983, guid: d21d7bd4e99174c4280cfcb71a659fa7, type: 3}
