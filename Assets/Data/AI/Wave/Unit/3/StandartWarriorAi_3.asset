@@ -21,7 +21,8 @@ MonoBehaviour:
   IsShadowBias: 0
   BiasHPBar: {x: 0, y: 0.73, z: 0}
   Effects:
-  - effect: {fileID: 8379032181484805120, guid: c0ba99017d88b81409a16ed03f5ad1ec, type: 3}
+  - typeEffect: 0
+    effect: {fileID: 8379032181484805120, guid: c0ba99017d88b81409a16ed03f5ad1ec, type: 3}
     position: {x: 0, y: 1, z: 0}
   Scale: 0.4
   ScaleEffact: 0.5
@@ -66,4 +67,4 @@ MonoBehaviour:
     - 1
     - 1
   Prices: 000000000000000000000000
-  Icon: {fileID: 21300000, guid: aef567af474e60546997898f819ffaef, type: 3}
+  Icon: {fileID: 21300000, guid: f690e77f5e5bc1b44a9391dcce0753b5, type: 3}
