@@ -55,9 +55,9 @@ MonoBehaviour:
     - 450
   - Type: 1
     Levels:
-    - 150
-    - 175
-    - 210
+    - 300
+    - 350
+    - 400
   - Type: 2
     Levels:
     - 1.6
