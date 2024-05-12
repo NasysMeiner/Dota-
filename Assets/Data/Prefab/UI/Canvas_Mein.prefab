@@ -10089,6 +10089,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2118911190946567298}
     m_Modifications:
+    - target: {fileID: 183746943063580448, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 183746943063580448, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 950299369893365815, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1243896260858064171, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
       propertyPath: m_SizeDelta.x
       value: 518.687
@@ -10113,6 +10125,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameResultView, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1622383056339967312, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613610677073109808, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 458
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613610677073109808, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613610677073109809, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3c35deaa30d85b429c98d1ea643e03e, type: 3}
     - target: {fileID: 3871140212792007177, guid: 91a24a537b13ddb4aa99670c0d029310, type: 3}
       propertyPath: _view
       value: 
