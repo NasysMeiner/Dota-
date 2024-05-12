@@ -34,7 +34,7 @@ public class TriggerAnimation : MonoBehaviour
 
     private IEnumerator StartAnim()
     {
-        _animator.SetTrigger("Play");
+        Debug.Log(_animator.GetCurrentAnimatorClipInfo(0).Length);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0).Length);
 

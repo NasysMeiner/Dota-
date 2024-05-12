@@ -78,8 +78,6 @@ public class TowerStorage : MonoBehaviour
             }
         }
 
-        Debug.Log(id);
-
         StartCoroutine(TimerRepair(id, towerSlot));
     }
 

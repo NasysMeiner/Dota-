@@ -305,7 +305,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
             Pathboll = _meshAgent.hasPath;
 
             if (_meshAgent.velocity.x != 0)
-                _spriteRenderer.flipX = !(_meshAgent.velocity.x < 0);
+                _spriteRenderer.flipX = _meshAgent.velocity.x < -0.1 ? false : true;
         }
     }
 

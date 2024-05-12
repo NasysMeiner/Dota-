@@ -44,7 +44,7 @@ public class Bank : MonoBehaviour
                     isPurchase = true;
             }
 
-        if (!isPurchase)
+        if (!isPurchase && name == "Player" && isCheck == false)
             NoMoney?.Invoke();
 
         return isPurchase;
