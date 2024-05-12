@@ -19674,6 +19674,18 @@ PrefabInstance:
       propertyPath: _sceneLoader
       value: 
       objectReference: {fileID: 858200724}
+    - target: {fileID: 6451764684923414403, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289357699355441287, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 588
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289357699355441287, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -113
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
 --- !u!114 &1448550245 stripped

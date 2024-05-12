@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7b5086b59d344d47a24b26e18f23b96, type: 2}
   - {fileID: 11400000, guid: 1c8198af81cba134f923abf6ce5f2651, type: 2}
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
+  TimeWait: 0
   HealPoint: 320
   AttackDamage: 30
   AttackRange: 5
@@ -63,5 +64,5 @@ MonoBehaviour:
     - 1
     - 1
   Prices: 000000000000000000000000
-  Icon: {fileID: 21300000, guid: a71a3e41e141d904dbfbc08500a8b0cf, type: 3}
+  Icon: {fileID: 21300000, guid: 90b9f7274602f7c489989c5c407f94ba, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}

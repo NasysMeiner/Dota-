@@ -22471,7 +22471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1521493261}
   - component: {fileID: 1521493262}
-  - component: {fileID: 1521493263}
   m_Layer: 0
   m_Name: rock 3 (13)
   m_TagString: Untagged
@@ -22546,18 +22545,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1521493263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521493260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1995607c9468e0e40a35888b56bedf15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1521510030
 GameObject:
   m_ObjectHideFlags: 0
@@ -32459,6 +32446,10 @@ PrefabInstance:
     - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_Name
       value: Canvas_Mein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2422963453629739918, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_AnchorMax.x
