@@ -30,6 +30,9 @@ public class CompositRootOther : CompositeRoot
     [SerializeField] private TowerStorage _towerStorage;
     [SerializeField] private RepairView _repairView;
 
+    [Header("Other")]
+    [SerializeField] private UpgrateStatsView _upgradeStatsView;
+
     public override void Compose()
     {
         InitTowers();
@@ -43,10 +46,10 @@ public class CompositRootOther : CompositeRoot
         _radiusSpawner.Init(_radiusList, _castleList, _prefabUnit.Prefabs, _dataStats, _bank, _trash);
 
         foreach (Tower item in _towerListPlayer)
-            item.Initialization(_towerDataPlayer, _trash, _castleList[0].Counter);
+            item.Initialization(_towerDataPlayer, _trash, _castleList[0].Counter, _upgradeStatsView);
 
         foreach (Tower item in _towerListAI)
-            item.Initialization(_towerDataAi, _trash, _castleList[1].Counter);
+            item.Initialization(_towerDataAi, _trash, _castleList[1].Counter, _upgradeStatsView);
     }
 
     private void InitBank()

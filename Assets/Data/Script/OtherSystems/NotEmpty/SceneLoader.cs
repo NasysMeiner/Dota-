@@ -8,18 +8,21 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void ReastartLevel()
+    public void RestartLevel()
     {
+        Repository.SaveState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitGame()
     {
+        Repository.SaveState();
         Application.Quit();
     }
 
     public void LoadLevel(string name)
     {
+        Repository.SaveState();
         SceneManager.LoadScene(name);
     }
 

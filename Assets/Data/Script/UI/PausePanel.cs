@@ -18,7 +18,7 @@ public class PausePanel : Panel
 
     public void RestartLevel()
     {
-        _loader.ReastartLevel();
+        _loader.RestartLevel();
     }
 
     public void ReturnMainMenu()

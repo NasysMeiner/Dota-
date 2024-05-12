@@ -73,6 +73,7 @@ public class AttackState : State
         if(!_isDoubleAttack)
             StartAnimation();
 
+        _stateMachine.Warrior.ChangeFlip();
         _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage, AttackType.Melee);
     }
 

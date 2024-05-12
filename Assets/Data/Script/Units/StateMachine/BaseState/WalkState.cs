@@ -56,9 +56,9 @@ public class WalkState : State
     {
         if (_isWork)
         {
-            if (_stateMachine.Warrior.CurrentTarget == null && _meshAgent.hasPath == false && _isEnd == false && _meshAgent.SetDestination(_targetPoint))
+            if (_stateMachine.Warrior.CurrentTarget == null && _isEnd == false && _meshAgent.SetDestination(_targetPoint))
                 SetTargetPoint(_targetPoint);
-            else if (_stateMachine.Warrior.CurrentTarget != null && _meshAgent.hasPath == false)
+            else if (_stateMachine.Warrior.CurrentTarget != null)
                 SetTargetPoint(_stateMachine.Warrior.CurrentTarget.Position);
 
             if (_stateMachine.Warrior.CurrentTarget != null && _isWalkToTarget == false)

@@ -9034,6 +9034,13 @@ MonoBehaviour:
   _unitStatsBlockPrefab: {fileID: 7892503245446334662, guid: 9bef993fe55685e41b9d152c2d593faf, type: 3}
   _selectionSelector: {fileID: 519420034}
   _bank: {fileID: 2068412911}
+  _skillPays:
+  - {fileID: 1591314837}
+  - {fileID: 7363759335501395159}
+  _effect: {fileID: 2182568148618652356, guid: ce5ce86059e6e4b4aba0f85af20e60b1, type: 3}
+  _barracks:
+  - {fileID: 27970503}
+  - {fileID: 284226282}
 --- !u!114 &493753303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9130,6 +9137,7 @@ MonoBehaviour:
   _prefab: {fileID: 7887647000703520943, guid: f83f16217eae43a4f895da564febf9d6, type: 3}
   _towerStorage: {fileID: 1483627346}
   _repairView: {fileID: 1483627348}
+  _upgradeStatsView: {fileID: 7513234400225286188}
 --- !u!114 &493753306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22000,7 +22008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483627345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.60884047, y: 1.549054, z: -0.131594}
+  m_LocalPosition: {x: -33.7, y: 1.549054, z: -0.131594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22463,7 +22471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1521493261}
   - component: {fileID: 1521493262}
-  - component: {fileID: 1521493263}
   m_Layer: 0
   m_Name: rock 3 (13)
   m_TagString: Untagged
@@ -22538,18 +22545,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1521493263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521493260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1995607c9468e0e40a35888b56bedf15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1521510030
 GameObject:
   m_ObjectHideFlags: 0
@@ -23426,6 +23421,7 @@ GameObject:
   - component: {fileID: 1591314835}
   - component: {fileID: 1591314832}
   - component: {fileID: 1591314836}
+  - component: {fileID: 1591314837}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -23448,6 +23444,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 1521510033}
   _spriteRenderer: {fileID: 1157016398}
   _allocableObject: {fileID: 1198707809}
+  _barrack: {fileID: 27970503}
 --- !u!4 &1591314835
 Transform:
   m_ObjectHideFlags: 0
@@ -23483,6 +23480,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.12}
   serializedVersion: 2
   m_Radius: 0.45
+--- !u!114 &1591314837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591314831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f7183e4663775469cd57bdc913c805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591779619
 GameObject:
   m_ObjectHideFlags: 0
@@ -31296,6 +31305,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 704202271}
   _spriteRenderer: {fileID: 789689458660696907}
   _allocableObject: {fileID: 480036196}
+  _barrack: {fileID: 82114971}
 --- !u!4 &789689458495078806
 Transform:
   m_ObjectHideFlags: 0
@@ -31493,6 +31503,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 1398697558}
   _spriteRenderer: {fileID: 2865173855982014086}
   _allocableObject: {fileID: 0}
+  _barrack: {fileID: 916709693}
 --- !u!4 &2865173855882996827
 Transform:
   m_ObjectHideFlags: 0
@@ -31754,6 +31765,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 1730996448}
   _spriteRenderer: {fileID: 6279761075092228605}
   _allocableObject: {fileID: 190692653}
+  _barrack: {fileID: 1552529502}
 --- !u!1 &6279761074654653244
 GameObject:
   m_ObjectHideFlags: 0
@@ -32064,6 +32076,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 986175508}
   _spriteRenderer: {fileID: 7363759334384105548}
   _allocableObject: {fileID: 0}
+  _barrack: {fileID: 972254935}
 --- !u!58 &7363759334548920979
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -32114,6 +32127,7 @@ MonoBehaviour:
   _towerRadius: {fileID: 976074135}
   _spriteRenderer: {fileID: 7363759335671453204}
   _allocableObject: {fileID: 256475130}
+  _barrack: {fileID: 284226282}
 --- !u!1 &7363759335501395157
 GameObject:
   m_ObjectHideFlags: 0
@@ -32125,6 +32139,7 @@ GameObject:
   - component: {fileID: 7363759335501395145}
   - component: {fileID: 7363759335501395146}
   - component: {fileID: 7363759335501395158}
+  - component: {fileID: 7363759335501395159}
   m_Layer: 8
   m_Name: Tower (2)
   m_TagString: Untagged
@@ -32148,6 +32163,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.015582144}
   serializedVersion: 2
   m_Radius: 0.48
+--- !u!114 &7363759335501395159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363759335501395157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f7183e4663775469cd57bdc913c805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7363759335671453204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32419,6 +32446,10 @@ PrefabInstance:
     - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_Name
       value: Canvas_Mein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118911190946567310, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2422963453629739918, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_AnchorMax.x

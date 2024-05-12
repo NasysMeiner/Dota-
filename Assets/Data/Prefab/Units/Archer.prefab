@@ -60,6 +60,7 @@ MonoBehaviour:
   _shadow: {fileID: 3549921252892213585}
   _isDrawRadius: 0
   CurrentState: 
+  Direction: {x: 0, y: 0, z: 0}
   Pathboll: 0
   _id: 0
   _name: 
@@ -498,6 +499,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9162319394679320965, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8838953
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162319394679320965, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8838953
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162319394679320965, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8838953
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162319394679320965, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
@@ -507,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162319394679320965, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 2.6994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f5cb4ee1b14d4480386d543b353be, type: 3}
