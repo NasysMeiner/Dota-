@@ -48,14 +48,24 @@ MonoBehaviour:
   - TypeGroup: 0
     VariertyUnits: 0100000001000000
   - TypeGroup: 0
-    VariertyUnits: 0000000000000000
+    VariertyUnits: 01000000010000000100000001000000
   - TypeGroup: 0
-    VariertyUnits: 000000000000000000000000
+    VariertyUnits: 010000000100000001000000
   - TypeGroup: 0
-    VariertyUnits: 010000000200000002000000
+    VariertyUnits: 020000000200000001000000
   - TypeGroup: 0
-    VariertyUnits: 030000000300000000000000
+    VariertyUnits: 030000000300000001000000
   - TypeGroup: 0
     VariertyUnits: 020000000200000000000000
   - TypeGroup: 0
     VariertyUnits: 020000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 030000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 010000000100000000000000
+  - TypeGroup: 0
+    VariertyUnits: 010000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 000000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 000000000100000000000000

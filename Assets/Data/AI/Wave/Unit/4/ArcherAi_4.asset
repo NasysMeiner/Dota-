@@ -45,7 +45,7 @@ MonoBehaviour:
   EffectDeath: {fileID: 3599141429173347808, guid: 01072cfa0bab2814b91aee2293fd6a32, type: 3}
   TimeEffectDeath: 0
   Price: 25
-  CurrentLevel: 2
+  CurrentLevel: 3
   MaxLevel: 3
   Stats:
   - Type: 0
@@ -55,14 +55,14 @@ MonoBehaviour:
     - 450
   - Type: 1
     Levels:
-    - 130
-    - 150
-    - 180
+    - 300
+    - 350
+    - 400
   - Type: 2
     Levels:
-    - 1
-    - 1
-    - 1
+    - 1.6
+    - 1.4
+    - 1.1
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: daa992e68ce3a2740ae17b4311bb9360, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: 48cdd978038ee0e43be28aaf76e88e96, type: 3}

@@ -50,19 +50,19 @@ MonoBehaviour:
   Stats:
   - Type: 0
     Levels:
-    - 320
-    - 320
-    - 320
+    - 280
+    - 280
+    - 280
   - Type: 1
     Levels:
+    - 15
     - 30
     - 50
-    - 70
   - Type: 2
     Levels:
-    - 1
-    - 1
-    - 1
+    - 0.8
+    - 0.8
+    - 0.8
   Prices: 000000000000000000000000
   Icon: {fileID: 21300000, guid: 90b9f7274602f7c489989c5c407f94ba, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: a81f00a003d0d1842b9a0809d1789ffc, type: 3}

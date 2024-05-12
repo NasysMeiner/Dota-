@@ -32,8 +32,8 @@ MonoBehaviour:
   TimeWait: 0
   HealPoint: 320
   AttackDamage: 30
-  AttackRange: 5
-  VisibilityRange: 7
+  AttackRange: 4
+  VisibilityRange: 6
   AttackSpeed: 1
   Speed: 1.5
   ApproximationFactor: 1
@@ -50,19 +50,19 @@ MonoBehaviour:
   Stats:
   - Type: 0
     Levels:
-    - 320
-    - 320
-    - 320
+    - 280
+    - 280
+    - 280
   - Type: 1
     Levels:
+    - 15
     - 30
     - 50
-    - 70
   - Type: 2
     Levels:
-    - 1
-    - 1
-    - 1
+    - 0.8
+    - 0.8
+    - 0.8
   Prices: 000000003200000064000000
   Icon: {fileID: 21300000, guid: 01edb9ccee5855540b9f8e87d6c76574, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: be054e1da6d7b7e4db09a410535df8e2, type: 3}
