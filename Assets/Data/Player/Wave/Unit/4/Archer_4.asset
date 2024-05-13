@@ -30,8 +30,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a956823877288349ae9b1ac30cac049, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   TimeWait: 0
-  HealPoint: 450
-  AttackDamage: 300
+  HealPoint: 470
+  AttackDamage: 180
   AttackRange: 5
   VisibilityRange: 7
   AttackSpeed: 2
@@ -50,14 +50,14 @@ MonoBehaviour:
   Stats:
   - Type: 0
     Levels:
-    - 450
-    - 450
-    - 450
+    - 470
+    - 470
+    - 470
   - Type: 1
     Levels:
-    - 300
-    - 350
-    - 400
+    - 180
+    - 200
+    - 230
   - Type: 2
     Levels:
     - 2
