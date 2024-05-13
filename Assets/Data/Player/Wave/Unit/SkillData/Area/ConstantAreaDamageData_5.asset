@@ -24,4 +24,4 @@ MonoBehaviour:
   AttackScaling: 0
   Damage: 15
   Time: 0.2
-  Radius: 5
+  Radius: 4
