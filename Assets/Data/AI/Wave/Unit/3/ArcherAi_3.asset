@@ -31,10 +31,10 @@ MonoBehaviour:
   ColorEffectDamage: {r: 1, g: 0, b: 0, a: 1}
   TimeWait: 0
   HealPoint: 450
-  AttackDamage: 130
+  AttackDamage: 300
   AttackRange: 5
   VisibilityRange: 7
-  AttackSpeed: 1
+  AttackSpeed: 1.6
   Speed: 0.75
   ApproximationFactor: 1
   ProjectileBlockChance: 0
