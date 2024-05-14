@@ -219,6 +219,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isDoubleAttack = warriorData.IsDoubleAttack;
         ScaleEffect = warriorData.ScaleEffact;
         _isChangeShadowDie = warriorData.IsShadowBias;
+        _soundAttack = warriorData.soundAttack;
         _isAudio = warriorData.IsAudio;
 
         foreach (SkillCont skillCont in warriorData.SkillConts)
