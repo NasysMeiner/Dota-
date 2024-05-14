@@ -32474,6 +32474,10 @@ PrefabInstance:
       propertyPath: _loader
       value: 
       objectReference: {fileID: 858200724}
+    - target: {fileID: 3236681730775049466, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3236681730800329592, guid: e3b32800d6d1b9d45b61ae2ce3315ab0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

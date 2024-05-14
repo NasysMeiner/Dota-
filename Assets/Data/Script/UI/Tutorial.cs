@@ -7,14 +7,27 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _images;
     [SerializeField] private int _page;
+    [SerializeField] private GameObject _tutor;
+    [SerializeField] private GameObject _block;
 
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _backButton;
 
     public event UnityAction Close;
+    public event UnityAction Open;
 
     private void Start()
     {
+        DataScene data = Repository.GetData<DataScene>();
+
+         if (data.IsTutor == false)
+         {
+            _tutor.SetActive(true);
+            data.IsTutor = true;
+            _block.gameObject.SetActive(true);
+            Repository.SetData(data);
+         }
+
         foreach (var image in _images)
             image.SetActive(false);
 
@@ -28,12 +41,17 @@ public class Tutorial : MonoBehaviour
 
     public void OpenTutorial()
     {
+        Open?.Invoke();
+        _tutor.gameObject.SetActive(true);
+        _block.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void CloseTutorial()
     {
         Close?.Invoke();
+        _tutor.gameObject.SetActive(false);
+        _block.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
@@ -68,4 +86,10 @@ public class Tutorial : MonoBehaviour
                 _backButton.gameObject.SetActive(false);
         }
     }
+}
+
+[System.Serializable]
+public class TutorialData
+{
+    public bool IsTrue;
 }

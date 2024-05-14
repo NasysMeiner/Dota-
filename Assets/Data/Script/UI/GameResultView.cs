@@ -6,6 +6,7 @@ public class GameResultView : MonoBehaviour
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private PanelLoad _victoryWindow;
     [SerializeField] private Panel _defeatWindow;
+    [SerializeField] private Tutorial _tutorial;
 
     private GameResult _result;
     private string _currentSceneName;
@@ -27,6 +28,11 @@ public class GameResultView : MonoBehaviour
             _victoryWindow.OnLevelButton();
             _nextSceneName = nextScene;
         }
+    }
+
+    public void OpenTutorial()
+    {
+        _tutorial.OpenTutorial();
     }
 
     public void OnVictory()
