@@ -8282,7 +8282,6 @@ MonoBehaviour:
   _radiusSpawner: {fileID: 244427664}
   _radiusList:
   - {fileID: 1212734032}
-  - {fileID: 1800481059}
   _castleList:
   - {fileID: 1973439890}
   - {fileID: 133553829}
@@ -24089,7 +24088,7 @@ Transform:
   m_GameObject: {fileID: 1800481055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 133553832}
