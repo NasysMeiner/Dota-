@@ -18,43 +18,39 @@ MonoBehaviour:
   - TypeGroup: 1
     VariertyUnits: 00000000
   - TypeGroup: 1
-    VariertyUnits: 03000000
+    VariertyUnits: 01000000
   - TypeGroup: 1
-    VariertyUnits: 02000000
+    VariertyUnits: 00000000
   - TypeGroup: 1
     VariertyUnits: 000000000000000000000000
-  - TypeGroup: 1
-    VariertyUnits: 030000000300000003000000
-  - TypeGroup: 1
-    VariertyUnits: 0300000003000000
   - TypeGroup: 1
     VariertyUnits: 0000000000000000
   - TypeGroup: 1
     VariertyUnits: 0100000001000000
   - TypeGroup: 1
-    VariertyUnits: 0200000002000000
+    VariertyUnits: 01000000010000000200000002000000
   - TypeGroup: 0
     VariertyUnits: 01000000
   - TypeGroup: 0
     VariertyUnits: 00000000
   - TypeGroup: 0
-    VariertyUnits: 02000000
+    VariertyUnits: 01000000
   - TypeGroup: 0
-    VariertyUnits: 03000000
-  - TypeGroup: 0
-    VariertyUnits: 0300000003000000
-  - TypeGroup: 0
-    VariertyUnits: 0200000002000000
+    VariertyUnits: 00000000
   - TypeGroup: 0
     VariertyUnits: 0100000001000000
   - TypeGroup: 0
-    VariertyUnits: 01000000010000000100000001000000
+    VariertyUnits: 0000000000000000
   - TypeGroup: 0
-    VariertyUnits: 010000000100000001000000
+    VariertyUnits: 0100000002000000
+  - TypeGroup: 0
+    VariertyUnits: 02000000020000000100000001000000
+  - TypeGroup: 0
+    VariertyUnits: 02000000010000000100000001000000
   - TypeGroup: 0
     VariertyUnits: 020000000200000001000000
   - TypeGroup: 0
-    VariertyUnits: 030000000300000001000000
+    VariertyUnits: 010000000300000003000000
   - TypeGroup: 0
     VariertyUnits: 020000000200000000000000
   - TypeGroup: 0
@@ -69,3 +65,7 @@ MonoBehaviour:
     VariertyUnits: 000000000000000000000000
   - TypeGroup: 0
     VariertyUnits: 000000000100000000000000
+  - TypeGroup: 0
+    VariertyUnits: 01000000010000000000000000000000
+  - TypeGroup: 0
+    VariertyUnits: 01000000010000000300000003000000

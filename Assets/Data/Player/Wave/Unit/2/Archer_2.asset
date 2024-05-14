@@ -30,11 +30,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1b9647e2f7fdb54bb7e08f0e76fd910, type: 2}
   ColorEffectDamage: {r: 0.3647059, g: 0.7176471, b: 1, a: 1}
   TimeWait: 0
-  HealPoint: 450
-  AttackDamage: 300
+  HealPoint: 470
+  AttackDamage: 180
   AttackRange: 5
   VisibilityRange: 7
-  AttackSpeed: 1
+  AttackSpeed: 2
   Speed: 0.75
   ApproximationFactor: 1
   ProjectileBlockChance: 0
@@ -50,19 +50,19 @@ MonoBehaviour:
   Stats:
   - Type: 0
     Levels:
-    - 450
-    - 450
-    - 450
+    - 470
+    - 470
+    - 470
   - Type: 1
     Levels:
-    - 300
-    - 350
-    - 400
+    - 180
+    - 200
+    - 230
   - Type: 2
     Levels:
+    - 2
     - 1.6
     - 1.4
-    - 1.1
   Prices: 000000003200000064000000
   Icon: {fileID: 21300000, guid: 588263bf98bd8d948a73e28c3e32866c, type: 3}
   Bullet: {fileID: 4470804474966191576, guid: 8b45feccd7227634c9a9c6750795aa12, type: 3}

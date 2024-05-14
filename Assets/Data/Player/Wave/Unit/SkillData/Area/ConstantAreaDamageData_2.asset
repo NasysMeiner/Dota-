@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ConstantAreaDamageData_2
   m_EditorClassIdentifier: 
   IsPurchased: 0
-  Price: 150
+  Price: 100
   IconSkill: {fileID: 21300000, guid: 5804d9a569a6a51418ccca13311ea012, type: 3}
   TextSkill: Bla
   TypeSkill: 0
@@ -24,4 +24,4 @@ MonoBehaviour:
   AttackScaling: 0
   Damage: 15
   Time: 0.2
-  Radius: 5
+  Radius: 4
