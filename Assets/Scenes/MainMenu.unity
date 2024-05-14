@@ -387,6 +387,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1505603810}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &197173528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,6 +624,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound:
+    Guid:
+      Data1: -914744426
+      Data2: 1239156118
+      Data3: 402132868
+      Data4: 2141345064
+    Path: event:/EDS_Menu_Click
 --- !u!1 &277490425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1706,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 267611540}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &742289483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1809,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound:
+    Guid:
+      Data1: -914744426
+      Data2: 1239156118
+      Data3: 402132868
+      Data4: 2141345064
+    Path: event:/EDS_Menu_Click
 --- !u!1 &789417027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2257,6 @@ GameObject:
   - component: {fileID: 998791553}
   - component: {fileID: 998791552}
   - component: {fileID: 998791551}
-  - component: {fileID: 998791554}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -2305,6 +2342,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 748766344}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &998791552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2343,18 +2392,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998791549}
   m_CullTransparentMesh: 1
---- !u!114 &998791554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998791549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1154053960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,6 +2765,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1505603810}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1460955385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2821,6 +2870,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound:
+    Guid:
+      Data1: -914744426
+      Data2: 1239156118
+      Data3: 402132868
+      Data4: 2141345064
+    Path: event:/EDS_Menu_Click
 --- !u!1 &1537064969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,7 +3068,6 @@ GameObject:
   - component: {fileID: 1773197864}
   - component: {fileID: 1773197863}
   - component: {fileID: 1773197862}
-  - component: {fileID: 1773197865}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -3098,6 +3153,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 748766344}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 267611540}
         m_TargetAssemblyTypeName: Panel, Assembly-CSharp
         m_MethodName: OpenPanel
@@ -3148,18 +3215,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773197860}
   m_CullTransparentMesh: 1
---- !u!114 &1773197865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773197860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1858530649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3326,6 @@ GameObject:
   - component: {fileID: 1913270260}
   - component: {fileID: 1913270259}
   - component: {fileID: 1913270258}
-  - component: {fileID: 1913270261}
   m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
@@ -3357,6 +3411,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 748766344}
+        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1505603810}
         m_TargetAssemblyTypeName: Panel, Assembly-CSharp
         m_MethodName: OpenPanel
@@ -3407,18 +3473,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913270256}
   m_CullTransparentMesh: 1
---- !u!114 &1913270261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913270256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1944041310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,6 +3563,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600047de28ec5664bac06d6e31755fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &2017314019
 GameObject:
   m_ObjectHideFlags: 0
