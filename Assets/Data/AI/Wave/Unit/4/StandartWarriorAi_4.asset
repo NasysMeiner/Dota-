@@ -21,7 +21,8 @@ MonoBehaviour:
   IsShadowBias: 0
   BiasHPBar: {x: 0, y: 0.73, z: 0}
   Effects:
-  - effect: {fileID: 8379032181484805120, guid: c0ba99017d88b81409a16ed03f5ad1ec, type: 3}
+  - typeEffect: 1
+    effect: {fileID: 8379032181484805120, guid: c0ba99017d88b81409a16ed03f5ad1ec, type: 3}
     position: {x: 0, y: 1, z: 0}
   Scale: 0.4
   ScaleEffact: 0.5

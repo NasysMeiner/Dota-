@@ -45,7 +45,9 @@ public class Tower : MonoBehaviour, IEntity, IStructur
     public string Name => _name;
     public Unit CurrentTarget => _currentTarget;
 
-    public event UnityAction<float> HealthChange;
+    public float MaxHealPoint => _maxHealPoint;
+
+    public event UnityAction<float> HealPointChange;
     public event UnityAction Died;
 
     private void Update()
@@ -95,7 +97,6 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         _healPoint = 0;
 
         StartCoroutine(DestructEffetc());
-        //_counter.DeleteEntity(this);
     }
 
     public void Resurrect()
@@ -122,7 +123,7 @@ public class Tower : MonoBehaviour, IEntity, IStructur
         if (_effectDamage != null)
             _effectDamage.StartEffect();
 
-        HealthChange?.Invoke(_healPoint);
+        HealPointChange?.Invoke(_healPoint);
     }
 
     public void SetName(string name)

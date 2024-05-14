@@ -14,12 +14,12 @@ public class DamageColorEffectTower : MonoBehaviour
 
     private void OnDisable()
     {
-        _tower.HealthChange -= StartEffect;
+        _tower.HealPointChange -= StartEffect;
     }
 
     private void Start()
     {
-        _tower.HealthChange += StartEffect;
+        _tower.HealPointChange += StartEffect;
         _spriteRend = GetComponent<SpriteRenderer>();
         _defaultColor = _spriteRend.color;
     }

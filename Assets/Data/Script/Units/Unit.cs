@@ -68,7 +68,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public int WeightUnit { get; protected set; }
     public float AttackSpeed { get; protected set; }
     public float AttckRange { get; protected set; }
-    public float MaxHealthPoint { get; private set; }
+    public float MaxHealthPointGet { get; private set; }
+    public float MaxHealPoint => MaxHealthPointGet;
     public float HealPoint { get; protected set; }
     public float VisibilityRange { get; protected set; }
     public float Speed { get; protected set; }
@@ -79,6 +80,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public float ScaleEffect { get; protected set; }
 
     public event UnityAction<Unit> Died;
+    public event UnityAction<float> HealPointChange;
 
     //
     public HealthBar healthBar;
@@ -199,7 +201,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
 
         WeightUnit = warriorData.WeightUnit;
         HealPoint = warriorData.HealPoint;
-        MaxHealthPoint = HealPoint;
+        MaxHealthPointGet = HealPoint;
         Damage = warriorData.AttackDamage;
         AttckRange = warriorData.AttackRange;
         VisibilityRange = warriorData.VisibilityRange;

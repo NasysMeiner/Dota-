@@ -21,9 +21,10 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public Vector3 Position => transform.position;
     public GameObject GameObject => gameObject;
     public bool IsAlive => _isAlive;
+    public float MaxHealPoint => MaxHealPointGet;
 
     public int Income { get; private set; }
-    public float MaxHealPoint { get; private set; }
+    public float MaxHealPointGet { get; private set; }
     public Counter Counter { get; private set; }
     public Counter EnemyCounter { get; private set; }
     public string Name { get; private set; }
@@ -79,9 +80,9 @@ public class Castle : MonoBehaviour, IStructur, IEntity
     public void InitializeStruct(DataStructure dataStructure)
     {
         Income = dataStructure.Income;
-        MaxHealPoint = dataStructure.MaxHealpPoint;
+        MaxHealPointGet = dataStructure.MaxHealpPoint;
 
-        _healPoint = MaxHealPoint;
+        _healPoint = MaxHealPointGet;
 
         if (dataStructure.EffectDamage != null)
             _effectDamage = Instantiate(dataStructure.EffectDamage, transform);

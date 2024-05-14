@@ -77,10 +77,13 @@ public class LevelManager : MonoBehaviour
 [System.Serializable]
 public class DataScene
 {
+    public bool IsTutor;
     public List<SceneCell> Scenes = new();
 
     public void InitDataScene(DataCountLevels dataCountLevels)
     {
+        IsTutor = dataCountLevels.IsTutor;
+
         Scenes.Clear();
 
         foreach(LevelData levelData in dataCountLevels.Levels)

@@ -17,7 +17,7 @@ public class HealPointView : MonoBehaviour
 
     public void Initialize(Castle castle, List<Heart> hearts)
     {
-        _maxHealPoint = castle.MaxHealPoint;
+        _maxHealPoint = castle.MaxHealPointGet;
         _castle = castle;
         _hearts = hearts;
 

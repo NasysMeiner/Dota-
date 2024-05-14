@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532490d50817b5e47820c91316d843b1, type: 3}
   m_Name: Level
   m_EditorClassIdentifier: 
+  IsTutor: 0
   MainMenu:
     Scene: MainMenu
     status: 0

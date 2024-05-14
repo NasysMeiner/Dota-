@@ -4,11 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Levels")]
 public class DataCountLevels : ScriptableObject
 {
+    public bool IsTutor;
     public LevelData MainMenu;
     public List<LevelData> Levels = new();
 
     public void LoadData(DataScene dataScene)
     {
+        IsTutor = dataScene.IsTutor;
+
         for(int i = 0; i < Levels.Count; i++)
         {
             Levels[i].LoadData(dataScene.Scenes[i]);
@@ -18,6 +21,7 @@ public class DataCountLevels : ScriptableObject
     public void LoadData(DataCountLevels dataScene)
     {
         Levels.Clear();
+        IsTutor = dataScene.IsTutor;
         MainMenu = dataScene.MainMenu;
 
         for(int i = 0; i < dataScene.Levels.Count; i++)

@@ -49,6 +49,8 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
     public string Name => _name;
     public int Income => _income;
     public float HealPoint => _healPoint;
+    public float MaxHealPoint => MaxHealPointGet;
+    public float MaxHealPointGet { get; private set; }
     public GameObject GameObject => gameObject;
     public Vector3 Position => transform.position;
     public int StartIdUnit => _startIdUnit;
@@ -57,6 +59,7 @@ public class Barrack : MonoBehaviour, IStructur, IEntity
 
     public event UnityAction<Barrack> EndWave;
     public event UnityAction DestroyBarrack;
+    public event UnityAction<float> HealPointChange;
     public event UnityAction<float> HealthChange;
 
     public void Destruct()

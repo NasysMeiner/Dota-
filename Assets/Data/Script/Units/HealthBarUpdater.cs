@@ -17,12 +17,12 @@ public class HealthBarUpdater : MonoBehaviour
             return;
         }
 
-        healthBar.SetMaxHealth(_unit.MaxHealthPoint);
+        healthBar.SetMaxHealth(_unit.MaxHealthPointGet);
         healthBar.SetHealth(_unit.HealPoint);
 
         _unit.HealthChanged += UpdateHealthBar;
 
-        UpdateHealthBar(_unit.MaxHealthPoint, AttackType.ConstDamage);
+        UpdateHealthBar(_unit.MaxHealthPointGet, AttackType.ConstDamage);
     }
 
     void OnDestroy()
