@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +42,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     protected Vector3 _targetPoint;
     protected Scout _scout;
     protected Quaternion _startRotation;
+    protected EventReference _soundAttack;
+    protected bool _isAudio;
 
     private float _timeImmortality = 0f;
 
@@ -61,6 +64,8 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public GameObject GameObject => gameObject;
     public NavMeshAgent MeshAgent => _meshAgent;
     public bool IsAlive => _isAlive;
+    public EventReference SoundAttack => _soundAttack;
+    public bool IsAudio => _isAudio;
 
     public IEntity CurrentTarget { get; protected set; }
     public float Damage { get; protected set; }
@@ -78,7 +83,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
     public Counter EnemyCounter { get; protected set; }
     public bool IsDoubleAttack { get; protected set; }
     public float ScaleEffect { get; protected set; }
-
+    
     public event UnityAction<Unit> Died;
     public event UnityAction<float> HealPointChange;
 
@@ -214,6 +219,7 @@ public abstract class Unit : MonoBehaviour, IUnit, IEntity
         _isDoubleAttack = warriorData.IsDoubleAttack;
         ScaleEffect = warriorData.ScaleEffact;
         _isChangeShadowDie = warriorData.IsShadowBias;
+        _isAudio = warriorData.IsAudio;
 
         foreach (SkillCont skillCont in warriorData.SkillConts)
         {

@@ -73,6 +73,9 @@ public class AttackState : State
         if(!_isDoubleAttack)
             StartAnimation();
 
+        if(_stateMachine.Warrior.IsAudio)
+            AudioManager.Instance.PlayOneShot(_stateMachine.Warrior.SoundAttack, _stateMachine.Warrior.Position);
+
         _stateMachine.Warrior.ChangeFlip();
         _stateMachine.Warrior.CurrentTarget.GetDamage(_stateMachine.Warrior.Damage, AttackType.Melee);
     }

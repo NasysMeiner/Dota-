@@ -24,6 +24,14 @@ MonoBehaviour:
   Scale: 0.4
   ScaleEffact: 0
   Sprite: {fileID: 21300000, guid: 5d34aab393cbc0946bc326e93392be5e, type: 3}
+  IsAudio: 1
+  soundAttack:
+    Guid:
+      Data1: 1718639985
+      Data2: 1124356380
+      Data3: -1673335369
+      Data4: -616215841
+    Path: event:/EDS_Bat
   SkillList: []
   LevelUpList:
   - {fileID: 11400000, guid: aa4b42e6bdc2f2641a0117583447c3cf, type: 2}

@@ -16,6 +16,9 @@ public class ArcherAttackState : AttackState
         if (!_isDoubleAttack)
             StartAnimation();
 
+        if(_archer.IsAudio)
+            AudioManager.Instance.PlayOneShot(_archer.SoundAttack, _archer.Position);
+
         Bullet bullet = _archer.CreateBullet();
         bullet.transform.position = _archer.Position;
         Vector3 targetPosition = CalculeutVector(bullet);

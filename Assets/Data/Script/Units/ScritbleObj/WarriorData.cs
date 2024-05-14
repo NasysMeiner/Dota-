@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,9 @@ public class WarriorData : ScriptableObject
     public float ScaleEffact;
 
     public Sprite Sprite;
+    [Header("Sound")]
+    public bool IsAudio;
+    public EventReference soundAttack;
 
     [Header("Skills")]
     public List<SkillData> SkillList = new();
@@ -120,6 +124,8 @@ public class WarriorData : ScriptableObject
         Scale = warriorData.Scale;
         ScaleEffact = warriorData.ScaleEffact;
         TimeWait = warriorData.TimeWait;
+        soundAttack = warriorData.soundAttack;
+        IsAudio = warriorData.IsAudio;
 
         EffectDamage = warriorData.EffectDamage;
         EffectAttack = warriorData.EffectAttack;

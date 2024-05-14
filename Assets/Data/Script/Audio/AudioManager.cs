@@ -45,6 +45,11 @@ public class AudioManager : MonoBehaviour
         _uiBus.setVolume(_uiVolume);
     }
 
+    public void PlayOneShot(EventReference sound, Vector3 worldPos)
+    {
+        RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+
     private void Start()
     {
         LoadAudioData();
