@@ -36,7 +36,7 @@ MonoBehaviour:
   VisibilityRange: 6
   AttackSpeed: 1
   Speed: 1.5
-  ApproximationFactor: 1
+  ApproximationFactor: 0.75
   ProjectileBlockChance: 0
   TimeImmortaly: 0
   IsDoubleAttack: 0
