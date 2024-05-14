@@ -9,7 +9,6 @@ public class Panel : MonoBehaviour
 
     public virtual void OpenPanel()
     {
-        Debug.Log("t");
         gameObject.SetActive(true);
     }
 }
