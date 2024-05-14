@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638509759510913130
+  lastModified: 638508937394515579
   FileSizes: []
   Exists: 1
 --- !u!114 &-4583753097763576475
@@ -38,7 +38,7 @@ MonoBehaviour:
     Data4: 853222534
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638509759510403011
+  lastModified: 638508939683945256
   FileSizes:
   - Name: 
     Value: 1320
@@ -97,7 +97,7 @@ MonoBehaviour:
   - {fileID: 3750798804417697671}
   StringsBanks:
   - {fileID: -2916122806125731272}
-  cacheTime: 638509759510943141
+  cacheTime: 638513230604702770
   cacheVersion: 131617
 --- !u!114 &806669334559880059
 MonoBehaviour:
@@ -119,7 +119,7 @@ MonoBehaviour:
     Data4: -516056993
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -200,7 +200,7 @@ MonoBehaviour:
     Data4: -1675145680
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -222,7 +222,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638509759510393007
+  lastModified: 638508939683915358
   FileSizes: []
   Exists: 1
 --- !u!114 &4043471671722864319
@@ -245,7 +245,7 @@ MonoBehaviour:
     Data4: 2141345064
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -272,7 +272,7 @@ MonoBehaviour:
     Data4: -640425533
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -299,7 +299,7 @@ MonoBehaviour:
     Data4: -616215841
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -321,7 +321,7 @@ MonoBehaviour:
   Path: Assets/Audio/EDS_Audio/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638509759510943141
+  lastModified: 638513230604702770
   FileSizes: []
   Exists: 1
 --- !u!114 &6689116458930916612
@@ -344,7 +344,7 @@ MonoBehaviour:
     Data4: -1744538242
   Banks:
   - {fileID: 6162115934902087889}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
