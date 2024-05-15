@@ -37,6 +37,7 @@ public class GameResultView : MonoBehaviour
 
     public void OnVictory()
     {
+        Time.timeScale = 0;
         _victoryWindow.OpenPanel();
 
         DataScene scene = Repository.GetData<DataScene>();
@@ -46,6 +47,7 @@ public class GameResultView : MonoBehaviour
 
     public void OnDefeat()
     {
+        Time.timeScale = 0;
         _defeatWindow.OpenPanel();
     }
 

@@ -17,6 +17,6 @@ public class Panel : MonoBehaviour
 
     public void Play()
     {
-        AudioManager.Instance.PlayOneShot(_sound, transform.position);
+        //AudioManager.Instance.PlayOneShot(_sound, transform.position);
     }
 }

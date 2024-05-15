@@ -34,7 +34,10 @@ public class RepairTowerButton : MonoBehaviour
     public void Repair()
     {
         if(_repairView.TryRepairTower(_name, _id))
+        {
             SetDisable();
+            transform.position = _repairView.transform.position;
+        }
     }
 
     public void SetEnable()

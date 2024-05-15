@@ -17,6 +17,7 @@ public class CompositRootStart : CompositeRoot
 
     public override void Compose()
     {
+        Time.timeScale = 1f;
         StartGame();
     }
 
